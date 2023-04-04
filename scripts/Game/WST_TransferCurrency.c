@@ -17,7 +17,7 @@ class WST_TransferCurrency : ScriptedUserAction
 		//RandomGenerator randomGenerator = new RandomGenerator();
 		//vector teleportPosition = randomGenerator.GenerateRandomPointInRadius(m_iSpawnMinDist, m_iSpawnMaxDist, m_vTeleportDestination);
 		//pUserEntity.SetOrigin(teleportPosition);
-		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.WST_TransferCurrencyWindow);
+		//GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.WST_TransferCurrencyWindow);
 
 
 	}
