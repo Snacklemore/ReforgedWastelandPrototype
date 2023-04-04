@@ -1,0 +1,73 @@
+GenericEntity : "{C63227C0E70EA62E}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  BaconSuppressors_WeaponSuppressionComponent "{5CFD2C2A33A244B9}" {
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{5534745C44D1EFE1}" {
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E1D29F45C}" {
+     AnimationIKPose "{9CA239925FE3C73A}Assets/Weapons/Rifles/M16A2/anims/anmM203/p_m16_M203_ik.anm"
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      DeploymentPoints {
+       PivotPointInfoItem "{5A8ABE3D0B1123A8}" {
+        "Point info" DeploymentPointInfo dp {
+         Offset 0 -0.0286 0.3339
+        }
+       }
+      }
+      "LEFT HAND TARGET" DeploymentPointInfo lht {
+       Offset -0.053 -0.098 -0.03
+       Angles -45 -80 90
+      }
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5534745C44D1EF58}" {
+     AttachmentSlot InventoryStorageSlot optics {
+     }
+    }
+    AttachmentSlotComponent "{5CFD2C2A631070A3}" {
+     AttachmentSlot InventoryStorageSlot Invt {
+      PivotID "barrel_muzzle"
+      ChildPivotID "snap_weapon"
+      InspectionWidgetOffset 0 0.1 0.6
+     }
+     AttachmentType AttachmentMuzzle556 "{5CFD2C2A7E9C5128}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{5CFD2E6A6F8EA78D}" {
+     AttachmentSlot InventoryStorageSlot underbarrel {
+      PivotID "barrel_chamber"
+      Prefab "{43FDAF3FA0FF2299}Prefabs/Weapons/Attachments/Underbarrel/UGL_M203.et"
+      InspectionWidgetOffset 0 0.0789 0.2607
+     }
+     AttachmentType AttachmentUnderBarrelM203 "{5CFD2E6A6F8EA787}" {
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      InspectionWidgetOffset 0 -0.044 0.0739
+     }
+    }
+    WeaponAnimationComponent "{5534745C44D1EF55}" {
+     AnimGraph "{288D8FF8F78E3DA0}Assets/Weapons/Rifles/workspaces/m16_M203.agr"
+     AnimInstance "{2960BD42164C5E89}Assets/Weapons/Rifles/workspaces/m16_M203_weapon.asi"
+     StartNode "RifleMasterControl"
+     AnimInjection AnimationAttachmentInfo "{5534745C44D1EF5A}" {
+      AnimGraph "{288D8FF8F78E3DA0}Assets/Weapons/Rifles/workspaces/m16_M203.agr"
+      AnimInstance "{D23E2C738E4D3A65}Assets/Weapons/Rifles/workspaces/m16_M203_player.asi"
+      StartNode "MasterControl"
+     }
+    }
+   }
+  }
+ }
+}

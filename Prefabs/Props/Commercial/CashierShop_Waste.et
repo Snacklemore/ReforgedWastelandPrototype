@@ -1,0 +1,51 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{CD7B21DA4D8AE5FB}Assets/Props/Commercial/CashierShop_01/CashierShop_01.xob"
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   ResponseIndex "LargeDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
+   m_fBaseHealth 500
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{5CF72A243638C615}" {
+     m_fPhaseHealth 1000
+     m_PhaseModel "{2E11F7FDBC56CFAF}Assets/Props/Commercial/CashierShop_01/Dst/ShopCashier_01_dst_01.xob"
+    }
+   }
+   m_eMaterialSoundType METAL_LIGHT
+  }
+  ActionsManagerComponent "{5CF72A24698A8C7E}" {
+   ActionContexts {
+    UserActionContext "{5CF72A24730D7310}" {
+     UIInfo UIInfo "{5CF72A2782D74D26}" {
+      Name "ActionWST"
+     }
+     ContextName "TransferWindow"
+     Position PointInfo "{5CF72A27A15CF5D9}" {
+      Offset -0.0057 0.4753 -0.2718
+     }
+    }
+   }
+   additionalActions {
+    WST_UserAction "{5CF72A26A98EDF68}" {
+     ParentContextList {
+      "TransferWindow"
+     }
+     UIInfo UIInfo "{5CF72A26C46A059A}" {
+      Name "TransferName"
+      Description "Transfer"
+     }
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+  }
+ }
+ coords 0 0 0
+}

@@ -1,0 +1,35 @@
+SCR_LoadoutManager : "{97EF4C1A41F63DDB}Prefabs/MP/Managers/Loadouts/LoadoutManager_USxUSSR.et" {
+ ID "56B2B47708C4F23A"
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{56B2B461C7495F41}" {
+   m_sAffiliatedFaction "FFA"
+  }
+  SCR_FactionPlayerLoadout "{56B2B461C047DCDA}" {
+   m_sAffiliatedFaction "FFA"
+  }
+  SCR_FactionPlayerLoadout "{56B2B461C275B309}" {
+   m_sAffiliatedFaction "FFA"
+  }
+  SCR_FactionPlayerLoadout "{56B2B461C34A570F}" {
+   m_sAffiliatedFaction "FFA"
+  }
+  SCR_FactionPlayerLoadout "{56B2B4613C48D08E}" {
+   m_sAffiliatedFaction "FFA"
+  }
+  SCR_FactionPlayerLoadout "{56B2B4613DCD3341}" {
+   m_sAffiliatedFaction "FFA"
+  }
+  SCR_FactionPlayerLoadout "{56B2B4613FB900E5}" {
+   m_sAffiliatedFaction "FFA"
+  }
+  SCR_FactionPlayerLoadout "{56B2B461341EA370}" {
+   m_sAffiliatedFaction "FFA"
+  }
+  SCR_FactionPlayerLoadout "{56B2B46134D39388}" {
+   m_sAffiliatedFaction "FFA"
+  }
+  SCR_FactionPlayerLoadout "{56B2B4613581570A}" {
+   m_sAffiliatedFaction "FFA"
+  }
+ }
+}

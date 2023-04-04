@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{F85F71A8D6D5672D}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTIISuppressed.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

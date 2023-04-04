@@ -1,0 +1,37 @@
+SCR_BaseGameModeWasteland {
+ ID "5CB0060B7EA97270"
+ components {
+  SCR_AutomaticRespawnHandlerComponent "{5CAB50F044535F4F}" {
+  }
+  SCR_CallsignManagerComponent "{5CAB50F19BCD59C1}" {
+  }
+  SCR_DestructionManagerComponent "{5CAB50F1A2F56FA9}" {
+  }
+  SCR_GameModeHealthSettings "{5CAB50F1AC6D48A4}" {
+  }
+  SCR_GameOverScreenManagerComponent "{5CAB50F1B4BD35BE}" {
+  }
+  SCR_GroupsManagerComponent "{5CAB50F1BC5AF4A2}" {
+  }
+  SCR_HintManagerComponent "{5CAB50F1C679006A}" {
+  }
+  SCR_NametagConfigComponent "{5CAB50F1C1DBCFCC}" {
+  }
+  SCR_NotificationSenderComponent "{5CAB50F1C89C41F1}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{5CAB50F1E68F426E}" {
+  }
+  SCR_PossessingManagerComponent "{5CAB50F1EC33DA6E}" {
+  }
+  SCR_RadialMenuComponent "{5CAB50F1F7E9C569}" {
+  }
+  SCR_SaveLoadComponent "{5CAB50F1F9343974}" {
+  }
+  SCR_VotingManagerComponent "{5CAB50F102600F5F}" {
+  }
+  RplComponent "{5CAB50F10FD18CC7}" {
+   Streamable Disabled
+  }
+ }
+ coords 4884.226 28.595 11763.377
+}

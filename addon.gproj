@@ -1,0 +1,20 @@
+GameProject {
+ ID "ReforgedWastelandPrototype"
+ GUID "5CAB24EF8A549922"
+ TITLE "ReforgedWastelandPrototype"
+ Dependencies {
+  "58D0FB3206B6F859" "595F2BF2F44836FB" "597D72161FD1ED1D" "5AB301290317994A"
+ }
+ Configurations {
+  GameProjectConfig PC {
+  }
+  GameProjectConfig XBOX_ONE {
+  }
+  GameProjectConfig XBOX_SERIES {
+  }
+  GameProjectConfig PS4 {
+  }
+  GameProjectConfig HEADLESS {
+  }
+ }
+}

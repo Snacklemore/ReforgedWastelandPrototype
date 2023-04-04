@@ -1,0 +1,86 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5CC50BD44D598031}" {
+     NavmeshFile "{A07353FE17EB2C49}worlds/MP/Navmeshes/CTI_Campaign_Eden.nmn"
+    }
+   }
+  }
+ }
+ coords 4881.879 28.595 11741.456
+ "Initialize Road Network" 1
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 4883.491 28.595 11739.479
+}
+SCR_FactionManager FactionManager_Base1 : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ coords 4882.086 28.595 11750.615
+ Factions {
+  SCR_Faction "{5CE73973488AC5F3}" : "{279E4B2ECD96D14B}Configs/Factions/B.conf" {
+   UIInfo SCR_FactionUIInfo "{5CD0395D6107635F}" {
+    Name "B"
+   }
+  }
+  SCR_Faction "{5CE73972CF9CB7F1}" : "{475723A0D7F58727}Configs/Factions/A.conf" {
+   UIInfo SCR_FactionUIInfo "{5CD0395D769080FC}" {
+    Name "A"
+   }
+  }
+  SCR_Faction "{5CE726D3F89B8EFC}" : "{8053DB656DD18B15}Configs/Factions/FIA.conf" {
+   UIInfo SCR_FactionUIInfo "{5CE726D3C0CB70AA}" {
+    Name "FIA"
+   }
+  }
+ }
+}
+RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
+ coords -3.207 -4.41 -3.544
+}
+HitRegistrationManager HitRegistrationManager1 {
+ coords 6580.016 10.002 3130.449
+}
+SCRWST_AISpawnManager {
+ coords 4883 30.715 11752.553
+ Flags 2097155
+}
+SCR_MoneyManager {
+ components {
+  RplComponent "{5CF4AA9086ACA96B}" {
+   Streamable Disabled
+  }
+ }
+ coords 6337.206 2.164 1934.892
+}
+BasePreloadManager PreloadManager2 : "{104F8505FD1871EF}Prefabs/World/Game/PreloadManager.et" {
+ coords -6.924 -10.636 -8.645
+ PrefabsToPreload {
+  "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.et" "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et" "{3343A055A83CB30D}Prefabs/Weapons/Grenades/M18/Smoke_M18_Red.et" "{14C1A0F061D9DDEE}Prefabs/Weapons/Grenades/M18/Smoke_M18_Violet.et" "{9BBDEE253A16CC66}Prefabs/Weapons/Grenades/M18/Smoke_M18_Yellow.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{1353C6EAD1DCFE43}Prefabs/Weapons/Handguns/M9/Handgun_M9.et" "{C0F7DD85A86B2900}Prefabs/Weapons/Handguns/PM/Handgun_PM.et" "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et" "{7A82FE978603F137}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7.et" "{A89BC9D55FFB4CD8}Prefabs/Weapons/MachineGuns/PKM/MG_PKM.et" "{D182DCDD72BF7E34}Prefabs/Weapons/MachineGuns/M60/MG_M60.et" "{FA5C25BF66A53DCF}Prefabs/Weapons/Rifles/AK74/Rifle_AK74.et" "{3E413771E1834D2F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{61D4F80E49BF9B12}Prefabs/Items/Equipment/Compass/Compass_SY183.et" "{3A421547BC29F679}Prefabs/Items/Equipment/Flashlights/Flashlight_MX991.et" "{575EA58E67448C2A}Prefabs/Items/Equipment/Flashlights/Flashlight_Soviet_01.et" "{E1A5D4B878AA8980}Prefabs/Items/Equipment/Radios/Radio_R148.et" "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et" "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et" "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et" "{A46F7A3C178EBBAC}Prefabs/Characters/Preview/BasebodyPreviewCharacter.et" "{9D23639EA3055572}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste.et" "{DD8F91EF241595A0}Prefabs/Groups/BLUFOR/Group_FireTeamWaste1.et" "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et"
+ }
+}
+SCR_MPDestructionManager : "{9BB369F2803C6F71}Prefabs/MP/MPDestructionManager.et" {
+ coords 4909.111 28.595 11873.658
+}
+ItemPreviewManagerEntity ItemPreviewManager1 : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+ coords 4886.809 28.595 11860.336
+}
+SCR_LoadoutManager : "{CC0F103253FC5D86}Prefabs/MP/Managers/Loadouts/LoadoutManager_FFAMod.et" {
+ coords 4773.693 28.761 11693.646
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{56B2B461C34A570F}" {
+   m_sAffiliatedFaction "A"
+  }
+  SCR_FactionPlayerLoadout "{56B2B46134D39388}" {
+   m_sAffiliatedFaction "B"
+  }
+  SCR_FactionPlayerLoadout "{5A2494BE3D648F60}" {
+   m_sAffiliatedFaction "A"
+  }
+  SCR_FactionPlayerLoadout "{5A2494B91167F3F6}" {
+   m_sAffiliatedFaction "B"
+  }
+  SCR_FactionPlayerLoadout "{56B2B461C7495F41}" {
+   m_sAffiliatedFaction "A"
+  }
+ }
+}

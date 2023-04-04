@@ -1,0 +1,76 @@
+SCR_GameModeCampaignMP : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
+ ID "56B2B479C6B96951"
+ components {
+  SCR_CampaignBuildingManagerComponent "{5CB0181607C3071E}" {
+   m_sFreeRoamBuildingServerTrigger "{B3FCCF29C32C71CC}Prefabs/MP/FreeRoamBuildingServerTrigger.et"
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType CAMPAIGN
+  }
+  SCR_CompositionSlotManagerComponent "{5CB0181607C30711}" {
+  }
+  SCR_GameOverScreenManagerComponent "{56DEC646298AD219}" {
+   m_GameOverScreenConfig SCR_GameOverScreenConfig "{56DEC6462FFDD82D}" {
+    m_aGameOverScreens {
+     SCR_FactionGameOverScreenInfo "{568E79DBAC19013D}" {
+      m_OptionalParams SCR_BaseGameOverScreenInfoOptional "{568E79DBB3E97D11}" {
+       m_sDebriefing "#AR-Campaign_MatchResult_DefeatDetail_Score"
+      }
+     }
+    }
+   }
+  }
+  SCR_InitWeatherComponent "{5CB0181607C30726}" {
+   m_sInitialStartingWeatherId "Cloudy"
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_PlayerPenaltyComponent "{5CB0181607C30725}" {
+   m_iFriendlyPlayerKillPenalty 3
+   m_iFriendlyAIKillPenalty 1
+   m_iKickPenaltyLimit 9
+   m_iBanDuration 1800
+   m_iPenaltySubstractionPeriod 900
+   m_iPenaltySubstractionPoints 2
+  }
+  SCR_PlayerSpawnPointManagerComponent "{5CB0181607C3073B}" {
+   m_SpawnPointPrefab "{6FC8BA123C919DB3}Prefabs/MP/PlayerRadioSpawnPointCampaign.et"
+  }
+  SCR_RespawnBriefingComponent "{5CB0181607C30739}" {
+   m_Info SCR_UIInfo "{5CB0181607C3073C}" {
+    Description "#AR-Campaign_GamemodeTutorial"
+   }
+  }
+  SCR_RespawnMenuHandlerComponent "{5CB0181607C30732}" {
+   m_bAllowFactionChange 0
+   m_bAllowLoadoutSelection 0
+   m_sFactionMenuMessage "#AR-UI_RespawnInfo_PermanentFaction"
+  }
+  SCR_RespawnTimerComponent "{5CB0181607C30730}" {
+  }
+  SCR_SaveLoadComponent "{58FA739CBE3E9FC5}" {
+   m_Struct SCR_MissionStruct "{5CB0181607C30737}" {
+    m_Struct0 SCR_CampaignStruct "{5CB0181607C3074A}" {
+    }
+   }
+   m_iAutosavePeriod 120
+  }
+  SCR_SpawnProtectionComponent "{5CB0181607C30748}" {
+  }
+  SCR_TimeAndWeatherHandlerComponent "{5CB0181607C30749}" {
+   m_bRandomStartingDaytime 1
+   m_fDayTimeAcceleration 4
+   m_fNightTimeAcceleration 12
+   m_bRandomStartingWeather 1
+   m_bAllowHeaderSettings 1
+  }
+  SCR_TimedSpawnPointComponent "{5CB0181607C3074F}" {
+   m_fRespawnTime 30
+  }
+ }
+ coords 20.291 0 5.837
+ PlayerControllerPrefab "{D39FCAB93FC4FB02}Prefabs/Characters/Core/DefaultPlayerControllerMP_Campaign.et"
+ m_eTestGameFlags 6
+ m_iTotalPlayersLimit 64
+ m_RemnantsGroupPrefab "{F22EDFBEFC193357}Prefabs/Groups/Campaign/Group_FIA_Remnants.et"
+}

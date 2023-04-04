@@ -1,0 +1,22 @@
+SCR_BaseGameModeWasteland SCR_BaseGameModeWasteland2 : "{805A3F581EA80E37}SCR_BaseGameModeWasteland.et" {
+ components {
+  SCR_AutomaticRespawnHandlerComponent "{5CAB50F044535F4F}" {
+   Enabled 0
+  }
+  SCR_RespawnBriefingComponent "{5CD343494C13DDE2}" {
+  }
+  SCR_RespawnMenuHandlerComponent "{5CD3434952CB5AA3}" {
+   m_bAllowFactionChange 0
+   m_bAllowLoadoutSelection 0
+  }
+  SCR_RespawnSystemComponent "{5CD343493A9C7BF2}" {
+  }
+  SCR_RespawnTimerComponent "{5CD3434964CAE3D5}" {
+  }
+  RplComponent "{5CAB50F10FD18CC7}" {
+  }
+ }
+ coords -8.57 -10.834 -6.669
+ m_sBLUFORFactionKey "A"
+ m_sOPFORFactionKey "B"
+}

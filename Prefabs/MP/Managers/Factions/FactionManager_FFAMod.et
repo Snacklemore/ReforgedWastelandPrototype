@@ -1,0 +1,8 @@
+SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ ID "56B2B4776E6E4499"
+ Factions {
+  SCR_FreeForAllFaction "{5CB37BDD72ECC798}" {
+   FactionKey "FFA"
+  }
+ }
+}

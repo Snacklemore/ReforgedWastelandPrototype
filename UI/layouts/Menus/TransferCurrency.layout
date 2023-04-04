@@ -1,0 +1,54 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  PanelWidgetClass "{5D052623BCAF8E8E}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{5D052623BCAF8EA9}" {
+    PositionX 144
+    OffsetLeft 144
+    PositionY 168
+    OffsetTop 168
+    SizeX 408
+    OffsetRight -552
+    SizeY 168
+    OffsetBottom -336
+   }
+   {
+    RichTextWidgetClass "{5D05262323168E44}" {
+     Name "RichText0"
+     Slot FrameWidgetSlot "{5D05262323168E80}" {
+      PositionX 64
+      OffsetLeft 64
+      PositionY 16
+      OffsetTop 16
+      SizeX 162
+      OffsetRight -226
+      SizeY 30
+      OffsetBottom -46
+     }
+     Text "Transfer Cash"
+    }
+    OverlayWidgetClass "{5D0526230F4BA053}" {
+     Name "Overlay0"
+     Slot FrameWidgetSlot "{5D0526230F4BA078}" {
+      PositionX 32
+      OffsetLeft 32
+      PositionY 96
+      OffsetTop 96
+      SizeX 288
+      OffsetRight -320
+      SizeY 30
+      OffsetBottom -126
+     }
+     {
+      EditBoxWidgetClass "{5D052623FA01773C}" {
+       Name "EditBox0"
+       Slot OverlayWidgetSlot {
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

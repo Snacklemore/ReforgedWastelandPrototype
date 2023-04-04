@@ -1,0 +1,52 @@
+{
+    "dedicatedServerId": "3f381ebc-8b26-48d6-b20d-3425b8f11784",
+    "region": "DE",
+    "gameHostBindAddress": "",
+    "gameHostBindPort": 2001,
+    "gameHostRegisterBindAddress": "",
+    "gameHostRegisterPort": 2001,
+    "adminPassword": "changeme",
+
+    
+
+    "game": {
+        "name": "Wasteland",
+        "password": "",
+        "scenarioId": "{9F7BA3BBF4B38A98}Missions/WastelandHeader.conf",
+        "playerCountLimit": 32,
+        "autoJoinable": false,
+        "visible": true,
+        "supportedGameClientTypes": [
+            "PLATFORM_PC"
+        ],
+        "gameProperties": {
+            "serverMaxViewDistance": 2500,
+            "serverMinGrassDistance": 50,
+            "networkViewDistance": 1000,
+            "disableThirdPerson": true,
+            "fastValidation": true,
+            "battlEye": true,
+            "VONDisableUI": true,
+            "VONDisableDirectSpeechUI": true,
+            "missionHeader": {
+                "m_iPlayerCount": 40,
+                "m_eEditableGameFlags": 6,
+                "m_eDefaultGameFlags": 6,
+                "other": "values"
+            }
+        },
+		
+		"mods": [
+			{
+				"modId": "5CAB24EF8A549922",
+				"name": "Wasteland"
+				
+			}
+		]
+    },
+    "operating": {
+        "lobbyPlayerSynchronise": true
+    },
+    "a2sQueryEnabled": true,
+    "steamQueryPort": 17777
+}

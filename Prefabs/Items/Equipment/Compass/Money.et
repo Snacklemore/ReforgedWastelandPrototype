@@ -1,0 +1,66 @@
+GenericEntity : "{7CEEC3FF35A201A2}Prefabs/Items/Core/Compass_Base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  SignalsManagerComponent "{5A84D8CE473425FC}" {
+   Enabled 0
+  }
+  SoundComponent "{5A7C70054E8FBE18}" {
+   Enabled 0
+   Filenames {
+    "" ""
+   }
+  }
+  InventoryItemComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName UIInfo "{5222EB4D07D865FA}" {
+     Name "Money"
+     Description "Buy some."
+     Icon "{0B03F611D52043AE}UI/Textures/placeholder.edds"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0
+     SizeSetupStrategy Manual
+     ItemDimensions 5 5 5
+     ItemVolume 0
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5CE739CF94792A52}" {
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{5CE739CF94792A60}" {
+      CameraPreset Front
+      CameraOrbitAngles -60 -40 0
+      CameraDistanceToItem 0.35
+      CameraOffset -0.005 -0.005 0
+      FOV 10
+     }
+     CharacterModifierAttributes "{52A87A37FE262120}" {
+      TurnLimit 90
+     }
+    }
+    CommonItemType "NONE"
+    m_SlotType SLOT_VEST
+   }
+  }
+  MeshObject "{5CE739CF94792A79}" {
+   Object "{1094AFEF74D8E3E9}Assets/Items/Equipment/Compass/Compass_Adrianov/Compass_Adrianov.xob"
+  }
+  MoneyComponent "{5CF4CAAC6F374EB0}" {
+  }
+  RigidBody "{5CE739CF94792A7D}" {
+   Mass 1
+   LinearDamping 0.05
+   AngularDamping 0.05
+   ModelGeometry 1
+   CCDRadius 0.007
+  }
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   additionalActions {
+    SCR_EquipGadgetAction "{5250DDF0D1B25E2B}" {
+     ParentContextList {
+     }
+    }
+   }
+  }
+ }
+ coords -1.026 0.9 5.357
+}

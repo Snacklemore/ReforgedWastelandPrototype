@@ -1,0 +1,24 @@
+GenericEntity : "{43497A18DD888667}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  BaconSuppressors_WeaponSuppressionComponent "{5CFD2E6C1BCEF5C9}" {
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5CFD2E6C2710ED3B}" {
+     AttachmentSlot InventoryStorageSlot Invt {
+      PivotID "barrel_muzzle"
+     }
+     AttachmentType AttachmentMuzzle556 "{5CFD2E6C2B886BD4}" {
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,135 @@
+$grp SCR_CharacterTriggerEntity : "{47D49EA6A216CFD5}Prefabs/ScenarioFramework/Triggers/TriggerCharacterSlow.et" {
+ TriggerRegina {
+  coords 7239.425 136.837 2316.933
+  SphereRadius 37.2
+  DrawShape 1
+  m_EActivationPresence PLAYER
+  m_bOnce 0
+ }
+ TriggerCarmurac {
+  coords 6578.837 6.247 3116.405
+  SphereRadius 20.4
+  DrawShape 1
+  m_EActivationPresence PLAYER
+  m_bOnce 0
+ }
+ TriggerDurras {
+  coords 8807.524 96.436 2788.187
+  SphereRadius 48.6
+  DrawShape 1
+  m_EActivationPresence PLAYER
+  m_bOnce 0
+ }
+ TriggerVernon {
+  coords 9259.687 58.002 2071.537
+  SphereRadius 67.9
+  DrawShape 1
+  m_EActivationPresence PLAYER
+  m_bOnce 0
+ }
+ TriggerStPierre {
+  coords 9687.008 13.481 1547.027
+  SphereRadius 62.9
+  DrawShape 1
+  m_EActivationPresence PLAYER
+  m_bOnce 0
+ }
+ TriggerLevie {
+  coords 7488.643 139.19 4706.236
+  SphereRadius 115
+  DrawShape 1
+  m_EActivationPresence PLAYER
+  m_bOnce 0
+ }
+ TriggerChotain {
+  coords 7074.571 119.239 6039.3
+  SphereRadius 20.4
+  DrawShape 1
+  m_EActivationPresence PLAYER
+  m_bOnce 0
+ }
+ TriggerHarbour {
+  coords 4948.757 2.188 3874.214
+  SphereRadius 20.4
+  DrawShape 1
+  m_EActivationPresence PLAYER
+  m_bOnce 0
+ }
+ TriggerEntreDeux {
+  coords 5756.508 217.779 7066.352
+  SphereRadius 20.4
+  DrawShape 1
+  m_EActivationPresence PLAYER
+  m_bOnce 0
+ }
+}
+$grp SCR_SpawnPoint : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.et" {
+ SP_Carmurac {
+  components {
+   SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+    DisplayName "Carmurac Spawn "
+    VisibleOnMap 1
+    MapItemDescriptor 1
+    MainType Target
+    Scale 5
+    ForceGroupType Separate
+    ForceGroupScale 5.21
+    Priority 5
+   }
+  }
+  coords 6576.779 5.815 3119.304
+  m_sFaction ""
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "Carmurac"
+  }
+ }
+ SP_Levie {
+  coords 7486.584 139.513 4709.135
+  m_sFaction ""
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "Levie"
+  }
+ }
+ SP_Vernon {
+  coords 9260.467 58.69 2074.46
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "Vernon"
+  }
+ }
+ SP_Durras {
+  coords 8809.04 96.17 2784.569
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "Durras"
+  }
+ }
+ SP_StPierre {
+  coords 9683.236 13.71 1548.146
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "StPierre"
+  }
+ }
+ SP_Regina {
+  coords 7243.673 136.897 2319.179
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "Regina"
+  }
+ }
+ SP_Chotain {
+  coords 7075.278 119.172 6037.163
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "Chotain"
+  }
+ }
+ SP_Harbour {
+  coords 4948.249 2.231 3886.664
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "Harbour"
+  }
+ }
+ SP_EntreDeux {
+  coords 5761.782 217.689 7068.955
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "EntreDeux"
+  }
+ }
+}

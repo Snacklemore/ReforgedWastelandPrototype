@@ -1,0 +1,28 @@
+GenericEntity : "{809488C4984AC087}Prefabs/Weapons/Handguns/M9/Handgun_M9_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  BaconSuppressors_WeaponSuppressionComponent "{5CFB19F8140B67AA}" {
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{5534C5023A57E47F}" {
+     SizeSetupStrategy Manual
+    }
+    CustomAttributes {
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{B502E4DC8A9E835E}" {
+     AttachmentSlot InventoryStorageSlot optics {
+      PivotID "barrel_muzzle"
+     }
+     AttachmentType AttachmentMuzzle9_19 "{5CFB19FD12D90725}" {
+     }
+     ShowInInspection 1
+    }
+   }
+  }
+ }
+}

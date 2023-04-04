@@ -1,0 +1,37 @@
+{
+	"dedicatedServerId": "",
+	"region": "",
+    "gameHostRegisterPort": 2001,
+    "gameHostBindPort": 2001,
+    "game": {
+        "mods": [
+            {
+                "version": "0.1.1",
+                "modId": "5CAB24EF8A549922",
+                "name": "ReforgedWastelandPrototype"
+            }
+        ],
+        "hostedScenarioModId": "5CAB24EF8A549922",
+        "name": "DESKTOP-OBIKUEB Wasteland",
+        "scenarioId": "{9F7BA3BBF4B38A98}Missions/WastelandHeader.conf",
+        "gameProperties": {
+            "serverMaxViewDistance": 1600.0,
+            "serverMinGrassDistance": 50,
+            "fastValidation": 1,
+            "networkViewDistance": 500,
+            "battlEye": true,
+            "disableThirdPerson": false,
+            "VONDisableUI": false,
+            "VONDisableDirectSpeechUI": false
+        },
+        "playerCountLimit": 32,
+        "password": "",
+        "visible": true
+    },
+    "adminPassword": "",
+    "gameHostBindAddress": "0.0.0.0",
+    
+    "crossPlatform": false,
+    
+    "steamQueryAddress": ""
+}

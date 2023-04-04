@@ -1,0 +1,132 @@
+BehaviorTree "{1E3083B163241494}FollowPlayer.bt" {
+ Name "FollowPlayer.bt"
+ Nodes {
+  RootNode Root {
+   Name "Root"
+   EditorPos 100 100
+   Nodes {
+    Sequence Sequence {
+     Name "Sequence"
+     EditorPos 105.25 261
+     Nodes {
+      Sequence Sequence {
+       Name "SEQUENCE:Detect"
+       EditorPos -185.571 408.953
+       Nodes {
+        Decorator "{5CC54B2FB9331544}" {
+         Name "Decorator"
+         EditorPos -535.714 581.429
+         Nodes {
+          SCR_AIGetTarget "SCR_AI Get Target" {
+           Name "SCR_AI Get Target"
+           EditorPos -532.857 777.143
+           OutPorts {
+            SingleOutputPortContainer SingleOutputPortContainer {
+             Port 2
+             PortName "EntityOut"
+            }
+            SingleOutputPortContainer SingleOutputPortContainer {
+             Port -1
+             PortName "EntityPos"
+            }
+            SingleOutputPortContainer SingleOutputPortContainer {
+             Port 0
+             PortName "TargetInfo"
+            }
+           }
+           m_targetType DETECTED
+          }
+         }
+         ForceNodeResult Success
+        }
+        Decorator "{5CC54B2FB93315F2}" {
+         Name "Decorator"
+         EditorPos -122.857 578.571
+         Nodes {
+          SCR_AIGetCurrentEnemy "SCR_AI Get Current Enemy" {
+           Name "SCR_AI Get Current Enemy"
+           EditorPos -124.286 760
+           OutPorts {
+            SingleOutputPortContainer SingleOutputPortContainer {
+             Port -1
+             PortName "EntityOut"
+            }
+            SingleOutputPortContainer SingleOutputPortContainer {
+             Port -1
+             PortName "EntityLastSeenPos"
+            }
+            SingleOutputPortContainer SingleOutputPortContainer {
+             Port -1
+             PortName "EntityLastSeenTime"
+            }
+           }
+          }
+         }
+         ForceNodeResult Success
+        }
+       }
+      }
+      Sequence Sequence {
+       Name "SEQUENCE:Move"
+       EditorPos 332 450.857
+       Nodes {
+        AITaskMoveToEntity "Move To Entity" {
+         Name "Move To Entity"
+         EditorPos 302.667 729.381
+         PrecisionXZ 3
+         PrecisionY 0.5
+         PrecisionOfOrientation 3.502
+         RequestResult 3
+         InEntity 1
+        }
+        AITaskReturnState "Return  State" {
+         Name "Return  State"
+         EditorPos 740 963.333
+         Result RUNNING
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ Variables {
+  Variable targetInfo {
+   VariableName "targetInfo"
+   VariableTypeName "SCR_AITargetInfo"
+   VariableExposedInput 0
+   VariableExposedOutput 0
+  }
+  Variable enemy {
+   VariableName "enemy"
+   VariableTypeName "IEntity"
+   VariableExposedInput 0
+   VariableExposedOutput 0
+  }
+  Variable res {
+   VariableName "res"
+   VariableTypeName "int"
+   VariableExposedInput 0
+   VariableExposedOutput 0
+  }
+ }
+ VariablesRefs {
+  VariableReference targetInfo {
+   VariableType 0
+   EditorPos -304.603 909.206
+  }
+  VariableReference enemy {
+   VariableType 1
+   EditorPos 82.619 939.762
+  }
+  VariableReference enemy {
+   VariableType 1
+   EditorPos -298.75 825
+  }
+  VariableReference res {
+   VariableType 2
+   EditorPos 621.25 960
+  }
+ }
+}

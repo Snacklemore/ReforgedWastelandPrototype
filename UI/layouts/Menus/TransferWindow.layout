@@ -1,0 +1,172 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Clipping False
+ {
+  PanelWidgetClass "{5CF76DB0D12DD6CE}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{5CF76DB0D12DD6D6}" {
+    Anchor 0.113 0.193 0.663 0.837
+    PositionX -8.96
+    OffsetLeft -8.96
+    PositionY -0.44
+    OffsetTop -0.44
+    SizeX 384
+    OffsetRight -375.04
+    SizeY 0
+    OffsetBottom 0.44
+   }
+   Clipping False
+   {
+    ItemPreviewWidgetClass "{5CF76DD51F20059D}" {
+     Name "WeaponPreview"
+     Slot FrameWidgetSlot "{5CF76DD51F2005B6}" {
+      PositionX 896
+      OffsetLeft 896
+      PositionY 464
+      OffsetTop 464
+      SizeX 418.101
+      OffsetRight -1314.1
+      SizeY 77.713
+      OffsetBottom -541.713
+     }
+    }
+    RichTextWidgetClass "{5CF76DD29EC91613}" : "{899AF810DF4FA0A5}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading3.layout" {
+     Name "TextWeapons"
+     Slot FrameWidgetSlot "{5CF76DD29EC91625}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 16
+      OffsetTop 16
+      SizeX 119.8
+      OffsetRight -159.8
+      SizeY 36
+      OffsetBottom -52
+     }
+    }
+    RichTextWidgetClass "{5CF76DD290B1BE83}" : "{899AF810DF4FA0A5}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading3.layout" {
+     Name "TextAttachments"
+     Slot FrameWidgetSlot "{5CF76DD290B1BE97}" {
+      PositionX 704
+      OffsetLeft 704
+      PositionY 16
+      OffsetTop 16
+      SizeX 119.8
+      OffsetRight -823.8
+      SizeY 36
+      OffsetBottom -52
+     }
+    }
+    OverlayWidgetClass "{5CF76DCF9B8EBB2C}" {
+     Name "Overlay1"
+     Slot FrameWidgetSlot "{5CF76DCF9B8EBB4E}" {
+      Anchor 0 0 1 0
+      PositionX 696
+      OffsetLeft 696
+      PositionY 72
+      OffsetTop 72
+      SizeX -896
+      OffsetRight 200
+      SizeY 304
+      OffsetBottom -376
+     }
+     {
+      OverlayWidgetClass "{5CF76DCFAAD9E873}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxAttachments"
+       Slot OverlayWidgetSlot "{5CF76DCFAAD9E89E}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 20 20 20 20
+       }
+      }
+     }
+    }
+    OverlayWidgetClass "{5CF76DC38AF1CFFD}" {
+     Name "Overlay0"
+     Slot FrameWidgetSlot "{5CF76DCA96A77345}" {
+      Anchor 0 0 1 0
+      PositionX 24
+      OffsetLeft 24
+      PositionY 72
+      OffsetTop 72
+      SizeX -896
+      OffsetRight 872
+      SizeY 368
+      OffsetBottom -440
+     }
+     Clipping False
+     {
+      OverlayWidgetClass "{5CF76DC3D89BF141}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxWeapons"
+       Slot OverlayWidgetSlot "{5CF76DC3D89BF151}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 20 20 20 20
+       }
+      }
+     }
+    }
+   }
+  }
+  ButtonWidgetClass "{5CF72A239558C037}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+   Name "ButtonClose"
+   Slot FrameWidgetSlot "{5CF72A239558C059}" {
+    Anchor 0 0 1 1
+    PositionX 1600
+    OffsetLeft 1600
+    PositionY 952
+    OffsetTop 952
+    SizeX -1800.75
+    OffsetRight 200.75
+    SizeY -1048
+    OffsetBottom 96
+   }
+   components {
+    SCR_ButtonTextComponent "{5548F0143AE99095}" {
+     m_sText "Close"
+    }
+   }
+   {
+    SizeLayoutWidgetClass "{5548EB41A8E48247}" {
+     Prefab "{5548EB41A8E48247}"
+     Slot ButtonWidgetSlot "{5548E6E7E6AEDDC1}" {
+     }
+    }
+   }
+  }
+  ButtonWidgetClass "{5CF72A2395A294BD}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+   Name "ButtonBuy"
+   Slot FrameWidgetSlot "{5CF72A2395A294C4}" {
+    Anchor 0 0 1 1
+    PositionX 32
+    OffsetLeft 32
+    PositionY 1000
+    OffsetTop 1000
+    SizeX -1872.75
+    OffsetRight 1840.75
+    SizeY -1048
+    OffsetBottom 48
+   }
+   components {
+    SCR_ButtonTextComponent "{5548F0143AE99095}" {
+     m_BackgroundDefault 0.624 0.157 0.157 1
+     m_BackgroundHovered 0.561 0.749 0.376 1
+     m_sText "Buy"
+    }
+   }
+  }
+  RichTextWidgetClass "{5CF71796701841A1}" : "{5E0F8422A1F05728}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading2.layout" {
+   Name "TextTitle"
+   Slot FrameWidgetSlot "{5CF71796701841B6}" {
+    Anchor 0 0 0.76 0.72
+    PositionX 626
+    OffsetLeft 626
+    PositionY 0
+    OffsetTop 0
+    SizeX -1308.52
+    OffsetRight 682.52
+    SizeY -737.28
+    OffsetBottom 737.28
+   }
+  }
+ }
+}
