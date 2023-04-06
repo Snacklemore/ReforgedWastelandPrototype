@@ -22,7 +22,6 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 		{
 			//when not null there is a wallet already 
 			//-->save value of item and delete 
-			// 27.03.23: working when player is server, not synced in dedicated server enviroment(only server is keeping track of wallet value)
 			if (m_MoneyComponent)
 			{
 				Print("SCR_InventoryStorageManagerComponentMod::OnItemAdded::existing wallet detected with value: " + m_MoneyComponent.GetValue());
@@ -42,9 +41,9 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 
 				//delete the cached item
 				Print("SCR_InventoryStorageManagerComponentMod::OnItemAdded::deleting wallet  " + m_MoneyComponent.GetRplId() +" with value: "+ m_MoneyComponent.GetValue() );
-
+				m_MoneyComponent.Unregister(true);
 		
-				AskServerToDeleteEntity(enti);
+				//AskServerToDeleteEntity(enti);
 				
 				
 				

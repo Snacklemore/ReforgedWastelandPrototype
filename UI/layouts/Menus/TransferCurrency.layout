@@ -4,16 +4,77 @@ FrameWidgetClass {
   PanelWidgetClass "{5D052623BCAF8E8E}" {
    Name "Panel0"
    Slot FrameWidgetSlot "{5D052623BCAF8EA9}" {
-    PositionX 144
-    OffsetLeft 144
-    PositionY 168
-    OffsetTop 168
-    SizeX 408
-    OffsetRight -552
-    SizeY 168
-    OffsetBottom -336
+    PositionX 504
+    OffsetLeft 504
+    PositionY 208
+    OffsetTop 208
+    SizeX 328
+    OffsetRight -832
+    SizeY 248
+    OffsetBottom -456
    }
+   Color 0.502 0 0 1
    {
+    ButtonWidgetClass "{5D07251C3896D94D}" : "{0022F0B45ADBC5AC}UI/layouts/WidgetLibrary/EditBox/WLib_EditBox.layout" {
+     Name "EditBoxRoot0"
+     Slot FrameWidgetSlot "{5D07251C3896D953}" {
+      PositionX 16
+      OffsetLeft 16
+      PositionY 97
+      OffsetTop 97
+      SizeX 296
+      OffsetRight -312
+      SizeY 135
+      OffsetBottom -232
+     }
+     components {
+      SCR_EditBoxComponent "{547290FFBD5B33E9}" {
+       m_sLabel "Amount"
+      }
+     }
+     {
+      VerticalLayoutWidgetClass "{5AA4D27F39EB2514}" {
+       Prefab "{5AA4D27F39EB2514}"
+       {
+        SizeLayoutWidgetClass "{5538C205B27B0F5D}" {
+         Prefab "{5538C205B27B0F5D}"
+         {
+          OverlayWidgetClass "{55367D8E531FD623}" {
+           Prefab "{55367D8E531FD623}"
+           {
+            HorizontalLayoutWidgetClass "{55367D8E4592BC6E}" {
+             Prefab "{55367D8E4592BC6E}"
+             {
+              OverlayWidgetClass "{5538C2059A570E94}" {
+               Prefab "{5538C2059A570E94}"
+               {
+                HorizontalLayoutWidgetClass "{58D095EE846E2B93}" {
+                 Prefab "{58D095EE846E2B93}"
+                 {
+                  EditBoxWidgetClass "{5538C2058B18F877}" {
+                   Prefab "{5538C2058B18F877}"
+                   components {
+                    EditBoxFilterComponent "{5538D70DF38310BC}" {
+                     m_bPunctuation 0
+                     m_bASCIIchars 0
+                     m_bUTFMultibyte 0
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
     RichTextWidgetClass "{5D05262323168E44}" {
      Name "RichText0"
      Slot FrameWidgetSlot "{5D05262323168E80}" {
@@ -27,26 +88,6 @@ FrameWidgetClass {
       OffsetBottom -46
      }
      Text "Transfer Cash"
-    }
-    OverlayWidgetClass "{5D0526230F4BA053}" {
-     Name "Overlay0"
-     Slot FrameWidgetSlot "{5D0526230F4BA078}" {
-      PositionX 32
-      OffsetLeft 32
-      PositionY 96
-      OffsetTop 96
-      SizeX 288
-      OffsetRight -320
-      SizeY 30
-      OffsetBottom -126
-     }
-     {
-      EditBoxWidgetClass "{5D052623FA01773C}" {
-       Name "EditBox0"
-       Slot OverlayWidgetSlot {
-       }
-      }
-     }
     }
    }
   }

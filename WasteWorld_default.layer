@@ -12,6 +12,7 @@ SCR_BaseGameModeWasteland SCR_BaseGameModeWasteland2 : "{805A3F581EA80E37}SCR_Ba
   SCR_RespawnSystemComponent "{5CD343493A9C7BF2}" {
   }
   SCR_RespawnTimerComponent "{5CD3434964CAE3D5}" {
+   m_fRespawnTime 0
   }
   RplComponent "{5CAB50F10FD18CC7}" {
   }

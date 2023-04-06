@@ -4327,6 +4327,12 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	
 		if (pc)
 		{
+			//disable TransferAction
+			//--> by disabling ActionsManagerComponent on the player controlled entity
+			IEntity owner = pc.GetControlledEntity();
+			ActionsManagerComponent manager = ActionsManagerComponent.Cast( owner.FindComponent(ActionsManagerComponent));
+			manager.Deactivate(owner);
+			
 			SCR_CampaignNetworkComponent campaignNetworkComponent = SCR_CampaignNetworkComponent.Cast(pc.FindComponent(SCR_CampaignNetworkComponent));
 			
 			if (campaignNetworkComponent)

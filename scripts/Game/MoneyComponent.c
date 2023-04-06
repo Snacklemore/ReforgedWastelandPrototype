@@ -41,7 +41,19 @@ class MoneyComponent : ScriptComponent
 
 	}
 	
-	
+	void Unregister(bool shouldDelete)
+	{
+		if (shouldDelete)
+		{
+			m_MoneyManager.Unregister(this);
+			Rpc(RpcAsk_SelfDelete);
+			return;
+		}
+
+		
+		
+		
+	}
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcAsk_SelfDelete()
 	{
@@ -52,7 +64,7 @@ class MoneyComponent : ScriptComponent
 		if (!entity)
 			        return;
 		Print("MoneyComponent::RpcAsk_SelfDelete::: " );
-
+		
 		RplComponent.DeleteRplEntity(entity, false);	
 	}
 
@@ -127,7 +139,7 @@ class MoneyComponent : ScriptComponent
 		
 		if(m_iValue <= 0)
 		{
-			 Rpc(RpcAsk_SelfDelete);
+			 Unregister(true);
 		}
 		valueChanged = true;
 		return true;

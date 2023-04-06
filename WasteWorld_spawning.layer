@@ -12,6 +12,9 @@ GenericEntity : "{627F955923426D32}Prefabs/Props/Commercial/CashierShop_Waste.et
  coords 4881.031 29.544 11865.994
  angleY 52.677
 }
+SCR_ChimeraCharacter : "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et" {
+ coords 4877.965 28.595 11874.295
+}
 $grp StaticModelEntity : "{764414C0E2EF983E}Prefabs/Props/Military/Furniture/TableMilitary_USSR_02.et" {
  {
   coords 4881.258 28.595 11861.36
@@ -34,18 +37,55 @@ GenericEntity : "{904AF79F5926399A}Prefabs/Weapons/Core/Suppressor_Punky_NT4.et"
  coords 4875.267 28.595 11868.771
  angleY 0
 }
-GenericEntity : "{969F74903AFFCABE}Prefabs/Weapons/Attachments/Optics/bravo4/Optic_bravo4.et" {
- coords 4882.977 28.595 11862.91
-}
-GenericEntity : "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.et" {
- coords 4874.445 28.595 11867.064
-}
 StaticModelEntity : "{C99D1B2E817E12D9}Prefabs/Props/Military/Furniture/TableMilitary_USSR_02_cabinet.et" {
  coords 4869.944 28.595 11873.841
  angleY 0
 }
 SCR_DestructibleBuildingEntity : "{CA7778B914D3A9FC}Prefabs/Structures/Military/Bunkers/AircraftShelter_E_01/AircraftShelter_E_01_base.et" {
  coords 4875.296 0.001 11875.236
+ GenerateSlots 1
+ EntitySlots {
+  EntitySlotInfo socket_main_left {
+   PivotID "Socket_Main_Left"
+   Prefab "{ADAACE11802260CF}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Main_Left_EXT_COV_B.et"
+  }
+  EntitySlotInfo socket_main_right {
+   PivotID "Socket_Main_Right"
+   Prefab "{7D1E865927B2D775}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Main_Right_EXT_COV_B.et"
+  }
+  EntitySlotInfo socket_rear_left {
+   PivotID "Socket_Rear_Left"
+   Prefab "{275ACEE892A0009E}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Rear_Left_EXT_COV_B.et"
+  }
+  EntitySlotInfo socket_rear_right {
+   PivotID "Socket_Rear_Right"
+   Prefab "{F316BD951AFF6EC1}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Rear_Right_EXT_COV_B.et"
+  }
+  EntitySlotInfo socket_side_left_1 {
+   PivotID "Socket_Side_Left_1"
+   Prefab "{5A45EE2ED424C648}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Left_EXT_COV_M1.et"
+  }
+  EntitySlotInfo socket_side_right_1 {
+   PivotID "Socket_Side_Right_1"
+   Prefab "{A8F2296C08A58C07}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Right_EXT_COV_M1.et"
+  }
+  EntitySlotInfo socket_side_left_2 {
+   PivotID "Socket_Side_Left_2"
+   Prefab "{3611DACE68E04966}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Left_EXT_COV_M2.et"
+  }
+  EntitySlotInfo socket_side_right_2 {
+   PivotID "Socket_Side_Right_2"
+   Prefab "{C4A61D8CB4610329}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Right_EXT_COV_M2.et"
+  }
+  EntitySlotInfo socket_side_left_3 {
+   PivotID "Socket_Side_Left_3"
+   Prefab "{D38D96376405DE0D}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Left_EXT_COV_M3.et"
+  }
+  EntitySlotInfo socket_side_right_3 {
+   PivotID "Socket_Side_Right_3"
+   Prefab "{213A5175B8849442}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Right_EXT_COV_M3.et"
+  }
+ }
 }
 $grp GenericEntity : "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et" {
  {

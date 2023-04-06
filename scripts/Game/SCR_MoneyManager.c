@@ -29,6 +29,47 @@ class SCR_MoneyManager: GenericEntity
 		
 	}
 	
+	void Unregister(MoneyComponent comp)
+	{
+		if(!m_rpl.IsMaster())
+			return;
+		RplId id = comp.GetRplId();
+		Print("SCR_MoneyManager::Unregister::amount of registered wallets: "+  wallets.Count());
+
+		foreach (GenericEntity ent : wallets)
+		{
+			MoneyComponent moneyComp = ent.FindComponent(MoneyComponent);
+			if (!moneyComp)
+				continue;			
+			if (moneyComp.GetRplId() == id)
+			{
+				wallets.RemoveItem(ent);
+				return;
+			}
+				
+		}	
+		
+		
+		return;
+	
+	}
+	MoneyComponent GetWallet(RplId id)
+	{
+		Print("SCR_MoneyManager::GetWallet::amount of registered wallets: "+  wallets.Count());
+
+		if(!m_rpl.IsMaster())
+			return null;
+		foreach (GenericEntity ent : wallets)
+		{
+			MoneyComponent moneyComp = ent.FindComponent(MoneyComponent);
+			if (!moneyComp)
+				return null;			
+			if (moneyComp.GetRplId() == id)
+				return moneyComp;
+		}	
+		
+		return null;	
+	}
 	//serveronly
 	int GetWalletValue(RplId id)
 	{
@@ -44,7 +85,7 @@ class SCR_MoneyManager: GenericEntity
 				return moneyComp.GetValue();
 		}	
 	
-		return 1;
+		return -1;
 	}
 	
 	bool SetWalletValue(RplId id,int val)
@@ -69,6 +110,7 @@ class SCR_MoneyManager: GenericEntity
 	{
 		wallets.Insert(comp.GetOwner());
 		Print("SCR_MoneyManager::register::inserted walletEntity w/ val: " + comp.GetValue());
+		Print("SCR_MoneyManager::register::amount of registered wallets: "+  wallets.Count());
 
 		return true;
 	}

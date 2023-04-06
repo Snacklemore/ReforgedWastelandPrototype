@@ -14,10 +14,49 @@ class WST_TransferCurrency : ScriptedUserAction
 	//------------------------------------------------------------------------------------------------
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
 	{
-		//RandomGenerator randomGenerator = new RandomGenerator();
-		//vector teleportPosition = randomGenerator.GenerateRandomPointInRadius(m_iSpawnMinDist, m_iSpawnMaxDist, m_vTeleportDestination);
-		//pUserEntity.SetOrigin(teleportPosition);
-		//GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.WST_TransferCurrencyWindow);
+		//check if wallet is present first! (if no wallet on player no transfer)
+		
+		
+		
+		
+		
+		
+		//check proxy Player
+		
+		
+		SCR_CharacterDamageManagerComponent DamageManager = SCR_CharacterDamageManagerComponent.Cast(pOwnerEntity.FindComponent(SCR_CharacterDamageManagerComponent));
+		if (DamageManager)
+		{	
+			if (DamageManager.GetState() == EDamageState.DESTROYED)
+			{
+				SCR_HintManagerComponent.ShowCustomHint("Hes dead Jim...","Bruh",3.0,false,EFieldManualEntryId.NONE,false);
+
+				return;
+			}
+		}
+		//check local Player 
+		PlayerController pc = GetGame().GetPlayerController();
+		IEntity ie = pc.GetControlledEntity();
+		InventoryStorageManagerComponent storage = InventoryStorageManagerComponent.Cast(ie.FindComponent(InventoryStorageManagerComponent));
+
+		array<typename> components = {};
+		components.Insert(MoneyComponent);
+		components.Insert(RplComponent);
+		IEntity walletEnity = storage.FindItemWithComponents(components, EStoragePurpose.PURPOSE_DEPOSIT);
+
+		MoneyComponent wallet;
+		if(walletEnity)
+		{
+			wallet = MoneyComponent.Cast(walletEnity.FindComponent(MoneyComponent));
+		}
+		
+		if (wallet)
+		{
+			SCR_HintManagerComponent.ShowCustomHint("TestDescription","TestHint",3.0,false,EFieldManualEntryId.NONE,false);
+			WST_TransferCurrencyWindow base = WST_TransferCurrencyWindow.Cast(GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.WST_TransferCurrencyWindow));
+			base.SetActionEntities(pOwnerEntity,pUserEntity);
+		}
+			
 
 
 	}
@@ -31,6 +70,8 @@ class WST_TransferCurrency : ScriptedUserAction
 	//------------------------------------------------------------------------------------------------
 	override bool CanBePerformedScript(IEntity user)
 	{
+		//get the target? how ? no idea 
+		
 		return true;
 	}
 
