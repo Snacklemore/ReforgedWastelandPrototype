@@ -1518,14 +1518,14 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		{
 			//load more prefabs and randomise 
 			
-			ResourceName prefab = "{7A6C44293D9554E5}Prefabs\Groups\BLUFOR\Group_US_FireTeamWaste_Money.et";
+			ResourceName prefabFireTeamWaste_Money = "{7A6C44293D9554E5}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_Money.et";
 
 			
-			if (prefab.IsEmpty())
+			if (prefabFireTeamWaste_Money.IsEmpty())
 				return;
 			
 			presence = new SCR_CampaignRemnantsPresence;
-			presence.SetGroupPrefab(prefab);
+			presence.SetGroupPrefab(prefabFireTeamWaste_Money);
 		}
 		
 		vector locationCenter;
@@ -3393,6 +3393,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		}
 		
 		SCR_AIGroup grp = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(res, null, params));
+		//TODO:set AI wallets value
+		
 		
 		if (!grp)
 			return;

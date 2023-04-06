@@ -2,18 +2,9 @@ SCR_DestructibleEntity : "{2DB729170DBCE7BE}Prefabs/Props/Furniture/TableOld_01/
  coords 4881.105 28.595 11867.574
  angleY -88.337
 }
-GenericEntity : "{2FA2E44E5B95D044}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25Suppressed.et" {
- coords 4870.428 28.595 11858.018
-}
-Vehicle K17_Berezok1 : "{31F0866273C46D76}Prefabs/Vehicles/Wheeled/K17/K17_Berezok.et" {
- coords 4832.518 27.897 11924.84
-}
 GenericEntity : "{627F955923426D32}Prefabs/Props/Commercial/CashierShop_Waste.et" {
  coords 4881.031 29.544 11865.994
  angleY 52.677
-}
-SCR_ChimeraCharacter : "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et" {
- coords 4877.965 28.595 11874.295
 }
 $grp StaticModelEntity : "{764414C0E2EF983E}Prefabs/Props/Military/Furniture/TableMilitary_USSR_02.et" {
  {
@@ -28,14 +19,6 @@ $grp StaticModelEntity : "{764414C0E2EF983E}Prefabs/Props/Military/Furniture/Tab
   coords 4881.114 28.595 11865.354
   angleY 80.752
  }
-}
-GenericEntity : "{7CB432CC4ED704E1}Prefabs/Weapons/Core/Suppressor_Generic_556.et" {
- coords 4876.423 28.595 11862.189
- angleY 0
-}
-GenericEntity : "{904AF79F5926399A}Prefabs/Weapons/Core/Suppressor_Punky_NT4.et" {
- coords 4875.267 28.595 11868.771
- angleY 0
 }
 StaticModelEntity : "{C99D1B2E817E12D9}Prefabs/Props/Military/Furniture/TableMilitary_USSR_02_cabinet.et" {
  coords 4869.944 28.595 11873.841
@@ -87,50 +70,6 @@ SCR_DestructibleBuildingEntity : "{CA7778B914D3A9FC}Prefabs/Structures/Military/
   }
  }
 }
-$grp GenericEntity : "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et" {
- {
-  coords 4878.44 28.595 11871.4
- }
- {
-  coords 4876.308 28.595 11870.093
- }
- {
-  coords 4877.051 28.595 11865.482
- }
- {
-  coords 4874.57 28.595 11868.88
- }
- {
-  coords 4877.104 28.595 11872.245
- }
- {
-  coords 4873.084 28.595 11868.911
- }
- {
-  coords 4870.062 28.595 11875.713
- }
- {
-  coords 4882.518 28.595 11870.847
- }
-}
-GenericEntity : "{E74C02B60805F7C7}Prefabs/Systems/Arsenal/AmmoBoxes/USSR/AmmoBoxArsenal_Weapons_USSR.et" {
- components {
-  SCR_ArsenalComponent "{589F01C9C8D4A475}" {
-   m_eSupportedArsenalItemTypes 262454
-   m_eSupportedArsenalItemModes 92
-  }
-  SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
-   "faction affiliation" "A"
-  }
-  SCR_ArsenalInventoryStorageManagerComponent "{58A0B19B1E191CC1}" {
-  }
- }
- coords 4871.283 28.595 11863.17
-}
-GenericEntity : "{F7104825C77AB12F}Prefabs/Weapons/Core/Suppressor_556_SC.et" {
- coords 4871.354 29.353 11858.049
- angleY 0
-}
 $grp SCR_SpawnPoint : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.et" {
  MainSpawnA {
   coords 4875.93 28.605 11860.284
@@ -147,20 +86,4 @@ $grp SCR_SpawnPoint : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.e
    Name "B Main Spawn"
   }
  }
- MainSpawnA2 {
-  coords 6337.052 2.252 1936.871
-  m_fSpawnRadius 1.2
-  m_sFaction "A"
-  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
-   Name "A Main Spawn"
-  }
- }
-}
-Vehicle K17_Epoch1 : "{F86AB1BD36B33407}Prefabs/Vehicles/Wheeled/K17/K17_Epoch.et" {
- components {
-  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
-   m_fVehicleDestroyDamage 18046.5
-  }
- }
- coords 4841.16 28.422 11924.261
 }

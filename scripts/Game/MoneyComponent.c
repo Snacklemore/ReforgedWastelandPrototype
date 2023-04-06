@@ -22,7 +22,8 @@ class MoneyComponent : ScriptComponent
 	protected RplId m_RplCompId;
 	
 	bool valueChanged;
-	
+	[Attribute("50", UIWidgets.EditBox, "Initial value of wallet")]
+	int initalValue;
 	[RplProp(onRplName: "OnBroadcastValueUpdated", condition: RplCondition.Custom, customConditionName: "RpcConditionMethod")]
 	int m_iValue;
 	
@@ -118,7 +119,7 @@ class MoneyComponent : ScriptComponent
 	{
 		
 		SetEventMask(GetOwner(),EntityEvent.INIT);
-		m_iValue = 50;
+		m_iValue = initalValue;
 		valueChanged = false;
 	}
 	

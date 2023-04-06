@@ -91,7 +91,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  coords 0 0 0
  m_faction "FIA"
  m_aUnitPrefabSlots {
-  "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et" "{5B1996C05B1E51A4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR.et" "{BF1E43FF39AA526B}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Scout.et" "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et"
+  "{878DBF0C68BAB919}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_Money1k_Variant_AK.et" "{1B7FA1AA8D7DB1E5}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_Money500_AKGP.et" "{1B7FA1AA8D7DB1E5}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_Money500_AKGP.et" "{5B5A16A75957FFC4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_Money2k.et"
  }
  m_bSpawnImmediately 0
  m_fMemberSpawnDelay 1

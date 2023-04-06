@@ -42,7 +42,6 @@ HitRegistrationManager HitRegistrationManager1 {
 }
 SCRWST_AISpawnManager {
  coords 4883 30.715 11752.553
- Flags 2097155
 }
 SCR_MoneyManager {
  components {
