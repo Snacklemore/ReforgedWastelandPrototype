@@ -3999,7 +3999,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 #endif
 		super.OnPlayerDisconnected(playerId, cause, timeout);
 		
-		GetTaskManager().OnPlayerDisconnected(playerId);
+		//GetTaskManager().OnPlayerDisconnected(playerId);
 		WriteClientData(playerId, true);
 		
 		// Disconnecting player is currently capturing a base; handle it
