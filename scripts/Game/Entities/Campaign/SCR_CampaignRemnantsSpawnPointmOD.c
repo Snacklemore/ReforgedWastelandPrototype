@@ -27,6 +27,15 @@ modded class SCR_CampaignRemnantsSpawnPoint
 		m_eGroupType = type;
 	}
 	
+	void SetIsRespawn(bool b)
+	{
+		m_bIsRespawn = b;
+	}
+	
+	void SetGroupRespawnPeriod(int n)
+	{
+		m_iGroupRespawnPeriod = n;
+	}
 	//------------------------------------------------------------------------------------------------
 	SCR_CampaignRemnantsGroupType GetGroupType()
 	{

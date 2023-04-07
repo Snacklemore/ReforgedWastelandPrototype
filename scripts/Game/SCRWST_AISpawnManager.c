@@ -9,6 +9,9 @@ class SCRWST_AISpawnManager: GenericEntity
 	ref array<SCR_SpawnPoint> m_aSpawnPoints;
 	ref set<SCR_EditableEntityComponent> entities;
 	ref array<SCR_EditableEntityComponent> commentEntities;
+	ref array<SCR_EditableEntityComponent> citys;
+	ref array<SCR_EditableEntityComponent> hills;
+
 	
 	override void EOnInit(IEntity owner)
 	{
@@ -19,6 +22,8 @@ class SCRWST_AISpawnManager: GenericEntity
 	           return;
 		entities = new set<SCR_EditableEntityComponent>();
 		commentEntities = new array<SCR_EditableEntityComponent>();
+		 citys = new array<SCR_EditableEntityComponent>();
+		hills = new array<SCR_EditableEntityComponent>();
 		core.GetAllEntities(entities,true,true);
 		//Print("SCRWST_AISpawnManager::EOnInit::AllSCR_EditableEntityComponent"+ entities);
 		
@@ -31,6 +36,7 @@ class SCRWST_AISpawnManager: GenericEntity
 			
 			
 		}
+		
 		bool spawnPointSet = false;
 		foreach (SCR_EditableEntityComponent ent : commentEntities)
 		{
@@ -42,29 +48,82 @@ class SCRWST_AISpawnManager: GenericEntity
 				return;
 			MapItem item = mapDescr.Item();
 			LocationName = item.GetDisplayName();
+			string EntityName = parent.GetName();
+			
+			//filter out name with a capital "C" at the beginning. Those are Citys.
+			//format city:
+			//-> C_LocationChotain
+			//format Hills 
+			//-> H_HumboldtHill
+			if(EntityName.Contains("C_"))
+			{	
+				//City 
+				Print("SCRWST_AISpawnManagerClass::EOnInit()::Adding city, " + EntityName);
+				citys.Insert(ent);
+
+				
+			
+			}else if (EntityName.Contains("H_"))
+			{
+				//Hill 
+				Print("SCRWST_AISpawnManagerClass::EOnInit()::Adding Hill " + EntityName);
+				hills.Insert(ent);
+
+				
+			
+			}
+			
 			Print("SCRWST_AISpawnManagerClass::EOnInit()::LocationName" + LocationName);
 			
 			
 			
+			
+			
+			
+		}
+		
+		foreach (SCR_EditableEntityComponent city : citys)
+		{
 			ResourceName l_prefabString = "{DE7ABA5055B00185}Prefabs/MP/Campaign/Bases/CampaignRemnantsSpawnPointEntity.et";
 			Resource resource = Resource.Load(l_prefabString);
 			if (!resource.IsValid())
 				return;
 			
 			
-			
+		
 			EntitySpawnParams params = EntitySpawnParams();
 			params.TransformMode = ETransformMode.WORLD;				
-			params.Transform[3] = ent.GetOwner().GetOrigin();
+			params.Transform[3] = city.GetOwner().GetOrigin();
+			SCR_CampaignRemnantsSpawnPoint SpawnPoint = SCR_CampaignRemnantsSpawnPoint.Cast(GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), params));
+			SpawnPoint.SetGroupType(SCR_CampaignRemnantsGroupType.MG);
+			SpawnPoint.SetIsRespawn(true);
+			SpawnPoint.SetGroupRespawnPeriod(1);
+			Print("SCRWST_AISpawnManagerClass::EOnInit()::Spawned CampaignRemnantsSpawnPointEntity at Origin of ");
+			if(SpawnPoint)
+			spawnPointSet = true;
+		}
+		
+		foreach (SCR_EditableEntityComponent hill : hills)
+		{
+			ResourceName l_prefabString = "{DE7ABA5055B00185}Prefabs/MP/Campaign/Bases/CampaignRemnantsSpawnPointEntity.et";
+			Resource resource = Resource.Load(l_prefabString);
+			if (!resource.IsValid())
+				return;
+			
+			
+		
+			EntitySpawnParams params = EntitySpawnParams();
+			params.TransformMode = ETransformMode.WORLD;				
+			params.Transform[3] = hill.GetOwner().GetOrigin();
 			SCR_CampaignRemnantsSpawnPoint SpawnPoint = SCR_CampaignRemnantsSpawnPoint.Cast(GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), params));
 			SpawnPoint.SetGroupType(SCR_CampaignRemnantsGroupType.MG);
 			
-			Print("SCRWST_AISpawnManagerClass::EOnInit()::Spawned CampaignRemnantsSpawnPointEntity at Origin of " + LocationName);
+			Print("SCRWST_AISpawnManagerClass::EOnInit()::Spawned CampaignRemnantsSpawnPointEntity at Origin of");
 			if(SpawnPoint)
-				spawnPointSet = true;
-			
-			
+			spawnPointSet = true;
 		}
+		
+		
 		
 		
 		

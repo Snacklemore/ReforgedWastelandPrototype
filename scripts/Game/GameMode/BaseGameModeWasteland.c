@@ -1526,6 +1526,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			
 			presence = new SCR_CampaignRemnantsPresence;
 			presence.SetGroupPrefab(prefabFireTeamWaste_Money);
+			presence.SetRespawnPeriod(1);
 		}
 		
 		vector locationCenter;
@@ -1554,7 +1555,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			locationCenter = spawnpoint.GetOrigin();
 		
 		presence.SetSpawnpoint(locationCenter);
-		presence.SetRespawnPeriod(spawnpoint.GetGroupRespawnPeriod());
+		presence.SetRespawnPeriod(1);
 		
 		// Spawn waypoints
 		array<AIWaypoint> patrolWaypoints = {};
@@ -3386,14 +3387,20 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			}
 			
 			if (suitableRespawns.IsEmpty())
-				return;
+			{
+				vector locationVector = location.GetSpawnpoint();  
+				suitableRespawns.Insert(locationVector);
+
+
+			}
+				
 			
 			Math.Randomize(-1);
 			params.Transform[3] = suitableRespawns.GetRandomElement();
 		}
 		
 		SCR_AIGroup grp = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(res, null, params));
-		//TODO:set AI wallets value
+		
 		
 		
 		if (!grp)
