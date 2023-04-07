@@ -643,6 +643,9 @@ modded class SCR_CharacterTriggerEntity
 	{
 		m_bInitSequenceDone = true;
 	}
+	
+	
+	
 	void SetSpawnPoint(SCR_SpawnPoint sp)
 	{
 		m_SeizeableFactionSpawn = sp;	

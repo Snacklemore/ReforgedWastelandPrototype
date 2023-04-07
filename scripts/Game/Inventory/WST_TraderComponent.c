@@ -21,9 +21,19 @@ class WST_TraderComponent : ScriptComponent
 		return ret;
 	
 	}
+	
+	void CloseAllMenus()
+	{
+		Rpc(RpcDo_CloseAllMenus);
+	
+	}
+	void HandleVehicleBuyAction(ResourceName n,int balance)
+	{
+		Rpc(RpcDo_HandleVehicleBuyAction,n,balance);
+	}
 	void HandleBuyAction(ResourceName n,int balance)
 	{
-		Rpc(RpcDo_HandleBuyAction,n);
+		Rpc(RpcDo_HandleBuyAction,n,balance);
 	}
 	
 	void UpdateWalletValue(int value)
@@ -31,6 +41,21 @@ class WST_TraderComponent : ScriptComponent
 		Rpc(RpcDo_UpdateWalletValue,value);
 	}
 
+	
+	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RpcDo_CloseAllMenus()
+	{
+		GetGame().GetMenuManager().CloseAllMenus();
+	
+	}
+	
+	
+	
+	
+	
+	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcDo_UpdateWalletValue(int value)
 	{
@@ -116,5 +141,67 @@ class WST_TraderComponent : ScriptComponent
 	
 	}
 	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcDo_HandleVehicleBuyAction(ResourceName n,int balance)
+	{
+		
+		
+		//spawn and insert weapon 
+		
+		//get mode 
+		SCR_BaseGameModeWasteland mode = SCR_BaseGameModeWasteland.Cast( GetGame().GetGameMode());
+		
+		//get vehiclespawnpoint array
+		array<WST_VehicleSpawnPoint> vs_a = mode.m_vehicleSpawnPoints;
+		
+		
+		PlayerManager p = GetGame().GetPlayerManager();
+		//get RplId, this component is child of the player Character 
+		RplComponent Rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
+		
+		if (!Rpl)
+			return;
+		RplId id = Rpl.Id();
+		Print("WST_TraderComponent::RpcDo RplID: " + id);
+
+		
+		int playerId = p.GetPlayerIdFromEntityRplId(id);
+		
+		PlayerController pc = p.GetPlayerController(playerId);
+		IEntity ie = pc.GetControlledEntity();
+		
+		float mindistSqd= 1000000.0;
+		WST_VehicleSpawnPoint nearest;
+		foreach (WST_VehicleSpawnPoint vs : vs_a)
+		{
+			//distance check each point to player pos
+			vector pos = ie.GetOrigin();
+			float distance ;
+			vector posVS = vs.GetOrigin();
+			//vector.DistanceSqXZ(playerEntity.GetOrigin(), respawn
+			float distanceSqd = vector.DistanceSqXZ(pos,posVS);
+			Print("WST_TraderComponent::RpcDo Distance to VS: " + distanceSqd);
+			if (distanceSqd < mindistSqd)
+			{
+				mindistSqd = distanceSqd;
+				nearest = vs;
+			}
+				
+			
+		}
+		
+		
+		EntitySpawnParams params = new EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		params.Transform[3] = nearest.GetOrigin();
+		Vehicle v = Vehicle.Cast(GetGame().SpawnEntityPrefab(Resource.Load(n), GetGame().GetWorld(), params));
+		
+		//already on the server so Update wallet right away!
+		if(v)
+			UpdateWalletValue(balance);
+		//Rpc(InsertionCallback,success);
+	
+	}
 	
 };

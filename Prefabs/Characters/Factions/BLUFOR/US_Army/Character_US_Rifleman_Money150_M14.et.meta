@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{8A2F6AC778F9B900}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_Money150_M14.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

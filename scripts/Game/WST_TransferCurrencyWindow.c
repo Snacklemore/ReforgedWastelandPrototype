@@ -57,7 +57,8 @@ class WST_TransferCurrencyWindow : MenuBase
 			//Rpc need to be called from a component attached to character since inside menu base we have no Rpc functions.
 			//1.TODO: Create new WST_TransferComponent 
 			//2.TODO: Attach WST_TransferComponent to ChimeraCharacter Prefab 
-			
+						
+
 			
 			
 			

@@ -1,0 +1,50 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{CD7B21DA4D8AE5FB}Assets/Props/Commercial/CashierShop_01/CashierShop_01.xob"
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   ResponseIndex "LargeDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
+   m_fBaseHealth 500
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{5D0F1D19650B01E5}" {
+     m_fPhaseHealth 1000
+     m_PhaseModel "{2E11F7FDBC56CFAF}Assets/Props/Commercial/CashierShop_01/Dst/ShopCashier_01_dst_01.xob"
+    }
+   }
+   m_eMaterialSoundType METAL_LIGHT
+  }
+  ActionsManagerComponent "{5D0F1D19650B01FF}" {
+   ActionContexts {
+    UserActionContext "{5D0F2E0EA49107E9}" {
+     UIInfo UIInfo "{5D0F2E0ED6C164D6}" {
+      Name "Vehicle Shop"
+     }
+     ContextName "VehicleShop"
+     Position PointInfo "{5D0F2E0EBD425228}" {
+      Offset 0.0661 0.478 -0.1823
+     }
+    }
+   }
+   additionalActions {
+    WST_VehicleShopAction "{5D0F2E0EDF1C9C3F}" {
+     ParentContextList {
+      "VehicleShop"
+     }
+     UIInfo UIInfo "{5D0F2E0ED96B11D7}" {
+      Name "Vehicle Shop"
+     }
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+  }
+ }
+ coords 0 0 0
+}

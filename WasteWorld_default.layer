@@ -18,6 +18,7 @@ SCR_BaseGameModeWasteland SCR_BaseGameModeWasteland2 : "{805A3F581EA80E37}SCR_Ba
   }
  }
  coords -8.57 -10.834 -6.669
+ m_eTestGameFlags SpawnAI
  m_sBLUFORFactionKey "A"
  m_sOPFORFactionKey "B"
 }

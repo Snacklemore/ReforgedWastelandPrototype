@@ -1,0 +1,105 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ButtonWidgetClass "{5D0F2E0BC452549C}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+   Name "BuyButton"
+   Slot FrameWidgetSlot "{5D0F2E0BC45254BB}" {
+    PositionX 88
+    OffsetLeft 88
+    PositionY 1024
+    OffsetTop 1024
+    SizeX 192
+    OffsetRight -280
+    SizeY 32
+    OffsetBottom -1056
+   }
+   components {
+    SCR_ButtonTextComponent "{5548F0143AE99095}" {
+     m_sText "Buy"
+    }
+   }
+  }
+  ButtonWidgetClass "{5D0F2E0BC559EF4E}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+   Name "QuitButton"
+   Slot FrameWidgetSlot "{5D0F2E0BC559EF57}" {
+    PositionX 1648
+    OffsetLeft 1648
+    PositionY 1008
+    OffsetTop 1008
+    SizeX 161.78
+    OffsetRight -1809.78
+    SizeY 32
+    OffsetBottom -1040
+   }
+   components {
+    SCR_ButtonTextComponent "{5548F0143AE99095}" {
+     m_sText "Exit"
+    }
+   }
+  }
+  PanelWidgetClass "{5D0F1D1181BAB6B6}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{5D0F1D1181BAB6D0}" {
+    PositionX 112
+    OffsetLeft 112
+    PositionY 80
+    OffsetTop 80
+    SizeX 1712
+    OffsetRight -1824
+    SizeY 880
+    OffsetBottom -960
+   }
+   {
+    RichTextWidgetClass "{5D0F1D11D7799B16}" {
+     Name "RichText0"
+     Slot FrameWidgetSlot "{5D0F1D11D7799B3E}" {
+      PositionX 48
+      OffsetLeft 48
+      PositionY 8
+      OffsetTop 8
+      SizeX 232
+      OffsetRight -280
+      SizeY 30
+      OffsetBottom -38
+     }
+     Text "Vehicles"
+    }
+    OverlayWidgetClass "{5D0F1D11B2C9E6AB}" {
+     Name "Overlay0"
+     Slot FrameWidgetSlot "{5D0F1D11B2C9E6B3}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 56
+      OffsetTop 56
+      SizeX 624
+      OffsetRight -664
+      SizeY 560
+      OffsetBottom -616
+     }
+     {
+      OverlayWidgetClass "{5D0F1D11BA7FB8D5}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxVehicle"
+       Slot OverlayWidgetSlot "{5D0F1D11BA7FB8FC}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+      }
+     }
+    }
+    ItemPreviewWidgetClass "{5D0F1D1195E22431}" {
+     Name "VehiclePreview"
+     Slot FrameWidgetSlot "{5D0F1D1195E2245F}" {
+      PositionX 1040
+      OffsetLeft 1040
+      PositionY 24
+      OffsetTop 24
+      SizeX 648
+      OffsetRight -1688
+      SizeY 408
+      OffsetBottom -432
+     }
+    }
+   }
+  }
+ }
+}

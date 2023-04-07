@@ -1518,14 +1518,55 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		{
 			//load more prefabs and randomise 
 			
-			ResourceName prefab = "{7A6C44293D9554E5}Prefabs\Groups\BLUFOR\Group_US_FireTeamWaste_Money.et";
+			ResourceName prefabFireTeamWaste_MoneySmall = "{7A6C44293D9554E5}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_SmallMoneyLoot.et";
+			ResourceName prefabFireTeamWaste_MoneyMedium = "{9D23639EA3055572}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_MediumMoneyLoot.et";
+			ResourceName prefabFireTeamWaste_MoneyBig = "{DD8F91EF241595A0}Prefabs/Groups/BLUFOR/Group_FireTeamWaste_BigMoneyLoot.et";
 
-			
-			if (prefab.IsEmpty())
+			ResourceName prefabFireTeamWaste_ChosenPrefab;
+
+			int no = Math.RandomInt(1,10);
+			//1-3
+			if (no <= 3)
+			{
+				prefabFireTeamWaste_ChosenPrefab = prefabFireTeamWaste_MoneyMedium;
+			}
+			//4-8
+			if (no > 3 && no <= 8)
+			{
+				prefabFireTeamWaste_ChosenPrefab = prefabFireTeamWaste_MoneySmall;
+			}
+			//9-10
+			if (no > 8)
+			{
+				prefabFireTeamWaste_ChosenPrefab = prefabFireTeamWaste_MoneySmall;
+			}
+			if (prefabFireTeamWaste_ChosenPrefab.IsEmpty())
 				return;
 			
+			
+			
+			
+			
+			//5 minutes default respawn
+			int respawnPeriodInSeconds = 10;
+			
+			//AI Presence Creation
 			presence = new SCR_CampaignRemnantsPresence;
-			presence.SetGroupPrefab(prefab);
+			presence.SetGroupPrefab(prefabFireTeamWaste_ChosenPrefab);
+			presence.SetRespawnPeriod(respawnPeriodInSeconds);
+			
+			//fill the respawn array
+			//brief: expects SCR_Positions near the spawn point!
+			/////////////////////////////////////
+			//////////////IMPORTANT//////////////
+			/////////////////////////////////////
+			//brief: entity naming convention for SCR_Position objecst:
+			//-----> "SP_AI_%location%"
+			
+			
+			
+			spawnpoint.FillRespawns();
+			spawnpoint.FillPresence(presence);
 		}
 		
 		vector locationCenter;
@@ -1554,7 +1595,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			locationCenter = spawnpoint.GetOrigin();
 		
 		presence.SetSpawnpoint(locationCenter);
-		presence.SetRespawnPeriod(spawnpoint.GetGroupRespawnPeriod());
+		//save spawnPoint
+		//presence.SetRespawnPeriod(1);
 		
 		// Spawn waypoints
 		array<AIWaypoint> patrolWaypoints = {};
@@ -3366,7 +3408,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			foreach (vector respawn : allRespawns)
 			{
 				isSuitable = true;
-				
+				//skip this 
+				/*
 				for (int i = 0; i < playersCount; i++)
 				{
 					playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerIds[i]);
@@ -3379,20 +3422,30 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 						isSuitable = false;
 						break;
 					}
-				}
+				}*/
 				
 				if (isSuitable)
 					suitableRespawns.Insert(respawn);
 			}
 			
 			if (suitableRespawns.IsEmpty())
-				return;
+			{
+				//fail fallback, array should be filled and positions randomized
+				Print("FAILFALLBACK::BASEGAMEMODEWASTELAND::AI_RESPAWN");
+				vector locationVector = location.GetSpawnpoint();  
+				suitableRespawns.Insert(locationVector);
+
+
+			}
+				
 			
 			Math.Randomize(-1);
 			params.Transform[3] = suitableRespawns.GetRandomElement();
 		}
 		
 		SCR_AIGroup grp = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(res, null, params));
+		
+		
 		
 		if (!grp)
 			return;
@@ -4322,16 +4375,17 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			return;
 #endif
 		super.OnPlayerKilled(playerId, player, killer);
-		
+		//get trader component and send Rpc to close all menus
 		PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId);
-	
+		
 		if (pc)
 		{
-			//disable TransferAction
-			//--> by disabling ActionsManagerComponent on the player controlled entity
-			IEntity owner = pc.GetControlledEntity();
-			ActionsManagerComponent manager = ActionsManagerComponent.Cast( owner.FindComponent(ActionsManagerComponent));
-			manager.Deactivate(owner);
+			IEntity ie = pc.GetControlledEntity();
+			WST_TraderComponent trdComp = WST_TraderComponent.Cast(ie.FindComponent(WST_TraderComponent));
+			//close rpc
+			trdComp.CloseAllMenus();
+			
+			
 			
 			SCR_CampaignNetworkComponent campaignNetworkComponent = SCR_CampaignNetworkComponent.Cast(pc.FindComponent(SCR_CampaignNetworkComponent));
 			
@@ -4506,6 +4560,10 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	
 
 	}
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	ref array<WST_VehicleSpawnPoint> m_vehicleSpawnPoints = new array<WST_VehicleSpawnPoint>();
 	SCR_MoneyManager GetMoneyManager()
 	{
 		if(IsMaster())
@@ -4516,6 +4574,11 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	{
 		 m_MoneyManager = manager;
 	}
+	void registerVehicleSpawn(WST_VehicleSpawnPoint vs)
+	{
+		m_vehicleSpawnPoints.Insert(vs);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
