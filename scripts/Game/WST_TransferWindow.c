@@ -369,7 +369,10 @@ class WST_TransferWindowUI : MenuBase
 			{
 				if (o.GetType() == WST_Type.WST_WEAPON)
 				{
-					m_ListBoxComponent.AddItem(o.GetDisplayText(),o);
+					string price = o.GetData();
+					int i_price = w.GetPriceByKey(price);
+					price = i_price.ToString();
+					m_ListBoxComponent.AddItem(o.GetDisplayText() +" "+price ,o);
 				}
 				
 			}
@@ -388,7 +391,10 @@ class WST_TransferWindowUI : MenuBase
 			{
 				if (o.GetType() == WST_Type.WST_ATTACHMENT)
 				{
-					m_ListBoxComponent1.AddItem(o.GetDisplayText(),o);
+					string price = o.GetData();
+					int i_price = w.GetPriceByKey(price);
+					price = i_price.ToString();
+					m_ListBoxComponent1.AddItem(o.GetDisplayText()+" "+price,o);
 				}
 				
 			}

@@ -246,7 +246,10 @@ class WST_VehicleShop : MenuBase
 			{
 				if (o.GetType() == WST_Type.WST_VEHICLE)
 				{
-					m_ListBoxComponent.AddItem(o.GetDisplayText(),o);
+					string price = o.GetData();
+					int i_price = v.GetPriceByKey(price);
+					price = i_price.ToString();
+					m_ListBoxComponent.AddItem(o.GetDisplayText()+"  "+price ,o);
 				}
 				
 			}
