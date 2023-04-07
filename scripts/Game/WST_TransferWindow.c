@@ -46,7 +46,8 @@ enum WST_Type
 	WST_EXPLOSIVES,
 	WST_VEHICLES,
 	WST_CONSUMABLE,
-	WST_MEDIC
+	WST_MEDIC,
+	WST_VEHICLE
 };
 ///////////////////////////////////////////////////////////////////////------------------PreviewSetup
 class WST_Weapon
@@ -188,15 +189,12 @@ class WST_TransferWindowUI : MenuBase
 		if (!traderComp)
 		{
 			Print("WST_TransferWindow::Buy::No TraderComponent!! ");
-
+			return;
 		
 		}
 		
 		traderComp.HandleBuyAction(spawnEntity,balance);
-		//traderComp.GetInsertionSuccess();
-		//might fuse spawnWeapon and UpdatWalletValue so the wallet update can kick off from the traderComponent (no timing failure, when we query 
-		// result before the end of operation)
-		//traderComp.UpdateWalletValue(balance);
+		
 		
 		
 

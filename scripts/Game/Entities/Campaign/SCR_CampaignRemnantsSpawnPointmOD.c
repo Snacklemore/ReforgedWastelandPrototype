@@ -64,9 +64,9 @@ modded class SCR_CampaignRemnantsSpawnPoint
 	{
 		
 		m_posArray = new array<SCR_Position>();
-		GetNearbyPositionObjects(65.0);
-		if (m_posArray.Count() == 3)
-		{
+		GetNearbyPositionObjects(250.0);
+		//if (m_posArray.Count() == 3)
+		//{
 			
 			//query is getting inherited classes too!!! eg. SCR_SpawnPoint
 			//SCR_Position pos = m_posArray.Get(0);
@@ -79,6 +79,8 @@ modded class SCR_CampaignRemnantsSpawnPoint
 					Print("SCR_CampaingRemnantsSpawnPointMod::FillRespawns::PositionName: "+ name);
 					if (name.Contains("SP_AI_"))
 					{
+					if (name.Contains("SP_AI_StPhillipe"))
+						Print("Found");
 						//Found SCR_Position Object!
 						vector vec = pos.GetOrigin();
 						m_positions.Insert(vec);
@@ -87,7 +89,7 @@ modded class SCR_CampaignRemnantsSpawnPoint
 				
 				}
 			}
-		}
+		//}
 		//use SCR_Positions from editor to fill with vector 
 		//get SCR_Position Objects
 								

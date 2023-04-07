@@ -40,8 +40,6 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
     }
    }
   }
-  DBG_TestAction "{5CB6C01EBDED94C0}" {
-  }
   FactionAffiliationComponent "{520EC9618276DF23}" {
    "faction affiliation" ""
   }
@@ -65,7 +63,12 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
   WST_TransferComponent "{5D07245F8CD086BF}" {
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
-   WeaponTemplate "{1353C6EAD1DCFE43}Prefabs/Weapons/Handguns/M9/Handgun_M9.et"
+   WeaponTemplate ""
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
+   WeaponTemplate "{96F23D5A56795036}Prefabs/Weapons/Handguns/M9/Handgun_M9Suppressed.et"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {

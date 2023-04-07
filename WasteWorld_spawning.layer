@@ -5,10 +5,212 @@ $grp SCR_Position {
  SP_AI_StPhillipe2 {
   coords 4472.507 10.974 10789.485
  }
+ SP_AI_StPhillipe3 {
+  coords 4555.478 15.801 10855.407
+ }
+ SP_AI_StPhillipe4 {
+  coords 4478.07 14.21 10676.65
+ }
+ SP_AI_StPhillipe5 {
+  coords 4458.987 12.439 10753.816
+ }
+ SP_AI_Meaux {
+  coords 4557.283 16.752 9531.726
+ }
+ SP_AI_Meaux2 {
+  coords 4488.168 15.465 9538.437
+ }
+ SP_AI_Meaux3 {
+  coords 4513.277 13.764 9441.723
+ }
+ SP_AI_Tyrone {
+  coords 4906.141 35.893 9101.708
+ }
+ SP_AI_Tyrone2 {
+  coords 4937.069 37.958 9054.481
+ }
+ SP_AI_Gravette {
+  coords 4054.815 32.058 7807.798
+ }
+ SP_AI_Gravette2 {
+  coords 4168.525 37.771 7793.057
+ }
+ SP_AI_Gravette3 {
+  coords 4150.171 39.857 7755.132
+ }
+ SP_AI_Montignac {
+  coords 4761.876 162.707 7120.401
+ }
+ SP_AI_Montignac2 {
+  coords 4727.774 163.549 6954.005
+ }
+ SP_AI_Montignac3 {
+  coords 4706.419 161.471 7063
+ }
+ SP_AI_EntreDeux {
+  coords 5756.553 217.26 7055.964
+ }
+ SP_AI_EntreDeux2 {
+  coords 5716.042 216.513 7039.094
+ }
+ SP_AI_Provins {
+  coords 5529.306 95.615 6086.185
+ }
+ SP_AI_Provins2 {
+  coords 5494.561 94.718 6048.691
+ }
+ SP_AI_Morton {
+  coords 5173.631 14.095 3961.498
+ }
+ SP_AI_Morton2 {
+  coords 5142.254 14.255 4012.785
+ }
+ SP_AI_Morton3 {
+  coords 5031.719 15.376 3965.1
+ }
+ SP_AI_Morton4 {
+  coords 5008.19 19.032 4052.707
+ }
+ SP_AI_Morton5 {
+  coords 5196.425 13.953 3971.785
+ }
+ SP_AI_Figari {
+  coords 5281.883 63.035 5360.521
+ }
+ SP_AI_Figari2 {
+  coords 5239.222 67.14 5254.262
+ }
+ SP_AI_Figari3 {
+  coords 5325.31 62.771 5361.507
+ }
+ SP_AI_Chotain {
+  coords 7119.037 119.063 6044.381
+ }
+ SP_AI_Chotain2 {
+  coords 7100.744 117.213 5992.416
+ }
+ SP_AI_Chotain3 {
+  coords 7108.777 118.828 6077.979
+ }
+ SP_AI_Chotain4 {
+  coords 7024.009 117.777 6004.847
+ }
+ SP_AI_Chotain5 {
+  coords 6955.848 113.522 5930.27
+ }
+ SP_AI_Laruns {
+  coords 7590.373 80.095 5596.638
+ }
+ SP_AI_Laruns2 {
+  coords 7554.788 82.582 5543.079
+ }
+ SP_AI_Laruns3 {
+  coords 7548.261 82.782 5461.942
+ }
+ SP_AI_Levie {
+  coords 7514.143 140.951 4688.793
+ }
+ SP_AI_Levie2 {
+  coords 7380.774 135.617 4747.983
+ }
+ SP_AI_Levie3 {
+  coords 7369.213 136.188 4706.91
+ }
+ SP_AI_Durras {
+  coords 8892.567 95.157 2757.914
+ }
+ SP_AI_Durras2 {
+  coords 8905.354 91.292 2574.428
+ }
+ SP_AI_Durras3 {
+  coords 8791.733 96.365 2710.404
+ }
+ SP_AI_Durras4 {
+  coords 8779.172 104.064 2905.435
+ }
+ SP_AI_Vernon {
+  coords 9213.799 62.492 2087.574
+ }
+ SP_AI_Vernon2 {
+  coords 9323.443 58.273 2075.822
+ }
+ SP_AI_Vernon3 {
+  coords 9355.16 56.713 2025.542
+ }
+ SP_AI_StPierre {
+  coords 9893.383 2.501 1502.993
+ }
+ SP_AI_StPierre2 {
+  coords 9773.559 10.282 1581.815
+ }
+ SP_AI_StPierre3 {
+  coords 9701.407 16.255 1588.432
+ }
+ SP_AI_StPierre4 {
+  coords 9699.471 11.783 1509.64
+ }
+ SP_AI_StPierre5 {
+  coords 9746.229 5.341 1509.898
+ }
+ SP_AI_Regina {
+  coords 7184.058 137.515 2420.143
+ }
+ SP_AI_Regina2 {
+  coords 7199.913 136.825 2337.221
+ }
+ SP_AI_Regina3 {
+  coords 7198.172 137.427 2275.869
+ }
+ SP_AI_Regina4 {
+  coords 7160.105 138.134 2299.433
+ }
+ SP_AI_LeMoule {
+  coords 2638.773 91.98 5371.022
+ }
+ SP_AI_LeMoule2 {
+  coords 2675.043 94.597 5387.989
+ }
+ SP_AI_LeMoule3 {
+  coords 2545.967 87.723 5350.85
+ }
+ SP_AI_Villeneuf {
+  coords 2849.775 86.645 6346.983
+ }
+ SP_AI_Villeneuf2 {
+  coords 2868.579 87.973 6312.486
+ }
+ SP_AI_Villeneuf3 {
+  coords 2833.177 82.063 6417.514
+ }
+ SP_AI_Villeneuf4 {
+  coords 2937.834 91.155 6318.49
+ }
+ SP_AI_Lamentin {
+  coords 1347.746 42.701 5873.598
+ }
+ SP_AI_Lamentin2 {
+  coords 1272.5 37.29 5931.047
+ }
+ SP_AI_Lamentin3 {
+  coords 1255.299 34.469 6055.667
+ }
+ SP_AI_Lamentin4 {
+  coords 1234.611 29.698 6124.812
+ }
+ SP_AI_Lamentin5 {
+  coords 1275.302 38.202 5918.849
+ }
+}
+WST_VehicleSpawnPoint {
+ coords 4872.247 28.595 11852.265
 }
 SCR_DestructibleEntity : "{2DB729170DBCE7BE}Prefabs/Props/Furniture/TableOld_01/TableOld_01.et" {
  coords 4881.105 28.595 11867.574
  angleY -88.337
+}
+GenericEntity : "{4080F8B646FBEFDF}Prefabs/Props/Commercial/CashierShopVehicle_Waste.et" {
+ coords 4881.273 29.489 11861.98
+ angleY 80.344
 }
 GenericEntity : "{627F955923426D32}Prefabs/Props/Commercial/CashierShop_Waste.et" {
  coords 4881.031 29.544 11865.994
@@ -76,6 +278,20 @@ SCR_DestructibleBuildingEntity : "{CA7778B914D3A9FC}Prefabs/Structures/Military/
    PivotID "Socket_Side_Right_3"
    Prefab "{213A5175B8849442}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Right_EXT_COV_M3.et"
   }
+ }
+}
+$grp GenericEntity : "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et" {
+ {
+  coords 4879.429 28.595 11862.698
+ }
+ {
+  coords 4879.074 28.595 11862.595
+ }
+ {
+  coords 4878.837 28.595 11863.068
+ }
+ {
+  coords 4878.938 28.595 11862.378
  }
 }
 $grp SCR_SpawnPoint : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.et" {
