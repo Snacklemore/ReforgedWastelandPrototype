@@ -1524,9 +1524,31 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			if (prefabFireTeamWaste_Money.IsEmpty())
 				return;
 			
+			
+			
+			
+			
+			//TODO: randomise respawn time and location
+			//5 minutes default respawn
+			int respawnPeriodInSeconds = 10;
+			
+			//AI Presence Creation
 			presence = new SCR_CampaignRemnantsPresence;
 			presence.SetGroupPrefab(prefabFireTeamWaste_Money);
-			presence.SetRespawnPeriod(1);
+			presence.SetRespawnPeriod(respawnPeriodInSeconds);
+			
+			//fill the respawn array
+			//brief: expects SCR_Positions near the spawn point!
+			/////////////////////////////////////
+			//////////////IMPORTANT//////////////
+			/////////////////////////////////////
+			//brief: entity naming convention for SCR_Position objecst:
+			//-----> "SP_AI_%location%"
+			
+			
+			
+			spawnpoint.FillRespawns();
+			spawnpoint.FillPresence(presence);
 		}
 		
 		vector locationCenter;
@@ -1555,7 +1577,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			locationCenter = spawnpoint.GetOrigin();
 		
 		presence.SetSpawnpoint(locationCenter);
-		presence.SetRespawnPeriod(1);
+		//save spawnPoint
+		//presence.SetRespawnPeriod(1);
 		
 		// Spawn waypoints
 		array<AIWaypoint> patrolWaypoints = {};
@@ -3367,7 +3390,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			foreach (vector respawn : allRespawns)
 			{
 				isSuitable = true;
-				
+				//skip this 
+				/*
 				for (int i = 0; i < playersCount; i++)
 				{
 					playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerIds[i]);
@@ -3380,7 +3404,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 						isSuitable = false;
 						break;
 					}
-				}
+				}*/
 				
 				if (isSuitable)
 					suitableRespawns.Insert(respawn);
@@ -3388,6 +3412,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			
 			if (suitableRespawns.IsEmpty())
 			{
+				//fail fallback, array should be filled and positions randomized
 				vector locationVector = location.GetSpawnpoint();  
 				suitableRespawns.Insert(locationVector);
 

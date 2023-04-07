@@ -1,3 +1,11 @@
+$grp SCR_Position {
+ SP_AI_StPhillipe {
+  coords 4511.316 14.272 10773.853
+ }
+ SP_AI_StPhillipe2 {
+  coords 4472.507 10.974 10789.485
+ }
+}
 SCR_DestructibleEntity : "{2DB729170DBCE7BE}Prefabs/Props/Furniture/TableOld_01/TableOld_01.et" {
  coords 4881.105 28.595 11867.574
  angleY -88.337
