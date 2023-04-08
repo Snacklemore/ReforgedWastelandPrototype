@@ -154,6 +154,7 @@ modded class SCR_CampaignRemnantsSpawnPoint
 		SetGroupType(no);
 		// Gamemode will take care of the rest
 		campaign.RegisterRemnantsPresence(this);
+		
 		Print("SCR_CampaignRemnantsSpawnPoint::OnInit()");
 	}
 	
@@ -187,7 +188,7 @@ modded class SCR_CampaignRemnantsPresence
 	protected ref array<vector> m_aRespawns = {};
 	static const int PARENT_BASE_DISTANCE_THRESHOLD = 300;
 	static const int RESPAWN_PLAYER_DISTANCE_THRESHOLD = 200;
-	
+	SCR_MapDescriptorComponent m_MapDescriptor;
 	
 	void FillRespawns(array<vector> vectors)
 	{
@@ -204,7 +205,15 @@ modded class SCR_CampaignRemnantsPresence
 	{
 		return m_iID;
 	}
+	void setMapDescriptor(SCR_MapDescriptorComponent mdc)
+	{
+		m_MapDescriptor = mdc;
+	}
 	
+	SCR_MapDescriptorComponent GetMapDescriptor()
+	{
+		return m_MapDescriptor;
+	}
 	//------------------------------------------------------------------------------------------------
 	void SetCenter(vector center)
 	{

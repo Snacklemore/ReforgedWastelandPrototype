@@ -84,7 +84,7 @@ class SCRWST_AISpawnManager: GenericEntity
 		
 		foreach (SCR_EditableEntityComponent city : citys)
 		{
-			ResourceName l_prefabString = "{DE7ABA5055B00185}Prefabs/MP/Campaign/Bases/CampaignRemnantsSpawnPointEntity.et";
+			ResourceName l_prefabString = "{6AE3C21D9B733704}Prefabs/MP/Campaign/Bases/CampaignRemnantsSpawnPointEntityMod.et";
 			Resource resource = Resource.Load(l_prefabString);
 			if (!resource.IsValid())
 				return;
@@ -105,7 +105,7 @@ class SCRWST_AISpawnManager: GenericEntity
 		
 		foreach (SCR_EditableEntityComponent hill : hills)
 		{
-			ResourceName l_prefabString = "{DE7ABA5055B00185}Prefabs/MP/Campaign/Bases/CampaignRemnantsSpawnPointEntity.et";
+			ResourceName l_prefabString = "{6AE3C21D9B733704}Prefabs/MP/Campaign/Bases/CampaignRemnantsSpawnPointEntityMod.et";
 			Resource resource = Resource.Load(l_prefabString);
 			if (!resource.IsValid())
 				return;

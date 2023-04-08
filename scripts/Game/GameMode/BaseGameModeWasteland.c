@@ -1549,8 +1549,9 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			
 			//5 minutes default respawn
 			int respawnPeriodInSeconds = 10;
-			
+			//debug prefab {244A2FC361BACED6}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_Debug.et
 			//AI Presence Creation
+			prefabFireTeamWaste_ChosenPrefab = "{244A2FC361BACED6}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_Debug.et";
 			presence = new SCR_CampaignRemnantsPresence;
 			presence.SetGroupPrefab(prefabFireTeamWaste_ChosenPrefab);
 			presence.SetRespawnPeriod(respawnPeriodInSeconds);
@@ -1562,6 +1563,10 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			/////////////////////////////////////
 			//brief: entity naming convention for SCR_Position objecst:
 			//-----> "SP_AI_%location%"
+			
+			//set MapDescriptor reference in presence 
+			SCR_MapDescriptorComponent mdc = SCR_MapDescriptorComponent.Cast(spawnpoint.FindComponent(SCR_MapDescriptorComponent));
+			presence.setMapDescriptor(mdc);
 			
 			
 			
@@ -2644,7 +2649,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			
 			foreach (Faction faction : outFactions)
 			{
-				SCR_CampaignFaction f = SCR_CampaignFaction.Cast(faction);
+				SCR_Faction f = SCR_Faction.Cast(faction);
 				if (f.IsPlayable())
 					if (left == null)
 					{
@@ -2730,10 +2735,10 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 					winCountdown = m_fVictoryTimestamp - Replication.Time();
 				
 				winCountdown = Math.Max(0, Math.Ceil(winCountdown / 1000));
-				string winner = GetGame().GetFactionManager().GetFactionByIndex(m_iWinningFactionId).GetFactionKey();
-				string shownTime = SCR_Global.GetTimeFormatting(winCountdown, ETimeFormatParam.DAYS | ETimeFormatParam.HOURS, ETimeFormatParam.DAYS | ETimeFormatParam.HOURS | ETimeFormatParam.MINUTES);
+				//string winner = GetGame().GetFactionManager().GetFactionByIndex(m_iWinningFactionId).GetFactionKey();
+				//string shownTime = SCR_Global.GetTimeFormatting(winCountdown, ETimeFormatParam.DAYS | ETimeFormatParam.HOURS, ETimeFormatParam.DAYS | ETimeFormatParam.HOURS | ETimeFormatParam.MINUTES);
 				
-				if (isPaused)
+				/*if (isPaused)
 				{
 					m_wCountdown.SetTextFormat("<color rgba='170,170,170,175'>%1</color>", shownTime);
 					m_wCountdownMap.SetTextFormat("<color rgba='170,170,170,175'>%1</color>", shownTime);
@@ -2742,9 +2747,9 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 				{
 					m_wCountdown.SetTextFormat("%1", shownTime);
 					m_wCountdownMap.SetTextFormat("%1", shownTime);
-				}
-				m_wFlavour.SetTextFormat("#AR-ConflictHUD_FlavourText_IsWinning", GetGame().GetFactionManager().GetFactionByIndex(m_iWinningFactionId).GetFactionName());
-				m_wFlavourMap.SetTextFormat("#AR-ConflictHUD_FlavourText_IsWinning", GetGame().GetFactionManager().GetFactionByIndex(m_iWinningFactionId).GetFactionName());
+				}*/
+				//m_wFlavour.SetTextFormat("#AR-ConflictHUD_FlavourText_IsWinning", GetGame().GetFactionManager().GetFactionByIndex(m_iWinningFactionId).GetFactionName());
+				//m_wFlavourMap.SetTextFormat("#AR-ConflictHUD_FlavourText_IsWinning", GetGame().GetFactionManager().GetFactionByIndex(m_iWinningFactionId).GetFactionName());
 				
 				m_wWinScore.SetColor(yellow);
 				m_wWinScoreSideRight.SetColor(yellow);
@@ -2753,7 +2758,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 				m_wWinScoreMap.SetColor(yellow);
 				m_wWinScoreSideRightMap.SetColor(yellow);
 				m_wWinScoreSideLeftMap.SetColor(yellow);
-				
+				/*
 				if (winner.Contains(FACTION_OPFOR))
 				{
 					m_wRightScoreMap.SetColor(yellow);
@@ -2775,11 +2780,11 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 					m_wLeftScoreMap.SetDesiredFontSize(24);
 					m_wRightScoreMap.SetDesiredFontSize(20);
 					m_wRightScore.SetDesiredFontSize(20);
-				}
-				m_wCountdownOverlay.SetVisible(true);
+				}*/
+				//m_wCountdownOverlay.SetVisible(true);
 				m_wFlavour.SetVisible(true);
 				m_wFlavourMap.SetVisible(true);
-				m_wCountdownOverlayMap.SetVisible(true);
+				//m_wCountdownOverlayMap.SetVisible(true);
 				AnimateWidget.Opacity(m_wInfoOverlay, 1, 1, true);
 			}
 		}
@@ -3271,6 +3276,10 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	//------------------------------------------------------------------------------------------------
 	//! Manager for spawning enemies inside bases
 	//! \param timeSlice timeSlice from OnFrame event
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	protected void HandleRemnantForces(float timeSlice)
 	{
 		//Print("BaseGameWasteModeWasteland::HandleRemnantsForces::FunctionFired");
@@ -3303,6 +3312,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		{
 			m_iLocationCheckedForPlayerProximity++;
 			
+			
+			
 			if (m_iLocationCheckedForPlayerProximity == m_iRemnantLocationsCnt)
 			{
 				m_iLocationCheckedForPlayerProximity = -1;
@@ -3317,7 +3328,13 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			}
 			
 			location = m_aRemnantsPresence[m_iLocationCheckedForPlayerProximity];
+			if( location)
+			{
+				if(location.GetMembersAlive() == -1)
+					location.GetMapDescriptor().Item().SetVisible(false);
+			}
 		};
+		
 		
 		array<int> players = {};
 		int playersCount = GetGame().GetPlayerManager().GetPlayers(players);
@@ -3356,7 +3373,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		if (!location.GetIsSpawned() && playersNear)
 		{
 			//Print("BaseGameWasteModeWasteland::HandleRemnantsForces()::SpawnRemnants()");
-
+			
+			//need to pass MapDescriptor ref to RemnantsPresence
 			SpawnRemnants(location, players);
 			return;
 		}
@@ -3380,6 +3398,10 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//heavily modified for respawn ai mechanic and handling 
 	protected void SpawnRemnants(notnull SCR_CampaignRemnantsPresence location, notnull array<int> playerIds)
 	{
 		Resource res = Resource.Load(location.GetGroupPrefab());
@@ -4497,7 +4519,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			//GetGame().GetCallqueue().CallLater(CheckPlayerInsideRadioRange, 3000, true);
 			//GetGame().GetCallqueue().CallLater(EnteringNewBase, 3000, true);
 			//GetGame().GetCallqueue().CallLater(CheckForBasesWithPlayer, 500, true);
-			//GetGame().GetCallqueue().CallLater(UpdateHUD, 250, true);
+			GetGame().GetCallqueue().CallLater(UpdateHUD, 250, true);
 			//GetGame().GetCallqueue().CallLater(CheckPlayerPresenceInSupplyDepots, 2000, true);
 			
 			GetGame().GetInputManager().AddActionListener("TasksOpen", EActionTrigger.DOWN, RegisterTasksShown);
