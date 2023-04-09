@@ -1,0 +1,154 @@
+SCR_ChimeraCharacter : "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et" {
+ ID "52092032B0E62200"
+ components {
+  ControllersManagerComponent "{520EA1D2F659CE92}" {
+  }
+  EventHandlerManagerComponent "{530284308E2527DD}" {
+   Enabled 0
+  }
+  SCR_CharacterControllerComponent "{520EA1D2F659CEA5}" {
+  }
+  SignalsManagerComponent "{520EA1D2F659C85A}" {
+  }
+  SCR_CommunicationSoundComponent "{54FD05D0C92D071F}" {
+   Enabled 0
+   Filenames + {
+    "{91D53896F5AD5DB4}Sounds/RadioProtocol/RadioProtocol_CombatPatrol_US.acp"
+   }
+  }
+  AIControlComponent "{520EA1D2DB109F34}" {
+   Enabled 0
+   components {
+    PerceptionComponent "{54A2CBC75F06064B}" {
+     Enabled 1
+    }
+   }
+   EnableAI 1
+  }
+  ActionsPerformerComponent "{520EA1D2F659CE3F}" {
+   Enabled 0
+  }
+  BaseFlattenGrassComponent "{520EA1D2F659CE26}" {
+   Enabled 0
+  }
+  BaseWeaponManagerComponent "{520EA1D2F659CE5D}" {
+  }
+  CharacterAimingComponent "{520EA1D2F659CE42}" {
+  }
+  CharacterHeadAimingComponent "{520EA1D2F659CF99}" {
+  }
+  CharacterPerceivableComponent "{566CCE2397E28600}" {
+   Enabled 0
+  }
+  ClimbingDataComponent "{5304A49E934A0758}" {
+   Enabled 0
+  }
+  ColliderHistoryComponent "{566C7EDBB7BCC719}" {
+   Enabled 0
+  }
+  FactionAffiliationComponent "{520EC961FB0A2E90}" {
+   Enabled 0
+  }
+  RHS_RadioRpcManager "{5C90ED96A35AFFEA}" {
+   Enabled 0
+  }
+  SCR_BaseHUDComponent "{520EA1D2DB118134}" {
+   Enabled 0
+  }
+  SCR_CallsignCharacterComponent "{55BADB0EB09CC77E}" {
+   Enabled 0
+  }
+  SCR_CharacterRankComponent "{528E6D4286AA2D8F}" {
+   Enabled 0
+  }
+  SCR_CharacterStaminaComponent "{520EA1D2F659C824}" {
+   Enabled 0
+  }
+  SCR_CharacterVicinityComponent "{529A70D96D401B33}" {
+   Enabled 0
+  }
+  SCR_CompartmentAccessComponent "{52249C842F1EF1F4}" {
+  }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   Enabled 0
+  }
+  SCR_FuelNozzleHolderComponent "{52368400919641C0}" {
+   Enabled 0
+  }
+  SCR_GadgetManagerComponent "{520EA1D2DB118DF3}" {
+   Enabled 0
+  }
+  SCR_MeleeComponent "{520EA1D2F659C85E}" {
+   Enabled 0
+  }
+  SCR_PreviewEntityComponent "{55EE4A2A78856F12}" {
+   Enabled 0
+  }
+  SCR_VoNComponent "{520EA1D2F659C856}" {
+   Enabled 0
+  }
+  TagComponent "{5864D980062191CA}" {
+   Enabled 0
+  }
+  CharacterGrenadeSlotComponent "{520EA1D2F659CE6E}" {
+   Enabled 0
+  }
+  CharacterGrenadeSlotComponent "{5A6CDA0CCF43068E}" {
+   Enabled 0
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   Enabled 0
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   Enabled 0
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
+   Enabled 0
+  }
+  SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{79D240C0D2390F4A}Prefabs/Characters/HeadGear/Helmet_PASGT_01/Helmet_PASGT_01_goggles.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{D262D2102B9931C6}Prefabs/Characters/Uniforms/Jacket_M88_rolledup.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{DCF980831E880F6A}Prefabs/Characters/Uniforms/Pants_M88.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{AB84E597273FAECA}Prefabs/Characters/Vests/Vest_Lifchik/Vest_Lifchik_GrenadeBelt.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5A24B6035F7619E7}" {
+     TargetStorage ""
+     PrefabsToSpawn {
+     }
+    }
+    ItemsInitConfigurationItem "{54A49B42D138207E}" {
+     PrefabsToSpawn {
+     }
+    }
+    ItemsInitConfigurationItem "{5538C040738A83D1}" {
+     PrefabsToSpawn {
+     }
+    }
+    ItemsInitConfigurationItem "{5538C040737C0BE0}" {
+     PrefabsToSpawn {
+     }
+    }
+   }
+  }
+  ActionsManagerComponent "{520EA1D2F659CE02}" {
+   Enabled 0
+  }
+  CharacterAnimationComponent "{520EA1D2F659C994}" {
+  }
+ }
+ coords 536.698 0.985 843.726
+}

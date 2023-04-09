@@ -3477,12 +3477,14 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		
 		if (!grp)
 			return;
-		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//MapDescriptor Update on AI group respawn
 		SCR_CampaignRemnantsSpawnPoint sp = location.GetSpawnPointSP();
 		string identi = sp.getIdent();
 		RpcDo_ShowDescriptor(identi);
 		Rpc(RpcDo_ShowDescriptor,identi);
 		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		location.SetDespawnTimer(-1);
 		location.SetIsSpawned(true);
 		
@@ -4263,14 +4265,18 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 						// If this was not the last member alive, do nothing
 						if (group.GetAgentsCount() > 1)
 							break;
-							
-						//if this was the last agent, disable map descriptor!!
-						//remnantPresence.GetMapDescriptor().Item().SetVisible(false);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+						//hanlde AI Map descriptor update on group death					
+						//if this was the last agent, disable map descriptor!!						
 						SCR_CampaignRemnantsSpawnPoint sp = remnantPresence.GetSpawnPointSP();
 						string identi = sp.getIdent();
 						RpcDo_HideDescriptor(identi);
 						Print("BaseGameModeWasteland::HideDescriptor ident: " +identi);
 						Rpc(RpcDo_HideDescriptor,identi);
+						
+////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						respawnPeriod = remnantPresence.GetRespawnPeriod();
 						
 						// Set up respawn timestamp, convert s to ms, reset original group size
