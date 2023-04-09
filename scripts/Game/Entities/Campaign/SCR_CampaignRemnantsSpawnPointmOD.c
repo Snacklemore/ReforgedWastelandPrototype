@@ -23,8 +23,19 @@ modded class SCR_CampaignRemnantsSpawnPoint
 	
 	ref array<SCR_Position> m_posArray;
 	ref array<vector> m_positions;
+	string identifier;
 	
-	//fills m_posArray with SCR_Position objects 
+	void setident(string ident)
+	{
+		
+		identifier = ident;
+	}
+	string getIdent()
+	{
+	
+		return identifier;
+	}
+		//fills m_posArray with SCR_Position objects 
 	private void GetNearbyPositionObjects(float radius)
 	{
 		vector pos = this.GetOrigin();
@@ -79,9 +90,9 @@ modded class SCR_CampaignRemnantsSpawnPoint
 					Print("SCR_CampaingRemnantsSpawnPointMod::FillRespawns::PositionName: "+ name);
 					if (name.Contains("SP_AI_"))
 					{
-					if (name.Contains("SP_AI_StPhillipe"))
-						Print("Found");
+					
 						//Found SCR_Position Object!
+						Print("SCR_CampaingRemnantsSpawnPointMod::FillRespawns::PositionName: "+ name);
 						vector vec = pos.GetOrigin();
 						m_positions.Insert(vec);
 					
@@ -158,6 +169,31 @@ modded class SCR_CampaignRemnantsSpawnPoint
 		Print("SCR_CampaignRemnantsSpawnPoint::OnInit()");
 	}
 	
+	void HideDescriptor()
+	{
+		Print("SCR_CampaignRemnantsSpawnPoint::KickOffRpc()");
+
+		Rpc(RpcDo_HideDescriptor);
+	}
+	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_HideDescriptor()
+	{
+		Print("SCR_CampaignRemnantsSpawnPoint::Rpc()Descriptor");
+
+		SCR_MapDescriptorComponent mdc = SCR_MapDescriptorComponent.Cast(FindComponent(SCR_MapDescriptorComponent));
+		if(mdc)
+		{	
+			Print("SCR_CampaignRemnantsSpawnPoint::MDC found ident: "+ identifier);
+
+			mdc.Item().SetVisible(false);
+		}
+		
+	}
+	
+	
+	
 	//------------------------------------------------------------------------------------------------
 	void SCR_CampaignRemnantsSpawnPoint(IEntitySource src, IEntity parent)
 	{
@@ -189,10 +225,21 @@ modded class SCR_CampaignRemnantsPresence
 	static const int PARENT_BASE_DISTANCE_THRESHOLD = 300;
 	static const int RESPAWN_PLAYER_DISTANCE_THRESHOLD = 200;
 	SCR_MapDescriptorComponent m_MapDescriptor;
-	
+	SCR_CampaignRemnantsSpawnPoint m_sp;
+	bool isVisibleOnMap = true;
+	//rpl id of corresponding Spawn Point
+	string identifier;
 	void FillRespawns(array<vector> vectors)
 	{
 		m_aRespawns = vectors;
+	}
+	void SetSpawnPointSP(SCR_CampaignRemnantsSpawnPoint sp)
+	{
+		m_sp = sp;
+	}
+	SCR_CampaignRemnantsSpawnPoint GetSpawnPointSP()
+	{
+		return m_sp;
 	}
 	//------------------------------------------------------------------------------------------------
 	void SetID(int ID)

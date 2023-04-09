@@ -1567,7 +1567,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			//set MapDescriptor reference in presence 
 			SCR_MapDescriptorComponent mdc = SCR_MapDescriptorComponent.Cast(spawnpoint.FindComponent(SCR_MapDescriptorComponent));
 			presence.setMapDescriptor(mdc);
-			
+			presence.SetSpawnPointSP(spawnpoint);
 			
 			
 			spawnpoint.FillRespawns();
@@ -3307,7 +3307,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		
 		m_fRemnantForcesTimer = 0;
 		SCR_CampaignRemnantsPresence location = null;
-		
+		array<SCR_CampaignRemnantsPresence> locationMapChange = new array<SCR_CampaignRemnantsPresence>();
 		while (!location || (location.GetMembersAlive() == 0 && !location.GetIsSpawned()) || location.GetRespawnTimestamp() > Replication.Time())
 		{
 			m_iLocationCheckedForPlayerProximity++;
@@ -3328,13 +3328,11 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			}
 			
 			location = m_aRemnantsPresence[m_iLocationCheckedForPlayerProximity];
-			if( location)
-			{
-				if(location.GetMembersAlive() == -1)
-					location.GetMapDescriptor().Item().SetVisible(false);
-			}
+			
+			
+			
+			
 		};
-		
 		
 		array<int> players = {};
 		int playersCount = GetGame().GetPlayerManager().GetPlayers(players);
@@ -3397,6 +3395,14 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			location.SetDespawnTimer(-1);
 	}
 	
+	
+	
+	
+	SCRWST_AISpawnManager m_AISpawnManager;
+	void registerAISpawnManager(SCRWST_AISpawnManager manager)
+	{
+		m_AISpawnManager = manager;
+	}
 	//------------------------------------------------------------------------------------------------
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3471,6 +3477,11 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		
 		if (!grp)
 			return;
+		
+		SCR_CampaignRemnantsSpawnPoint sp = location.GetSpawnPointSP();
+		string identi = sp.getIdent();
+		RpcDo_ShowDescriptor(identi);
+		Rpc(RpcDo_ShowDescriptor,identi);
 		
 		location.SetDespawnTimer(-1);
 		location.SetIsSpawned(true);
@@ -4252,7 +4263,14 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 						// If this was not the last member alive, do nothing
 						if (group.GetAgentsCount() > 1)
 							break;
-						
+							
+						//if this was the last agent, disable map descriptor!!
+						//remnantPresence.GetMapDescriptor().Item().SetVisible(false);
+						SCR_CampaignRemnantsSpawnPoint sp = remnantPresence.GetSpawnPointSP();
+						string identi = sp.getIdent();
+						RpcDo_HideDescriptor(identi);
+						Print("BaseGameModeWasteland::HideDescriptor ident: " +identi);
+						Rpc(RpcDo_HideDescriptor,identi);
 						respawnPeriod = remnantPresence.GetRespawnPeriod();
 						
 						// Set up respawn timestamp, convert s to ms, reset original group size
@@ -4327,6 +4345,38 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		}
 	}
 
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_HideDescriptor(string identifier)
+	{
+		foreach (SCR_CampaignRemnantsPresence p : m_aRemnantsPresence)
+		{
+			SCR_CampaignRemnantsSpawnPoint sp = p.GetSpawnPointSP();
+			if (identifier == sp.getIdent())
+			{
+				Print("BaseGameModeWasteland::HideDescriptor ident: " +identifier);
+
+				p.GetMapDescriptor().Item().SetVisible(false);
+			
+			}
+		}
+		
+	}
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_ShowDescriptor(string identifier)
+	{
+		foreach (SCR_CampaignRemnantsPresence p : m_aRemnantsPresence)
+		{
+			SCR_CampaignRemnantsSpawnPoint sp = p.GetSpawnPointSP();
+			if (identifier == sp.getIdent())
+			{
+				Print("BaseGameModeWasteland::ShowDescriptor ident: " +identifier);
+
+				p.GetMapDescriptor().Item().SetVisible(true);
+			
+			}
+		}
+		
+	}
 	//------------------------------------------------------------------------------------------------
 	void ShowXP(bool visible)
 	{
@@ -4577,7 +4627,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		
 		m_MapEntity = SCR_MapEntity.Cast(GetGame().GetMapManager());
 		
-		
+		//GetGame().GetCallqueue().CallLater(UpdateMapDescriptors,2000,true);
 		
 	
 

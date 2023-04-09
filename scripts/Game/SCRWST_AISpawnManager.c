@@ -11,12 +11,14 @@ class SCRWST_AISpawnManager: GenericEntity
 	ref array<SCR_EditableEntityComponent> commentEntities;
 	ref array<SCR_EditableEntityComponent> citys;
 	ref array<SCR_EditableEntityComponent> hills;
-
+	
 	
 	override void EOnInit(IEntity owner)
 	{
+		RplComponent rpl = RplComponent.Cast(FindComponent(RplComponent));
+		//if(rpl.IsProxy())
+			//return;
 		Print("SCRWST_AISpawnManagerClass::EOnInit()");
-		
 		SCR_EditableEntityCore core = SCR_EditableEntityCore.Cast(SCR_EditableEntityCore.GetInstance(SCR_EditableEntityCore));
 	       if (!core)
 	           return;
@@ -98,6 +100,9 @@ class SCRWST_AISpawnManager: GenericEntity
 			SpawnPoint.SetGroupType(SCR_CampaignRemnantsGroupType.MG);
 			SpawnPoint.SetIsRespawn(true);
 			SpawnPoint.SetGroupRespawnPeriod(1);
+			SCR_MapDescriptorComponent mds = SCR_MapDescriptorComponent.Cast(SpawnPoint.FindComponent(SCR_MapDescriptorComponent));
+			string ident = city.GetDisplayName();
+			SpawnPoint.setident(ident);
 			Print("SCRWST_AISpawnManagerClass::EOnInit()::Spawned CampaignRemnantsSpawnPointEntity at Origin of ");
 			if(SpawnPoint)
 			spawnPointSet = true;
@@ -118,6 +123,9 @@ class SCRWST_AISpawnManager: GenericEntity
 			SCR_CampaignRemnantsSpawnPoint SpawnPoint = SCR_CampaignRemnantsSpawnPoint.Cast(GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), params));
 			SpawnPoint.SetGroupType(SCR_CampaignRemnantsGroupType.MG);
 			
+			string ident = hill.GetDisplayName();
+			SpawnPoint.setident(ident);
+			
 			Print("SCRWST_AISpawnManagerClass::EOnInit()::Spawned CampaignRemnantsSpawnPointEntity at Origin of");
 			if(SpawnPoint)
 			spawnPointSet = true;
@@ -125,8 +133,10 @@ class SCRWST_AISpawnManager: GenericEntity
 		
 		
 		
+		//register to WasteBaseGameMode
 		
-		
+		SCR_BaseGameModeWasteland mode = SCR_BaseGameModeWasteland.Cast(GetGame().GetGameMode());
+		mode.registerAISpawnManager(this);
 		
 		Print("SCRWST_AISpawnManagerClass::EOnInit()::End" );
 

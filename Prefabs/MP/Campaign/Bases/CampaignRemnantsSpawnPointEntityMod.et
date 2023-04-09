@@ -8,10 +8,10 @@ SCR_CampaignRemnantsSpawnPoint {
    MapItemDescriptor 1
    MainType Target
    Scale 3.7
-   Faction 2
    Priority 5
   }
   RplComponent "{5D10A9D20A2FE131}" {
+   Streamable Disabled
   }
  }
 }
