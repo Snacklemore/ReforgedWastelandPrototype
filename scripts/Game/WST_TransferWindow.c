@@ -56,13 +56,23 @@ class WST_Weapon
 	
 	/////////////////////////////////////////////////////////////////////////
 	//prefab item paths
+	
+	//weapon
 	static ResourceName AK74 = "{5B308198855FBCE5}Prefabs/Weapons/Rifles/AK74/Rifle_AK74Suppressed.et";
 	static ResourceName AK74_GP25 = "{2FA2E44E5B95D044}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25Suppressed.et";
 	static ResourceName M21_ARTII = "{81EB948E6414BD6F}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTII.et";
 	static ResourceName M16A2_M203 = "{7500FA1B52CC247F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203Suppressed.et";
+	//attachements
 	static ResourceName StandardSuppressor = "{7CB432CC4ED704E1}Prefabs/Weapons/Core/Suppressor_Generic_556.et";
 	static ResourceName NT4Suppressor = "{904AF79F5926399A}Prefabs/Weapons/Core/Suppressor_Punky_NT4.et";
 
+	
+	//ammo 
+	static ResourceName AK74Mag = "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et";
+	static ResourceName M9Mag = "{9C05543A503DB80E}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Ball.et";
+	static ResourceName M16Mag = "{A9A385FE1F7BF4BD}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Tracer.et";
+	static ResourceName M14Mag = "{627255315038152A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_SpecialBall.et";
+	
 	//unique itemidentfier
 	static string AK74identifier = "WeaponAK74";
 	static string AK74_GP25identifier = "WeaponAKGP25";
@@ -70,6 +80,10 @@ class WST_Weapon
 	static string M16A2_M203identifier = "WeaponM16A2M203";
 	static string StandardSuppressorIdentifier ="StandardSuppressor";
 	static string NT4_SuppressorIdentifier = "NT4Suppressor";
+	static string AK74MagIdentifier ="AK74Mag";
+	static string M9MagIdentifier ="M9Mag";
+	static string M16MagIdentifier ="M16Mag";
+	static string M14MagIdentifier="M14Mag";
 	//display name 
 	static string AK74Display = "AK 74";
 	static string AK74_GP25Display = "AK GP25";
@@ -77,6 +91,10 @@ class WST_Weapon
 	static string M16A2_M203Display = "M16A2 M203UBGL";
 	static string StandardSuppressorDisplay = "Standard Suppressor";
 	static string NT4SuppressorDisplay = "NT4 Suppressor";
+	static string AK74MagDisplay= "AK 74 Magazine";
+	static string M9MagDisplay= "M9 Pistol Magazine";
+	static string M16MagDisplay= "M16 Magazine";
+	static string M14MagDisplay	= "M14 Magazine";
 	//item price
 	static int AK74Price = 50;
 	static int AK74_GP25Price = 100;
@@ -84,6 +102,10 @@ class WST_Weapon
 	static int M16A2_M203Price = 50;
 	static int StandardSuppressorPrice = 200;
 	static int NT4SuppressorPrice = 200;
+	static int AK74MagPrice= 20;
+	static int M9MagPrice= 20;
+	static int M16MagPrice= 20;
+	static int M14MagPrice= 20;
 	
 	ref map<string,ResourceName> buildArray = new map<string,ResourceName>();
 	ref array<string> iterationArray = new array<string>();
@@ -110,12 +132,20 @@ class WST_Weapon
 			return;
 		instance = this;
 		//
+		
+		
 		buildArray.Insert(AK74identifier,AK74);
 		buildArray.Insert(AK74_GP25identifier,AK74_GP25);
 		buildArray.Insert(M21_ARTIIidentifier,M21_ARTII);
 		buildArray.Insert(M16A2_M203identifier,M16A2_M203);
 		buildArray.Insert(StandardSuppressorIdentifier,StandardSuppressor);
 		buildArray.Insert(NT4_SuppressorIdentifier,NT4Suppressor);
+		//Ammo
+		
+		buildArray.Insert(AK74MagIdentifier,AK74Mag);
+		buildArray.Insert(M9MagIdentifier,M9Mag);
+		buildArray.Insert(M16MagIdentifier,M16Mag);
+		buildArray.Insert(M14MagIdentifier,M14Mag);
 		
 		iterationArray.Insert(AK74identifier);
 		iterationArray.Insert(AK74_GP25identifier);
@@ -124,12 +154,30 @@ class WST_Weapon
 		iterationArray.Insert(StandardSuppressorIdentifier);
 		iterationArray.Insert(NT4_SuppressorIdentifier);
 		
+		//Ammo
+		iterationArray.Insert(AK74MagIdentifier);
+		iterationArray.Insert(M9MagIdentifier);
+		iterationArray.Insert(M16MagIdentifier);
+		iterationArray.Insert(M14MagIdentifier);
+
+		
 		DisplayNameArray.Insert(AK74identifier,AK74Display);
 		DisplayNameArray.Insert(AK74_GP25identifier,AK74_GP25Display);
 		DisplayNameArray.Insert(M21_ARTIIidentifier,M21_ARTIIDisplay);
 		DisplayNameArray.Insert(M16A2_M203identifier,M16A2_M203Display);
 		DisplayNameArray.Insert(StandardSuppressorIdentifier,StandardSuppressorDisplay);
 		DisplayNameArray.Insert(NT4_SuppressorIdentifier,NT4SuppressorDisplay);
+		
+		//Ammo
+		DisplayNameArray.Insert(AK74MagIdentifier,AK74MagDisplay);
+		DisplayNameArray.Insert(M9MagIdentifier,M9MagDisplay);
+		DisplayNameArray.Insert(M16MagIdentifier,M16MagDisplay);
+		DisplayNameArray.Insert(M14MagIdentifier,M14MagDisplay);
+
+
+		
+		
+		
 		
 		TypeArray.Insert(AK74identifier,WST_Type.WST_WEAPON);
 		TypeArray.Insert(AK74_GP25identifier,WST_Type.WST_WEAPON);
@@ -138,13 +186,26 @@ class WST_Weapon
 		TypeArray.Insert(StandardSuppressorIdentifier,WST_Type.WST_ATTACHMENT);
 		TypeArray.Insert(NT4_SuppressorIdentifier,WST_Type.WST_ATTACHMENT);
 		
+		//Ammo
+		TypeArray.Insert(AK74MagIdentifier,WST_Type.WST_AMMO);
+		TypeArray.Insert(M9MagIdentifier,WST_Type.WST_AMMO);
+		TypeArray.Insert(M16MagIdentifier,WST_Type.WST_AMMO);
+		TypeArray.Insert(M14MagIdentifier,WST_Type.WST_AMMO);
+
+		
+		
 		PriceArray.Insert(AK74identifier,50);
 		PriceArray.Insert(AK74_GP25identifier,200);
 		PriceArray.Insert(M21_ARTIIidentifier,1000);
 		PriceArray.Insert(M16A2_M203identifier,300);
 		PriceArray.Insert(StandardSuppressorIdentifier,50);
 		PriceArray.Insert(NT4_SuppressorIdentifier,50);
+		//Ammo
 		
+		PriceArray.Insert(AK74MagIdentifier,AK74MagPrice);
+		PriceArray.Insert(M9MagIdentifier,AK74MagPrice);
+		PriceArray.Insert(M16MagIdentifier,AK74MagPrice);
+		PriceArray.Insert(M14MagIdentifier,AK74MagPrice);
 	
 	}
 	
@@ -357,7 +418,34 @@ class WST_TransferWindowUI : MenuBase
 		SCR_ListBoxComponent m_ListBoxComponent1;
 		OverlayWidget m_ListBoxOverlay1;
 
+		
+		SCR_ListBoxComponent m_ListBoxComponent2;
+		OverlayWidget m_ListBoxOverlay2;
 
+
+		
+		
+		m_ListBoxOverlay2 =  OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBoxAmmo"));
+		 m_ListBoxComponent2 = SCR_ListBoxComponent.Cast(m_ListBoxOverlay2.FindHandler(SCR_ListBoxComponent));
+        if (m_ListBoxComponent2)
+        {
+			
+			foreach (ManagedDataObject o : dataObjects)
+			{
+				if (o.GetType() == WST_Type.WST_AMMO)
+				{
+					string price = o.GetData();
+					int i_price = w.GetPriceByKey(price);
+					price = i_price.ToString();
+					m_ListBoxComponent2.AddItem(o.GetDisplayText() +"$$: "+price ,o);
+				}
+				
+			}
+           
+
+
+
+        }
 
 
 		m_ListBoxOverlay =  OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBoxWeapons"));
@@ -408,7 +496,7 @@ class WST_TransferWindowUI : MenuBase
 		//OnSelectInvoker
 		m_ListBoxComponent.m_OnChanged.Insert(OnSelected);
 		m_ListBoxComponent1.m_OnChanged.Insert(OnSelected);
-
+		m_ListBoxComponent2.m_OnChanged.Insert(OnSelected);
 
 
 		SCR_ButtonTextComponent buttonClose = SCR_ButtonTextComponent.GetButtonText(BUTTON_CLOSE, rootWidget);

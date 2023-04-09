@@ -17,6 +17,29 @@ FrameWidgetClass {
    }
    Clipping False
    {
+    OverlayWidgetClass "{5D128073ED780504}" {
+     Name "Overlay2"
+     Slot FrameWidgetSlot "{5D128073ED780527}" {
+      PositionX 24
+      OffsetLeft 24
+      PositionY 504
+      OffsetTop 504
+      SizeX 544
+      OffsetRight -568
+      SizeY 152
+      OffsetBottom -656
+     }
+     {
+      OverlayWidgetClass "{5D12807304CF7D9C}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxAmmo"
+       Slot OverlayWidgetSlot "{5D12807304CF7DA4}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 15 15 15 15
+       }
+      }
+     }
+    }
     ItemPreviewWidgetClass "{5CF76DD51F20059D}" {
      Name "WeaponPreview"
      Slot FrameWidgetSlot "{5CF76DD51F2005B6}" {
