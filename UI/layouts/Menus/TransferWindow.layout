@@ -5,18 +5,41 @@ FrameWidgetClass {
   PanelWidgetClass "{5CF76DB0D12DD6CE}" {
    Name "Panel0"
    Slot FrameWidgetSlot "{5CF76DB0D12DD6D6}" {
-    Anchor 0.113 0.193 0.663 0.837
-    PositionX -8.96
-    OffsetLeft -8.96
+    Anchor 0.113 0.193 0.88 0.84
+    PositionX -0.96
+    OffsetLeft -0.96
     PositionY -0.44
     OffsetTop -0.44
-    SizeX 384
-    OffsetRight -375.04
-    SizeY 0
-    OffsetBottom 0.44
+    SizeX -32.64
+    OffsetRight 33.6
+    SizeY -3.24
+    OffsetBottom 3.68
    }
    Clipping False
    {
+    OverlayWidgetClass "{5D128005AD2275CC}" {
+     Name "Overlay3"
+     Slot FrameWidgetSlot "{5D128005AD2275D5}" {
+      PositionX 600
+      OffsetLeft 600
+      PositionY 504
+      OffsetTop 504
+      SizeX 384
+      OffsetRight -984
+      SizeY 152
+      OffsetBottom -656
+     }
+     {
+      OverlayWidgetClass "{5D128005A8C2AD2A}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxGrenades"
+       Slot OverlayWidgetSlot "{5D128005A8C2AD3D}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 15 15 15 15
+       }
+      }
+     }
+    }
     OverlayWidgetClass "{5D128073ED780504}" {
      Name "Overlay2"
      Slot FrameWidgetSlot "{5D128073ED780527}" {
@@ -43,14 +66,14 @@ FrameWidgetClass {
     ItemPreviewWidgetClass "{5CF76DD51F20059D}" {
      Name "WeaponPreview"
      Slot FrameWidgetSlot "{5CF76DD51F2005B6}" {
-      PositionX 896
-      OffsetLeft 896
-      PositionY 464
-      OffsetTop 464
-      SizeX 418.101
-      OffsetRight -1314.1
-      SizeY 77.713
-      OffsetBottom -541.713
+      PositionX 984
+      OffsetLeft 984
+      PositionY 288
+      OffsetTop 288
+      SizeX 432
+      OffsetRight -1416
+      SizeY 184
+      OffsetBottom -472
      }
     }
     RichTextWidgetClass "{5CF76DD29EC91613}" : "{899AF810DF4FA0A5}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading3.layout" {
@@ -83,14 +106,14 @@ FrameWidgetClass {
      Name "Overlay1"
      Slot FrameWidgetSlot "{5CF76DCF9B8EBB4E}" {
       Anchor 0 0 1 0
-      PositionX 696
-      OffsetLeft 696
+      PositionX 704
+      OffsetLeft 704
       PositionY 72
       OffsetTop 72
-      SizeX -896
-      OffsetRight 200
-      SizeY 304
-      OffsetBottom -376
+      SizeX -984
+      OffsetRight 280
+      SizeY 184
+      OffsetBottom -256
      }
      {
       OverlayWidgetClass "{5CF76DCFAAD9E873}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
