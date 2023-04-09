@@ -195,8 +195,9 @@ class WST_TraderComponent : ScriptComponent
 		EntitySpawnParams params = new EntitySpawnParams();
 		params.TransformMode = ETransformMode.WORLD;
 		params.Transform[3] = nearest.GetOrigin();
-		Vehicle v = Vehicle.Cast(GetGame().SpawnEntityPrefab(Resource.Load(n), GetGame().GetWorld(), params));
 		
+		Vehicle v = Vehicle.Cast(GetGame().SpawnEntityPrefab(Resource.Load(n), GetGame().GetWorld(), params));
+		bool isInserted = GetGame().GetGarbageManager().Insert(v);
 		//already on the server so Update wallet right away!
 		if(v)
 			UpdateWalletValue(balance);

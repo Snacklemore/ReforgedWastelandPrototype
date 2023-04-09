@@ -1548,10 +1548,10 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			
 			
 			//5 minutes default respawn
-			int respawnPeriodInSeconds = 10;
+			int respawnPeriodInSeconds = 300;
 			//debug prefab {244A2FC361BACED6}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_Debug.et
 			//AI Presence Creation
-			prefabFireTeamWaste_ChosenPrefab = "{244A2FC361BACED6}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_Debug.et";
+			//prefabFireTeamWaste_ChosenPrefab = "{244A2FC361BACED6}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_Debug.et";
 			presence = new SCR_CampaignRemnantsPresence;
 			presence.SetGroupPrefab(prefabFireTeamWaste_ChosenPrefab);
 			presence.SetRespawnPeriod(respawnPeriodInSeconds);

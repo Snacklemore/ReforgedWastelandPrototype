@@ -414,6 +414,22 @@ $grp GenericEntity : "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et
   }
   coords 7462.167 165.466 4316.72
  }
+ {
+  components {
+   MoneyComponent "{5CF4CAAC6F374EB0}" {
+    initalValue 1000
+   }
+  }
+  coords 4881.333 29.549 11860.775
+ }
+ {
+  components {
+   MoneyComponent "{5CF4CAAC6F374EB0}" {
+    initalValue 2000
+   }
+  }
+  coords 4881.427 29.498 11860.835
+ }
 }
 GenericEntity : "{F737777FF0A566D5}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_Base.et" {
  coords 4882.442 28.595 11869.483
