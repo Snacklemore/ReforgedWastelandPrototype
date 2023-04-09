@@ -201,20 +201,90 @@ $grp SCR_Position {
   coords 1275.302 38.202 5918.849
  }
 }
-WST_VehicleSpawnPoint {
- coords 4872.247 28.595 11852.265
+$grp WST_VehicleSpawnPoint {
+ {
+  coords 4871.313 28.595 11850.083
+ }
+ {
+  coords 7471.111 164.563 4320.43
+  angleY 7.379
+ }
+}
+GenericEntity : "{07AA3565B2DDDE08}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/FIA/EquipmentBoxStack_FIA_01_V6_covered.et" {
+ coords 4873.905 28.595 11851.29
+ {
+  GenericEntity {
+   ID "5A16CE5CB60D5910"
+   coords 0.008 0 0
+  }
+ }
+}
+$grp GenericEntity : "{2BE613DDC7EA3851}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_01_V4_base.et" {
+ {
+  coords 4880.752 28.595 11848.997
+ }
+ {
+  coords 4882.118 28.595 11849.242
+ }
 }
 SCR_DestructibleEntity : "{2DB729170DBCE7BE}Prefabs/Props/Furniture/TableOld_01/TableOld_01.et" {
  coords 4881.105 28.595 11867.574
  angleY -88.337
 }
-GenericEntity : "{4080F8B646FBEFDF}Prefabs/Props/Commercial/CashierShopVehicle_Waste.et" {
- coords 4881.273 29.489 11861.98
- angleY 80.344
+GenericEntity : "{322F588A5756DD53}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_01_V3_base.et" {
+ coords 4879.493 28.595 11849.071
 }
-GenericEntity : "{627F955923426D32}Prefabs/Props/Commercial/CashierShop_Waste.et" {
- coords 4881.031 29.544 11865.994
- angleY 52.677
+$grp GenericEntity : "{4080F8B646FBEFDF}Prefabs/Props/Commercial/CashierShopVehicle_Waste.et" {
+ {
+  coords 4881.273 29.489 11861.98
+  angleY 80.344
+ }
+ {
+  components {
+   ActionsManagerComponent "{5D0F1D19650B01FF}" {
+    ActionContexts {
+     UserActionContext "{5D0F2E0EA49107E9}" {
+      Position PointInfo "{5D0F2E0EBD425228}" {
+       Offset 0.066 0.478 -0.1494
+      }
+     }
+    }
+   }
+  }
+  coords 7462.136 165.46 4314.981
+  angleY -86.279
+ }
+}
+$grp StaticModelEntity : "{5019513019F0885A}Prefabs/Props/Military/Furniture/TableMilitary_US_02.et" {
+ {
+  coords 7462.484 164.564 4316.851
+  angleY -78.314
+ }
+ {
+  coords 7461.793 164.564 4312.818
+  angleY -83.575
+ }
+}
+$grp GenericEntity : "{627F955923426D32}Prefabs/Props/Commercial/CashierShop_Waste.et" {
+ {
+  coords 4881.031 29.544 11865.994
+  angleY 76.476
+ }
+ {
+  components {
+   ActionsManagerComponent "{5CF72A24698A8C7E}" {
+    additionalActions {
+     WST_UserAction "{5CF72A26A98EDF68}" {
+      UIInfo UIInfo "{5CF72A26C46A059A}" {
+       Name "Shop"
+      }
+     }
+    }
+   }
+  }
+  coords 7461.672 165.468 4311.845
+  angleY -95.886
+ }
 }
 $grp StaticModelEntity : "{764414C0E2EF983E}Prefabs/Props/Military/Furniture/TableMilitary_USSR_02.et" {
  {
@@ -229,70 +299,125 @@ $grp StaticModelEntity : "{764414C0E2EF983E}Prefabs/Props/Military/Furniture/Tab
   coords 4881.114 28.595 11865.354
   angleY 80.752
  }
+ {
+  coords 7461.462 164.564 4310.986
+  angleY -84.416
+ }
+}
+StaticModelEntity : "{7762F50A860DD074}Prefabs/Props/Military/Furniture/TableMilitary_US_01.et" {
+ coords 7462.097 164.564 4314.689
+ angleY -71.729
+}
+GenericEntity : "{811C18BEC8B8B245}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_green.et" {
+ coords 4881.906 28.595 11869.46
+ angleY -173.077
+}
+GenericEntity : "{A924939DC9CB318C}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_grey.et" {
+ coords 4881.16 28.595 11869.344
+ angleY 169.381
+}
+GenericEntity : "{B657FAF316AAC342}Prefabs/Props/Commercial/Posters/PosterSet_02.et" {
+ coords 4880.462 29.41 11847.512
+ angleZ -19.144
 }
 StaticModelEntity : "{C99D1B2E817E12D9}Prefabs/Props/Military/Furniture/TableMilitary_USSR_02_cabinet.et" {
  coords 4869.944 28.595 11873.841
  angleY 0
 }
-SCR_DestructibleBuildingEntity : "{CA7778B914D3A9FC}Prefabs/Structures/Military/Bunkers/AircraftShelter_E_01/AircraftShelter_E_01_base.et" {
- coords 4875.296 0.001 11875.236
- GenerateSlots 1
- EntitySlots {
-  EntitySlotInfo socket_main_left {
-   PivotID "Socket_Main_Left"
-   Prefab "{ADAACE11802260CF}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Main_Left_EXT_COV_B.et"
-  }
-  EntitySlotInfo socket_main_right {
-   PivotID "Socket_Main_Right"
-   Prefab "{7D1E865927B2D775}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Main_Right_EXT_COV_B.et"
-  }
-  EntitySlotInfo socket_rear_left {
-   PivotID "Socket_Rear_Left"
-   Prefab "{275ACEE892A0009E}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Rear_Left_EXT_COV_B.et"
-  }
-  EntitySlotInfo socket_rear_right {
-   PivotID "Socket_Rear_Right"
-   Prefab "{F316BD951AFF6EC1}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Rear_Right_EXT_COV_B.et"
-  }
-  EntitySlotInfo socket_side_left_1 {
-   PivotID "Socket_Side_Left_1"
-   Prefab "{5A45EE2ED424C648}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Left_EXT_COV_M1.et"
-  }
-  EntitySlotInfo socket_side_right_1 {
-   PivotID "Socket_Side_Right_1"
-   Prefab "{A8F2296C08A58C07}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Right_EXT_COV_M1.et"
-  }
-  EntitySlotInfo socket_side_left_2 {
-   PivotID "Socket_Side_Left_2"
-   Prefab "{3611DACE68E04966}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Left_EXT_COV_M2.et"
-  }
-  EntitySlotInfo socket_side_right_2 {
-   PivotID "Socket_Side_Right_2"
-   Prefab "{C4A61D8CB4610329}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Right_EXT_COV_M2.et"
-  }
-  EntitySlotInfo socket_side_left_3 {
-   PivotID "Socket_Side_Left_3"
-   Prefab "{D38D96376405DE0D}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Left_EXT_COV_M3.et"
-  }
-  EntitySlotInfo socket_side_right_3 {
-   PivotID "Socket_Side_Right_3"
-   Prefab "{213A5175B8849442}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Right_EXT_COV_M3.et"
+$grp SCR_DestructibleBuildingEntity : "{CA7778B914D3A9FC}Prefabs/Structures/Military/Bunkers/AircraftShelter_E_01/AircraftShelter_E_01_base.et" {
+ {
+  coords 4875.296 0.001 11875.236
+  GenerateSlots 1
+  EntitySlots {
+   EntitySlotInfo socket_main_left {
+    PivotID "Socket_Main_Left"
+    Prefab "{ADAACE11802260CF}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Main_Left_EXT_COV_B.et"
+   }
+   EntitySlotInfo socket_main_right {
+    PivotID "Socket_Main_Right"
+    Prefab "{7D1E865927B2D775}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Main_Right_EXT_COV_B.et"
+   }
+   EntitySlotInfo socket_rear_left {
+    PivotID "Socket_Rear_Left"
+    Prefab "{275ACEE892A0009E}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Rear_Left_EXT_COV_B.et"
+   }
+   EntitySlotInfo socket_rear_right {
+    PivotID "Socket_Rear_Right"
+    Prefab "{F316BD951AFF6EC1}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Rear_Right_EXT_COV_B.et"
+   }
+   EntitySlotInfo socket_side_left_1 {
+    PivotID "Socket_Side_Left_1"
+    Prefab "{5A45EE2ED424C648}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Left_EXT_COV_M1.et"
+   }
+   EntitySlotInfo socket_side_right_1 {
+    PivotID "Socket_Side_Right_1"
+    Prefab "{A8F2296C08A58C07}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Right_EXT_COV_M1.et"
+   }
+   EntitySlotInfo socket_side_left_2 {
+    PivotID "Socket_Side_Left_2"
+    Prefab "{3611DACE68E04966}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Left_EXT_COV_M2.et"
+   }
+   EntitySlotInfo socket_side_right_2 {
+    PivotID "Socket_Side_Right_2"
+    Prefab "{C4A61D8CB4610329}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Right_EXT_COV_M2.et"
+   }
+   EntitySlotInfo socket_side_left_3 {
+    PivotID "Socket_Side_Left_3"
+    Prefab "{D38D96376405DE0D}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Left_EXT_COV_M3.et"
+   }
+   EntitySlotInfo socket_side_right_3 {
+    PivotID "Socket_Side_Right_3"
+    Prefab "{213A5175B8849442}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Side_Right_EXT_COV_M3.et"
+   }
   }
  }
+ {
+  coords 7464.35 0.06 4298.875
+  angleY -171.215
+ }
+}
+$grp SCR_ChimeraCharacter : "{CD3A78C25640F588}Prefabs/Characters/Campaign/Final/Campaign_US_AITRader.et" {
+ {
+  coords 4882.17 28.595 11861.955
+  angleY -103.656
+ }
+ {
+  coords 4882.105 28.595 11865.941
+  angleY -99.598
+ }
+ {
+  coords 7459.981 164.562 4311.434
+  angleY 85.193
+ }
+ {
+  coords 7460.488 164.562 4315.786
+  angleY 85.716
+ }
+}
+GenericEntity : "{DA03CE13AA6E4C6C}Prefabs/Props/Commercial/Posters/PosterSet_01_base.et" {
+ coords 4872.289 29.65 11847.528
 }
 $grp GenericEntity : "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et" {
  {
-  coords 4879.429 28.595 11862.698
+  components {
+   MoneyComponent "{5CF4CAAC6F374EB0}" {
+    initalValue 2500
+   }
+  }
+  coords 7462.309 165.467 4316.417
  }
  {
-  coords 4879.074 28.595 11862.595
+  components {
+   MoneyComponent "{5CF4CAAC6F374EB0}" {
+    initalValue 2000
+   }
+  }
+  coords 7462.167 165.466 4316.72
  }
- {
-  coords 4878.837 28.595 11863.068
- }
- {
-  coords 4878.938 28.595 11862.378
- }
+}
+GenericEntity : "{F737777FF0A566D5}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_Base.et" {
+ coords 4882.442 28.595 11869.483
+ angleY -173.57
 }
 $grp SCR_SpawnPoint : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.et" {
  MainSpawnA {
@@ -304,18 +429,19 @@ $grp SCR_SpawnPoint : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.e
   }
  }
  MainSpawnB {
-  coords 5037.795 15.4 3969.567
+  coords 7467.825 164.699 4322.835
   m_sFaction "B"
   m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
    Name "B Main Spawn"
   }
  }
- MainSpawnA2 {
-  coords 4498.007 13.027 10771.181
-  m_fSpawnRadius 1.2
-  m_sFaction "A"
-  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
-   Name "A Main Spawn"
+}
+GenericEntity : "{F870683132294E4E}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/FIA/EquipmentBoxStack_FIA_01_V5_covered.et" {
+ coords 4874.008 28.595 11849.809
+ {
+  GenericEntity {
+   ID "5A16CDDC8E9AE1FD"
+   coords 0.012 0 0
   }
  }
 }

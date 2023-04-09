@@ -37,9 +37,9 @@ GenericEntity : "{FA5C25BF66A53DCF}Prefabs/Weapons/Rifles/AK74/Rifle_AK74.et" {
     AttachmentSlotComponent "{5CFD2E6B7D48907E}" {
      AttachmentSlot InventoryStorageSlot Invt {
       PivotID "barrel_muzzle"
-      ChildPivotID "snap_weapon"
+      InspectionWidgetOffset -0.0008 0.0651 0.5497
      }
-     AttachmentType AttachmentMuzzle556 "{5CFD2E6975F7B54A}" {
+     AttachmentType AttachmentMuzzle556 "{5D1280696FBF397F}" {
      }
      ShowInInspection 1
     }

@@ -1,0 +1,17 @@
+SCR_CampaignRemnantsSpawnPoint {
+ ID "5D0F639599A96A7A"
+ components {
+  Hierarchy "{5D0F639599A96A70}" {
+  }
+  SCR_MapDescriptorComponent "{5D0F6395CC4EDD4B}" {
+   DisplayName "TestDisplay"
+   MapItemDescriptor 1
+   MainType Target
+   Scale 3.7
+   Priority 5
+  }
+  RplComponent "{5D10A9D20A2FE131}" {
+   Streamable Disabled
+  }
+ }
+}

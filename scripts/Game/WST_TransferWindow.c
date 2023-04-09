@@ -57,7 +57,7 @@ class WST_Weapon
 	/////////////////////////////////////////////////////////////////////////
 	//prefab item paths
 	static ResourceName AK74 = "{5B308198855FBCE5}Prefabs/Weapons/Rifles/AK74/Rifle_AK74Suppressed.et";
-	static ResourceName AK74_GP25 = "{63E8322E2ADD4AA7}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25.et";
+	static ResourceName AK74_GP25 = "{2FA2E44E5B95D044}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25Suppressed.et";
 	static ResourceName M21_ARTII = "{81EB948E6414BD6F}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTII.et";
 	static ResourceName M16A2_M203 = "{7500FA1B52CC247F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203Suppressed.et";
 	static ResourceName StandardSuppressor = "{7CB432CC4ED704E1}Prefabs/Weapons/Core/Suppressor_Generic_556.et";
