@@ -3,25 +3,32 @@ class WST_Vehicle
 	//TODO: Rework shops (too much manual typing)
 	
 	
-	
 	/////////////////////////////////////////////////////////////////////////
 	//prefab item paths
+	//ref array<ResourceName> itemPaths = new array<ResourceName>();
 	static ResourceName US_Jeep = "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et";
 	static ResourceName T14Tank = "{48BB423641D40E77}Prefabs/Vehicles/Tracked/T14/Tank_T14.et";
 	static ResourceName K17Berezok = "{31F0866273C46D76}Prefabs/Vehicles/Wheeled/K17/APC_K17_Berezok.et";
+	
+	
+
+	
 
 
 	//unique itemidentfier
+	//array<string> itemidentfier = new array<ResourceName>();
 	static string US_JeepIdentifier = "US_Jeep";
 	static string T14TankIdentifier = "T14Tank";
 	static string K17BerezokIdentifier = "K17Berezok";
 
-	//display name 
+	//display name 	
+	//array<string> displayNames 	 = new array<ResourceName>();
 	static string US_JeepDisplay = "Jeep";
 	static string T14TankDisplay = "T14 Tank";
 	static string K17BerezokDisplay = "K17 Berezok";
 
 	//item price
+//	array<int> itemPrices = new array<ResourceName>();
 	static int US_JeepPrice = 100;
 	static int T14TankPrice = 10000;
 	static int K17BerezokPrice = 10000;
@@ -51,7 +58,7 @@ class WST_Vehicle
 			return;
 		instance = this;
 		
-
+		
 		buildArray.Insert(US_JeepIdentifier,US_Jeep);
 		buildArray.Insert(T14TankIdentifier,T14Tank);
 		buildArray.Insert(K17BerezokIdentifier,K17Berezok);
