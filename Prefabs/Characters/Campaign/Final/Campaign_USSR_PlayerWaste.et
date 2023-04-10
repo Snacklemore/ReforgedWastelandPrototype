@@ -58,6 +58,9 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
    MainType Unit
    UnitType Infantry
   }
+  WST_MoneyConfigComponent "{5D152054F84DF9E0}" {
+   initalValue 450
+  }
   WST_TraderComponent "{5CF76D0212EE598E}" {
   }
   WST_TransferComponent "{5D07245F8CD086BF}" {
@@ -72,27 +75,41 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
+    LoadoutSlotInfo Jacket {
+     Prefab "{A51A7FB179F6D9A0}Prefabs/Characters/Uniforms/Jacket_M88_Flora.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{738798231DAF3078}Prefabs/Characters/Uniforms/Pants_6b51_VKPO.et"
+    }
+    LoadoutSlotInfo Back {
+     Prefab "{4805E67E2AE30F8D}Prefabs/Items/Equipment/Backpacks/Backpack_Medical_M5.et"
+    }
     LoadoutSlotInfo Boots {
      Prefab "{DAAFD15478BDE1C3}Prefabs/Characters/Footwear/CombatBoots_US_01.et"
     }
     LoadoutSlotInfo Hat {
-     Prefab "{E685A8D337D36204}Prefabs/Characters/HeadGear/Helmet_PASGT_01/Helmet_PASGT_01_cover_w_goggles.et"
+     Prefab "{85D618A51C013F7A}Prefabs/Characters/HeadGear/Headphones_Peltor/Headphones_Peltor_yellow.et"
     }
     LoadoutSlotInfo Vest {
-     Prefab "{4B57C11AA5161760}Prefabs/Characters/Vests/Vest_PASGT/Vest_PASGT.et"
+     Prefab ""
     }
    }
   }
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
+    ItemsInitConfigurationItem "{5A24CC173897B74F}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Jacket_M88_Flora.et"
+    }
     ItemsInitConfigurationItem "{54A68D64D7F9124F}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Pants_6b51_VKPO.et"
      PrefabsToSpawn {
-      "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et" "" "" "" "" "" ""
+      "{9C05543A503DB80E}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Ball.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_US_01.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_US_01.et"
      }
     }
     ItemsInitConfigurationItem "{5A24CC173771408E}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_Medical_M5.et"
      PrefabsToSpawn {
-      "" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et" "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_USSR_01.et" "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_USSR_01.et" "{9C05543A503DB80E}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Ball.et" "{9C05543A503DB80E}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Ball.et"
+      "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et"
      }
     }
    }

@@ -431,7 +431,7 @@ $grp GenericEntity : "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et
  {
   components {
    MoneyComponent "{5CF4CAAC6F374EB0}" {
-    initalValue 1000
+    initalValue 12000001
    }
   }
   coords 4881.333 29.549 11860.775

@@ -1,0 +1,32 @@
+Vehicle {
+ ID "BBCBA43A9778AE21"
+ components {
+  WST_FlipComponent "{5D14FB21906701A1}" {
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{5D14FB21C25E8683}" {
+     UIInfo UIInfo "{5D14FB21CE78F353}" {
+      Name "Flip"
+     }
+     ContextName "Unflip"
+     Position PointInfo "{5D14FB26872A3C4C}" {
+      Offset 0 0.1216 0.1459
+     }
+     Radius 2
+    }
+   }
+   additionalActions {
+    WST_FlipAction "{5D14FB21DC1790F0}" {
+     ParentContextList {
+      "Unflip"
+     }
+     UIInfo UIInfo "{5D14FB21D92618B3}" {
+      Name "Flip"
+     }
+     Duration 2
+    }
+   }
+  }
+ }
+}

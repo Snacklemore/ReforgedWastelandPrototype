@@ -15,8 +15,34 @@ class WST_TransferComponent : ScriptComponent
 		Rpc(RpcDo_HandleCurrencyTransfer,value,walletId);
 			
 	}
+	void MoneyConfigSetDelayed()
+	{
+		Print("WST_TransferComponent::OnInit" );
+		WST_MoneyConfigComponent mcc = WST_MoneyConfigComponent.Cast(GetOwner().FindComponent(WST_MoneyConfigComponent));
+		if (!mcc)
+			return;
+		IEntity ie = GetOwner();
+		InventoryStorageManagerComponent storage = InventoryStorageManagerComponent.Cast(ie.FindComponent(InventoryStorageManagerComponent));
+
+		array<typename> components = {};
+		components.Insert(MoneyComponent);
+		components.Insert(RplComponent);
+		IEntity walletEnity = storage.FindItemWithComponents(components, EStoragePurpose.PURPOSE_DEPOSIT);
+
+		MoneyComponent wallet;
+		if(walletEnity)
+		{
+			wallet = MoneyComponent.Cast(walletEnity.FindComponent(MoneyComponent));
+		}
+		if(!wallet)
+			return;
+		wallet.SetValue(mcc.GetValue());
+	}
+	override event void OnPostInit(IEntity owner)
+	{
+		GetGame().GetCallqueue().CallLater(MoneyConfigSetDelayed,2000,false);
 		
-	
+	}
 	
 	void CreateWallet(int value, RplId playerId)
 	{
