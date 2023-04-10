@@ -1,37 +1,43 @@
+
+class ShopObject
+{
+	ResourceName m_prefabPath;
+	string m_Identifier;
+	string m_Display;
+	int m_Type;
+	int m_price;
+
+
+	void ShopObject(ResourceName path,string Identifier,string Display,int type,int price)
+	{
+		m_prefabPath = path;
+		m_Identifier = Identifier;
+		m_Display = Display;
+		m_price = price;
+		m_Type = type;
+	}
+}
+
+
 class WST_Vehicle
 {
 	//TODO: Rework shops (too much manual typing)
 	
-	
+	//create one object per shop item, feed them parameters, loop through objects
 	/////////////////////////////////////////////////////////////////////////
-	//prefab item paths
-	//ref array<ResourceName> itemPaths = new array<ResourceName>();
-	static ResourceName US_Jeep = "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et";
-	static ResourceName T14Tank = "{48BB423641D40E77}Prefabs/Vehicles/Tracked/T14/Tank_T14.et";
-	static ResourceName K17Berezok = "{31F0866273C46D76}Prefabs/Vehicles/Wheeled/K17/APC_K17_Berezok.et";
 	
+	ref array<ShopObject> shopItems = new array<ShopObject>();
+	
+	ref ShopObject US_JeepO = new ShopObject("{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et","US_Jeep","Jeep",WST_Type.WST_VEHICLE,100);
+	
+	ref ShopObject T14TankO = new ShopObject("{48BB423641D40E77}Prefabs/Vehicles/Tracked/T14/Tank_T14.et","T14Tank","T14 Tank",WST_Type.WST_VEHICLE,100);
+
+	ref ShopObject K17BerezokO = new ShopObject("{31F0866273C46D76}Prefabs/Vehicles/Wheeled/K17/APC_K17_Berezok.et","K17Berezok","K17 Berezok",WST_Type.WST_VEHICLE,100);
+
 	
 
+
 	
-
-
-	//unique itemidentfier
-	//array<string> itemidentfier = new array<ResourceName>();
-	static string US_JeepIdentifier = "US_Jeep";
-	static string T14TankIdentifier = "T14Tank";
-	static string K17BerezokIdentifier = "K17Berezok";
-
-	//display name 	
-	//array<string> displayNames 	 = new array<ResourceName>();
-	static string US_JeepDisplay = "Jeep";
-	static string T14TankDisplay = "T14 Tank";
-	static string K17BerezokDisplay = "K17 Berezok";
-
-	//item price
-//	array<int> itemPrices = new array<ResourceName>();
-	static int US_JeepPrice = 100;
-	static int T14TankPrice = 10000;
-	static int K17BerezokPrice = 10000;
 
 	ref map<string,ResourceName> buildArray = new map<string,ResourceName>();
 	ref array<string> iterationArray = new array<string>();
@@ -39,6 +45,7 @@ class WST_Vehicle
 	ref map<string,int> TypeArray = new map<string,int>();
 	ref map<string,int> PriceArray = new map<string,int>();
 
+	
 	private WST_Vehicle instance;
 	WST_Vehicle GetInstance()
 	{
@@ -58,26 +65,21 @@ class WST_Vehicle
 			return;
 		instance = this;
 		
+		shopItems.Insert(US_JeepO);
+		shopItems.Insert(T14TankO);
+		shopItems.Insert(K17BerezokO);
 		
-		buildArray.Insert(US_JeepIdentifier,US_Jeep);
-		buildArray.Insert(T14TankIdentifier,T14Tank);
-		buildArray.Insert(K17BerezokIdentifier,K17Berezok);
+		
+		foreach(ShopObject o : shopItems)
+		{
+			buildArray.Insert(o.m_Identifier,o.m_prefabPath);
+			iterationArray.Insert(o.m_Identifier);
+			DisplayNameArray.Insert(o.m_Identifier,o.m_Display);
+			TypeArray.Insert(o.m_Identifier,o.m_Type);
+			PriceArray.Insert(o.m_Identifier,o.m_price);
+		}
 
-		iterationArray.Insert(US_JeepIdentifier);
-		iterationArray.Insert(T14TankIdentifier);
-		iterationArray.Insert(K17BerezokIdentifier);
-
-		DisplayNameArray.Insert(US_JeepIdentifier,US_JeepDisplay);
-		DisplayNameArray.Insert(T14TankIdentifier,T14TankDisplay);
-		DisplayNameArray.Insert(K17BerezokIdentifier,K17BerezokDisplay);
-
-		TypeArray.Insert(US_JeepIdentifier,WST_Type.WST_VEHICLE);
-		TypeArray.Insert(T14TankIdentifier,WST_Type.WST_VEHICLE);
-		TypeArray.Insert(K17BerezokIdentifier,WST_Type.WST_VEHICLE);
-
-		PriceArray.Insert(US_JeepIdentifier,50);
-		PriceArray.Insert(T14TankIdentifier,T14TankPrice);
-		PriceArray.Insert(K17BerezokIdentifier,K17BerezokPrice);
+		
 
 		
 	

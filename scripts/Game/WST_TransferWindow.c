@@ -58,91 +58,41 @@ class WST_Weapon
 	//prefab item paths
 	
 	//weapon
-	static ResourceName AK74 = "{5B308198855FBCE5}Prefabs/Weapons/Rifles/AK74/Rifle_AK74Suppressed.et";
-	static ResourceName AK74_GP25 = "{2FA2E44E5B95D044}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25Suppressed.et";
-	static ResourceName M21_ARTII = "{81EB948E6414BD6F}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTII.et";
-	static ResourceName M16A2_M203 = "{7500FA1B52CC247F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203Suppressed.et";
-	//attachements
-	static ResourceName StandardSuppressor = "{7CB432CC4ED704E1}Prefabs/Weapons/Core/Suppressor_Generic_556.et";
-	static ResourceName NT4Suppressor = "{904AF79F5926399A}Prefabs/Weapons/Core/Suppressor_Punky_NT4.et";
-	//Grenades 
-	static ResourceName GP25 = "{262F0D09C4130826}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_VOG25.et";
-	static ResourceName M203 = "{5375FA7CB1F68573}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_M406.et";
-	static ResourceName USFrag = "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et";
-	static ResourceName USSRFrag = "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et";
-	static ResourceName Smoke = "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et";
-	//ammo 
-	static ResourceName AK74Mag = "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et";
-	static ResourceName M9Mag = "{9C05543A503DB80E}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Ball.et";
-	static ResourceName M16Mag = "{A9A385FE1F7BF4BD}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Tracer.et";
-	static ResourceName M14Mag = "{627255315038152A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_SpecialBall.et";
+	ref array<ShopObject> shopItems = new array<ShopObject>();
 	
-	//unique itemidentfier
-	static string AK74identifier = "WeaponAK74";
-	static string AK74_GP25identifier = "WeaponAKGP25";
-	static string M21_ARTIIidentifier = "WeaponM21ARTII";
-	static string M16A2_M203identifier = "WeaponM16A2M203";
-	static string StandardSuppressorIdentifier ="StandardSuppressor";
-	static string NT4_SuppressorIdentifier = "NT4Suppressor";
 	
-	//ammo
-	static string AK74MagIdentifier ="AK74Mag";
-	static string M9MagIdentifier ="M9Mag";
-	static string M16MagIdentifier ="M16Mag";
-	static string M14MagIdentifier="M14Mag";
-	//Grenades 
-	static string GP25Identifier ="GP25";
-	static string M203Identifier ="M203";
-	static string USFragIdentifier ="USFrag";
-	static string USSRFragIdentifier="USSRFrag";
-	static string SmokeIdentifier="Smoke";
+	ref ShopObject AN94O = new ShopObject("{AF2B2A5270708E19}Prefabs/Weapons/Rifles/AN94/Rifle_AN94_1P63.et","WeaponAN94","AN 74 with 1P63",WST_Type.WST_WEAPON,300);
 
+	ref ShopObject AK74O = new ShopObject("{5B308198855FBCE5}Prefabs/Weapons/Rifles/AK74/Rifle_AK74Suppressed.et","WeaponAK74","AK 74",WST_Type.WST_WEAPON,200);
 	
+	ref ShopObject AK74GPO = new ShopObject("{2FA2E44E5B95D044}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25Suppressed.et","WeaponAKGP25","AK GP25",WST_Type.WST_WEAPON,300);
 	
+	ref ShopObject Rifle_M21_ARTIIO = new ShopObject("{81EB948E6414BD6F}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTII.et","WeaponM21ARTII","M21 ARTII Optic",WST_Type.WST_WEAPON,650);
 	
+	ref ShopObject M16O = new ShopObject("{7500FA1B52CC247F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203Suppressed.et","WeaponM16A2M203","M16A2 M203UBGL",WST_Type.WST_WEAPON,350);
 	
-	//display name 
-	static string AK74Display = "AK 74";
-	static string AK74_GP25Display = "AK GP25";
-	static string M21_ARTIIDisplay = "M21 ARTII Optic";
-	static string M16A2_M203Display = "M16A2 M203UBGL";
-	static string StandardSuppressorDisplay = "Standard Suppressor";
-	static string NT4SuppressorDisplay = "NT4 Suppressor";
-	//ammo
-	static string AK74MagDisplay= "AK 74 Magazine";
-	static string M9MagDisplay= "M9 Pistol Magazine";
-	static string M16MagDisplay= "M16 Magazine";
-	static string M14MagDisplay	= "M14 Magazine";
-	//Grenades 
+	ref ShopObject StandardSuppressorO = new ShopObject("{7CB432CC4ED704E1}Prefabs/Weapons/Core/Suppressor_Generic_556.et","StandardSuppressor","Standard Suppressor",WST_Type.WST_ATTACHMENT,100);
 	
-	static string GP25Display="AKGP VOG25";
-	static string M203Display="M203 HE (for M16GL)";
-	static string USFragDisplay="US Grenade";
-	static string USSRFragDisplay="RGD Grenade";
-	static string SmokeDisplay="Smoke";
-
+	ref ShopObject NT4SuppressorO = new ShopObject("{904AF79F5926399A}Prefabs/Weapons/Core/Suppressor_Punky_NT4.et","NT4Suppressor","NT4 Suppressor",WST_Type.WST_ATTACHMENT,100);
 	
+	ref ShopObject GP25O = new ShopObject("{262F0D09C4130826}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_VOG25.et","GP25","AKGP VOG25",WST_Type.WST_GRENADES,50);
 	
+	ref ShopObject M203O = new ShopObject("{5375FA7CB1F68573}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_M406.et","M203","M203 HE (for M16GL)",WST_Type.WST_GRENADES,50);
 	
+	ref ShopObject USFragO = new ShopObject("{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et","USFrag","US Grenade",WST_Type.WST_GRENADES,25);
 	
+	ref ShopObject USSRFragO = new ShopObject("{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et","USSRFrag","RGD Grenade",WST_Type.WST_GRENADES,25);
 	
-	//item price
-	static int AK74Price = 50;
-	static int AK74_GP25Price = 100;
-	static int M21_ARTIIPrice = 100;
-	static int M16A2_M203Price = 50;
-	static int StandardSuppressorPrice = 200;
-	static int NT4SuppressorPrice = 200;
-	static int AK74MagPrice= 20;
-	static int M9MagPrice= 20;
-	static int M16MagPrice= 20;
-	static int M14MagPrice= 20;
-		//Grenades 
-	static int GP25Price= 20;
-	static int M203Price= 20;
-	static int  USFragPrice= 20;
-	static int USSRFragPrice= 20;
-	static int SmokePrice= 20;
+	ref ShopObject SmokeO = new ShopObject("{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et","Smoke","Smoke",WST_Type.WST_GRENADES,25);
+	
+	ref ShopObject AK74MagO = new ShopObject("{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et","AK74Mag","AK 74 Magazine",WST_Type.WST_AMMO,10);
+	
+	ref ShopObject M9MagO = new ShopObject("{9C05543A503DB80E}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Ball.et","M9Mag","M9 Pistol Magazine",WST_Type.WST_AMMO,10);
+	
+	ref ShopObject M16MagO = new ShopObject("{A9A385FE1F7BF4BD}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Tracer.et","M16Mag","M16 Magazine",WST_Type.WST_AMMO,10);
+	
+	ref ShopObject M14MagO = new ShopObject("{627255315038152A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_SpecialBall.et","M14Mag","M14 Magazine",WST_Type.WST_AMMO,100);
+	
 	
 	ref map<string,ResourceName> buildArray = new map<string,ResourceName>();
 	ref array<string> iterationArray = new array<string>();
@@ -169,115 +119,37 @@ class WST_Weapon
 			return;
 		instance = this;
 		//
+		shopItems.Insert(AK74O);
+		shopItems.Insert(AK74GPO);
+		shopItems.Insert(Rifle_M21_ARTIIO);
+		shopItems.Insert(M16O);
+		shopItems.Insert(StandardSuppressorO);
+		
+		shopItems.Insert(NT4SuppressorO);
+		shopItems.Insert(GP25O);
+		shopItems.Insert(M203O);
+		shopItems.Insert(USFragO);
+		shopItems.Insert(USSRFragO);
+		
+		shopItems.Insert(SmokeO);
+		shopItems.Insert(AK74MagO);
+		shopItems.Insert(M9MagO);
+		shopItems.Insert(M16MagO);
+		shopItems.Insert(M14MagO);
+		shopItems.Insert(AN94O);
+		
+		foreach(ShopObject o:shopItems)
+		{
+			buildArray.Insert(o.m_Identifier,o.m_prefabPath);
+			iterationArray.Insert(o.m_Identifier);
+			DisplayNameArray.Insert(o.m_Identifier,o.m_Display);
+			TypeArray.Insert(o.m_Identifier,o.m_Type);
+			PriceArray.Insert(o.m_Identifier,o.m_price);
+		
+		}
 		
 		
-		buildArray.Insert(AK74identifier,AK74);
-		buildArray.Insert(AK74_GP25identifier,AK74_GP25);
-		buildArray.Insert(M21_ARTIIidentifier,M21_ARTII);
-		buildArray.Insert(M16A2_M203identifier,M16A2_M203);
-		buildArray.Insert(StandardSuppressorIdentifier,StandardSuppressor);
-		buildArray.Insert(NT4_SuppressorIdentifier,NT4Suppressor);
-		//Ammo
 		
-		buildArray.Insert(AK74MagIdentifier,AK74Mag);
-		buildArray.Insert(M9MagIdentifier,M9Mag);
-		buildArray.Insert(M16MagIdentifier,M16Mag);
-		buildArray.Insert(M14MagIdentifier,M14Mag);
-		
-		
-			//Grenades 
-		buildArray.Insert(GP25Identifier,GP25);
-		buildArray.Insert(M203Identifier,M203);
-		buildArray.Insert(USFragIdentifier,USFrag);
-		buildArray.Insert(USSRFragIdentifier,USSRFrag);
-		buildArray.Insert(SmokeIdentifier,Smoke);
-		
-		
-
-
-		iterationArray.Insert(AK74identifier);
-		iterationArray.Insert(AK74_GP25identifier);
-		iterationArray.Insert(M21_ARTIIidentifier);
-		iterationArray.Insert(M16A2_M203identifier);
-		iterationArray.Insert(StandardSuppressorIdentifier);
-		iterationArray.Insert(NT4_SuppressorIdentifier);
-		
-		//Ammo
-		iterationArray.Insert(AK74MagIdentifier);
-		iterationArray.Insert(M9MagIdentifier);
-		iterationArray.Insert(M16MagIdentifier);
-		iterationArray.Insert(M14MagIdentifier);
-		
-		//Grenades 
-		iterationArray.Insert(GP25Identifier);
-		iterationArray.Insert(M203Identifier);
-		iterationArray.Insert(USFragIdentifier);
-		iterationArray.Insert(USSRFragIdentifier);
-		iterationArray.Insert(SmokeIdentifier);
-
-		DisplayNameArray.Insert(AK74identifier,AK74Display);
-		DisplayNameArray.Insert(AK74_GP25identifier,AK74_GP25Display);
-		DisplayNameArray.Insert(M21_ARTIIidentifier,M21_ARTIIDisplay);
-		DisplayNameArray.Insert(M16A2_M203identifier,M16A2_M203Display);
-		DisplayNameArray.Insert(StandardSuppressorIdentifier,StandardSuppressorDisplay);
-		DisplayNameArray.Insert(NT4_SuppressorIdentifier,NT4SuppressorDisplay);
-		
-		//Ammo
-		DisplayNameArray.Insert(AK74MagIdentifier,AK74MagDisplay);
-		DisplayNameArray.Insert(M9MagIdentifier,M9MagDisplay);
-		DisplayNameArray.Insert(M16MagIdentifier,M16MagDisplay);
-		DisplayNameArray.Insert(M14MagIdentifier,M14MagDisplay);
-			//Grenades 
-
-		DisplayNameArray.Insert(GP25Identifier,GP25Display);
-		DisplayNameArray.Insert(M203Identifier,M203Display);
-		DisplayNameArray.Insert(USFragIdentifier,USFragDisplay);
-		DisplayNameArray.Insert(USSRFragIdentifier,USSRFragDisplay);
-		DisplayNameArray.Insert(SmokeIdentifier,SmokeDisplay);
-
-		
-		
-		TypeArray.Insert(AK74identifier,WST_Type.WST_WEAPON);
-		TypeArray.Insert(AK74_GP25identifier,WST_Type.WST_WEAPON);
-		TypeArray.Insert(M21_ARTIIidentifier,WST_Type.WST_WEAPON);
-		TypeArray.Insert(M16A2_M203identifier,WST_Type.WST_WEAPON);
-		TypeArray.Insert(StandardSuppressorIdentifier,WST_Type.WST_ATTACHMENT);
-		TypeArray.Insert(NT4_SuppressorIdentifier,WST_Type.WST_ATTACHMENT);
-		
-		//Ammo
-		TypeArray.Insert(AK74MagIdentifier,WST_Type.WST_AMMO);
-		TypeArray.Insert(M9MagIdentifier,WST_Type.WST_AMMO);
-		TypeArray.Insert(M16MagIdentifier,WST_Type.WST_AMMO);
-		TypeArray.Insert(M14MagIdentifier,WST_Type.WST_AMMO);
-			//Grenades 
-		TypeArray.Insert(GP25Identifier,WST_Type.WST_GRENADES);
-		TypeArray.Insert(M203Identifier,WST_Type.WST_GRENADES);
-		TypeArray.Insert(USFragIdentifier,WST_Type.WST_GRENADES);
-		TypeArray.Insert(USSRFragIdentifier,WST_Type.WST_GRENADES);
-		TypeArray.Insert(SmokeIdentifier,WST_Type.WST_GRENADES);
-
-		
-		
-		PriceArray.Insert(AK74identifier,50);
-		PriceArray.Insert(AK74_GP25identifier,200);
-		PriceArray.Insert(M21_ARTIIidentifier,1000);
-		PriceArray.Insert(M16A2_M203identifier,300);
-		PriceArray.Insert(StandardSuppressorIdentifier,50);
-		PriceArray.Insert(NT4_SuppressorIdentifier,50);
-		//Ammo
-		
-		PriceArray.Insert(AK74MagIdentifier,AK74MagPrice);
-		PriceArray.Insert(M9MagIdentifier,AK74MagPrice);
-		PriceArray.Insert(M16MagIdentifier,AK74MagPrice);
-		PriceArray.Insert(M14MagIdentifier,AK74MagPrice);
-	
-			//Grenades 
-		PriceArray.Insert(GP25Identifier,AK74MagPrice);
-		PriceArray.Insert(M203Identifier,AK74MagPrice);
-		PriceArray.Insert(USFragIdentifier,AK74MagPrice);
-		PriceArray.Insert(USSRFragIdentifier,AK74MagPrice);
-		PriceArray.Insert(SmokeIdentifier,AK74MagPrice);
-
 	}
 	
 }
