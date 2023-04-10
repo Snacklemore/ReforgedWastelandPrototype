@@ -25,10 +25,34 @@ class SCR_MoneyManager: GenericEntity
 		SCR_BaseGameModeWasteland mode = SCR_BaseGameModeWasteland.Cast(GetGame().GetGameMode());
 		Print("SCR_MoneyManager::OnInit::RegisterManager");
 		mode.SetMoneyManager(this);
-		
+		GetGame().GetCallqueue().CallLater(Cleanup,20000,true);
 		
 	}
-	
+	void Cleanup()
+	{
+		if(!m_rpl.IsMaster())
+			return;
+		int counter = 0;
+		int removedNullpointer = 0;
+		Print("SCR_MoneyManager::Cleanup Called!");
+
+		foreach (GenericEntity ent : wallets)
+		{
+			if(ent)
+				continue;
+			if(!ent)
+			{
+				wallets.Remove(counter);
+				removedNullpointer++;
+				
+			}
+			
+			
+			counter++;
+		}
+		Print("SCR_MoneyManager::Cleanup finished, removed nullptrs: "+  removedNullpointer);
+
+	}
 	void Unregister(MoneyComponent comp)
 	{
 		if(!m_rpl.IsMaster())
@@ -38,6 +62,8 @@ class SCR_MoneyManager: GenericEntity
 
 		foreach (GenericEntity ent : wallets)
 		{
+			if(!ent)
+				return;
 			MoneyComponent moneyComp = ent.FindComponent(MoneyComponent);
 			if (!moneyComp)
 				continue;			
