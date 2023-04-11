@@ -20,7 +20,7 @@ GenericEntity : "{7CEEC3FF35A201A2}Prefabs/Items/Core/Compass_Base.et" {
     ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
      Weight 0
      SizeSetupStrategy Manual
-     ItemDimensions 5 5 5
+     ItemDimensions 1 1 1
      ItemVolume 0
     }
     ItemAnimationAttributes ItemAnimationAttributes "{5CE739CF94792A52}" {
@@ -31,18 +31,20 @@ GenericEntity : "{7CEEC3FF35A201A2}Prefabs/Items/Core/Compass_Base.et" {
       CameraOrbitAngles -60 -40 0
       CameraDistanceToItem 0.35
       CameraOffset -0.005 -0.005 0
-      FOV 10
+      FOV 45
+      PreviewPrefab "{4C49E245EE77222C}PrefabsEditable/Auto/Props/Military/Manuals/E_Manual_Soviet_01.et"
      }
      CharacterModifierAttributes "{52A87A37FE262120}" {
       TurnLimit 90
+      CanBeEquippedInVehicle 0
      }
     }
     CommonItemType "NONE"
-    m_SlotType SLOT_VEST
+    m_SlotType SLOT_BACKPACK
    }
   }
   MeshObject "{5CE739CF94792A79}" {
-   Object "{1094AFEF74D8E3E9}Assets/Items/Equipment/Compass/Compass_Adrianov/Compass_Adrianov.xob"
+   Object "{7911F0FC89C55C52}Assets/Props/Military/Manuals/Manual_Soviet_01/Manual_Soviet_01.xob"
   }
   MoneyComponent "{5CF4CAAC6F374EB0}" {
   }
@@ -54,6 +56,16 @@ GenericEntity : "{7CEEC3FF35A201A2}Prefabs/Items/Core/Compass_Base.et" {
    CCDRadius 0.007
   }
   ActionsManagerComponent "{508AB5952B584B2E}" {
+   ActionContexts {
+    UserActionContext "{508AC2ABEC97066C}" {
+     UIInfo UIInfo "{5D157747220D9F46}" {
+      Name "PickupDefault"
+     }
+     Position PointInfo "{508AC2ABEAC4A0F5}" {
+      Offset -0.0625 0.025 -0.0941
+     }
+    }
+   }
    additionalActions {
     SCR_EquipGadgetAction "{5250DDF0D1B25E2B}" {
      ParentContextList {
