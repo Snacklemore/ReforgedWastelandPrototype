@@ -1,0 +1,27 @@
+GenericEntity : "{C95E11C60810F432}Prefabs/Items/Core/Item_Base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  SoundComponent "{5A7C70054E8FBE18}" {
+   Filenames {
+    "{02B22546DD1483B8}Sounds/Items/_SharedData/PickUp/Items_PickUp_FieldDressing_US.acp" "{CC0E5A1324E761C1}Sounds/Items/_SharedData/Drop/Items_Drop_Generic.acp"
+   }
+  }
+  MeshObject "{5D157717B550A3DD}" {
+   Object "{250B64167B3A6475}Assets/Items/Food/MRE_01.xob"
+  }
+  RigidBody "{5D157717B550A3D6}" {
+   Mass 2
+   CenterOfMass 0 0.02 0
+   LinearDamping 0.5
+   AngularDamping 0.5
+   AngularSleepingThreashold 1
+   ModelGeometry 1
+   CCDRadius 0.02
+  }
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   additionalActions {
+   }
+  }
+ }
+ coords -2.9 0 6.3
+}

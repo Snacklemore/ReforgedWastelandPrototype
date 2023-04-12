@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{874721D8A9049BAD}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01Mod.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

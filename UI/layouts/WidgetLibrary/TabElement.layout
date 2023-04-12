@@ -1,0 +1,28 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  OverlayWidgetClass "{5D1778C4ACD3105C}" {
+   Name "Overlay0"
+   Slot FrameWidgetSlot "{5D1778C4ACD3107E}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 640
+    OffsetRight -640
+    SizeY 328
+    OffsetBottom -328
+   }
+   {
+    OverlayWidgetClass "{5D1778C4ABF224B6}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "ListBox0"
+     Slot OverlayWidgetSlot "{5D1778C4ABF224D3}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 20 20 0 0
+     }
+    }
+   }
+  }
+ }
+}

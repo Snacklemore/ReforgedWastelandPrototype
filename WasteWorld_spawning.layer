@@ -265,6 +265,17 @@ $grp StaticModelEntity : "{5019513019F0885A}Prefabs/Props/Military/Furniture/Tab
   angleY -83.575
  }
 }
+GenericEntity : "{58353A3B8102A8E6}Prefabs/Props/Commercial/CashierShopHidden_Waste.et" {
+ components {
+  SCR_MapDescriptorComponent "{5D1913B264FB131E}" {
+   DisplayName "Black Market Trader"
+   MainType "Name City"
+   Scale 2
+  }
+ }
+ coords 10081.636 3.874 1580.081
+ angleY 80.001
+}
 $grp GenericEntity : "{627F955923426D32}Prefabs/Props/Commercial/CashierShop_Waste.et" {
  {
   coords 4881.031 29.544 11865.994
@@ -285,6 +296,10 @@ $grp GenericEntity : "{627F955923426D32}Prefabs/Props/Commercial/CashierShop_Was
   coords 7461.672 165.468 4311.845
   angleY -95.886
  }
+}
+GenericEntity : "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et" {
+ coords 10081.711 2.97 1579.99
+ angleY -75.918
 }
 $grp StaticModelEntity : "{764414C0E2EF983E}Prefabs/Props/Military/Furniture/TableMilitary_USSR_02.et" {
  {
@@ -407,6 +422,10 @@ $grp SCR_ChimeraCharacter : "{CD3A78C25640F588}Prefabs/Characters/Campaign/Final
   coords 7460.488 164.562 4315.786
   angleY 85.716
  }
+ {
+  coords 10082.911 3.243 1579.967
+  angleY -76.852
+ }
 }
 GenericEntity : "{DA03CE13AA6E4C6C}Prefabs/Props/Commercial/Posters/PosterSet_01_base.et" {
  coords 4872.289 29.65 11847.528
@@ -444,6 +463,14 @@ $grp GenericEntity : "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et
   }
   coords 4881.427 29.498 11860.835
  }
+ {
+  components {
+   MoneyComponent "{5CF4CAAC6F374EB0}" {
+    initalValue 1337
+   }
+  }
+  coords 10081.342 3.205 1578.016
+ }
 }
 GenericEntity : "{F737777FF0A566D5}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_Base.et" {
  coords 4882.442 28.595 11869.483
@@ -463,6 +490,14 @@ $grp SCR_SpawnPoint : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.e
   m_sFaction "B"
   m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
    Name "B Main Spawn"
+  }
+ }
+ MainSpawnA2 {
+  coords 10080.474 2.959 1579.647
+  m_fSpawnRadius 1.2
+  m_sFaction "A"
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "A Main Spawn"
   }
  }
 }

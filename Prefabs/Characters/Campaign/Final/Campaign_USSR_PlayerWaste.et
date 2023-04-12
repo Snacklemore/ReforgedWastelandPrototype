@@ -40,6 +40,11 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
     }
    }
   }
+  BaseWeaponManagerComponent "{520EA1D2F659CE5D}" {
+   DefaultWeaponIndex 2
+  }
+  EquipedWeaponStorageComponent "{520EA1D2DB118C70}" {
+  }
   FactionAffiliationComponent "{520EC9618276DF23}" {
    "faction affiliation" ""
   }
@@ -49,6 +54,11 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
    m_PreviewEntityPrefab "{4FF075A21D258ABE}Prefabs/MP/Campaign/BuildPreview.et"
    m_PreviewMaterial "{58F07022C12D0CF5}Assets/Editor/PlacingPreview/Preview.emat"
    m_BuildingEntityPrefab "{15BEE7092B88B67D}Prefabs/MP/Campaign/BuildEntity.et"
+  }
+  SCR_CharacterStaminaComponent "{520EA1D2F659C824}" {
+   StaminaRegainPerS 0.2
+   StaminaDrainRun -0.0001
+   StaminaDrainSprint -0.0002
   }
   SCR_GadgetManagerComponent "{520EA1D2DB118DF3}" {
   }

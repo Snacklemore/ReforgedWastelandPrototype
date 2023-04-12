@@ -1,9 +1,67 @@
 
+///////////////////////////////////////////////////////////////////////------------------PreviewSetup
+class WST_EquipmentD
+{
+	//"suppressed" variants are capable of fitting a suppressor and not actually suppressed
+	
+	/////////////////////////////////////////////////////////////////////////
+	//prefab item paths
+	
+	//weapon
+	ref array<ShopObject> shopItems = new array<ShopObject>();
+	
+	
+	ref ShopObject AN94O = new ShopObject("{AF2B2A5270708E19}Prefabs/Weapons/Rifles/AN94/Rifle_AN94_1P63.et","WeaponAN94","AN 74 with 1P63",WST_Type.WST_WEAPON,300);
 
+
+	
+	ref map<string,ResourceName> buildArray = new map<string,ResourceName>();
+	ref array<string> iterationArray = new array<string>();
+	ref map<string,string> DisplayNameArray = new map<string,string>();
+	ref map<string,int> TypeArray = new map<string,int>();
+	ref map<string,int> PriceArray = new map<string,int>();
+
+	private WST_Weapon instance;
+	WST_Weapon GetInstance()
+	{
+		if(instance)
+			return instance;
+		else
+			return new WST_Weapon();
+	}
+	
+	int GetPriceByKey(string identifier)
+	{
+		return PriceArray.Get(identifier);
+	}
+	void WST_Weapon()
+	{
+		if (instance)
+			return;
+		instance = this;
+		//
+		shopItems.Insert(AK74O);
+		
+		
+		foreach(ShopObject o:shopItems)
+		{
+			buildArray.Insert(o.m_Identifier,o.m_prefabPath);
+			iterationArray.Insert(o.m_Identifier);
+			DisplayNameArray.Insert(o.m_Identifier,o.m_Display);
+			TypeArray.Insert(o.m_Identifier,o.m_Type);
+			PriceArray.Insert(o.m_Identifier,o.m_price);
+		
+		}
+		
+		
+		
+	}
+	
+}
 
 
 //TODO:add proper hints
-class WST_TransferWindowUI : MenuBase
+class WST_ShopTemplate : MenuBase
 {
 	protected static const string TEXT_TITLE = "TextTitle";
 	protected static const string BUTTON_CLOSE = "ButtonClose";
@@ -168,7 +226,7 @@ class WST_TransferWindowUI : MenuBase
 	protected override void OnMenuOpen()
 	{
 		Print("OnMenuOpen: menu/dialog opened!", LogLevel.NORMAL);
-		w = new WST_Weapon();
+		w = new WST_Equipment();
 		setupDataObjects();
 		Widget rootWidget = GetRootWidget();
 		if (!rootWidget)
@@ -177,92 +235,17 @@ class WST_TransferWindowUI : MenuBase
 			return;
 		}
 
-		/*
-			Close button
-		*/
 
 
-		TextWidget textTitle = TextWidget.Cast(rootWidget.FindWidget(TEXT_TITLE));
 
 		Widget panelRoot = rootWidget.FindWidget("Panel0");
-		TextWidget textTitleAttachments = TextWidget.Cast(panelRoot.FindWidget("TextAttachments"));
-		TextWidget textTitleWeapons = TextWidget.Cast(panelRoot.FindWidget("TextWeapons"));
-		textTitleAttachments.SetText("Attachments");
-		textTitleWeapons.SetText("Weapons");
-
-
-		if (!textTitle)
-		{
-			Print("Title as TextWidget could not be found", LogLevel.WARNING);
-			return;
-		}
-		textTitle.SetText("Trade");
-
-
 		ItemPreviewWidget preview = panelRoot.FindWidget("WeaponPreview");
 
-
-		SCR_ListBoxComponent m_ListBoxComponent;
-		OverlayWidget m_ListBoxOverlay;
-
-		SCR_ListBoxComponent m_ListBoxComponent1;
-		OverlayWidget m_ListBoxOverlay1;
-
-		
-		SCR_ListBoxComponent m_ListBoxComponent2;
-		OverlayWidget m_ListBoxOverlay2;
-
-		SCR_ListBoxComponent m_ListBoxComponent3;
-		OverlayWidget m_ListBoxOverlay3;
 		
 		
-		m_ListBoxOverlay3 =  OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBoxGrenades"));
-		m_ListBoxComponent3 = SCR_ListBoxComponent.Cast(m_ListBoxOverlay3.FindHandler(SCR_ListBoxComponent));
-        if (m_ListBoxComponent3)
-        {
-			
-			foreach (ManagedDataObject o : dataObjects)
-			{
-				if (o.GetType() == WST_Type.WST_GRENADES)
-				{
-					string price = o.GetData();
-					int i_price = w.GetPriceByKey(price);
-					price = i_price.ToString();
-					m_ListBoxComponent3.AddItem(o.GetDisplayText() +"  $$: "+price ,o);
-				}
-				
-			}
-           
-
-
-
-        }
-		
-		m_ListBoxOverlay2 =  OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBoxAmmo"));
-		 m_ListBoxComponent2 = SCR_ListBoxComponent.Cast(m_ListBoxOverlay2.FindHandler(SCR_ListBoxComponent));
-        if (m_ListBoxComponent2)
-        {
-			
-			foreach (ManagedDataObject o : dataObjects)
-			{
-				if (o.GetType() == WST_Type.WST_AMMO)
-				{
-					string price = o.GetData();
-					int i_price = w.GetPriceByKey(price);
-					price = i_price.ToString();
-					m_ListBoxComponent2.AddItem(o.GetDisplayText() +"  $$: "+price ,o);
-				}
-				
-			}
-           
-
-
-
-        }
-
 
 		m_ListBoxOverlay =  OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBoxWeapons"));
-		 m_ListBoxComponent = SCR_ListBoxComponent.Cast(m_ListBoxOverlay.FindHandler(SCR_ListBoxComponent));
+		m_ListBoxComponent = SCR_ListBoxComponent.Cast(m_ListBoxOverlay.FindHandler(SCR_ListBoxComponent));
         if (m_ListBoxComponent)
         {
 			

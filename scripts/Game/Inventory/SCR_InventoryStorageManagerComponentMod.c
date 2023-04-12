@@ -9,10 +9,10 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 	override protected void OnItemAdded(BaseInventoryStorageComponent storageOwner, IEntity item)
 	{		
 		//super.OnItemAdded(storageOwner, item);
-		
 		auto consumable = SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent));
+		
 		auto moneyComp = MoneyComponent.Cast(item.FindComponent(MoneyComponent));
-		bool flaggedForDeletion = false;
+		
 			//1. check for existing wallet
 			//2. get value of existing Wallet 
 			//3. get value of added wallet 
@@ -30,7 +30,7 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 				int val = moneyComp.GetValue();
 				Print("SCR_InventoryStorageManagerComponentMod::OnItemAdded::adding wallet value " + val);
 
-				flaggedForDeletion = true;
+				
 				//add both wallet values 
 				int sum = val + m_MoneyComponent.GetValue();
 				Print("SCR_InventoryStorageManagerComponentMod::OnItemAdded::cmputed wallet sum " + sum);
@@ -63,7 +63,7 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 			m_iHealthEquipment++;	//store count of the health components
 				
 		//dont invoke if deleted
-		if ( m_OnItemAddedInvoker && !flaggedForDeletion )
+		if ( m_OnItemAddedInvoker )
 			m_OnItemAddedInvoker.Invoke( item, storageOwner );
 		
 		
@@ -74,6 +74,7 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 			if (item.FindComponent(InventoryItemComponent))
 				garbageManager.Withdraw(item);
 		}
+		
 	}
 	
 	// Callback when item is removed (will be performed locally after server completed the Remove/Move operation)

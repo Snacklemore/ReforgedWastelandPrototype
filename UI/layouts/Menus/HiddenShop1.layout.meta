@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{BE0E6F59F8002B19}UI/layouts/Menus/HiddenShop1.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}
