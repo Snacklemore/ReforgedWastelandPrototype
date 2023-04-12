@@ -9,7 +9,6 @@ SCR_BaseGameModeWasteland SCR_BaseGameModeWasteland2 : "{805A3F581EA80E37}SCR_Ba
   SCR_RespawnBriefingComponent "{5CD343494C13DDE2}" {
   }
   SCR_RespawnMenuHandlerComponent "{5CD3434952CB5AA3}" {
-   m_bAllowFactionChange 0
    m_bAllowLoadoutSelection 0
   }
   SCR_RespawnSystemComponent "{5CD343493A9C7BF2}" {

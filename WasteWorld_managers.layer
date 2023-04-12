@@ -33,6 +33,7 @@ SCR_FactionManager FactionManager_Base1 : "{A242612865F2A48E}Prefabs/MP/Managers
    }
   }
  }
+ m_bCanChangeFactionsPlayable 0
 }
 RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
  coords -3.207 -4.41 -3.544
