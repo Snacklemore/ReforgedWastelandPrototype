@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{58353A3B8102A8E6}Prefabs/Props/Commercial/CashierShopHidden_Waste.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

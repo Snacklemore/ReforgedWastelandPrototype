@@ -1,0 +1,50 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{CD7B21DA4D8AE5FB}Assets/Props/Commercial/CashierShop_01/CashierShop_01.xob"
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   ResponseIndex "LargeDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
+   m_fBaseHealth 500
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{5D1577AB5DFABF0B}" {
+     m_fPhaseHealth 1000
+     m_PhaseModel "{2E11F7FDBC56CFAF}Assets/Props/Commercial/CashierShop_01/Dst/ShopCashier_01_dst_01.xob"
+    }
+   }
+   m_eMaterialSoundType METAL_LIGHT
+  }
+  ActionsManagerComponent "{5D1577AB5DFABF0D}" {
+   ActionContexts {
+    UserActionContext "{5D1577AB7FF4351D}" {
+     UIInfo UIInfo "{5D1577AA83DA3D5B}" {
+      Name "HiddenShop"
+     }
+     ContextName "HiddenShop"
+     Position PointInfo "{5D1577AA818ECC38}" {
+      Offset -0.0076 0.4611 -0.1611
+     }
+    }
+   }
+   additionalActions {
+    WST_HiddenShopAction "{5D1764FF75A3D300}" {
+     ParentContextList {
+      "HiddenShop"
+     }
+     UIInfo UIInfo "{5D1764FF7E09D2BC}" {
+      Name "Shop"
+     }
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+  }
+ }
+ coords 0 0 0
+}

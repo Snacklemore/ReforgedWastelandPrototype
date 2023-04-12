@@ -1,6 +1,6 @@
 
 ///////////////////////////////////////////////////////////////////////------------------PreviewSetup
-class WST_EquipmentD
+class WST_Equipment
 {
 	//"suppressed" variants are capable of fitting a suppressor and not actually suppressed
 	
@@ -10,8 +10,18 @@ class WST_EquipmentD
 	//weapon
 	ref array<ShopObject> shopItems = new array<ShopObject>();
 	
+	ref ShopObject LSzH = new ShopObject("{AC1C630517753E2B}Prefabs/Characters/HeadGear/Helmet_LShZ/Helmet_LShZ_6m2_black.et","LSzH","LSzH Black",WST_Type.WST_HELMET,300);
+	ref ShopObject LSzH3M = new ShopObject("{D585D22578362515}Prefabs/Characters/HeadGear/Helmet_LShZ/Helmet_LShZ_HC_3M_black.et","LSzH3M","LSzH Black HC 3M",WST_Type.WST_HELMET,300);
 	
-	ref ShopObject AN94O = new ShopObject("{AF2B2A5270708E19}Prefabs/Weapons/Rifles/AN94/Rifle_AN94_1P63.et","WeaponAN94","AN 74 with 1P63",WST_Type.WST_WEAPON,300);
+	ref ShopObject RatnikOffcVest = new ShopObject("{915E9D97CFAB02D6}Prefabs/Characters/Vests/Vest_Ratnik_6B45/Variants/Vest_Ratnik_6B45_officer.et","RatnikOfficerVest","Ratnic Vest Offc.",WST_Type.WST_VEST,300);
+	ref ShopObject Ratnik6b45Vest = new ShopObject("{B9821AF2F5D104E4}Prefabs/Characters/Vests/Vest_Ratnik_6B45/Variants/Vest_Ratnik_6B45.et","Ratnik6b45","Ratnik 6b45",WST_Type.WST_VEST,300);
+
+	ref ShopObject FrogCombatShirt = new ShopObject("{1CF302A33F29FBEF}Prefabs/Characters/Uniforms/Jacket_FROG_Combat_Shirt.et","FrogC","Frog Combat Shirt",WST_Type.WST_JACKET,300);
+	ref ShopObject M88VSR = new ShopObject("{D7402E3D0399FF54}Prefabs/Characters/Uniforms/Jacket_M88_VSR.et","M88VSR","M88 Jacker VSR",WST_Type.WST_JACKET,300);
+	
+	ref ShopObject Suharka = new ShopObject("{CAEDE923EF4071AE}Prefabs/Items/Equipment/Backpacks/Backpack_Suharka_type1.et","Suharka","Suharka Backpack",WST_Type.WST_BACKPACK,300);
+
+	ref ShopObject Pants = new ShopObject("{738798231DAF3078}Prefabs/Characters/Uniforms/Pants_6b51_VKPO.et","6b51Pants","6b51 Pants",WST_Type.WST_PANTS,300);
 
 
 	
@@ -21,27 +31,45 @@ class WST_EquipmentD
 	ref map<string,int> TypeArray = new map<string,int>();
 	ref map<string,int> PriceArray = new map<string,int>();
 
-	private WST_Weapon instance;
-	WST_Weapon GetInstance()
+	private WST_Equipment instance;
+	WST_Equipment GetInstance()
 	{
 		if(instance)
 			return instance;
 		else
-			return new WST_Weapon();
+			return new WST_Equipment();
 	}
 	
 	int GetPriceByKey(string identifier)
 	{
 		return PriceArray.Get(identifier);
 	}
-	void WST_Weapon()
+	void WST_Equipment()
 	{
 		if (instance)
 			return;
 		instance = this;
 		//
-		shopItems.Insert(AK74O);
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//shopItems.Insert(AK74O);
+		shopItems.Insert(LSzH);
+		shopItems.Insert(LSzH3M);
+		shopItems.Insert(RatnikOffcVest);		
+		shopItems.Insert(Ratnik6b45Vest);
+		shopItems.Insert(FrogCombatShirt);
+		shopItems.Insert(Suharka);	
+		shopItems.Insert(Pants);
+		
+	
 		
 		foreach(ShopObject o:shopItems)
 		{
@@ -61,15 +89,15 @@ class WST_EquipmentD
 
 
 //TODO:add proper hints
-class WST_ShopTemplate : MenuBase
+class WST_HiddenTrader : MenuBase
 {
 	protected static const string TEXT_TITLE = "TextTitle";
-	protected static const string BUTTON_CLOSE = "ButtonClose";
-	protected static const string BUTTON_BUY = "ButtonBuy";
+	protected static const string BUTTON_CLOSE = "QuitButton";
+	protected static const string BUTTON_BUY = "BuyButton";
 	SCR_TabViewComponent m_TabView;
 	BlurWidget wBlur ;
 	bool firstSelection = true;
-	ref WST_Weapon w;
+	ref WST_Equipment e;
 
 	ResourceName spawnEntity;
 	WST_TraderComponent TrdComp;
@@ -117,14 +145,14 @@ class WST_ShopTemplate : MenuBase
 		
 		//iterate through iterationArray for keys for data map
 		
-		for (int i = 0;i < w.iterationArray.Count();i++)
+		for (int i = 0;i < e.iterationArray.Count();i++)
 		{
 		
-			string key = w.iterationArray.Get(i);
+			string key = e.iterationArray.Get(i);
 			ManagedDataObject o = new ManagedDataObject();
 			o.SetData(key);
-			o.SetType(w.TypeArray.Get(key));
-			o.SetDisplayText(w.DisplayNameArray.Get(key));
+			o.SetType(e.TypeArray.Get(key));
+			o.SetDisplayText(e.DisplayNameArray.Get(key));
 			dataObjects.Insert(o);
 		}
 	}
@@ -139,7 +167,7 @@ class WST_ShopTemplate : MenuBase
 		ManagedDataObject data =  list.GetItemData(itemIndex);
 		Widget panelRoot = rootWidget.FindWidget("Panel0");
 		ItemPreviewWidget preview = panelRoot.FindWidget("WeaponPreview");
-		string weapon
+		string weapon;
 		if (data)
 			weapon = data.GetData();
 		
@@ -151,7 +179,7 @@ class WST_ShopTemplate : MenuBase
 				
 				//"weapon" is the key for the hashmap
 				
-				ResourceName WeaponEntityPrefab = w.buildArray.Get(weapon);
+				ResourceName WeaponEntityPrefab = e.buildArray.Get(weapon);
 				//ResourceName needed here!!
 				GetGame().GetItemPreviewManager().SetPreviewItemFromPrefab(preview,WeaponEntityPrefab,null,false);
 
@@ -186,7 +214,7 @@ class WST_ShopTemplate : MenuBase
 			
 			
 			
-			foreach (string key : w.iterationArray)
+			foreach (string key : e.iterationArray)
 			{
 				if (key == weapon)
 				{
@@ -200,7 +228,7 @@ class WST_ShopTemplate : MenuBase
 						
 	        		}
 					balance = wallet.GetValue();
-				    balance = balance - w.GetPriceByKey(key);//w.GetWeaponPriceByKey(key);
+				    balance = balance - e.GetPriceByKey(key);//w.GetWeaponPriceByKey(key);
 				
 				    if (balance < 0) 
 					{
@@ -209,7 +237,7 @@ class WST_ShopTemplate : MenuBase
 				         Print("WST_TransferWindowUI::OnSelected::noBalance");
 				         return;
 				     }
-					ResourceName n = w.buildArray.Get(key);
+					ResourceName n = e.buildArray.Get(key);
 				    spawnEntity = n;
 				}
 			}
@@ -226,7 +254,7 @@ class WST_ShopTemplate : MenuBase
 	protected override void OnMenuOpen()
 	{
 		Print("OnMenuOpen: menu/dialog opened!", LogLevel.NORMAL);
-		w = new WST_Equipment();
+		e = new WST_Equipment();
 		setupDataObjects();
 		Widget rootWidget = GetRootWidget();
 		if (!rootWidget)
@@ -241,20 +269,33 @@ class WST_ShopTemplate : MenuBase
 		Widget panelRoot = rootWidget.FindWidget("Panel0");
 		ItemPreviewWidget preview = panelRoot.FindWidget("WeaponPreview");
 
+		SCR_ListBoxComponent m_ListBoxComponent;
+		OverlayWidget m_ListBoxOverlay;
+		SCR_ListBoxComponent m_ListBoxComponent1;
+		OverlayWidget m_ListBoxOverlay1;
+		SCR_ListBoxComponent m_ListBoxComponent2;
+		OverlayWidget m_ListBoxOverlay2;
+		SCR_ListBoxComponent m_ListBoxComponent3;
+		OverlayWidget m_ListBoxOverlay3;
+		SCR_ListBoxComponent m_ListBoxComponent4;
+		OverlayWidget m_ListBoxOverlay4;
 		
 		
-
-		m_ListBoxOverlay =  OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBoxWeapons"));
+		
+		
+		m_ListBoxOverlay =  OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBoxHelmets"));
 		m_ListBoxComponent = SCR_ListBoxComponent.Cast(m_ListBoxOverlay.FindHandler(SCR_ListBoxComponent));
+		
+		
         if (m_ListBoxComponent)
         {
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_WEAPON)
+				if (o.GetType() == WST_Type.WST_HELMET)
 				{
 					string price = o.GetData();
-					int i_price = w.GetPriceByKey(price);
+					int i_price = e.GetPriceByKey(price);
 					price = i_price.ToString();
 					m_ListBoxComponent.AddItem(o.GetDisplayText() +"  $$: "+price ,o);
 				}
@@ -267,16 +308,16 @@ class WST_ShopTemplate : MenuBase
         }
 
 
-		m_ListBoxOverlay1 =  OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBoxAttachments"));
+		m_ListBoxOverlay1 =  OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBoxVests"));
 		 m_ListBoxComponent1 = SCR_ListBoxComponent.Cast(m_ListBoxOverlay1.FindHandler(SCR_ListBoxComponent));
         if (m_ListBoxComponent1)
         {
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_ATTACHMENT)
+				if (o.GetType() == WST_Type.WST_VEST)
 				{
 					string price = o.GetData();
-					int i_price = w.GetPriceByKey(price);
+					int i_price = e.GetPriceByKey(price);
 					price = i_price.ToString();
 					m_ListBoxComponent1.AddItem(o.GetDisplayText() +"  $$: "+price ,o);
 				}
@@ -287,16 +328,75 @@ class WST_ShopTemplate : MenuBase
         }
 
 
+		m_ListBoxOverlay2 =  OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBoxBackpacks"));
+		m_ListBoxComponent2 = SCR_ListBoxComponent.Cast(m_ListBoxOverlay2.FindHandler(SCR_ListBoxComponent));
+		
+		 if (m_ListBoxComponent2)
+        {
+			foreach (ManagedDataObject o : dataObjects)
+			{
+				if (o.GetType() == WST_Type.WST_BACKPACK)
+				{
+					string price = o.GetData();
+					int i_price = e.GetPriceByKey(price);
+					price = i_price.ToString();
+					m_ListBoxComponent2.AddItem(o.GetDisplayText() +"  $$: "+price ,o);
+				}
+				
+			}
+           
 
+        }
+		
+		m_ListBoxOverlay3 =  OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBoxJackets"));
+		m_ListBoxComponent3 = SCR_ListBoxComponent.Cast(m_ListBoxOverlay3.FindHandler(SCR_ListBoxComponent));
+		
+		 if (m_ListBoxComponent3)
+        {
+			foreach (ManagedDataObject o : dataObjects)
+			{
+				if (o.GetType() == WST_Type.WST_JACKET)
+				{
+					string price = o.GetData();
+					int i_price = e.GetPriceByKey(price);
+					price = i_price.ToString();
+					m_ListBoxComponent3.AddItem(o.GetDisplayText() +"  $$: "+price ,o);
+				}
+				
+			}
+           
+
+        }
+		
+		m_ListBoxOverlay4 =  OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBoxPants"));
+		m_ListBoxComponent4 = SCR_ListBoxComponent.Cast(m_ListBoxOverlay4.FindHandler(SCR_ListBoxComponent));
+		
+		 if (m_ListBoxComponent4)
+        {
+			foreach (ManagedDataObject o : dataObjects)
+			{
+				if (o.GetType() == WST_Type.WST_PANTS)
+				{
+					string price = o.GetData();
+					int i_price = e.GetPriceByKey(price);
+					price = i_price.ToString();
+					m_ListBoxComponent4.AddItem(o.GetDisplayText() +"  $$: "+price ,o);
+				}
+				
+			}
+           
+
+        }
 
 		//OnSelectInvoker
 		m_ListBoxComponent.m_OnChanged.Insert(OnSelected);
 		m_ListBoxComponent1.m_OnChanged.Insert(OnSelected);
 		m_ListBoxComponent2.m_OnChanged.Insert(OnSelected);
 		m_ListBoxComponent3.m_OnChanged.Insert(OnSelected);
+		m_ListBoxComponent4.m_OnChanged.Insert(OnSelected);
 
 
-		SCR_ButtonTextComponent buttonClose = SCR_ButtonTextComponent.GetButtonText(BUTTON_CLOSE, rootWidget);
+		SCR_ButtonTextComponent buttonClose = SCR_ButtonTextComponent.GetButtonText(BUTTON_CLOSE, panelRoot);
 		if (buttonClose)
 			buttonClose.m_OnClicked.Insert(Close);
 		else
@@ -306,7 +406,7 @@ class WST_ShopTemplate : MenuBase
 			buy  button
 		*/
 
-		SCR_ButtonTextComponent buttonChange = SCR_ButtonTextComponent.GetButtonText(BUTTON_BUY, rootWidget);
+		SCR_ButtonTextComponent buttonChange = SCR_ButtonTextComponent.GetButtonText(BUTTON_BUY, panelRoot);
 		if (buttonChange)
 			buttonChange.m_OnClicked.Insert(Buy);
 		else

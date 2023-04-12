@@ -1,0 +1,249 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  PanelWidgetClass "{5D1764F6AA81D813}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{5D1764F6AA81D83E}" {
+    PositionX 16
+    OffsetLeft 16
+    PositionY 40
+    OffsetTop 40
+    SizeX 1888
+    OffsetRight -1904
+    SizeY 1008
+    OffsetBottom -1048
+   }
+   {
+    ItemPreviewWidgetClass "{5D1764F32B016D8A}" {
+     Name "WeaponPreview"
+     Slot FrameWidgetSlot "{5D1764F32B016D90}" {
+      PositionX 808
+      OffsetLeft 808
+      PositionY 720
+      OffsetTop 720
+      SizeX 720
+      OffsetRight -1528
+      SizeY 264
+      OffsetBottom -984
+     }
+    }
+    OverlayWidgetClass "{5D1764F2ECB3EE90}" {
+     Name "Overlay4"
+     Slot FrameWidgetSlot "{5D1764F2ECB3EEB8}" {
+      PositionX 848
+      OffsetLeft 848
+      PositionY 64
+      OffsetTop 64
+      SizeX 744
+      OffsetRight -1592
+      SizeY 168
+      OffsetBottom -232
+     }
+     {
+      OverlayWidgetClass "{5D1764F2EA993735}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxJackets"
+       Slot OverlayWidgetSlot "{5D1764F2EA993753}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 20 20 20 20
+       }
+      }
+     }
+    }
+    OverlayWidgetClass "{5D1764F2EFB6EF54}" {
+     Name "Overlay3"
+     Slot FrameWidgetSlot "{5D1764F2EFB6EF79}" {
+      PositionX 848
+      OffsetLeft 848
+      PositionY 336
+      OffsetTop 336
+      SizeX 744
+      OffsetRight -1592
+      SizeY 168
+      OffsetBottom -504
+     }
+     {
+      OverlayWidgetClass "{5D1764F2EBA23C81}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxPants"
+       Slot OverlayWidgetSlot "{5D1764F2EBA23CAC}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 20 20 20 20
+       }
+      }
+     }
+    }
+    RichTextWidgetClass "{5D1764F2E70A20DB}" {
+     Name "RichText4"
+     Slot FrameWidgetSlot "{5D1764F2E70A20EC}" {
+      PositionX 848
+      OffsetLeft 848
+      PositionY 288
+      OffsetTop 288
+      SizeX 100
+      OffsetRight -948
+      SizeY 30
+      OffsetBottom -318
+     }
+     Text "Pants"
+    }
+    RichTextWidgetClass "{5D1764F2E6F9CFC9}" {
+     Name "RichText3"
+     Slot FrameWidgetSlot "{5D1764F2E6F9CFE9}" {
+      PositionX 848
+      OffsetLeft 848
+      PositionY 16
+      OffsetTop 16
+      SizeX 100
+      OffsetRight -948
+      SizeY 30
+      OffsetBottom -46
+     }
+     Text "Jackets"
+    }
+    RichTextWidgetClass "{5D1764F757F9BBE5}" {
+     Name "RichText2"
+     Slot FrameWidgetSlot "{5D1764F757F9A40F}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 16
+      OffsetTop 16
+      SizeX 100
+      OffsetRight -140
+      SizeY 30
+      OffsetBottom -46
+     }
+     Text "Helmets"
+    }
+    RichTextWidgetClass "{5D1764F7D1A1AEA3}" {
+     Name "RichText1"
+     Slot FrameWidgetSlot "{5D1764F7D1A1AECB}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 288
+      OffsetTop 288
+      SizeX 100
+      OffsetRight -140
+      SizeY 30
+      OffsetBottom -318
+     }
+     Text "Vests"
+    }
+    RichTextWidgetClass "{5D1764F7D24075B0}" {
+     Name "RichText0"
+     Slot FrameWidgetSlot "{5D1764F7D24075D8}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 560
+      OffsetTop 560
+      SizeX 100
+      OffsetRight -140
+      SizeY 30
+      OffsetBottom -590
+     }
+     Text "Backpacks"
+    }
+    OverlayWidgetClass "{5D1764F78030C025}" {
+     Name "Overlay2"
+     Slot FrameWidgetSlot "{5D1764F78030C042}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 608
+      OffsetTop 608
+      SizeX 576
+      OffsetRight -616
+      SizeY 168
+      OffsetBottom -776
+     }
+     {
+      OverlayWidgetClass "{5D1764F7CDB60291}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxBackpacks"
+       Slot OverlayWidgetSlot "{5D1764F7CDB602BC}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 20 20 20 20
+       }
+      }
+     }
+    }
+    OverlayWidgetClass "{5D1764F64ED9A5C3}" {
+     Name "Overlay1"
+     Slot FrameWidgetSlot "{5D1764F64ED9A5EA}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 336
+      OffsetTop 336
+      SizeX 704
+      OffsetRight -744
+      SizeY 192
+      OffsetBottom -528
+     }
+     {
+      OverlayWidgetClass "{5D1764F7B0AC5B78}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxVests"
+       Slot OverlayWidgetSlot "{5D1764F7B0AC5B85}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 20 20 20 20
+       }
+      }
+     }
+    }
+    OverlayWidgetClass "{5D1764F63560C6C7}" {
+     Name "Overlay0"
+     Slot FrameWidgetSlot "{5D1764F63560C6ED}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 64
+      OffsetTop 64
+      SizeX 704
+      OffsetRight -744
+      SizeY 192.525
+      OffsetBottom -256.525
+     }
+     {
+      OverlayWidgetClass "{5D1764F7A49ADEB2}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxHelmets"
+       Slot OverlayWidgetSlot "{5D1764F7A49ADEDD}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 20 20 20 20
+       }
+      }
+     }
+    }
+    ButtonWidgetClass "{5D1764F6DDA53E46}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+     Name "BuyButton"
+     Slot FrameWidgetSlot "{5D1764F6DDA53E69}" {
+      PositionX 1656
+      OffsetLeft 1656
+      PositionY 968
+      OffsetTop 968
+      SizeX 224
+      OffsetRight -1880
+      SizeY 31.995
+      OffsetBottom -999.995
+     }
+     components {
+      SCR_ButtonTextComponent "{5548F0143AE99095}" {
+       m_sText "Buy"
+      }
+     }
+    }
+    ButtonWidgetClass "{5D1764F6DF7A1E46}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+     Name "QuitButton"
+     Slot FrameWidgetSlot "{5D1764F6DF7A1E6B}" {
+      PositionX 8
+      OffsetLeft 8
+      PositionY 968
+      OffsetTop 968
+      SizeX 224.963
+      OffsetRight -232.963
+      SizeY 32
+      OffsetBottom -1000
+     }
+    }
+   }
+  }
+ }
+}
