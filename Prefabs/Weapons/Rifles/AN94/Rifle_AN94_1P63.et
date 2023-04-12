@@ -1,0 +1,14 @@
+GenericEntity : "{177CF9EA974446D1}Prefabs/Weapons/Rifles/AN94/Rifle_AN94.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{596526218C058852}" {
+     AttachmentSlot InventoryStorageSlot Optic {
+      Prefab "{FE2896D202FE7449}Prefabs/Weapons/Attachments/Optics/1p63/Optic_1P63.et"
+     }
+    }
+   }
+  }
+ }
+}

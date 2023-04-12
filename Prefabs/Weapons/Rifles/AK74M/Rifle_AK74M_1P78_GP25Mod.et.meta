@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{A5DECB66BD9DCAAB}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M_1P78_GP25Mod.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -8,7 +8,7 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 	// Callback when item is added (will be performed locally after server completed the Insert/Move operation)
 	override protected void OnItemAdded(BaseInventoryStorageComponent storageOwner, IEntity item)
 	{		
-		super.OnItemAdded(storageOwner, item);
+		//super.OnItemAdded(storageOwner, item);
 		auto consumable = SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent));
 		
 		auto moneyComp = MoneyComponent.Cast(item.FindComponent(MoneyComponent));

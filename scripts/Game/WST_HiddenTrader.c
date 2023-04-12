@@ -1,98 +1,3 @@
-class SCR_TabViewContentMod : SCR_TabViewContent
-{
-	SCR_ListBoxComponent Listbox1;
-	OverlayWidget widget1;
-	
-	
-
-}
-///////////////////////////////////////////////////////////////////////------------------PreviewSetup
-class WST_Equipment
-{
-	//"suppressed" variants are capable of fitting a suppressor and not actually suppressed
-	
-	/////////////////////////////////////////////////////////////////////////
-	//prefab item paths
-	
-	//weapon
-	ref array<ShopObject> shopItems = new array<ShopObject>();
-	
-	ref ShopObject LSzH = new ShopObject("{AC1C630517753E2B}Prefabs/Characters/HeadGear/Helmet_LShZ/Helmet_LShZ_6m2_black.et","LSzH","LSzH Black",WST_Type.WST_HELMET,300);
-	ref ShopObject LSzH3M = new ShopObject("{D585D22578362515}Prefabs/Characters/HeadGear/Helmet_LShZ/Helmet_LShZ_HC_3M_black.et","LSzH3M","LSzH Black HC 3M",WST_Type.WST_HELMET,300);
-	
-	ref ShopObject RatnikOffcVest = new ShopObject("{915E9D97CFAB02D6}Prefabs/Characters/Vests/Vest_Ratnik_6B45/Variants/Vest_Ratnik_6B45_officer.et","RatnikOfficerVest","Ratnic Vest Offc.",WST_Type.WST_VEST,300);
-	ref ShopObject Ratnik6b45Vest = new ShopObject("{B9821AF2F5D104E4}Prefabs/Characters/Vests/Vest_Ratnik_6B45/Variants/Vest_Ratnik_6B45.et","Ratnik6b45","Ratnik 6b45",WST_Type.WST_VEST,300);
-
-	ref ShopObject FrogCombatShirt = new ShopObject("{1CF302A33F29FBEF}Prefabs/Characters/Uniforms/Jacket_FROG_Combat_Shirt.et","FrogC","Frog Combat Shirt",WST_Type.WST_JACKET,300);
-	ref ShopObject M88VSR = new ShopObject("{D7402E3D0399FF54}Prefabs/Characters/Uniforms/Jacket_M88_VSR.et","M88VSR","M88 Jacker VSR",WST_Type.WST_JACKET,300);
-	
-	ref ShopObject Suharka = new ShopObject("{CAEDE923EF4071AE}Prefabs/Items/Equipment/Backpacks/Backpack_Suharka_type1.et","Suharka","Suharka Backpack",WST_Type.WST_BACKPACK,300);
-
-	ref ShopObject Pants = new ShopObject("{738798231DAF3078}Prefabs/Characters/Uniforms/Pants_6b51_VKPO.et","6b51Pants","6b51 Pants",WST_Type.WST_PANTS,300);
-
-
-	
-	ref map<string,ResourceName> buildArray = new map<string,ResourceName>();
-	ref array<string> iterationArray = new array<string>();
-	ref map<string,string> DisplayNameArray = new map<string,string>();
-	ref map<string,int> TypeArray = new map<string,int>();
-	ref map<string,int> PriceArray = new map<string,int>();
-
-	private WST_Equipment instance;
-	WST_Equipment GetInstance()
-	{
-		if(instance)
-			return instance;
-		else
-			return new WST_Equipment();
-	}
-	
-	int GetPriceByKey(string identifier)
-	{
-		return PriceArray.Get(identifier);
-	}
-	void WST_Equipment()
-	{
-		if (instance)
-			return;
-		instance = this;
-		//
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//shopItems.Insert(AK74O);
-		shopItems.Insert(LSzH);
-		shopItems.Insert(LSzH3M);
-		shopItems.Insert(RatnikOffcVest);		
-		shopItems.Insert(Ratnik6b45Vest);
-		shopItems.Insert(FrogCombatShirt);
-		shopItems.Insert(Suharka);	
-		shopItems.Insert(Pants);
-		
-	
-		
-		foreach(ShopObject o:shopItems)
-		{
-			buildArray.Insert(o.m_Identifier,o.m_prefabPath);
-			iterationArray.Insert(o.m_Identifier);
-			DisplayNameArray.Insert(o.m_Identifier,o.m_Display);
-			TypeArray.Insert(o.m_Identifier,o.m_Type);
-			PriceArray.Insert(o.m_Identifier,o.m_price);
-		
-		}
-		
-		
-		
-	}
-	
-}
 
 
 //TODO:add proper hints
@@ -105,7 +10,7 @@ class WST_HiddenTrader : MenuBase
 	BlurWidget wBlur ;
 	bool firstSelection = true;
 	ref WST_Equipment e;
-	ref WST_Weapon w;
+	ref WST_WeaponV2 w;
 	ResourceName spawnEntity;
 	WST_TraderComponent TrdComp;
 	int balance;
@@ -209,6 +114,7 @@ class WST_HiddenTrader : MenuBase
 				
 				//ResourceName needed here!!
 				GetGame().GetItemPreviewManager().SetPreviewItemFromPrefab(preview,WeaponEntityPrefab,null,false);
+				break;
 
 			}
 		}
@@ -225,6 +131,7 @@ class WST_HiddenTrader : MenuBase
 				
 				//ResourceName needed here!!
 				GetGame().GetItemPreviewManager().SetPreviewItemFromPrefab(preview,WeaponEntityPrefab,null,false);
+
 
 			}
 		}
@@ -342,7 +249,7 @@ class WST_HiddenTrader : MenuBase
 	{
 		Print("OnMenuOpen: menu/dialog opened!", LogLevel.NORMAL);
 		e = new WST_Equipment();
-		w = new WST_Weapon();
+		w = new WST_WeaponV2();
 		setupDataObjects();
 		setupDataObjectsWeapons();
 
@@ -404,7 +311,7 @@ class WST_HiddenTrader : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjectsW)
 			{
-				if (o.GetType() == WST_Type.WST_WEAPON)
+				if (o.GetType() == WST_Type.WST_AMMO || o.GetType() == WST_Type.WST_ATTACHMENT)
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -431,7 +338,7 @@ class WST_HiddenTrader : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjectsW)
 			{
-				if (o.GetType() == WST_Type.WST_AMMO)
+				if (o.GetType() == WST_Type.WST_WEAPON)
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
