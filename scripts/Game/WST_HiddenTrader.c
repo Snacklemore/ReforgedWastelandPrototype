@@ -1,4 +1,11 @@
+class SCR_TabViewContentMod : SCR_TabViewContent
+{
+	SCR_ListBoxComponent Listbox1;
+	OverlayWidget widget1;
+	
+	
 
+}
 ///////////////////////////////////////////////////////////////////////------------------PreviewSetup
 class WST_Equipment
 {
@@ -98,7 +105,7 @@ class WST_HiddenTrader : MenuBase
 	BlurWidget wBlur ;
 	bool firstSelection = true;
 	ref WST_Equipment e;
-
+	ref WST_Weapon w;
 	ResourceName spawnEntity;
 	WST_TraderComponent TrdComp;
 	int balance;
@@ -125,7 +132,7 @@ class WST_HiddenTrader : MenuBase
 		WST_TraderComponent traderComp = WST_TraderComponent.Cast(ie.FindComponent(WST_TraderComponent));
 		if (!traderComp)
 		{
-			Print("WST_TransferWindow::Buy::No TraderComponent!! ");
+			Print("WST_HiddenTrader::Buy::No TraderComponent!! ");
 			return;
 		
 		}
@@ -156,12 +163,31 @@ class WST_HiddenTrader : MenuBase
 			dataObjects.Insert(o);
 		}
 	}
+	
+	private ref array<ref ManagedDataObject> dataObjectsW = new array<ref ManagedDataObject>();
+	void setupDataObjectsWeapons()
+	{
+		
+		
+		//iterate through iterationArray for keys for data map
+		
+		for (int i = 0;i < w.iterationArray.Count();i++)
+		{
+		
+			string key = w.iterationArray.Get(i);
+			ManagedDataObject o = new ManagedDataObject();
+			o.SetData(key);
+			o.SetType(w.TypeArray.Get(key));
+			o.SetDisplayText(w.DisplayNameArray.Get(key));
+			dataObjectsW.Insert(o);
+		}
+	}
 
 	void OnSelected(SCR_ListBoxComponent list , int itemIndex, bool isTheNewSelection)
 	{
 		///////////////////////////////////////////////////////////////////////------------------PreviewSetup
 
-		Print("WST_TransferWindow::OnSelectedInvoker");
+		Print("WST_HiddenTrader::OnSelectedInvoker");
 		Widget rootWidget = GetRootWidget();
 
 		ManagedDataObject data =  list.GetItemData(itemIndex);
@@ -180,11 +206,29 @@ class WST_HiddenTrader : MenuBase
 				//"weapon" is the key for the hashmap
 				
 				ResourceName WeaponEntityPrefab = e.buildArray.Get(weapon);
+				
 				//ResourceName needed here!!
 				GetGame().GetItemPreviewManager().SetPreviewItemFromPrefab(preview,WeaponEntityPrefab,null,false);
 
 			}
 		}
+		
+		foreach (ManagedDataObject dataObject : dataObjectsW)
+		{
+			if (dataObject.GetData() == weapon)
+			{
+				
+				
+				//"weapon" is the key for the hashmap
+				
+				ResourceName WeaponEntityPrefab = w.buildArray.Get(weapon);
+				
+				//ResourceName needed here!!
+				GetGame().GetItemPreviewManager().SetPreviewItemFromPrefab(preview,WeaponEntityPrefab,null,false);
+
+			}
+		}
+
 
 
 
@@ -222,7 +266,7 @@ class WST_HiddenTrader : MenuBase
 					{
 						spawnEntity ="";
 
-		            	Print("WST_TransferWindowUI::OnSelected::noWallet");
+		            	Print("WST_HiddenTrader::OnSelected::noWallet");
 		            	return;
 						
 						
@@ -234,28 +278,74 @@ class WST_HiddenTrader : MenuBase
 					{
 						spawnEntity = "";
 			
-				         Print("WST_TransferWindowUI::OnSelected::noBalance");
+				         Print("WST_HiddenTrader::OnSelected::noBalance");
 				         return;
 				     }
 					ResourceName n = e.buildArray.Get(key);
 				    spawnEntity = n;
+					break;
 				}
 			}
 			
+			
+			foreach (string key : w.iterationArray)
+			{
+				if (key == weapon)
+				{
+					if (!wallet) 
+					{
+						spawnEntity ="";
+
+		            	Print("WST_HiddenTrader::OnSelected::noWallet");
+		            	return;
+						
+						
+	        		}
+					balance = wallet.GetValue();
+				    balance = balance - w.GetPriceByKey(key);//w.GetWeaponPriceByKey(key);
+				
+				    if (balance < 0) 
+					{
+						spawnEntity = "";
+			
+				         Print("WST_HiddenTrader::OnSelected::noBalance");
+				         return;
+				     }
+					ResourceName n = w.buildArray.Get(key);
+				    spawnEntity = n;
+					break;
+				}
+			}
 		
 		
 		}
 
 	}
 
-
-
+	SCR_TabViewComponent m_TabviewComponent;
+	SCR_ListBoxComponent m_ListBoxComponentTab;
+	OverlayWidget m_ListBoxOverlayTab;
+		
+	SCR_ListBoxComponent m_ListBoxComponentTab2;
+	OverlayWidget m_ListBoxOverlayTab2;
+	VerticalLayoutWidget m_TabViewOverlay;
+	void showTab(int index)
+	{
+		m_TabviewComponent.ShowTab(index);
+	}
+	void OnSelectTab()
+	{
+		
+	}
 	//------------------------------------------------------------------------------------------------
 	protected override void OnMenuOpen()
 	{
 		Print("OnMenuOpen: menu/dialog opened!", LogLevel.NORMAL);
 		e = new WST_Equipment();
+		w = new WST_Weapon();
 		setupDataObjects();
+		setupDataObjectsWeapons();
+
 		Widget rootWidget = GetRootWidget();
 		if (!rootWidget)
 		{
@@ -271,6 +361,14 @@ class WST_HiddenTrader : MenuBase
 
 		SCR_ListBoxComponent m_ListBoxComponent;
 		OverlayWidget m_ListBoxOverlay;
+		
+		
+		
+		SCR_ListBoxComponent m_ListBoxComponentTab3;
+		OverlayWidget m_ListBoxOverlayTab3;
+		
+		
+		
 		SCR_ListBoxComponent m_ListBoxComponent1;
 		OverlayWidget m_ListBoxOverlay1;
 		SCR_ListBoxComponent m_ListBoxComponent2;
@@ -280,6 +378,73 @@ class WST_HiddenTrader : MenuBase
 		SCR_ListBoxComponent m_ListBoxComponent4;
 		OverlayWidget m_ListBoxOverlay4;
 		
+		//TabWidgets
+		
+		
+		
+		m_TabViewOverlay = VerticalLayoutWidget.Cast(rootWidget.FindAnyWidget("TabView"));
+		m_TabviewComponent = SCR_TabViewComponent.Cast(m_TabViewOverlay.FindHandler(SCR_TabViewComponent));
+		
+		m_TabviewComponent.m_OnContentSelect.Insert(OnSelectTab);
+		//content of first active tab
+		SCR_TabViewContent content1 =  m_TabviewComponent.GetShownTabComponent();
+		Widget tabRoot0 = content1.m_wTab;
+		//seconde tab content
+		SCR_TabViewContent content2 =  m_TabviewComponent.GetEntryContent(1);
+		Widget tabRoot2 = content2.m_wTab;
+		
+		
+		//rebuild data every tab selection (content appears to be rebuild)
+		//tab 2 listbox
+		m_ListBoxOverlayTab2 =  OverlayWidget.Cast(tabRoot2.FindAnyWidget("ListBox0"));
+		m_ListBoxComponentTab2= SCR_ListBoxComponent.Cast(m_ListBoxOverlayTab2.FindHandler(SCR_ListBoxComponent));
+		m_ListBoxComponentTab2.m_OnChanged.Insert(OnSelected);
+		if (m_ListBoxComponentTab2)
+        {
+			
+			foreach (ManagedDataObject o : dataObjectsW)
+			{
+				if (o.GetType() == WST_Type.WST_WEAPON)
+				{
+					string price = o.GetData();
+					int i_price = w.GetPriceByKey(price);
+					price = i_price.ToString();
+					m_ListBoxComponentTab2.AddItem(o.GetDisplayText() +"  $$: "+price ,o);
+				}
+				
+			}
+           
+
+
+
+        }
+		
+		
+		
+		//tab 1 listbox
+		m_ListBoxOverlayTab =  OverlayWidget.Cast(tabRoot0.FindAnyWidget("ListBox0"));
+		m_ListBoxComponentTab = SCR_ListBoxComponent.Cast(m_ListBoxOverlayTab.FindHandler(SCR_ListBoxComponent));
+		m_ListBoxComponentTab.m_OnChanged.Insert(OnSelected);
+
+		 if (m_ListBoxComponentTab)
+        {
+			
+			foreach (ManagedDataObject o : dataObjectsW)
+			{
+				if (o.GetType() == WST_Type.WST_AMMO)
+				{
+					string price = o.GetData();
+					int i_price = w.GetPriceByKey(price);
+					price = i_price.ToString();
+					m_ListBoxComponentTab.AddItem(o.GetDisplayText() +"  $$: "+price ,o);
+				}
+				
+			}
+           
+
+
+
+        }
 		
 		
 		

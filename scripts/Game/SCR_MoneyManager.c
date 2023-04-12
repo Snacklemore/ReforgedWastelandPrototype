@@ -38,6 +38,7 @@ class SCR_MoneyManager: GenericEntity
 
 		foreach (GenericEntity ent : wallets)
 		{
+			//too late for null check?
 			if(ent)
 				continue;
 			if(!ent)
