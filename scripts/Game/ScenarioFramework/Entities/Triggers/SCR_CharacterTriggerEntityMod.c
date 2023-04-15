@@ -690,7 +690,7 @@ modded class SCR_CharacterTriggerEntity
 	
 		if (!IsMaster())
 			return;
-		Print("SCR_CharacterTriggerEntity::OnTriggerChangeTestprint");
+		//Print("SCR_CharacterTriggerEntity::OnTriggerChangeTestprint");
 		if (isContested)
 			return;
 		//get players for Factions 
@@ -708,7 +708,7 @@ modded class SCR_CharacterTriggerEntity
 		//no spawn
 		
 		
-		GetGame().GetCallqueue().CallLater(CheckForNeutrality,3000,true);
+		GetGame().GetCallqueue().CallLater(CheckForNeutrality,300,true);
 		//workaround with preset spawnpoints that just get activated by players
 		if (FactionCountA > FactionCountB)
 		{
@@ -738,14 +738,14 @@ modded class SCR_CharacterTriggerEntity
 		Faction FactionB = GetGame().GetFactionManager().GetFactionByKey("B");
 
 		int FactionCountACallQueue = this.GetCharacterCountByFactionInsideTrigger(FactionA);
-				Print("SCR_CharacterTriggerEntity::CheckForNeutrality::FactionCountA = " + FactionCountACallQueue);
+				//Print("SCR_CharacterTriggerEntity::CheckForNeutrality::FactionCountA = " + FactionCountACallQueue);
 
 		int FactionCountBCallQueue = this.GetCharacterCountByFactionInsideTrigger(FactionB);
-				Print("SCR_CharacterTriggerEntity::CheckForNeutrality::FactionCountB = " + FactionCountBCallQueue);
+				//Print("SCR_CharacterTriggerEntity::CheckForNeutrality::FactionCountB = " + FactionCountBCallQueue);
 		
 		if ((FactionCountACallQueue == 0) && (FactionCountBCallQueue == 0) )
 		{
-			Print("SCR_CharacterTriggerEntity::HandleSpawnPoint::return::b=0;a=0;");
+			//Print("SCR_CharacterTriggerEntity::HandleSpawnPoint::return::b=0;a=0;");
 			isContested = false;
 			m_SeizeableFactionSpawn.SetFactionKey("FIA");
 			GetGame().GetCallqueue().Remove(CheckForNeutrality);
@@ -764,7 +764,7 @@ modded class SCR_CharacterTriggerEntity
 		GetGame().GetCallqueue().CallLater(SetInitSequenceDone, 1000);	
 		SetOwnerFaction(m_sOwnerFactionKey);
 		
-		GetOnChange().Insert(HandleSpawnPoint);
+		m_OnActivate.Insert(HandleSpawnPoint);
 		
 		GetNearbySpawnPoints(25.0);
 		ChimeraWorld world = GetGame().GetWorld();

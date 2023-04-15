@@ -4103,8 +4103,24 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		m_bWasMapOpened = wasOpened;
 	}
 	
-	//------------------------------------------------------------------------------------------------
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////------------------------------------------------------------------------------------------------
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////------------------------------------------------------------------------------------------------
+
 	//! What happens when a player spawns.
+	void DeleteAllItems(SCR_InventoryStorageManagerComponent mmc)
+	{
+		array<IEntity> items = new array<IEntity>();
+		array<BaseInventoryStorageComponent> availableStorages = new array<BaseInventoryStorageComponent>();
+		int storageCount = mmc.GetStorages(availableStorages);
+		mmc.GetAllItems(items,availableStorages[0]);	
+		
+		foreach(IEntity item : items)
+		{
+			mmc.TryDeleteItem(item);
+			
+		}
+	
+	}
 	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
 	{
 #ifdef ENABLE_DIAG
@@ -4114,9 +4130,46 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		super.OnPlayerSpawned(playerId, controlledEntity);
 		
 		PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId);
-	
+		
+		//kick of gear persistence loading from here
 		if (pc)
 		{
+			
+			string playerUID = WST_GearPersistenceManager.GetPlayerIdentity(playerId);
+			
+			Print("GameModeWasteland::Player UID: "+ playerUID);
+			ref WST_GearObject o = m_persistenceManager.GetGearObject(playerUID);
+			if (o)
+				Print("GameModeWasteland::GearObject Found! Loading gear ");
+
+			SCR_InventoryStorageManagerComponent mmc = SCR_InventoryStorageManagerComponent.Cast(controlledEntity.FindComponent(SCR_InventoryStorageManagerComponent));
+
+			
+			
+			if (o)
+			{
+				if(mmc)
+				{
+					Print("GameModeWasteland::itemsOnPlayer count: "+ o.itemsOnPlayer.Count());
+					if(o.itemsOnPlayer.Count() > 0)
+						DeleteAllItems(mmc);
+					foreach(EntityPrefabData data : o.itemsOnPlayer)
+					{
+						
+						Print("GameModeWasteland::Addding:  "+ data.GetPrefabName());
+
+						ResourceName n = data.GetPrefabName();
+						IEntity spawnedItem = GetGame().SpawnEntityPrefab(Resource.Load(n),GetGame().GetWorld());
+						
+						mmc.TryInsertItem(spawnedItem);
+	
+					}
+				}
+			}
+				
+			
+			
+			
 			SCR_CampaignNetworkComponent campaignNetworkComponent = SCR_CampaignNetworkComponent.Cast(pc.FindComponent(SCR_CampaignNetworkComponent));
 			
 			if (campaignNetworkComponent)
@@ -4127,7 +4180,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		}
 	}
 	
-	//------------------------------------------------------------------------------------------------
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 	override void OnSpawnPointUsed(SCR_SpawnPoint spawnPoint, int playerId)
 	{
 		IEntity parent = spawnPoint.GetParent();
@@ -4642,6 +4696,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	ref array<WST_VehicleSpawnPoint> m_vehicleSpawnPoints = new array<WST_VehicleSpawnPoint>();
+	WST_GearPersistenceManager m_persistenceManager;
 	SCR_MoneyManager GetMoneyManager()
 	{
 		if(IsMaster())
@@ -4651,6 +4706,14 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	void SetMoneyManager(SCR_MoneyManager manager)
 	{
 		 m_MoneyManager = manager;
+	}
+	void SetGearPersistenceManager(WST_GearPersistenceManager manager)
+	{
+		m_persistenceManager = manager;
+	}
+	WST_GearPersistenceManager GetGearPersistenceManager()
+	{
+		return m_persistenceManager;
 	}
 	void registerVehicleSpawn(WST_VehicleSpawnPoint vs)
 	{

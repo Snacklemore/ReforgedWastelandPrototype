@@ -150,6 +150,7 @@ void SCRWST_AISpawnManager(IEntitySource src, IEntity parent)
 		#else
 			SetFlags(EntityFlags.NO_LINK, false);
 		#endif
+
 		
 		SetEventMask(EntityEvent.INIT);
 	}

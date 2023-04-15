@@ -201,6 +201,14 @@ $grp SCR_Position {
   coords 1275.302 38.202 5918.849
  }
 }
+WST_GearPersistenceManager {
+ components {
+  RplComponent "{5D1B38A48B84327D}" {
+   Streamable Disabled
+  }
+ }
+ coords 9631.132 19.925 1512.042
+}
 $grp WST_VehicleSpawnPoint {
  {
   coords 4871.313 28.595 11850.083
@@ -493,7 +501,7 @@ $grp SCR_SpawnPoint : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.e
   }
  }
  MainSpawnA2 {
-  coords 10080.474 2.959 1579.647
+  coords 9632.426 19.83 1509.812
   m_fSpawnRadius 1.2
   m_sFaction "A"
   m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {

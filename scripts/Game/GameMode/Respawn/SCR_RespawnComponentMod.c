@@ -361,7 +361,6 @@ modded class SCR_RespawnComponent
 		#ifdef RESPAWN_COMPONENT_VERBOSE
 			Print("SCR_RespawnComponent::RequestPlayerFactionIndex(factionIndex: "+factionIndex+")");
 		#endif
-		Print("SCR_RespawnComponent::RequestPlayerFactionIndex(factionIndex: "+factionIndex+" Rpc(RpcAsk_SetPlayerFaction)");
 
 		m_pFactionLock.Lock();
 		Rpc(RpcAsk_SetPlayerFaction, factionIndex);
@@ -430,15 +429,13 @@ modded class SCR_RespawnComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SetPlayerFaction(int factionIndex)
 	{
-		if ( m_PlayerController)
-			Print("SCR_RespawnComponent::RpcAsk_SetPlayerFaction()::m_PlayerController");
+		
 
 		if (m_PlayerController && m_RespawnSystemComponent)
 		{
 			#ifdef RESPAWN_COMPONENT_VERBOSE
 				Print("SCR_RespawnComponent::RpcAsk_SetPlayerFaction(factionIndex: "+factionIndex+")");
 			#endif
-			Print("SCR_RespawnComponent::RpcAsk_SetPlayerFaction(factionIndex: "+factionIndex+")");
 
 			int playerId = m_PlayerController.GetPlayerId();
 			m_RespawnSystemComponent.DoSetPlayerFaction(playerId, factionIndex);
@@ -451,7 +448,6 @@ modded class SCR_RespawnComponent
 	*/
 	void AcknowledgePlayerFactionSet(ERespawnSelectionResult response)
 	{
-		Print("SCR_RespawnComponent::AcknowledgePlayerFactionSet()::Rpc(Rpc_RespondPlayerFactionSet_O)");
 
 		Rpc(Rpc_RespondPlayerFactionSet_O);
 	}
@@ -480,7 +476,6 @@ modded class SCR_RespawnComponent
 	protected void Rpc_RespondPlayerFactionSet_O(ERespawnSelectionResult result)
 	{
 		m_pFactionLock.Break();
-		Print("SCR_RespawnComponent::PlayerFactionSet response received: " + ResponseToString(result));
 
 		#ifdef RESPAWN_COMPONENT_DIAG
 		Print("SCR_RespawnComponent::PlayerFactionSet response received: " + ResponseToString(result));
