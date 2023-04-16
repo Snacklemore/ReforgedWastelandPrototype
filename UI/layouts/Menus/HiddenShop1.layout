@@ -4,29 +4,50 @@ FrameWidgetClass {
   PanelWidgetClass "{5D1778C16F39383B}" {
    Name "Panel0"
    Slot FrameWidgetSlot "{5D1764F6AA81D83E}" {
-    PositionX -32
-    OffsetLeft -32
+    PositionX 16
+    OffsetLeft 16
     PositionY 48
     OffsetTop 48
-    SizeX 1928
-    OffsetRight -1896
+    SizeX 1888
+    OffsetRight -1904
     SizeY 1008
     OffsetBottom -1056
    }
+   Color 0.561 0.749 0.376 1
+   style outline_4px
    {
+    ImageWidgetClass "{5D212BAAFC65F4EF}" {
+     Name "Image0"
+     Slot FrameWidgetSlot "{5D212BAAFC65F4C5}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+      SizeToContent 1
+     }
+     "Z Order" -10
+     Opacity 0.307
+     Color 0 0 0 1
+    }
     VerticalLayoutWidgetClass "{5D1778CB6512E3B8}" {
      Name "VerticalLayout0"
      Slot FrameWidgetSlot "{5D1778CB6512E3C6}" {
-      PositionX 808
-      OffsetLeft 808
+      PositionX 552
+      OffsetLeft 552
       PositionY 536
       OffsetTop 536
-      SizeX 760
+      SizeX 1016
       OffsetRight -1568
       SizeY 440
       OffsetBottom -976
       Alignment 0 0
      }
+     Color 0.475 0.686 0.259 1
      {
       VerticalLayoutWidgetClass "{5D1778C6CD78DD1B}" : "{A971263DAE3AD8BC}UI/layouts/WidgetLibrary/TabView/WLib_TabViewHorizontal.layout" {
        Name "TabView"
@@ -34,6 +55,7 @@ FrameWidgetClass {
         SizeMode Fill
         FillWeight 16.5
        }
+       Color 0.475 0.686 0.259 1
        components {
         SCR_TabViewComponent "{546B27D01CA8A38D}" {
          m_aElements {
@@ -67,27 +89,27 @@ FrameWidgetClass {
     ItemPreviewWidgetClass "{5D1778C16F39383E}" {
      Name "WeaponPreview"
      Slot FrameWidgetSlot "{5D1764F32B016D90}" {
-      PositionX 1624
-      OffsetLeft 1624
-      PositionY 784
-      OffsetTop 784
-      SizeX 288
-      OffsetRight -1912
-      SizeY 168
-      OffsetBottom -952
+      PositionX 1400
+      OffsetLeft 1400
+      PositionY 72
+      OffsetTop 72
+      SizeX 456
+      OffsetRight -1856
+      SizeY 432
+      OffsetBottom -504
      }
     }
     OverlayWidgetClass "{5D1778C16F39383C}" {
      Name "Overlay4"
      Slot FrameWidgetSlot "{5D1764F2ECB3EEB8}" {
-      PositionX 848
-      OffsetLeft 848
-      PositionY 64
-      OffsetTop 64
+      PositionX 592
+      OffsetLeft 592
+      PositionY 72
+      OffsetTop 72
       SizeX 744
-      OffsetRight -1592
+      OffsetRight -1336
       SizeY 168
-      OffsetBottom -232
+      OffsetBottom -240
      }
      {
       OverlayWidgetClass "{5D1778C16F393833}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
@@ -103,12 +125,12 @@ FrameWidgetClass {
     OverlayWidgetClass "{5D1778C16F393836}" {
      Name "Overlay3"
      Slot FrameWidgetSlot "{5D1764F2EFB6EF79}" {
-      PositionX 848
-      OffsetLeft 848
+      PositionX 592
+      OffsetLeft 592
       PositionY 336
       OffsetTop 336
       SizeX 744
-      OffsetRight -1592
+      OffsetRight -1336
       SizeY 168
       OffsetBottom -504
      }
@@ -200,8 +222,8 @@ FrameWidgetClass {
       OffsetLeft 40
       PositionY 608
       OffsetTop 608
-      SizeX 576
-      OffsetRight -616
+      SizeX 496
+      OffsetRight -536
       SizeY 168
       OffsetBottom -776
      }
@@ -223,8 +245,8 @@ FrameWidgetClass {
       OffsetLeft 40
       PositionY 336
       OffsetTop 336
-      SizeX 704
-      OffsetRight -744
+      SizeX 496
+      OffsetRight -536
       SizeY 192
       OffsetBottom -528
      }
@@ -246,8 +268,8 @@ FrameWidgetClass {
       OffsetLeft 40
       PositionY 64
       OffsetTop 64
-      SizeX 704
-      OffsetRight -744
+      SizeX 496
+      OffsetRight -536
       SizeY 192.525
       OffsetBottom -256.525
      }
@@ -267,16 +289,39 @@ FrameWidgetClass {
      Slot FrameWidgetSlot "{5D1764F6DDA53E69}" {
       PositionX 1656
       OffsetLeft 1656
-      PositionY 968
-      OffsetTop 968
+      PositionY 952
+      OffsetTop 952
       SizeX 224
       OffsetRight -1880
-      SizeY 31.995
+      SizeY 47.995
       OffsetBottom -999.995
      }
+     Color 0.686 0.259 0.259 1
      components {
       SCR_ButtonTextComponent "{5548F0143AE99095}" {
+       m_BackgroundDefault 0.812 0.506 0.506 1
+       m_BackgroundSelected 0.392 0.624 0.157 1
        m_sText "Buy"
+      }
+     }
+     {
+      SizeLayoutWidgetClass "{5548EB41A8E48247}" {
+       Prefab "{5548EB41A8E48247}"
+       {
+        OverlayWidgetClass "{5548EB41A8E48245}" {
+         Prefab "{5548EB41A8E48245}"
+         {
+          ImageWidgetClass "{5548EB41A8E48243}" {
+           Prefab "{5548EB41A8E48243}"
+           Color 0.561 0.071 0.071 1
+          }
+          PanelWidgetClass "{555CBD14A0EABAE3}" {
+           Prefab "{555CBD14A0EABAE3}"
+           Color 0.686 0.259 0.259 1
+          }
+         }
+        }
+       }
       }
      }
     }
@@ -285,12 +330,17 @@ FrameWidgetClass {
      Slot FrameWidgetSlot "{5D1764F6DF7A1E6B}" {
       PositionX 8
       OffsetLeft 8
-      PositionY 968
-      OffsetTop 968
+      PositionY 952
+      OffsetTop 952
       SizeX 224.963
       OffsetRight -232.963
-      SizeY 32
+      SizeY 48
       OffsetBottom -1000
+     }
+     components {
+      SCR_ButtonTextComponent "{5548F0143AE99095}" {
+       m_sText "Close"
+      }
      }
     }
    }

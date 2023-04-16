@@ -42,7 +42,7 @@ class WST_TransferComponent : ScriptComponent
 	}
 	override event void OnPostInit(IEntity owner)
 	{
-		GetGame().GetCallqueue().CallLater(MoneyConfigSetDelayed,2000,false);
+		GetGame().GetCallqueue().CallLater(MoneyConfigSetDelayed,50,false);
 		
 	}
 	

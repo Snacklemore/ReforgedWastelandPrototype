@@ -4221,6 +4221,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 				if (config)
 				{
 					Print("GameModeWasteland::Config found!");
+					//client will set value, this is server side!
 					config.alreadySet = true;
 
 				}

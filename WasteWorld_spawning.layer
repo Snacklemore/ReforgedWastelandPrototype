@@ -286,6 +286,17 @@ GenericEntity : "{58353A3B8102A8E6}Prefabs/Props/Commercial/CashierShopHidden_Wa
 }
 $grp GenericEntity : "{627F955923426D32}Prefabs/Props/Commercial/CashierShop_Waste.et" {
  {
+  components {
+   ActionsManagerComponent "{5CF72A24698A8C7E}" {
+    additionalActions {
+     WST_UserAction "{5CF72A26A98EDF68}" {
+      UIInfo UIInfo "{5CF72A26C46A059A}" {
+       Name "Shop"
+      }
+     }
+    }
+   }
+  }
   coords 4881.031 29.544 11865.994
   angleY 76.476
  }

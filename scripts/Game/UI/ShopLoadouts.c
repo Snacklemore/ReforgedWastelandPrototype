@@ -134,9 +134,9 @@ class WST_WeaponV2
 	ref ShopObject Magazine_762x39_Vz58_30rnd_Tracer = new ShopObject("{FAFA0D71E75CEBE2}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Tracer.et","Magazine_762x39_Vz58_30rnd_Tracer","Magazine 762x39 SA58 30rnd",WST_Type.WST_AMMO,30);
 
 	
-	ref ShopObject Rifle_AK74N_PSO1 = new ShopObject("{A5DECB66BD9DCAAB}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M_1P78_GP25Mod.et","Rifle_AK74N_PSO1","Rifle AK74N",WST_Type.WST_WEAPON,300);
+	ref ShopObject Rifle_AK74N_PSO1 = new ShopObject("{E6ABF84D52589026}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74MDuplicateTest.et","Rifle_AK74N_PSO1","Rifle AK74N",WST_Type.WST_WEAPON,300);
 
-	ref ShopObject AK74M_Optic = new ShopObject("{A5DECB66BD9DCAAC}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M_1P78_GP25Mod.et","Rifle_AK74M","Rifle AK74M",WST_Type.WST_WEAPON,300);
+	ref ShopObject AK74M_Optic = new ShopObject("{E6ABF84D52589026}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74MDuplicateTest.et","Rifle_AK74M","Rifle AK74M",WST_Type.WST_WEAPON,300);
 
 	ref ShopObject AN94O = new ShopObject("{2D406AEED3CDF362}Prefabs/Weapons/Rifles/AN94/Rifle_AN94_1P63Mod.et","WeaponAN94","AN 74 ",WST_Type.WST_WEAPON,300);
 
@@ -169,6 +169,7 @@ class WST_WeaponV2
 	
 	ref ShopObject M14MagO = new ShopObject("{627255315038152A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_SpecialBall.et","M14Mag","M14 Magazine",WST_Type.WST_AMMO,100);
 	ref ShopObject UBGL203 = new ShopObject("{4E1032FAA257BEC5}Prefabs/Weapons/Attachments/Underbarrel/UGL_M203Mod.et","UBGL203","UBGL203",WST_Type.WST_ATTACHMENT,300);
+	ref ShopObject GP25attachment = new ShopObject("{CDC3268678BA8765}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25Mod.et","UBGP25","GP25 UBGL",WST_Type.WST_ATTACHMENT,300);
 
 	
 	ref map<string,ResourceName> buildArray = new map<string,ResourceName>();
@@ -218,7 +219,9 @@ class WST_WeaponV2
 		shopItems.Insert(Rifle_AK74N_PSO1);
 		shopItems.Insert(Magazine_762x39_Vz58_30rnd_Tracer);
 		shopItems.Insert(UBGL203);
-
+		shopItems.Insert(GP25attachment);
+		
+		
 		foreach(ShopObject o:shopItems)
 		{
 			buildArray.Insert(o.m_Identifier,o.m_prefabPath);
