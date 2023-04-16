@@ -4155,7 +4155,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		}
 		*/
 		bool success = false;	
-		for (int i = items.Count();i>=0;--i)
+		for (int i = items.Count()-1;i>=0;--i)
 		{
 			IEntity item = items.Get(i);
 			if(!item)
@@ -4184,10 +4184,14 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 
 				ResourceName n = data.GetPrefabName();
 				IEntity spawnedItem = GetGame().SpawnEntityPrefab(Resource.Load(n),GetGame().GetWorld());
+				if(!spawnedItem)
+					continue;
 				MoneyComponent mc = MoneyComponent.Cast(spawnedItem.FindComponent(MoneyComponent));
-				InventoryMagazineComponent mg = InventoryMagazineComponent.Cast(spawnedItem.FindComponent(InventoryMagazineComponent));
-				WeaponComponent wc = WeaponComponent.Cast(spawnedItem.FindComponent(WeaponComponent));
-
+				if(mc)
+					continue;
+				RplComponent rpl = RplComponent.Cast(spawnedItem.FindComponent(RplComponent));
+				if (rpl)
+					RplComponent.DeleteRplEntity(spawnedItem,false);
 				
 						
 				//bool success = mmc.TryInsertItem(spawnedItem,EStoragePurpose.PURPOSE_ANY,null);
@@ -4195,7 +4199,60 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 
 				Print("GameModeWasteland::Succes:  "+success +"for Item "+data.GetPrefabName());
 			}
+		//create and insert money comp here
+		if (o.walletValue > 0)
+		{
+			ResourceName walletPrefab = "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et";
+			bool success = mmc.TrySpawnPrefabToStorage(walletPrefab);
+			
+			if (success)
+			{
+				//mmc.m_OnItemAddedInvoker.Invoke();
+				Print("GameModeWasteland::Succes:  "+success +"for Wallet");
+	
+			}
+			
+			WST_WalletPredicate walletPredicate = new WST_WalletPredicate();
+			IEntity wallet = mmc.FindItem(walletPredicate);
+			if (wallet)
+			{
+				IEntity owner = mmc.GetOwner();
+				WST_MoneyConfigComponent config = WST_MoneyConfigComponent.Cast(owner.FindComponent(WST_MoneyConfigComponent));
+				if (config)
+				{
+					Print("GameModeWasteland::Config found!");
+					config.alreadySet = true;
+
+				}
+				MoneyComponent mc = MoneyComponent.Cast(wallet.FindComponent(MoneyComponent));
+				int savedValue = o.walletValue;
+				Print("GameModeWasteland::setting wallet value  "+savedValue );
+				
+				mc.SetValue(savedValue);
+			}
+			
+			
+		}
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
 	{
 #ifdef ENABLE_DIAG
@@ -4208,6 +4265,18 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		ref SCR_InventoryStorageManagerComponent mmc = SCR_InventoryStorageManagerComponent.Cast(controlledEntity.FindComponent(SCR_InventoryStorageManagerComponent));
 		mmc.OnItemAddedHandler();
 		mmc.OnItemRemovedHandler();
+		WST_WalletPredicate walletPredicate = new WST_WalletPredicate();
+		IEntity wallet = mmc.FindItem(walletPredicate);
+		if(wallet)
+		{
+			MoneyComponent mc = MoneyComponent.Cast(wallet.FindComponent(MoneyComponent));
+			if (mc)
+			{
+				mmc.m_MoneyComponent = mc;
+			}
+
+		}
+		
 		//kick of gear persistence loading from here
 		if (pc)
 		{
@@ -4233,9 +4302,9 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 							return;
 					
 						
-						GetGame().GetCallqueue().CallLater(DeleteAllItems,1500,false,mmc);
+						GetGame().GetCallqueue().CallLater(DeleteAllItems,1000,false,mmc);
 
-						GetGame().GetCallqueue().CallLater(AddAllItems,2000,false,mmc,o);
+						GetGame().GetCallqueue().CallLater(AddAllItems,1200,false,mmc,o);
 					}
 				}
 			}
@@ -5019,3 +5088,19 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 
 };
 
+class WST_WalletPredicate: InventorySearchPredicate
+	{
+	void WST_WalletPredicate()
+	{
+		QueryComponentTypes.Insert(MoneyComponent);
+	}
+
+	override protected bool IsMatch(BaseInventoryStorageComponent storage, IEntity item, array<GenericComponent> queriedComponents, array<BaseItemAttributeData> queriedAttributes)
+	{		
+		MoneyComponent mc = MoneyComponent.Cast(item.FindComponent(MoneyComponent));
+		if(mc)
+			return true;	
+		return false;
+	}
+};
+		

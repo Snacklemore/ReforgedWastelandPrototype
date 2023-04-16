@@ -1,0 +1,8 @@
+GenericEntity : "{2DBBEA8AE9BD2C36}Prefabs/Weapons/Attachments/Stocks/Stock_VZ58/Stock_VZ58_base.et" {
+ ID "557E85EEE1B603F1"
+ components {
+  MeshObject "{557E85EE39CED921}" {
+   Object "{8A45B475A7F329E4}Assets/Weapons/Attachments/Stocks/VZ58/VZ58_stock_fixed.xob"
+  }
+ }
+}

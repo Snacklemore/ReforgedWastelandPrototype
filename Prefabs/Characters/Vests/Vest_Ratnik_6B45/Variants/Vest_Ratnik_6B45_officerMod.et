@@ -1,0 +1,68 @@
+GenericEntity : "{13AD1A501F820288}Prefabs/Characters/Vests/Vest_Ratnik_6B45/Vest_Ratnik_6B45_base.et" {
+ ID "50D8C49B3558F152"
+ components {
+  MeshObject "{5312D798A817A294}" {
+   Object "{B64C7BF40F31BD9E}Assets/Characters/Vests/Vest_Ratnik_6B45/rhs_ratnik_base_6b45_item.xob"
+  }
+  SCR_UniversalInventoryStorageComponent "{5AA70C1C27099B96}" {
+   components {
+    SCR_EquipmentStorageComponent "{5B107D23AE5ADAB8}" {
+     InitialStorageSlots {
+      EquipmentStorageSlot FlashlightSlot {
+       Offset -0.095 0.1016 0.16
+       Angles 12.1459 -11.3006 0
+       Enabled 1
+       Prefab ""
+      }
+      EquipmentStorageSlot Radio {
+       PivotID "Spine5"
+       Offset -0.1249 -0.1722 0.1783
+       Angles -0.7991 -13.8063 -2.1653
+       Enabled 0
+       Prefab "{B343AB76B0725657}Prefabs/Items/Equipment/Radios/Radio_R187P1_OLD.et"
+       AllowedItemTypes {
+        "RADIO"
+       }
+       AffectedByOcluders {
+        "ChestRightTopFront"
+       }
+       AnimatedMeshRefference "{3DBBA07F5309FB6B}Assets/Characters/Vests/Vest_Ratnik_6B45/rhs_ratnik_6b45_base.xob"
+      }
+     }
+    }
+   }
+   Attributes SCR_ItemAttributeCollection "{5AA70C1C27099B98}" {
+    ItemDisplayName UIInfo "{5AA70C1C27099B9B}" {
+     Name "#RHS-Vest_Ratnik_6B45_Base_Officer_Name"
+     Description "#RHS-Vest_Ratnik_6B45_Base_Description"
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5312D798A71DFBB1}" {
+   Slots {
+    LoadoutSlotInfo Radio {
+     Prefab "{6B750632582934E5}Prefabs/Characters/Vests/Vest_Ratnik_Pouches/Pouch_Ratnik_azart_pouch.et"
+    }
+    LoadoutSlotInfo Pouch1 {
+     AutoTransform 1
+     Prefab "{722C8E77D7AE3941}Prefabs/Characters/Vests/Vest_Ratnik_Pouches/Pouch_Ratnik_ak_1_pouch.et"
+    }
+    LoadoutSlotInfo Pouch2 {
+     Prefab "{EE9D33AFBDABF119}Prefabs/Characters/Vests/Vest_Ratnik_Pouches/Pouch_Ratnik_ak_2_pouch.et"
+    }
+    LoadoutSlotInfo Neck {
+     Prefab "{4DF2E874DE5E1A4E}Prefabs/Characters/Vests/Vest_Ratnik_6B45/Vest_Ratnik_6B45_neck_armor.et"
+    }
+    LoadoutSlotInfo Bayonet {
+     PivotID "Spine5"
+     Offset 0.1361 0.1241 0.1408
+     Prefab "{F759F0488730620F}Prefabs/Items/Equipment/Accessories/Scabbard_Bayonet_6Kh4/Scabbard_Bayonet_6Kh4.et"
+    }
+    LoadoutSlotInfo FirstAid {
+     Prefab "{ADF17AE969E9C691}Prefabs/Characters/Vests/Vest_Ratnik_Pouches/Pouch_Ratnik_appi_pouch.et"
+    }
+   }
+   DebugWornModel 0
+  }
+ }
+}

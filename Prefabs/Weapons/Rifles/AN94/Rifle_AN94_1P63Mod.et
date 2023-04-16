@@ -1,0 +1,33 @@
+GenericEntity : "{177CF9EA974446D1}Prefabs/Weapons/Rifles/AN94/Rifle_AN94.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  BaconSuppressors_WeaponSuppressionComponent "{5D20CE524D1ED313}" {
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{596526218C058852}" {
+     AttachmentSlot InventoryStorageSlot Optic {
+      InspectionWidgetOffset 0 0.1132 0
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{5965262567A155DD}" {
+     AttachmentSlot InventoryStorageSlot underbarrel {
+      InspectionWidgetOffset 0 0 0.3347
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{5D20CE525113ECF1}" {
+     AttachmentSlot InventoryStorageSlot Invt {
+      PivotID "barrel_muzzle"
+     }
+     AttachmentType AttachmentMuzzle556 "{5D20CE5264E387A0}" {
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazineTemplate ""
+    }
+   }
+  }
+ }
+}

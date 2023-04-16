@@ -123,7 +123,7 @@ class WST_GearPersistenceManager: GenericEntity
 		
 		
 		
-		mmc.GetAllItems(items,availableStorages[0]);
+		/*mmc.GetAllItems(items,availableStorages[0]);
 		mmc.GetAllItems(items2,availableStorages[1]);
 		mmc.GetAllItems(items3,availableStorages[2]);
 		mmc.GetAllItems(items4,availableStorages[3]);
@@ -132,7 +132,7 @@ class WST_GearPersistenceManager: GenericEntity
 		mmc.GetAllItems(items7,availableStorages[6]);
 		mmc.GetAllItems(items8,availableStorages[7]);
 		mmc.GetAllItems(items9,availableStorages[8]);
-		mmc.GetAllItems(items10,availableStorages[9]);
+		mmc.GetAllItems(items10,availableStorages[9]);*/
 
 		Print("GameModeWasteland::item data start");
 		foreach(IEntity it : items)
@@ -194,51 +194,22 @@ class WST_GearPersistenceManager: GenericEntity
 		
 		//characterinventory
 		itemCount = inv_mm.GetAllItems(items,b_characterStorage);	
-		int max = items.Count();
 		
-			/*for (int i = 0;i < max ;i++)
-			{
-				IEntity e = items.Get(i);
-				InventoryMagazineComponent mag = InventoryMagazineComponent.Cast(e.FindComponent(InventoryMagazineComponent));
-				if (mag)
-				{
-					items.Remove(items.Find(e));
-					max--;
-				}
-			}*/
+		
+			
 		
 		
 		
 		//weaponsattachmentsstorage
 		itemCount = inv_mm.GetAllItems(items,b_EquipedWeaponStorageStorage);
-			//itemCount = inv_mm.GetItems(itemsWithWeapons);
+			
 			
 		
 			
-			/*
-			foreach(IEntity e : itemsWithWeapons)
-			{
-				WeaponComponent wpc = WeaponComponent.Cast(e.FindComponent(WeaponComponent));
-				if(wpc)
-				{
-					itemWeapons.Insert(e);
-				}
-				//InventoryMagazineComponent mgc = InventoryMagazineComponent.Cast(e.FindComponent(InventoryMagazineComponent));
-				//if(mgc)
-			//	{
-					//itemWeapons.Insert(e);
-				//}
-			}
-			foreach(IEntity e : itemWeapons)
-			{
-				Print("WST_GearPersistenceManager::ItemWeapons: "+ e.GetPrefabData().GetPrefabName());
-				items.Insert(e);
-			}
-			
-			*/
 		
 		
 		Print("WST_GearPersistenceManager::Save::All items count: "+ items.Count());
+		
 		//clear prefab data 
 		gearObject_l.itemsOnPlayer.Clear();
 		
@@ -247,7 +218,21 @@ class WST_GearPersistenceManager: GenericEntity
 			if(!item)
 				continue;
 			EntityPrefabData data = item.GetPrefabData();
+			if(!data)
+				Print("WST_GearPersistenceManager::No Prefab Data!");
+			if(data.GetPrefabName() == string.Empty)
+				Print("WST_GearPersistenceManager::Prefab Name Empty!");
 			
+			MoneyComponent mc = MoneyComponent.Cast(item.FindComponent(MoneyComponent));
+			if (mc)
+			{
+				Print("WST_GearPersistenceManager::Wallet was Found!");
+				//set wallet value in gear object 
+				int value = mc.GetValue();
+				gearObject_l.walletValue = value;
+				continue;
+			
+			}
 			gearObject_l.add(data);
 			Print("WST_GearPersistenceManager::Saved item. ResourceName: "+ data.GetPrefabName());
 

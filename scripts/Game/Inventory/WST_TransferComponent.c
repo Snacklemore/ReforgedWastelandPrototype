@@ -21,6 +21,8 @@ class WST_TransferComponent : ScriptComponent
 		WST_MoneyConfigComponent mcc = WST_MoneyConfigComponent.Cast(GetOwner().FindComponent(WST_MoneyConfigComponent));
 		if (!mcc)
 			return;
+		if(mcc.alreadySet)
+			return;
 		IEntity ie = GetOwner();
 		InventoryStorageManagerComponent storage = InventoryStorageManagerComponent.Cast(ie.FindComponent(InventoryStorageManagerComponent));
 

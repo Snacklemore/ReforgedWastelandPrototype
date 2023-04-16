@@ -21,7 +21,6 @@ GenericEntity : "{C19BFAF8A6334FD5}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58_base.e
    components {
     AttachmentSlotComponent "{56F0CD49BE54A5F2}" {
      AttachmentSlot InventoryStorageSlot Stock {
-      Prefab ""
      }
     }
     AttachmentSlotComponent "{5D1913B40DF00AA6}" {
@@ -36,7 +35,7 @@ GenericEntity : "{C19BFAF8A6334FD5}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58_base.e
     AttachmentSlotComponent "{5D1913B4EE5361C8}" {
      AttachmentSlot InventoryStorageSlot Invt {
       PivotID "barrel_muzzle"
-      InspectionWidgetOffset 0 0.0474 0.4754
+      InspectionWidgetOffset 0 0.0474 0.5528
      }
      AttachmentType AttachmentMuzzle556 "{5D1913B4F0EBF0F8}" {
      }

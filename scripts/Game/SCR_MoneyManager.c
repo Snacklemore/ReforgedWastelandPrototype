@@ -35,15 +35,19 @@ class SCR_MoneyManager: GenericEntity
 		int counter = 0;
 		int removedNullpointer = 0;
 		Print("SCR_MoneyManager::Cleanup Called!");
-
-		foreach (GenericEntity ent : wallets)
+		int max = wallets.Count();
+		for (int i = 0;i<max;i++)
 		{
+			if (wallets[i])
+				continue;
+			IEntity ent = wallets[i];
 			//too late for null check?
 			if(ent)
 				continue;
 			if(!ent)
 			{
 				wallets.Remove(counter);
+				max--;
 				removedNullpointer++;
 				
 			}

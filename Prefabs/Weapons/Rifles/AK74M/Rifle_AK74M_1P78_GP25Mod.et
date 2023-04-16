@@ -1,6 +1,8 @@
 GenericEntity : "{FA8BE6075AFFBCA8}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M.et" {
  ID "CFBAA4B725411E45"
  components {
+  BaconSuppressors_WeaponSuppressionComponent "{5D20CE552C6A60B8}" {
+  }
   WeaponComponent "{CFBAA4B706BA66E8}" {
    components {
     AttachmentSlotComponent "{51F6738D2EC74BE1}" {
@@ -10,7 +12,13 @@ GenericEntity : "{FA8BE6075AFFBCA8}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M.et" 
     AttachmentSlotComponent "{5A7332ECF23FF6A5}" {
      AttachmentSlot InventoryStorageSlot optics {
      }
-     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{5D20CE52B8A6AD25}" {
+     AttachmentSlot InventoryStorageSlot Invt {
+      PivotID "barrel_muzzle"
+     }
+     AttachmentType AttachmentMuzzle556 "{5D20CE52CAB96E60}" {
+     }
     }
     MuzzleComponent "{CA6BE4D6B867541F}" {
      MagazineTemplate ""
