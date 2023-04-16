@@ -128,25 +128,25 @@ class WST_WeaponV2
 	//weapon
 	ref array<ShopObject> shopItems = new array<ShopObject>();
 	
-	ref ShopObject Rifle_VZ58P = new ShopObject("{66D32F932F7E8C1F}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58PMod.et","Rifle_VZ58P_PSO","Rifle VZ58P PSO",WST_Type.WST_WEAPON,300);
+	ref ShopObject Rifle_VZ58P = new ShopObject("{66D32F932F7E8C1F}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58PMod.et","Rifle_VZ58P_PSO","Rifle VZ58P",WST_Type.WST_WEAPON,300);
 
 	
 	ref ShopObject Magazine_762x39_Vz58_30rnd_Tracer = new ShopObject("{FAFA0D71E75CEBE2}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Tracer.et","Magazine_762x39_Vz58_30rnd_Tracer","Magazine 762x39 SA58 30rnd",WST_Type.WST_AMMO,30);
 
 	
-	ref ShopObject Rifle_AK74N_PSO1 = new ShopObject("{A5DECB66BD9DCAAB}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M_1P78_GP25Mod.et","Rifle_AK74N_PSO1","Rifle AK74N PSO1",WST_Type.WST_WEAPON,300);
+	ref ShopObject Rifle_AK74N_PSO1 = new ShopObject("{A5DECB66BD9DCAAB}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M_1P78_GP25Mod.et","Rifle_AK74N_PSO1","Rifle AK74N",WST_Type.WST_WEAPON,300);
 
-	ref ShopObject AK74M_Optic = new ShopObject("{4A79F283F7DA624F}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M_1P78_GP25.et","Rifle_AK74M_1P78_GP25","Rifle AK74M 1P78 GP25",WST_Type.WST_WEAPON,300);
+	ref ShopObject AK74M_Optic = new ShopObject("{4A79F283F7DA624F}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M_1P78_GP25.et","Rifle_AK74M_1P78_GP25","Rifle AK74M",WST_Type.WST_WEAPON,300);
 
-	ref ShopObject AN94O = new ShopObject("{AF2B2A5270708E19}Prefabs/Weapons/Rifles/AN94/Rifle_AN94_1P63.et","WeaponAN94","AN 74 with 1P63",WST_Type.WST_WEAPON,300);
+	ref ShopObject AN94O = new ShopObject("{AF2B2A5270708E19}Prefabs/Weapons/Rifles/AN94/Rifle_AN94_1P63.et","WeaponAN94","AN 74 ",WST_Type.WST_WEAPON,300);
 
 	ref ShopObject AK74O = new ShopObject("{5B308198855FBCE5}Prefabs/Weapons/Rifles/AK74/Rifle_AK74Suppressed.et","WeaponAK74","AK 74",WST_Type.WST_WEAPON,200);
 	
-	ref ShopObject AK74GPO = new ShopObject("{2FA2E44E5B95D044}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25Suppressed.et","WeaponAKGP25","AK GP25",WST_Type.WST_WEAPON,300);
+	ref ShopObject AK74GPO = new ShopObject("{2FA2E44E5B95D044}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25Suppressed.et","WeaponAKGP25","AK ",WST_Type.WST_WEAPON,300);
 	
-	ref ShopObject Rifle_M21_ARTIIO = new ShopObject("{81EB948E6414BD6F}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTII.et","WeaponM21ARTII","M21 ARTII Optic",WST_Type.WST_WEAPON,650);
+	ref ShopObject Rifle_M21_ARTIIO = new ShopObject("{0EE4F8425C114813}Prefabs/Weapons/Rifles/M14/Rifle_M21Suppressed.et","WeaponM21","M21",WST_Type.WST_WEAPON,250);
 	
-	ref ShopObject M16O = new ShopObject("{7500FA1B52CC247F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203Suppressed.et","WeaponM16A2M203","M16A2 M203UBGL",WST_Type.WST_WEAPON,350);
+	ref ShopObject M16O = new ShopObject("{7500FA1B52CC247F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203Suppressed.et","WeaponM16A2M203","M16A2 ",WST_Type.WST_WEAPON,350);
 	
 	ref ShopObject StandardSuppressorO = new ShopObject("{7CB432CC4ED704E1}Prefabs/Weapons/Core/Suppressor_Generic_556.et","StandardSuppressor","Standard Suppressor",WST_Type.WST_ATTACHMENT,100);
 	
@@ -247,15 +247,15 @@ class WST_Weapon
 	ref array<ShopObject> shopItems = new array<ShopObject>();
 	
 	
-	ref ShopObject AN94O = new ShopObject("{AF2B2A5270708E19}Prefabs/Weapons/Rifles/AN94/Rifle_AN94_1P63.et","WeaponAN94","AN 74 with 1P63",WST_Type.WST_WEAPON,300);
+	ref ShopObject AN94O = new ShopObject("{AF2B2A5270708E19}Prefabs/Weapons/Rifles/AN94/Rifle_AN94_1P63.et","WeaponAN94","AN 74 ",WST_Type.WST_WEAPON,300);
 
 	ref ShopObject AK74O = new ShopObject("{5B308198855FBCE5}Prefabs/Weapons/Rifles/AK74/Rifle_AK74Suppressed.et","WeaponAK74","AK 74",WST_Type.WST_WEAPON,200);
 	
-	ref ShopObject AK74GPO = new ShopObject("{2FA2E44E5B95D044}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25Suppressed.et","WeaponAKGP25","AK GP25",WST_Type.WST_WEAPON,300);
+	ref ShopObject AK74GPO = new ShopObject("{2FA2E44E5B95D044}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25Suppressed.et","WeaponAKGP25","AK ",WST_Type.WST_WEAPON,300);
 	
-	ref ShopObject Rifle_M21_ARTIIO = new ShopObject("{81EB948E6414BD6F}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTII.et","WeaponM21ARTII","M21 ARTII Optic",WST_Type.WST_WEAPON,650);
+	ref ShopObject Rifle_M21_ARTIIO = new ShopObject("{81EB948E6414BD6F}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTII.et","WeaponM21ARTII","M21 ",WST_Type.WST_WEAPON,650);
 	
-	ref ShopObject M16O = new ShopObject("{7500FA1B52CC247F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203Suppressed.et","WeaponM16A2M203","M16A2 M203UBGL",WST_Type.WST_WEAPON,350);
+	ref ShopObject M16O = new ShopObject("{7500FA1B52CC247F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203Suppressed.et","WeaponM16A2M203","M16A2",WST_Type.WST_WEAPON,350);
 	
 	ref ShopObject StandardSuppressorO = new ShopObject("{7CB432CC4ED704E1}Prefabs/Weapons/Core/Suppressor_Generic_556.et","StandardSuppressor","Standard Suppressor",WST_Type.WST_ATTACHMENT,100);
 	
@@ -279,6 +279,9 @@ class WST_Weapon
 	
 	ref ShopObject M14MagO = new ShopObject("{627255315038152A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_SpecialBall.et","M14Mag","M14 Magazine",WST_Type.WST_AMMO,100);
 	
+	
+	ref ShopObject PSO1 = new ShopObject("{C850A33226B8F9C1}Prefabs/Weapons/Attachments/Optics/Optic_PSO1.et","PSO1","PSO1",WST_Type.WST_ATTACHMENT,100);
+
 	
 	ref map<string,ResourceName> buildArray = new map<string,ResourceName>();
 	ref array<string> iterationArray = new array<string>();
@@ -305,6 +308,8 @@ class WST_Weapon
 			return;
 		instance = this;
 		//
+		
+		
 		shopItems.Insert(AK74O);
 		shopItems.Insert(AK74GPO);
 		shopItems.Insert(Rifle_M21_ARTIIO);
@@ -324,6 +329,8 @@ class WST_Weapon
 		shopItems.Insert(M14MagO);
 		shopItems.Insert(AN94O);
 		
+		
+		shopItems.Insert(PSO1);		
 		foreach(ShopObject o:shopItems)
 		{
 			buildArray.Insert(o.m_Identifier,o.m_prefabPath);

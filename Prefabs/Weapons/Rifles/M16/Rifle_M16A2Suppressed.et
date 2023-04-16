@@ -9,12 +9,14 @@ GenericEntity : "{C63227C0E70EA62E}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_base.e
     AttachmentSlotComponent "{5CFD2E6A412FB265}" {
      AttachmentSlot InventoryStorageSlot Handguard {
       PivotID "barrel_chamber"
-      Prefab "{FB1A7F5BC7D935E2}Prefabs/Weapons/Attachments/Handguards/Handguard_M16A2/Handguard_M16.et"
       DeactivatePhysicsOnAtaching 1
       InspectionWidgetOffset 0 0.0789 0.2607
      }
      AttachmentType AttachmentHandGuardM16 "{5CFD2E6A412FB27D}" {
      }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazineTemplate ""
     }
    }
   }

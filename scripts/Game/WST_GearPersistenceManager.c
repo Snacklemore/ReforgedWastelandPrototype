@@ -1,14 +1,14 @@
 class WST_GearPersistenceManagerClass: GenericEntityClass
 {
 };
-//session Persistence (wont survice a server restart!)
-//keep manager on server side Only 
-//1.new player 
-//-
+///////TODO:
+//-DeleteAllItems not deleting all items 
 
-//2.already played before 
-//-
-//Rpc for client to ask for save needed
+//-only scan first storage for items (contains all items already probably)
+
+//-clear the itemsOnPlayer array before saving new items!
+//-save currency value on player
+
 class WST_GearPersistenceManager: GenericEntity
 {
 	ref array<ref WST_GearObject> PlayerGearObjects;
@@ -79,7 +79,25 @@ class WST_GearPersistenceManager: GenericEntity
 		
 			//int GetAllItems(inout array<IEntity> items, BaseInventoryStorageComponent storage)
 			//proto external int GetStorages(out notnull array<BaseInventoryStorageComponent> outStorages, EStoragePurpose purpose = EStoragePurpose.PURPOSE_ANY);
+		array<IEntity> items2 = new array<IEntity>();
+
+		array<IEntity> items3 = new array<IEntity>();
+
+		array<IEntity> items4 = new array<IEntity>();
+
+		array<IEntity> items5 = new array<IEntity>();
+
+		array<IEntity> items6 = new array<IEntity>();
+		array<IEntity> items7 = new array<IEntity>();
+		array<IEntity> items8 = new array<IEntity>();
+		array<IEntity> items9 = new array<IEntity>();
+		array<IEntity> items10 = new array<IEntity>();
+
+		array<IEntity> items = new array<IEntity>();
+		array<IEntity> itemsWithWeapons = new array<IEntity>();
+		array<IEntity> itemWeapons= new array<IEntity>();
 		
+
 		PlayerManager pm = GetGame().GetPlayerManager();
 		
 		IEntity controller = pm.GetPlayerControlledEntity(id);
@@ -87,34 +105,174 @@ class WST_GearPersistenceManager: GenericEntity
 		SCR_InventoryStorageManagerComponent inv_mm = SCR_InventoryStorageManagerComponent.Cast(controller.FindComponent(SCR_InventoryStorageManagerComponent));
 		
 		array<BaseInventoryStorageComponent> availableStorages = new array<BaseInventoryStorageComponent>();
+		//amount of storages dependant on character equipment 
 		int storageCount = inv_mm.GetStorages(availableStorages);
 		Print("WST_GearPersistenceManager::Save:: storage count: "+ storageCount);
-		
-		int itemCount = -1;
-		array<IEntity> items = new array<IEntity>();
-		
-		
-		int count = 0;
-		foreach(BaseInventoryStorageComponent storage : availableStorages)
+		SCR_InventoryStorageManagerComponent mmc = inv_mm;
+		BaseInventoryStorageComponent b_characterStorage;
+		BaseInventoryStorageComponent b_EquipedWeaponStorageStorage;
+		foreach(BaseInventoryStorageComponent bStorage : availableStorages)
 		{
-			count++;
-			itemCount = inv_mm.GetAllItems(items,storage);		
-			Print("WST_GearPersistenceManager::Save:: item count: "+ itemCount+" pass "+ count);
+			EquipedWeaponStorageComponent ws = EquipedWeaponStorageComponent.Cast(bStorage);
+			if (ws)
+				b_EquipedWeaponStorageStorage = ws;
+			SCR_CharacterInventoryStorageComponent cs = SCR_CharacterInventoryStorageComponent.Cast(bStorage);
+			if (cs)
+				b_characterStorage = cs;	
 		}
 		
+		
+		
+		mmc.GetAllItems(items,availableStorages[0]);
+		mmc.GetAllItems(items2,availableStorages[1]);
+		mmc.GetAllItems(items3,availableStorages[2]);
+		mmc.GetAllItems(items4,availableStorages[3]);
+		mmc.GetAllItems(items5,availableStorages[4]);
+		mmc.GetAllItems(items6,availableStorages[5]);
+		mmc.GetAllItems(items7,availableStorages[6]);
+		mmc.GetAllItems(items8,availableStorages[7]);
+		mmc.GetAllItems(items9,availableStorages[8]);
+		mmc.GetAllItems(items10,availableStorages[9]);
+
+		Print("GameModeWasteland::item data start");
+		foreach(IEntity it : items)
+		{
+			Print("GameModeWasteland::item data" +it.GetPrefabData().GetPrefabName());
+		}
+		
+		Print("GameModeWasteland::item data start2");
+		foreach(IEntity it : items2)
+		{
+			Print("GameModeWasteland::item data2" +it.GetPrefabData().GetPrefabName());
+		}
+		
+		Print("GameModeWasteland::item data start3");
+		foreach(IEntity it : items3)
+		{
+			Print("GameModeWasteland::item data3" +it.GetPrefabData().GetPrefabName());
+		}		
+		Print("GameModeWasteland::item data start4");
+		foreach(IEntity it : items4)
+		{
+			Print("GameModeWasteland::item data4" +it.GetPrefabData().GetPrefabName());
+		}		
+		Print("GameModeWasteland::item data start5");
+		foreach(IEntity it : items5)
+		{
+			Print("GameModeWasteland::item data5" +it.GetPrefabData().GetPrefabName());
+		}		
+		Print("GameModeWasteland::item data start6");
+		foreach(IEntity it : items6)
+		{
+			Print("GameModeWasteland::item data6" +it.GetPrefabData().GetPrefabName());
+		}		
+		Print("GameModeWasteland::item data start7");
+		foreach(IEntity it : items7)
+		{
+			Print("GameModeWasteland::item data7" +it.GetPrefabData().GetPrefabName());
+		}		
+		Print("GameModeWasteland::item data start8");
+		foreach(IEntity it : items8)
+		{
+			Print("GameModeWasteland::item data8" +it.GetPrefabData().GetPrefabName());
+		}		
+		Print("GameModeWasteland::item data start9");
+		foreach(IEntity it : items9)
+		{
+			Print("GameModeWasteland::item data9" +it.GetPrefabData().GetPrefabName());
+		}		
+		Print("GameModeWasteland::item data start10");
+		foreach(IEntity it : items10)
+		{
+			Print("GameModeWasteland::item data10" +it.GetPrefabData().GetPrefabName());
+		}		
+		int itemCount = -1;
+		
+		
+		items.Clear();
+		int count = 0;
+		
+		//characterinventory
+		itemCount = inv_mm.GetAllItems(items,b_characterStorage);	
+		int max = items.Count();
+		
+			/*for (int i = 0;i < max ;i++)
+			{
+				IEntity e = items.Get(i);
+				InventoryMagazineComponent mag = InventoryMagazineComponent.Cast(e.FindComponent(InventoryMagazineComponent));
+				if (mag)
+				{
+					items.Remove(items.Find(e));
+					max--;
+				}
+			}*/
+		
+		
+		
+		//weaponsattachmentsstorage
+		itemCount = inv_mm.GetAllItems(items,b_EquipedWeaponStorageStorage);
+			//itemCount = inv_mm.GetItems(itemsWithWeapons);
+			
+		
+			
+			/*
+			foreach(IEntity e : itemsWithWeapons)
+			{
+				WeaponComponent wpc = WeaponComponent.Cast(e.FindComponent(WeaponComponent));
+				if(wpc)
+				{
+					itemWeapons.Insert(e);
+				}
+				//InventoryMagazineComponent mgc = InventoryMagazineComponent.Cast(e.FindComponent(InventoryMagazineComponent));
+				//if(mgc)
+			//	{
+					//itemWeapons.Insert(e);
+				//}
+			}
+			foreach(IEntity e : itemWeapons)
+			{
+				Print("WST_GearPersistenceManager::ItemWeapons: "+ e.GetPrefabData().GetPrefabName());
+				items.Insert(e);
+			}
+			
+			*/
+		
+		
 		Print("WST_GearPersistenceManager::Save::All items count: "+ items.Count());
+		//clear prefab data 
+		gearObject_l.itemsOnPlayer.Clear();
+		
 		foreach(IEntity item :items)
 		{
-			EntityPrefabData data = item.GetPrefabData();
-			//Check for duplicates before adding 
-			
-			if (gearObject_l.itemsOnPlayer.Contains(data))
+			if(!item)
 				continue;
+			EntityPrefabData data = item.GetPrefabData();
+			
 			gearObject_l.add(data);
 			Print("WST_GearPersistenceManager::Saved item. ResourceName: "+ data.GetPrefabName());
 
 		}
 		
+	}
+	
+	bool isWeaponAttachment(IEntity e)
+	{
+		InventoryItemComponent itemComp = InventoryItemComponent.Cast(e.FindComponent(InventoryItemComponent));
+
+		if (!itemComp)
+			return false;
+
+		ItemAttributeCollection itemAttributes = itemComp.GetAttributes();
+
+		if (!itemAttributes)
+			return false;
+
+		WeaponAttachmentAttributes itemAttribute = WeaponAttachmentAttributes.Cast(itemAttributes.FindAttribute(WeaponAttachmentAttributes));
+
+		if (!itemAttribute)
+			return false;
+		else 
+			return true;
 	}
 	//do not update all player at once
 	//send update via RPC, and update Data 
@@ -221,6 +379,7 @@ class WST_GearObject
 	//array of EntityPrefabData 
 	ref array<ref EntityPrefabData> itemsOnPlayer;
 	string PlayerIdentity;
+	int walletValue;
 	//with this PlayerIdentity associated RplID 
 	
 	void add(EntityPrefabData e)
@@ -233,6 +392,7 @@ class WST_GearObject
 	void WST_GearObject()
 	{
 		itemsOnPlayer = new ref array<ref EntityPrefabData>();
+		walletValue = -1;
 		
 	}
 

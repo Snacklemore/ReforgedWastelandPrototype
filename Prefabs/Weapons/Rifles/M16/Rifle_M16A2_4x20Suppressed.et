@@ -6,8 +6,15 @@ GenericEntity : "{3E413771E1834D2F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2.et" {
     AttachmentSlotComponent "{5534745C44D1EF58}" {
      AttachmentSlot InventoryStorageSlot optics {
       PivotID "barrel_chamber"
-      Prefab "{BD496EE1B40DC510}Prefabs/Weapons/Attachments/Optics/Optic_4x20/Optic_4x20.et"
      }
+    }
+    AttachmentSlotComponent "{56DE9C900611C1AF}" {
+     AttachmentSlot InventoryStorageSlot Handguard {
+      Prefab ""
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazineTemplate ""
     }
    }
   }

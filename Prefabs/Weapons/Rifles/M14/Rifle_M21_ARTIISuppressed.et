@@ -5,8 +5,10 @@ GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
    components {
     AttachmentSlotComponent "{5472D21A19B61CDF}" {
      AttachmentSlot InventoryStorageSlot Scope {
-      Prefab "{D2018EDB1BBF4C88}Prefabs/Weapons/Attachments/Optics/Optic_ARTII.et"
      }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazineTemplate ""
     }
    }
   }

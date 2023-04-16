@@ -17,6 +17,7 @@ GenericEntity : "{43497A18DD888667}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_base.e
       SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
       }
      }
+     MagazineTemplate ""
     }
    }
   }

@@ -21,13 +21,13 @@ GenericEntity : "{C19BFAF8A6334FD5}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58_base.e
    components {
     AttachmentSlotComponent "{56F0CD49BE54A5F2}" {
      AttachmentSlot InventoryStorageSlot Stock {
+      Prefab ""
      }
     }
     AttachmentSlotComponent "{5D1913B40DF00AA6}" {
      AttachmentSlot InventoryStorageSlot Invt {
       PivotID "w_sight"
       Offset -0.0119 -0.0359 -0.1921
-      Prefab "{C850A33226B8F9C1}Prefabs/Weapons/Attachments/Optics/Optic_PSO1.et"
      }
      AttachmentType AttachmentOpticsDovetail "{5D1913BB9B8C2AB8}" {
      }
@@ -45,6 +45,7 @@ GenericEntity : "{C19BFAF8A6334FD5}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58_base.e
     MuzzleComponent "{CA6BE4D6B867541F}" {
      MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
      }
+     MagazineTemplate ""
     }
    }
   }

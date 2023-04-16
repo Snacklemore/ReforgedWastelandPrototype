@@ -4105,21 +4105,96 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////------------------------------------------------------------------------------------------------
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////------------------------------------------------------------------------------------------------
-
-	//! What happens when a player spawns.
+//just enough to delete inventory (crashes and ud when deleting items in quickbar/weapon slot)
 	void DeleteAllItems(SCR_InventoryStorageManagerComponent mmc)
 	{
 		array<IEntity> items = new array<IEntity>();
+		
+
 		array<BaseInventoryStorageComponent> availableStorages = new array<BaseInventoryStorageComponent>();
 		int storageCount = mmc.GetStorages(availableStorages);
-		mmc.GetAllItems(items,availableStorages[0]);	
 		
-		foreach(IEntity item : items)
+		
+		int		itemsCount = mmc.GetAllItems(items,availableStorages[0]);
+		Print("GameModeWasteland::Deleting item count " + items.Count());
+		
+		/*
+		array<IEntity> aGadgets = new array<IEntity>();
+		SCR_HoldableItemPredicate p_holdable = new SCR_HoldableItemPredicate();
+		array<IEntity> magazines = new array<IEntity>();
+		SCR_MagazinePredicate pMagazine = new SCR_MagazinePredicate();
+		array<IEntity> medical = new array<IEntity>();
+		SCR_ApplicableMedicalItemPredicate pMedical = new SCR_ApplicableMedicalItemPredicate();
+		mmc.FindItems(aGadgets,p_holdable);
+		mmc.FindItems(magazines,pMagazine);
+		mmc.FindItems(medical,pMedical);
+		
+		Print("GameModeWasteland::item aGadgets start");
+		foreach(IEntity it : aGadgets)
 		{
-			mmc.TryDeleteItem(item);
-			
+			Print("GameModeWasteland::item aGadgets" +it.GetPrefabData().GetPrefabName());
+			Print("GameModeWasteland::Deleting:  "+it.GetPrefabData().GetPrefabName());
+			bool success = mmc.TryDeleteItem(it);
+			Print("GameModeWasteland::Deleting success  "+ success);
+		}		
+		Print("GameModeWasteland::item magazines start");
+		foreach(IEntity it : magazines)
+		{
+			Print("GameModeWasteland::magazines data" +it.GetPrefabData().GetPrefabName());
+			Print("GameModeWasteland::Deleting:  "+it.GetPrefabData().GetPrefabName());
+			bool success = mmc.TryDeleteItem(it);
+			Print("GameModeWasteland::Deleting success  "+ success);
+		}		
+		Print("GameModeWasteland::item medical start");
+		foreach(IEntity it : medical)
+		{
+			Print("GameModeWasteland::medical data" +it.GetPrefabData().GetPrefabName());
+			Print("GameModeWasteland::Deleting:  "+it.GetPrefabData().GetPrefabName());
+			bool success = mmc.TryDeleteItem(it);
+			Print("GameModeWasteland::Deleting success  "+ success);
 		}
+		*/
+		bool success = false;	
+		for (int i = items.Count();i>=0;--i)
+		{
+			IEntity item = items.Get(i);
+			if(!item)
+				continue;
+			Print("GameModeWasteland::Deleting:  "+item.GetPrefabData().GetPrefabName());
+			RplComponent rpl = RplComponent.Cast(item.FindComponent(RplComponent));
+			
+				success = mmc.TryDeleteItem(item);
+				RplComponent.DeleteRplEntity(item,false);
+			
+			
+				
+			Print("GameModeWasteland::Deleting success  "+ success);
+
+		}
+		
 	
+	}
+	
+	void AddAllItems(SCR_InventoryStorageManagerComponent mmc,WST_GearObject o)
+	{
+		foreach(EntityPrefabData data : o.itemsOnPlayer)
+			{
+						
+				Print("GameModeWasteland::Addding:  "+ data.GetPrefabName());
+
+				ResourceName n = data.GetPrefabName();
+				IEntity spawnedItem = GetGame().SpawnEntityPrefab(Resource.Load(n),GetGame().GetWorld());
+				MoneyComponent mc = MoneyComponent.Cast(spawnedItem.FindComponent(MoneyComponent));
+				InventoryMagazineComponent mg = InventoryMagazineComponent.Cast(spawnedItem.FindComponent(InventoryMagazineComponent));
+				WeaponComponent wc = WeaponComponent.Cast(spawnedItem.FindComponent(WeaponComponent));
+
+				
+						
+				//bool success = mmc.TryInsertItem(spawnedItem,EStoragePurpose.PURPOSE_ANY,null);
+				bool success = mmc.TrySpawnPrefabToStorage(n);
+
+				Print("GameModeWasteland::Succes:  "+success +"for Item "+data.GetPrefabName());
+			}
 	}
 	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
 	{
@@ -4130,7 +4205,9 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		super.OnPlayerSpawned(playerId, controlledEntity);
 		
 		PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId);
-		
+		ref SCR_InventoryStorageManagerComponent mmc = SCR_InventoryStorageManagerComponent.Cast(controlledEntity.FindComponent(SCR_InventoryStorageManagerComponent));
+		mmc.OnItemAddedHandler();
+		mmc.OnItemRemovedHandler();
 		//kick of gear persistence loading from here
 		if (pc)
 		{
@@ -4142,30 +4219,29 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			if (o)
 				Print("GameModeWasteland::GearObject Found! Loading gear ");
 
-			SCR_InventoryStorageManagerComponent mmc = SCR_InventoryStorageManagerComponent.Cast(controlledEntity.FindComponent(SCR_InventoryStorageManagerComponent));
 
 			
-			
-			if (o)
+			if(IsMaster())
 			{
-				if(mmc)
+				
+				if (o)
 				{
-					Print("GameModeWasteland::itemsOnPlayer count: "+ o.itemsOnPlayer.Count());
-					if(o.itemsOnPlayer.Count() > 0)
-						DeleteAllItems(mmc);
-					foreach(EntityPrefabData data : o.itemsOnPlayer)
+					if(mmc)
 					{
+						Print("GameModeWasteland::itemsOnPlayer count: "+ o.itemsOnPlayer.Count());
+						if(o.itemsOnPlayer.Count() == 0)
+							return;
+					
 						
-						Print("GameModeWasteland::Addding:  "+ data.GetPrefabName());
+						GetGame().GetCallqueue().CallLater(DeleteAllItems,1500,false,mmc);
 
-						ResourceName n = data.GetPrefabName();
-						IEntity spawnedItem = GetGame().SpawnEntityPrefab(Resource.Load(n),GetGame().GetWorld());
-						
-						mmc.TryInsertItem(spawnedItem);
-	
+						GetGame().GetCallqueue().CallLater(AddAllItems,2000,false,mmc,o);
 					}
 				}
 			}
+				
+		}
+				
 				
 			
 			
@@ -4177,8 +4253,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 				campaignNetworkComponent.UpdatePlayerRank(false);
 				campaignNetworkComponent.EnableShowingSpawnPosition(true)
 			}
-		}
 	}
+	
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------

@@ -5,13 +5,15 @@ GenericEntity : "{FA8BE6075AFFBCA8}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M.et" 
    components {
     AttachmentSlotComponent "{51F6738D2EC74BE1}" {
      AttachmentSlot InventoryStorageSlot underbarrel {
-      Prefab "{1ABABE3551512B0A}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25.et"
      }
     }
     AttachmentSlotComponent "{5A7332ECF23FF6A5}" {
      AttachmentSlot InventoryStorageSlot optics {
-      Prefab "{8D4BAA235F7EDBEA}Prefabs/Weapons/Attachments/Optics/1p78/Optic_1P78.et"
      }
+     ShowInInspection 1
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazineTemplate ""
     }
     SightsComponent "{BB23A637957CFFF8}" {
      SightsPosition PointInfo "{BB23A63796688E69}" {
