@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{EEA7B83CE652B71E}Sounds/Weapons/Handguns/M9/Weapons_Handguns_M9_ShotMod.acp"
+ Configurations {
+  AudioProjectResourceClass PC {
+  }
+  AudioProjectResourceClass XBOX_ONE : PC {
+  }
+  AudioProjectResourceClass XBOX_SERIES : PC {
+  }
+  AudioProjectResourceClass PS4 : PC {
+  }
+  AudioProjectResourceClass HEADLESS : PC {
+  }
+ }
+}
