@@ -129,13 +129,14 @@ class WST_WeaponV2
 	ref array<ShopObject> shopItems = new array<ShopObject>();
 	
 	ref ShopObject Rifle_VZ58P = new ShopObject("{66D32F932F7E8C1F}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58PMod.et","Rifle_VZ58P_PSO","Rifle VZ58P",WST_Type.WST_WEAPON,300);
+	ref ShopObject M16_optic = new ShopObject("{FFD418F9A77519D2}Prefabs/Weapons/Attachments/Optics/Optic_4x20/Optic_4x20Mod.et","M16_optic","M16 Optic",WST_Type.WST_ATTACHMENT,300);
+	ref ShopObject Optic_ARTII = new ShopObject("{D2018EDB1BBF4C88}Prefabs/Weapons/Attachments/Optics/Optic_ARTII.et","Optic_ARTII","ARTII Sniper Optic",WST_Type.WST_ATTACHMENT,300);
 
 	
 	ref ShopObject Magazine_762x39_Vz58_30rnd_Tracer = new ShopObject("{FAFA0D71E75CEBE2}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Tracer.et","Magazine_762x39_Vz58_30rnd_Tracer","Magazine 762x39 SA58 30rnd",WST_Type.WST_AMMO,30);
 
 	
 	ref ShopObject Rifle_AK74N_PSO1 = new ShopObject("{E6ABF84D52589026}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74MDuplicateTest.et","Rifle_AK74N_PSO1","Rifle AK74N",WST_Type.WST_WEAPON,300);
-
 	ref ShopObject AK74M_Optic = new ShopObject("{E6ABF84D52589026}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74MDuplicateTest.et","Rifle_AK74M","Rifle AK74M",WST_Type.WST_WEAPON,300);
 
 	ref ShopObject AN94O = new ShopObject("{2D406AEED3CDF362}Prefabs/Weapons/Rifles/AN94/Rifle_AN94_1P63Mod.et","WeaponAN94","AN 74 ",WST_Type.WST_WEAPON,300);
@@ -169,7 +170,10 @@ class WST_WeaponV2
 	
 	ref ShopObject M14MagO = new ShopObject("{627255315038152A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_SpecialBall.et","M14Mag","M14 Magazine",WST_Type.WST_AMMO,100);
 	ref ShopObject UBGL203 = new ShopObject("{4E1032FAA257BEC5}Prefabs/Weapons/Attachments/Underbarrel/UGL_M203Mod.et","UBGL203","UBGL203",WST_Type.WST_ATTACHMENT,300);
+	
 	ref ShopObject GP25attachment = new ShopObject("{CDC3268678BA8765}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25Mod.et","UBGP25","GP25 UBGL",WST_Type.WST_ATTACHMENT,300);
+	ref ShopObject Optic_1P63 = new ShopObject("{CDC3268678BA8765}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25Mod.et","Optic_1P63","Optic 1P63",WST_Type.WST_ATTACHMENT,300);
+	ref ShopObject PSO1 = new ShopObject("{C850A33226B8F9C1}Prefabs/Weapons/Attachments/Optics/Optic_PSO1.et","PSO1","PSO1",WST_Type.WST_ATTACHMENT,100);
 
 	
 	ref map<string,ResourceName> buildArray = new map<string,ResourceName>();
@@ -215,11 +219,16 @@ class WST_WeaponV2
 		shopItems.Insert(M14MagO);
 		shopItems.Insert(AN94O);
 		shopItems.Insert(AK74M_Optic);
+		shopItems.Insert(M16_optic);
+
 		shopItems.Insert(Rifle_VZ58P);
 		shopItems.Insert(Rifle_AK74N_PSO1);
 		shopItems.Insert(Magazine_762x39_Vz58_30rnd_Tracer);
 		shopItems.Insert(UBGL203);
 		shopItems.Insert(GP25attachment);
+		shopItems.Insert(Optic_ARTII);
+		//shopItems.Insert(Optic_1P63);
+		shopItems.Insert(PSO1);	
 		
 		
 		foreach(ShopObject o:shopItems)
@@ -333,7 +342,7 @@ class WST_Weapon
 		shopItems.Insert(UBGL203);
 
 		
-		shopItems.Insert(PSO1);		
+			
 		foreach(ShopObject o:shopItems)
 		{
 			buildArray.Insert(o.m_Identifier,o.m_prefabPath);

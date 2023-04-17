@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{FFD418F9A77519D2}Prefabs/Weapons/Attachments/Optics/Optic_4x20/Optic_4x20Mod.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

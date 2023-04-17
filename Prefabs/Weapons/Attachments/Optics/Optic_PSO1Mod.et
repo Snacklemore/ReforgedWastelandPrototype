@@ -1,0 +1,174 @@
+GenericEntity : "{2E0E3D7D1DD0FF8F}Prefabs/Weapons/Core/Attachment_Base.et" {
+ ID "4BA426CBAED42A14"
+ components {
+  SoundComponent "{5A7C700C4F703F82}" {
+   Filenames {
+    "{92CB09CB84872CB4}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Optics_LongGeneric.acp" "{7F55C292FBA55048}Sounds/Items/_SharedData/Drop/Items_Drop_Generic_Metallic.acp"
+   }
+  }
+  InventoryItemComponent "{52627A1F45CD4EB6}" {
+   Attributes SCR_ItemAttributeCollection "{52627A1EBB0698FD}" {
+    ItemDisplayName UIInfo "{5D21612FB7D6B591}" {
+     Name "#AR-Item_PSO1_Name"
+     Description "#AR-Item_PSO1_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{5D21612FB7D6B594}" {
+     Weight 0.58
+     SizeSetupStrategy Manual
+     ItemVolume 400
+     RestingUP Right
+    }
+    CustomAttributes {
+     WeaponAttachmentAttributes "{5284D858FFF9BE66}" {
+      AttachmentType AttachmentOpticsDovetail "{5D21612FB7D6B5AB}" {
+      }
+     }
+     CharacterModifierAttributes "{5D21612FB7D6B5A9}" {
+      ADSSpeedLimit 1.5
+      SpeedLimitHighready 1.7
+     }
+     PreviewRenderAttributes "{52D69389645B4E4D}" {
+      CameraPreset Right
+      CameraDistanceToItem 1
+      ItemRenderRotation 0 0 0
+      FOV 20
+     }
+    }
+    m_Size SLOT_1x1
+   }
+  }
+  MeshObject "{5D21612FB7D6B5AC}" {
+   Object "{4EF7C9325481A367}Assets/Weapons/Attachments/Optics/PSO1/Optic_PSO1.xob"
+  }
+  RigidBody "{5D21612FB7D6B5A2}" {
+   LayerPreset "ItemFireView"
+   ModelGeometry 1
+  }
+  SCR_2DPIPSightsComponent "{5D21612FB7D6B5A3}" {
+   SightsPosition PointInfo "{5D21612FB7D6B5A1}" {
+    PivotID "eye"
+    Offset 0 0 0.015
+   }
+   SightsRanges {
+    SightRangeInfo "{5D21612FB7D6B5A4}" {
+     Range 0.02 100
+    }
+    SightRangeInfo "{5D21612FB7D6172B}" {
+     Range 0.029 200
+    }
+    SightRangeInfo "{5D21612FB7D61734}" {
+     Range 0.042 300
+    }
+    SightRangeInfo "{5D21612FB7D61737}" {
+     Range 0.058 400
+    }
+    SightRangeInfo "{5D21612FB7D668AA}" {
+     Range 0.077 500
+    }
+    SightRangeInfo "{5D21612FB7D668AC}" {
+     Range 0.097 600
+    }
+    SightRangeInfo "{5D21612FB7D668AD}" {
+     Range 0.123 700
+    }
+    SightRangeInfo "{5D21612FB7D7A62D}" {
+     Range 0.15 800
+    }
+    SightRangeInfo "{5D21612FB7D7A62E}" {
+     Range 0.185 900
+    }
+    SightRangeInfo "{5D21612FB7D7A62F}" {
+     Range 0.223 1000
+    }
+   }
+   SightsRangesDefaultIndex 3
+   SightsFOVInfo SCR_SightsZoomFOVInfo "{5D21612FB7D7A621}" {
+    m_fBaseZoom 4
+    m_fZoomMax 4
+    m_fInterpolationSpeed 50
+   }
+   SightsPointFront PointInfo "{5D21612FB7D7A623}" {
+    Offset 0.01 0.076 0.144
+   }
+   SightsPointRear PointInfo "{5D21612FB7D7A624}" {
+    Offset 0.01 0.076 -0.144
+   }
+   ADSTime 0.5
+   ADSUpdateOwnerActivateState 1
+   CameraRecoilAmount -0.6
+   SoundInt 10001
+   m_sLayoutResource "{4CE66FA8219D33D7}UI/layouts/Sights/Optic_Default.layout"
+   m_sReticleTexture "{1BE6C18D3145BB45}UI/Textures/Sights/PSO1/PSO1-white_blur_UI.edds"
+   m_sReticleGlowTexture "{B991EB1FB81516C6}UI/Textures/Sights/PSO1/PSO1-black_glow1024_UI.edds"
+   m_bHasIllumination 1
+   m_cReticleTextureIllumination 0.804 0.02 0.02 1
+   m_fMagnification 4
+   m_iReticleTextureWidth 308
+   m_fReticleWidthRange 20.944
+   m_fVignetteTextureMultiplier 2.387
+   m_iHudDeactivationDelay 0
+   m_iAnimationEnterDelay 0
+   m_fAnimationEnter 5
+   m_fAnimationSpeedBlur 3
+   m_fVignetteMoveSpeed 2
+   m_fObjectiveMoveSpeed 10
+   m_fMotionBlurScale 10
+   m_fADSActivationPercentage 0.25
+   m_fADSDeactivationPercentage 0.75
+   m_eZeroingType EPZ_RETICLE_OFFSET
+   m_fReticleOffsetX 0.001
+   m_fReticleOffsetY 0
+   m_fReticleOffsetInterpSpeed 40
+   m_bShouldHideParentParentObject 1
+   m_vCameraPoint 0.01 0.076 0.144
+   m_fRecoilScaleMax 1.5
+   m_iCameraIndex 8
+   m_fMainCameraFOV 28
+   m_fResolutionScale 1
+   m_fReticleAngularSize 1.2
+   m_fReticlePortion 0.29687
+   m_fReticleBaseZoom 4
+   m_rScopeHDRMatrial "{958809B0DE47E9BF}Assets/Weapons/Attachments/Optics/PSO1/Data/Optic_PSO1_HDR.emat"
+   m_fProjectionDifferenceScale 150
+   m_fCenterDistance 0.017
+   m_fDistanceMoveNear 0.6
+   m_fDistanceMoveFar 0.45
+   m_fBasicParallax 0.8
+   m_fMaxParallax 1.9
+   m_fCenterOffsetY 0
+   m_fScopeRadius 0.0147
+  }
+  ActionsManagerComponent "{5284E0EFF569AD07}" {
+   ActionContexts {
+    UserActionContext "{5284E0EFF4E818E9}" {
+     Position PointInfo "{5284E0EFC526E6F0}" {
+      Offset 0.0101 0.072 0.0033
+     }
+     Radius 0.1
+    }
+   }
+   additionalActions {
+    SCR_AttachementAction "{5D21612FB7D7A65D}" {
+     ParentContextList {
+      "user"
+     }
+     UIInfo UIInfo "{5D21612FB7D7A65E}" {
+      Name "#AR-UserAction_Detach"
+     }
+     Duration 2
+    }
+    SCR_AttachItemFromInventoryAction "{5D21612FB7D7A650}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5D21612FB7D7A651}" {
+      Name "#AR-UserAction_Attach"
+     }
+     Duration 2
+     "Inventory action" 1
+    }
+   }
+  }
+ }
+ Flags 4194307
+}

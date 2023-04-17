@@ -1,0 +1,15 @@
+GenericEntity : "{F358F46ADA42A197}Prefabs/Weapons/Attachments/Optics/Optic_4x20/Optic_4x20_base.et" {
+ ID "4BA426CBAED42A14"
+ components {
+  InventoryItemComponent "{52627A1F45CD4EB6}" {
+   Attributes SCR_ItemAttributeCollection "{52627A1EBB0698FD}" {
+    CustomAttributes {
+     WeaponAttachmentAttributes "{5284D858FFF9BE66}" {
+      AttachmentType AttachmentOpticsCarryHandle "{58E2B316401F7A2D}" {
+      }
+     }
+    }
+   }
+  }
+ }
+}
