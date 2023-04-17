@@ -5,18 +5,38 @@ FrameWidgetClass {
   PanelWidgetClass "{5CF76DB0D12DD6CE}" {
    Name "Panel0"
    Slot FrameWidgetSlot "{5CF76DB0D12DD6D6}" {
-    Anchor 0.113 0.193 0.88 0.84
-    PositionX -0.96
-    OffsetLeft -0.96
-    PositionY -0.44
-    OffsetTop -0.44
-    SizeX -32.64
-    OffsetRight 33.6
-    SizeY -3.24
-    OffsetBottom 3.68
+    Anchor 0.04 0.193 0.96 0.92
+    PositionX -52.8
+    OffsetLeft -52.8
+    PositionY -40.44
+    OffsetTop -40.44
+    SizeX 105.6
+    OffsetRight -52.8
+    SizeY 70.84
+    OffsetBottom -30.4
    }
    Clipping False
+   Color 0.318 0.561 0.071 1
+   style outline_4px
    {
+    ImageWidgetClass "{5D212BA905B779DD}" {
+     Name "Image0"
+     Slot FrameWidgetSlot "{5D212BA905B779B4}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight -0
+      SizeY 0
+      OffsetBottom -0
+      SizeToContent 1
+     }
+     "Z Order" -10
+     Opacity 0.571
+     Color 0.005 0 0 1
+    }
     OverlayWidgetClass "{5D128005AD2275CC}" {
      Name "Overlay3"
      Slot FrameWidgetSlot "{5D128005AD2275D5}" {
@@ -26,8 +46,8 @@ FrameWidgetClass {
       OffsetTop 504
       SizeX 384
       OffsetRight -984
-      SizeY 152
-      OffsetBottom -656
+      SizeY 288
+      OffsetBottom -792
      }
      {
       OverlayWidgetClass "{5D128005A8C2AD2A}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
@@ -49,8 +69,8 @@ FrameWidgetClass {
       OffsetTop 504
       SizeX 544
       OffsetRight -568
-      SizeY 152
-      OffsetBottom -656
+      SizeY 248
+      OffsetBottom -752
      }
      {
       OverlayWidgetClass "{5D12807304CF7D9C}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
@@ -66,14 +86,14 @@ FrameWidgetClass {
     ItemPreviewWidgetClass "{5CF76DD51F20059D}" {
      Name "WeaponPreview"
      Slot FrameWidgetSlot "{5CF76DD51F2005B6}" {
-      PositionX 984
-      OffsetLeft 984
-      PositionY 288
-      OffsetTop 288
+      PositionX 1288
+      OffsetLeft 1288
+      PositionY 656
+      OffsetTop 656
       SizeX 432
-      OffsetRight -1416
+      OffsetRight -1720
       SizeY 184
-      OffsetBottom -472
+      OffsetBottom -840
      }
     }
     RichTextWidgetClass "{5CF76DD29EC91613}" : "{899AF810DF4FA0A5}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading3.layout" {
@@ -92,12 +112,12 @@ FrameWidgetClass {
     RichTextWidgetClass "{5CF76DD290B1BE83}" : "{899AF810DF4FA0A5}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading3.layout" {
      Name "TextAttachments"
      Slot FrameWidgetSlot "{5CF76DD290B1BE97}" {
-      PositionX 704
-      OffsetLeft 704
+      PositionX 576
+      OffsetLeft 576
       PositionY 16
       OffsetTop 16
       SizeX 119.8
-      OffsetRight -823.8
+      OffsetRight -695.8
       SizeY 36
       OffsetBottom -52
      }
@@ -106,14 +126,14 @@ FrameWidgetClass {
      Name "Overlay1"
      Slot FrameWidgetSlot "{5CF76DCF9B8EBB4E}" {
       Anchor 0 0 1 0
-      PositionX 704
-      OffsetLeft 704
+      PositionX 576
+      OffsetLeft 576
       PositionY 72
       OffsetTop 72
-      SizeX -984
-      OffsetRight 280
-      SizeY 184
-      OffsetBottom -256
+      SizeX -1400
+      OffsetRight 824
+      SizeY 368
+      OffsetBottom -440
      }
      {
       OverlayWidgetClass "{5CF76DCFAAD9E873}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
@@ -134,8 +154,8 @@ FrameWidgetClass {
       OffsetLeft 24
       PositionY 72
       OffsetTop 72
-      SizeX -896
-      OffsetRight 872
+      SizeX -1400
+      OffsetRight 1376
       SizeY 368
       OffsetBottom -440
      }
@@ -157,14 +177,14 @@ FrameWidgetClass {
    Name "ButtonClose"
    Slot FrameWidgetSlot "{5CF72A239558C059}" {
     Anchor 0 0 1 1
-    PositionX 1600
-    OffsetLeft 1600
+    PositionX 40
+    OffsetLeft 40
     PositionY 952
     OffsetTop 952
     SizeX -1800.75
-    OffsetRight 200.75
-    SizeY -1048
-    OffsetBottom 96
+    OffsetRight 1760.75
+    SizeY -1024
+    OffsetBottom 72
    }
    components {
     SCR_ButtonTextComponent "{5548F0143AE99095}" {
@@ -183,14 +203,14 @@ FrameWidgetClass {
    Name "ButtonBuy"
    Slot FrameWidgetSlot "{5CF72A2395A294C4}" {
     Anchor 0 0 1 1
-    PositionX 32
-    OffsetLeft 32
-    PositionY 1000
-    OffsetTop 1000
-    SizeX -1872.75
-    OffsetRight 1840.75
-    SizeY -1048
-    OffsetBottom 48
+    PositionX 1760
+    OffsetLeft 1760
+    PositionY 952
+    OffsetTop 952
+    SizeX -1800
+    OffsetRight 40
+    SizeY -1024
+    OffsetBottom 72
    }
    components {
     SCR_ButtonTextComponent "{5548F0143AE99095}" {

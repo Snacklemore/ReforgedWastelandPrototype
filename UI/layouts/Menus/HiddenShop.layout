@@ -4,14 +4,14 @@ FrameWidgetClass {
   PanelWidgetClass "{5D1764F6AA81D813}" {
    Name "Panel0"
    Slot FrameWidgetSlot "{5D1764F6AA81D83E}" {
-    PositionX 16
-    OffsetLeft 16
-    PositionY 40
-    OffsetTop 40
+    PositionX 40
+    OffsetLeft 40
+    PositionY 72
+    OffsetTop 72
     SizeX 1888
-    OffsetRight -1904
+    OffsetRight -1928
     SizeY 1008
-    OffsetBottom -1048
+    OffsetBottom -1080
    }
    {
     ItemPreviewWidgetClass "{5D1764F32B016D8A}" {

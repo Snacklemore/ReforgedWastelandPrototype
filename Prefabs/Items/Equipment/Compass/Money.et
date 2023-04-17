@@ -35,12 +35,10 @@ GenericEntity : "{7CEEC3FF35A201A2}Prefabs/Items/Core/Compass_Base.et" {
       PreviewPrefab "{4C49E245EE77222C}PrefabsEditable/Auto/Props/Military/Manuals/E_Manual_Soviet_01.et"
      }
      CharacterModifierAttributes "{52A87A37FE262120}" {
-      TurnLimit 90
-      CanBeEquippedInVehicle 0
      }
     }
     CommonItemType "NONE"
-    m_SlotType SLOT_BACKPACK
+    m_SlotType SLOT_ANY
    }
   }
   MeshObject "{5CE739CF94792A79}" {

@@ -41,7 +41,6 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
    }
   }
   BaseWeaponManagerComponent "{520EA1D2F659CE5D}" {
-   DefaultWeaponIndex 2
   }
   EquipedWeaponStorageComponent "{520EA1D2DB118C70}" {
   }
@@ -68,6 +67,8 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
    MainType Unit
    UnitType Infantry
   }
+  WST_GearPersistenceComponent "{5D1CE4977E2F38AD}" {
+  }
   WST_MoneyConfigComponent "{5D152054F84DF9E0}" {
    initalValue 450
   }
@@ -75,13 +76,15 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
   }
   WST_TransferComponent "{5D07245F8CD086BF}" {
   }
+  CharacterGrenadeSlotComponent "{520EA1D2F659CE6E}" {
+   WeaponTemplate ""
+  }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponTemplate ""
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
-   WeaponTemplate "{96F23D5A56795036}Prefabs/Weapons/Handguns/M9/Handgun_M9Suppressed.et"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
@@ -109,17 +112,21 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
    InitialInventoryItems {
     ItemsInitConfigurationItem "{5A24CC173897B74F}" {
      TargetStorage "Prefabs/Characters/Uniforms/Jacket_M88_Flora.et"
+     TargetPurpose 1
+     PrefabsToSpawn + {
+      "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et"
+     }
     }
     ItemsInitConfigurationItem "{54A68D64D7F9124F}" {
      TargetStorage "Prefabs/Characters/Uniforms/Pants_6b51_VKPO.et"
      PrefabsToSpawn {
-      "{9C05543A503DB80E}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Ball.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_US_01.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_US_01.et"
+      "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_US_01.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_US_01.et"
      }
     }
     ItemsInitConfigurationItem "{5A24CC173771408E}" {
      TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_Medical_M5.et"
      PrefabsToSpawn {
-      "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et"
+      "{E1A5D4B878AA8980}Prefabs/Items/Equipment/Radios/Radio_R148.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et" "{96F23D5A56795036}Prefabs/Weapons/Handguns/M9/Handgun_M9Suppressed.et"
      }
     }
    }
@@ -137,5 +144,4 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
    }
   }
  }
- coords 535.865 0.985 843.547
 }

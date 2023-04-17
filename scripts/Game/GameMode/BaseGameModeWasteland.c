@@ -4103,8 +4103,157 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		m_bWasMapOpened = wasOpened;
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	//! What happens when a player spawns.
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////------------------------------------------------------------------------------------------------
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////------------------------------------------------------------------------------------------------
+//just enough to delete inventory (crashes and ud when deleting items in quickbar/weapon slot)
+	void DeleteAllItems(SCR_InventoryStorageManagerComponent mmc)
+	{
+		array<IEntity> items = new array<IEntity>();
+		
+
+		array<BaseInventoryStorageComponent> availableStorages = new array<BaseInventoryStorageComponent>();
+		int storageCount = mmc.GetStorages(availableStorages);
+		
+		
+		int		itemsCount = mmc.GetAllItems(items,availableStorages[0]);
+		Print("GameModeWasteland::Deleting item count " + items.Count());
+		
+		/*
+		array<IEntity> aGadgets = new array<IEntity>();
+		SCR_HoldableItemPredicate p_holdable = new SCR_HoldableItemPredicate();
+		array<IEntity> magazines = new array<IEntity>();
+		SCR_MagazinePredicate pMagazine = new SCR_MagazinePredicate();
+		array<IEntity> medical = new array<IEntity>();
+		SCR_ApplicableMedicalItemPredicate pMedical = new SCR_ApplicableMedicalItemPredicate();
+		mmc.FindItems(aGadgets,p_holdable);
+		mmc.FindItems(magazines,pMagazine);
+		mmc.FindItems(medical,pMedical);
+		
+		Print("GameModeWasteland::item aGadgets start");
+		foreach(IEntity it : aGadgets)
+		{
+			Print("GameModeWasteland::item aGadgets" +it.GetPrefabData().GetPrefabName());
+			Print("GameModeWasteland::Deleting:  "+it.GetPrefabData().GetPrefabName());
+			bool success = mmc.TryDeleteItem(it);
+			Print("GameModeWasteland::Deleting success  "+ success);
+		}		
+		Print("GameModeWasteland::item magazines start");
+		foreach(IEntity it : magazines)
+		{
+			Print("GameModeWasteland::magazines data" +it.GetPrefabData().GetPrefabName());
+			Print("GameModeWasteland::Deleting:  "+it.GetPrefabData().GetPrefabName());
+			bool success = mmc.TryDeleteItem(it);
+			Print("GameModeWasteland::Deleting success  "+ success);
+		}		
+		Print("GameModeWasteland::item medical start");
+		foreach(IEntity it : medical)
+		{
+			Print("GameModeWasteland::medical data" +it.GetPrefabData().GetPrefabName());
+			Print("GameModeWasteland::Deleting:  "+it.GetPrefabData().GetPrefabName());
+			bool success = mmc.TryDeleteItem(it);
+			Print("GameModeWasteland::Deleting success  "+ success);
+		}
+		*/
+		bool success = false;	
+		for (int i = items.Count()-1;i>=0;--i)
+		{
+			IEntity item = items.Get(i);
+			if(!item)
+				continue;
+			Print("GameModeWasteland::Deleting:  "+item.GetPrefabData().GetPrefabName());
+			RplComponent rpl = RplComponent.Cast(item.FindComponent(RplComponent));
+			
+				success = mmc.TryDeleteItem(item);
+				RplComponent.DeleteRplEntity(item,false);
+			
+			
+				
+			Print("GameModeWasteland::Deleting success  "+ success);
+
+		}
+		
+	
+	}
+	
+	void AddAllItems(SCR_InventoryStorageManagerComponent mmc,WST_GearObject o)
+	{
+		foreach(EntityPrefabData data : o.itemsOnPlayer)
+			{
+						
+				Print("GameModeWasteland::Addding:  "+ data.GetPrefabName());
+
+				ResourceName n = data.GetPrefabName();
+				IEntity spawnedItem = GetGame().SpawnEntityPrefab(Resource.Load(n),GetGame().GetWorld());
+				if(!spawnedItem)
+					continue;
+				MoneyComponent mc = MoneyComponent.Cast(spawnedItem.FindComponent(MoneyComponent));
+				if(mc)
+					continue;
+				RplComponent rpl = RplComponent.Cast(spawnedItem.FindComponent(RplComponent));
+				if (rpl)
+					RplComponent.DeleteRplEntity(spawnedItem,false);
+				
+						
+				//bool success = mmc.TryInsertItem(spawnedItem,EStoragePurpose.PURPOSE_ANY,null);
+				bool success = mmc.TrySpawnPrefabToStorage(n);
+
+				Print("GameModeWasteland::Succes:  "+success +"for Item "+data.GetPrefabName());
+			}
+		//create and insert money comp here
+		if (o.walletValue > 0)
+		{
+			ResourceName walletPrefab = "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et";
+			bool success = mmc.TrySpawnPrefabToStorage(walletPrefab);
+			
+			if (success)
+			{
+				//mmc.m_OnItemAddedInvoker.Invoke();
+				Print("GameModeWasteland::Succes:  "+success +"for Wallet");
+	
+			}
+			
+			WST_WalletPredicate walletPredicate = new WST_WalletPredicate();
+			IEntity wallet = mmc.FindItem(walletPredicate);
+			if (wallet)
+			{
+				IEntity owner = mmc.GetOwner();
+				WST_MoneyConfigComponent config = WST_MoneyConfigComponent.Cast(owner.FindComponent(WST_MoneyConfigComponent));
+				if (config)
+				{
+					Print("GameModeWasteland::Config found!");
+					//client will set value, this is server side!
+					config.alreadySet = true;
+
+				}
+				MoneyComponent mc = MoneyComponent.Cast(wallet.FindComponent(MoneyComponent));
+				int savedValue = o.walletValue;
+				Print("GameModeWasteland::setting wallet value  "+savedValue );
+				
+				mc.SetValue(savedValue);
+			}
+			
+			
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
 	{
 #ifdef ENABLE_DIAG
@@ -4114,9 +4263,59 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		super.OnPlayerSpawned(playerId, controlledEntity);
 		
 		PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId);
-	
+		ref SCR_InventoryStorageManagerComponent mmc = SCR_InventoryStorageManagerComponent.Cast(controlledEntity.FindComponent(SCR_InventoryStorageManagerComponent));
+		mmc.OnItemAddedHandler();
+		mmc.OnItemRemovedHandler();
+		WST_WalletPredicate walletPredicate = new WST_WalletPredicate();
+		IEntity wallet = mmc.FindItem(walletPredicate);
+		if(wallet)
+		{
+			MoneyComponent mc = MoneyComponent.Cast(wallet.FindComponent(MoneyComponent));
+			if (mc)
+			{
+				mmc.m_MoneyComponent = mc;
+			}
+
+		}
+		
+		//kick of gear persistence loading from here
 		if (pc)
 		{
+			
+			string playerUID = WST_GearPersistenceManager.GetPlayerIdentity(playerId);
+			
+			Print("GameModeWasteland::Player UID: "+ playerUID);
+			ref WST_GearObject o = m_persistenceManager.GetGearObject(playerUID);
+			if (o)
+				Print("GameModeWasteland::GearObject Found! Loading gear ");
+
+
+			
+			if(IsMaster())
+			{
+				
+				if (o)
+				{
+					if(mmc)
+					{
+						Print("GameModeWasteland::itemsOnPlayer count: "+ o.itemsOnPlayer.Count());
+						if(o.itemsOnPlayer.Count() == 0)
+							return;
+					
+						
+						GetGame().GetCallqueue().CallLater(DeleteAllItems,1000,false,mmc);
+
+						GetGame().GetCallqueue().CallLater(AddAllItems,1200,false,mmc,o);
+					}
+				}
+			}
+				
+		}
+				
+				
+			
+			
+			
 			SCR_CampaignNetworkComponent campaignNetworkComponent = SCR_CampaignNetworkComponent.Cast(pc.FindComponent(SCR_CampaignNetworkComponent));
 			
 			if (campaignNetworkComponent)
@@ -4124,10 +4323,11 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 				campaignNetworkComponent.UpdatePlayerRank(false);
 				campaignNetworkComponent.EnableShowingSpawnPosition(true)
 			}
-		}
 	}
 	
-	//------------------------------------------------------------------------------------------------
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 	override void OnSpawnPointUsed(SCR_SpawnPoint spawnPoint, int playerId)
 	{
 		IEntity parent = spawnPoint.GetParent();
@@ -4642,6 +4842,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	ref array<WST_VehicleSpawnPoint> m_vehicleSpawnPoints = new array<WST_VehicleSpawnPoint>();
+	WST_GearPersistenceManager m_persistenceManager;
 	SCR_MoneyManager GetMoneyManager()
 	{
 		if(IsMaster())
@@ -4651,6 +4852,14 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	void SetMoneyManager(SCR_MoneyManager manager)
 	{
 		 m_MoneyManager = manager;
+	}
+	void SetGearPersistenceManager(WST_GearPersistenceManager manager)
+	{
+		m_persistenceManager = manager;
+	}
+	WST_GearPersistenceManager GetGearPersistenceManager()
+	{
+		return m_persistenceManager;
 	}
 	void registerVehicleSpawn(WST_VehicleSpawnPoint vs)
 	{
@@ -4880,3 +5089,19 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 
 };
 
+class WST_WalletPredicate: InventorySearchPredicate
+	{
+	void WST_WalletPredicate()
+	{
+		QueryComponentTypes.Insert(MoneyComponent);
+	}
+
+	override protected bool IsMatch(BaseInventoryStorageComponent storage, IEntity item, array<GenericComponent> queriedComponents, array<BaseItemAttributeData> queriedAttributes)
+	{		
+		MoneyComponent mc = MoneyComponent.Cast(item.FindComponent(MoneyComponent));
+		if(mc)
+			return true;	
+		return false;
+	}
+};
+		

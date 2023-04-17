@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{2D406AEED3CDF362}Prefabs/Weapons/Rifles/AN94/Rifle_AN94_1P63Mod.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

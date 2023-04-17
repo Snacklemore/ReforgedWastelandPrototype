@@ -4,7 +4,6 @@ GenericEntity : "{3FB5275A6505B323}Prefabs/Weapons/Rifles/M14/Rifle_M21_base.et"
   WeaponComponent "{CFBAA4B706BA66E8}" {
    components {
     MuzzleComponent "{CA6BE4D6B867541F}" {
-     MagazineTemplate "{627255315038152A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_SpecialBall.et"
     }
    }
   }

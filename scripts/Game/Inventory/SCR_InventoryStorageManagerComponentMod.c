@@ -3,14 +3,8 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 {
 			
 	MoneyComponent m_MoneyComponent;
-	
-
-	// Callback when item is added (will be performed locally after server completed the Insert/Move operation)
-	override protected void OnItemAdded(BaseInventoryStorageComponent storageOwner, IEntity item)
-	{		
-		//super.OnItemAdded(storageOwner, item);
-		auto consumable = SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent));
-		
+	void ItemAddedInvocation(IEntity item ,BaseInventoryStorageComponent storageOwner )
+	{
 		auto moneyComp = MoneyComponent.Cast(item.FindComponent(MoneyComponent));
 		
 			//1. check for existing wallet
@@ -58,31 +52,10 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 			
 			
 		}
-		
-		if ( consumable && consumable.GetConsumableType() == EConsumableType.Bandage )
-			m_iHealthEquipment++;	//store count of the health components
-				
-		//dont invoke if deleted
-		if ( m_OnItemAddedInvoker )
-			m_OnItemAddedInvoker.Invoke( item, storageOwner );
-		
-		
-		// Withdraw item from gc collection
-		GarbageManager garbageManager = GetGame().GetGarbageManager();
-		if (garbageManager)
-		{
-			if (item.FindComponent(InventoryItemComponent))
-				garbageManager.Withdraw(item);
-		}
-		
 	}
 	
-	// Callback when item is removed (will be performed locally after server completed the Remove/Move operation)
-	override protected void OnItemRemoved(BaseInventoryStorageComponent storageOwner, IEntity item)
+	void ItemRemovedInvocation(IEntity item ,BaseInventoryStorageComponent storageOwner)
 	{
-		super.OnItemRemoved(storageOwner, item);
-		
-		auto consumable = SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent));
 		auto moneyComp = MoneyComponent.Cast(item.FindComponent(MoneyComponent));
 		if(moneyComp )
 		{
@@ -90,19 +63,17 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 			if(m_MoneyComponent == moneyComp )
 				m_MoneyComponent = null;
 		}
-		if ( consumable && consumable.GetConsumableType() == EConsumableType.Bandage )
-			m_iHealthEquipment--;	//store count of the health components
-		
-		if ( m_OnItemRemovedInvoker )
-			m_OnItemRemovedInvoker.Invoke( item, storageOwner );
-
-		// Insert item into gc collection
-		GarbageManager garbageManager = GetGame().GetGarbageManager();
-		if (garbageManager)
-		{
-			if (item.FindComponent(InventoryItemComponent))
-				garbageManager.Insert(item);
-		}
 	}
+	void OnItemAddedHandler()
+	{
+	
+		m_OnItemAddedInvoker.Insert(ItemAddedInvocation);
+	}
+	void OnItemRemovedHandler()
+	{
+		m_OnItemRemovedInvoker.Insert(ItemRemovedInvocation);
+	}
+	
+	
 	
 };

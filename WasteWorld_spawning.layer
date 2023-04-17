@@ -201,6 +201,14 @@ $grp SCR_Position {
   coords 1275.302 38.202 5918.849
  }
 }
+WST_GearPersistenceManager {
+ components {
+  RplComponent "{5D1B38A48B84327D}" {
+   Streamable Disabled
+  }
+ }
+ coords 9631.132 19.925 1512.042
+}
 $grp WST_VehicleSpawnPoint {
  {
   coords 4871.313 28.595 11850.083
@@ -278,6 +286,17 @@ GenericEntity : "{58353A3B8102A8E6}Prefabs/Props/Commercial/CashierShopHidden_Wa
 }
 $grp GenericEntity : "{627F955923426D32}Prefabs/Props/Commercial/CashierShop_Waste.et" {
  {
+  components {
+   ActionsManagerComponent "{5CF72A24698A8C7E}" {
+    additionalActions {
+     WST_UserAction "{5CF72A26A98EDF68}" {
+      UIInfo UIInfo "{5CF72A26C46A059A}" {
+       Name "Shop"
+      }
+     }
+    }
+   }
+  }
   coords 4881.031 29.544 11865.994
   angleY 76.476
  }
@@ -356,15 +375,32 @@ StaticModelEntity : "{C99D1B2E817E12D9}Prefabs/Props/Military/Furniture/TableMil
 $grp SCR_DestructibleBuildingEntity : "{CA7778B914D3A9FC}Prefabs/Structures/Military/Bunkers/AircraftShelter_E_01/AircraftShelter_E_01_base.et" {
  {
   coords 4875.296 0.001 11875.236
-  GenerateSlots 1
+  SlotBoneMappings {
+   SlotBoneMappingObject "{56067A6BAE57EC52}" {
+    Prefab ""
+   }
+   SlotBoneMappingObject "{56067A6BAE57EC57}" {
+    Prefab ""
+   }
+   SlotBoneMappingObject "{56067A6BAE57EC55}" {
+    Prefab ""
+   }
+   SlotBoneMappingObject "{5704F7DAAC8031BC}" {
+    Prefab ""
+   }
+   SlotBoneMappingObject "{5704F7DAAC9EEAC5}" {
+    Prefab ""
+   }
+   SlotBoneMappingObject "{5704F7DAACF711C5}" {
+    Prefab ""
+   }
+  }
   EntitySlots {
    EntitySlotInfo socket_main_left {
     PivotID "Socket_Main_Left"
-    Prefab "{ADAACE11802260CF}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Main_Left_EXT_COV_B.et"
    }
    EntitySlotInfo socket_main_right {
     PivotID "Socket_Main_Right"
-    Prefab "{7D1E865927B2D775}Prefabs/Structures/BuildingParts/Doors/Door_AircraftShelter_E_01/Door_AircraftShelter_E_01_Main_Right_EXT_COV_B.et"
    }
    EntitySlotInfo socket_rear_left {
     PivotID "Socket_Rear_Left"
@@ -493,7 +529,7 @@ $grp SCR_SpawnPoint : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.e
   }
  }
  MainSpawnA2 {
-  coords 10080.474 2.959 1579.647
+  coords 9705.149 11.795 1565.875
   m_fSpawnRadius 1.2
   m_sFaction "A"
   m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {

@@ -1,9 +1,13 @@
 GenericEntity : "{C63227C0E70EA62E}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_base.et" {
  ID "CFBAA4B725411E45"
  components {
+  BaconSuppressors_WeaponSuppressionComponent "{5D20CE568D4515E9}" {
+  }
   WeaponComponent "{CFBAA4B706BA66E8}" {
    components {
     AttachmentSlotComponent "{5534745C44D1EF58}" {
+     AttachmentSlot InventoryStorageSlot optics {
+     }
      ShowInInspection 1
     }
     AttachmentSlotComponent "{5CFD2E6A412FB265}" {
@@ -15,6 +19,17 @@ GenericEntity : "{C63227C0E70EA62E}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_base.e
      }
      AttachmentType AttachmentHandGuardM16 "{5CFD2E6A412FB27D}" {
      }
+    }
+    AttachmentSlotComponent "{5D20CE5692A3B100}" {
+     AttachmentSlot InventoryStorageSlot Invt {
+      PivotID "barrel_muzzle"
+     }
+     AttachmentType AttachmentMuzzle556 "{5D20CE56AE2CE871}" {
+     }
+     ShowInInspection 1
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazineTemplate ""
     }
    }
   }

@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{0BE940B528F2C258}Prefabs/Weapons/Attachments/Handguards/Handguard_M16A2/Handguard_M16Mod.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{E6ABF84D52589026}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74MDuplicateTest.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

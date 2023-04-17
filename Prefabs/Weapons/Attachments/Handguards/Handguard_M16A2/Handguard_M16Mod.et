@@ -1,0 +1,20 @@
+GenericEntity : "{FB1A7F5BC7D935E1}Prefabs/Weapons/Attachments/Handguards/Handguard_M16A2/Handguard_M16_base.et" {
+ ID "557E85EEE1B603F1"
+ components {
+  InventoryItemComponent "{557E85EEE1B60313}" {
+   Enabled 1
+   Attributes SCR_ItemAttributeCollection "{557E85EEE1B60310}" {
+    CustomAttributes {
+     WeaponAttachmentAttributes "{557E85EEE1B60316}" {
+      AttachmentType AttachmentHandGuardM16 "{5D1F387193C6C9ED}" {
+      }
+     }
+    }
+    CommonItemType "NONE"
+   }
+  }
+  ActionsManagerComponent "{557E85EEE1B603FA}" {
+   Enabled 1
+  }
+ }
+}

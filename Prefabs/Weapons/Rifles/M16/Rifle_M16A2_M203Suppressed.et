@@ -30,8 +30,12 @@ GenericEntity : "{C63227C0E70EA62E}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_base.e
   WeaponComponent "{CFBAA4B706BA66E8}" {
    components {
     AttachmentSlotComponent "{5534745C44D1EF58}" {
+     Enabled 1
      AttachmentSlot InventoryStorageSlot optics {
      }
+     AttachmentType AttachmentOpticsCarryHandle "{5D22993DFE7FFC5F}" {
+     }
+     ShowInInspection 1
     }
     AttachmentSlotComponent "{5CFD2C2A631070A3}" {
      AttachmentSlot InventoryStorageSlot Invt {
@@ -46,16 +50,26 @@ GenericEntity : "{C63227C0E70EA62E}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_base.e
     AttachmentSlotComponent "{5CFD2E6A6F8EA78D}" {
      AttachmentSlot InventoryStorageSlot underbarrel {
       PivotID "barrel_chamber"
-      Prefab "{43FDAF3FA0FF2299}Prefabs/Weapons/Attachments/Underbarrel/UGL_M203.et"
       InspectionWidgetOffset 0 0.0789 0.2607
      }
      AttachmentType AttachmentUnderBarrelM203 "{5CFD2E6A6F8EA787}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{5D22992443D00B2F}" {
+     AttachmentSlot InventoryStorageSlot Invt {
+      PivotID "barrel_chamber"
+      ChildPivotID "snap_weapon"
+      Prefab "{FB1A7F5BC7D935E2}Prefabs/Weapons/Attachments/Handguards/Handguard_M16A2/Handguard_M16.et"
+     }
+     AttachmentType AttachmentHandGuardM16 "{5D229924538369B6}" {
      }
     }
     MuzzleComponent "{CA6BE4D6B867541F}" {
      MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
       InspectionWidgetOffset 0 -0.044 0.0739
      }
+     MagazineTemplate ""
     }
     WeaponAnimationComponent "{5534745C44D1EF55}" {
      AnimGraph "{288D8FF8F78E3DA0}Assets/Weapons/Rifles/workspaces/m16_M203.agr"

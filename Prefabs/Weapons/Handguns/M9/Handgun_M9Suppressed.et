@@ -22,6 +22,9 @@ GenericEntity : "{809488C4984AC087}Prefabs/Weapons/Handguns/M9/Handgun_M9_base.e
      }
      ShowInInspection 1
     }
+    MuzzleComponent "{50F64C45E7271D47}" {
+     MagazineTemplate ""
+    }
    }
   }
  }

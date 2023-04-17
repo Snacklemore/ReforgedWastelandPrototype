@@ -1,0 +1,24 @@
+GenericEntity {
+ ID "5D229936A446E5D9"
+ components {
+  WeaponSoundComponent "{5D229936A446E5D0}" {
+   Filenames {
+    "{5C822347FA7A147B}Sounds/Weapons/Rifles/M16A2/Weapons_Rifles_M16A2_Shot3.acp" "{A6F3D0955462D8FE}Sounds/Weapons/Rifles/M16A2/Weapons_Rifles_M16A2_Handling.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{68E023371FDD3B12}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Rifle_WoodMetal.acp" "{BFD8C39A140E182E}Sounds/Weapons/_SharedData/Weapon_Bullet_Casings_5_56mm.acp" "{07E8D425196745F4}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Rifle_Plastic.acp" "{332983CC95EE1E1E}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Rifle.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp"
+   }
+  }
+  WeaponComponent "{5D229936A446E5D6}" {
+   components {
+    AttachmentSlotComponent "{5D229936A446E5D4}" {
+     Enabled 1
+     AttachmentSlot InventoryStorageSlot risattachment_bottom {
+      PivotID "slot_barrel_muzzle"
+      Prefab "{7CB432CC4ED704E1}Prefabs/Weapons/Core/Suppressor_Generic_556.et"
+     }
+     AttachmentType AttachmentMuzzle556 "{5D229936A446E5EF}" {
+     }
+    }
+   }
+  }
+ }
+ coords 1007.03 37.459 2840.282
+}

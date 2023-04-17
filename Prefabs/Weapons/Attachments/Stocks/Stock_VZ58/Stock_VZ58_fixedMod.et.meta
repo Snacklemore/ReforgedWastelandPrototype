@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{B7247AC0F986CB75}Prefabs/Weapons/Attachments/Stocks/Stock_VZ58/Stock_VZ58_fixedMod.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
