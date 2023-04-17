@@ -529,7 +529,7 @@ $grp SCR_SpawnPoint : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.e
   }
  }
  MainSpawnA2 {
-  coords 10079.599 3.017 1581.726
+  coords 9705.149 11.795 1565.875
   m_fSpawnRadius 1.2
   m_sFaction "A"
   m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
