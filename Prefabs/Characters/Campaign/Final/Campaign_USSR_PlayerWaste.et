@@ -62,10 +62,9 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
   SCR_GadgetManagerComponent "{520EA1D2DB118DF3}" {
   }
   SCR_MapDescriptorComponent "{5CB0060FA1726466}" {
-   DisplayName ""
-   VisibleOnMap 0
-   MainType Unit
-   UnitType Infantry
+   DisplayName "Me!"
+   MainType "Name Local"
+   Scale 1
   }
   WST_GearPersistenceComponent "{5D1CE4977E2F38AD}" {
   }

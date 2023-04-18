@@ -3,6 +3,9 @@ SCR_BaseGameModeWasteland SCR_BaseGameModeWasteland2 : "{805A3F581EA80E37}SCR_Ba
   SCR_AutomaticRespawnHandlerComponent "{5CAB50F044535F4F}" {
    Enabled 0
   }
+  SCR_GroupsManagerComponent "{5CAB50F1BC5AF4A2}" {
+   m_sDefaultGroupPrefab "{8B4D49A9F324E7D5}Prefabs/Groups/PlayableGroup.et"
+  }
   SCR_PossessingManagerComponent "{5CAB50F1EC33DA6E}" {
    Enabled 0
   }
@@ -17,6 +20,8 @@ SCR_BaseGameModeWasteland SCR_BaseGameModeWasteland2 : "{805A3F581EA80E37}SCR_Ba
    m_fRespawnTime 0
   }
   SCR_TimeAndWeatherHandlerComponent "{5D14833A7C7C7186}" {
+  }
+  ServerAdminTools_GamemodeComponent "{5D24B5A8595269E0}" {
   }
   RplComponent "{5CAB50F10FD18CC7}" {
   }
