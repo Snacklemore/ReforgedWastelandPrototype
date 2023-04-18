@@ -1,0 +1,14 @@
+SCR_BaseTask {
+ ID "5D24DCC114C2C6AF"
+ components {
+  SCR_MapDescriptorComponent "{5D24DCC114C2C6A0}" {
+   DisplayName "Task"
+   MapItemDescriptor 1
+   MainType Task
+  }
+ }
+ m_sName "THIS SHOULDN'T BE VISIBLE"
+ m_sDescription "THIS SHOULDN'T BE VISIBLE"
+ m_sMapIconName "Icon_Task_Seize"
+ m_sTaskListIconName "Icon_Task_Seize"
+}

@@ -66,6 +66,8 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
    MainType "Name Local"
    Scale 1
   }
+  SCR_UITaskManagerComponent "{5D2526F2293E31AC}" {
+  }
   WST_GearPersistenceComponent "{5D1CE4977E2F38AD}" {
   }
   WST_MoneyConfigComponent "{5D152054F84DF9E0}" {

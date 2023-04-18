@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{0D6CCEB5845456E0}Prefabs/MP/Managers/Tasks/TaskManagerComponentMod.ct"
+ Configurations {
+  ComponentTemplateResourceClass PC {
+  }
+  ComponentTemplateResourceClass XBOX_ONE : PC {
+  }
+  ComponentTemplateResourceClass XBOX_SERIES : PC {
+  }
+  ComponentTemplateResourceClass PS4 : PC {
+  }
+  ComponentTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

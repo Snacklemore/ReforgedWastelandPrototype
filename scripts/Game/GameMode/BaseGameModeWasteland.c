@@ -4034,7 +4034,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 #endif
 		super.OnPlayerDisconnected(playerId, cause, timeout);
 		
-		//GetTaskManager().OnPlayerDisconnected(playerId);
+		GetTaskManager().OnPlayerDisconnected(playerId);
 		WriteClientData(playerId, true);
 		
 		// Disconnecting player is currently capturing a base; handle it
@@ -4833,10 +4833,91 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		
 		m_MapEntity = SCR_MapEntity.Cast(GetGame().GetMapManager());
 		
-		//GetGame().GetCallqueue().CallLater(UpdateMapDescriptors,2000,true);
+		GetGame().GetCallqueue().CallLater(setTask,5000,false);
 		
 	
 
+	}
+	
+	void setTask()
+	{
+	
+	//get support
+		if(IsProxy())
+			return;
+		if(!IsMaster())
+			return;
+		SCR_MoveTaskSupportEntity m_pSupportEntity;
+		SCR_BaseTaskManager tmanager;
+		tmanager = GetTaskManager();
+		if (!GetTaskManager().FindSupportEntity(SCR_MoveTaskSupportEntity))
+		{
+			Print("CP: Default Task support entity not found in the world, task won't be created!");
+			
+		}
+		m_pSupportEntity = SCR_MoveTaskSupportEntity.Cast(GetTaskManager().FindSupportEntity(SCR_MoveTaskSupportEntity));
+		
+		//get prefab
+		if (!m_pSupportEntity.GetTaskPrefab())
+		{
+			
+			Print("CP: Task prefab not set, task won't be created!");
+			
+			
+			
+			
+			//m_pSupportEntity.SetTaskPrefab(m_sTaskPrefab);
+
+
+			
+		}
+		
+		SCR_MoveTask m_pTask;
+	
+		
+		m_pSupportEntity.CreateMoveTask(Vector(0,0,0));		
+		//m_pTask.SetTargetFaction(GetGame().GetFactionManager().GetFactionByKey("A"));	
+		if (!m_pTask)
+		{
+			//PrintFormat("CP: Creating of task failed! Task manager refused to create it.");
+			
+		}
+		if(m_pTask)
+		{
+			
+			//GetTaskManager().RegisterTask(m_pTask);
+			
+		
+		}
+		//Create simple test task 
+		/*
+		protected bool SetSupportEntity()
+	{
+		if (!GetTaskManager().FindSupportEntity(SCR_CP_TaskSupportEntity))
+		{
+			Print("CP: Default Task support entity not found in the world, task won't be created!");
+			return false;
+		}
+		m_pSupportEntity = SCR_CP_TaskSupportEntity.Cast(GetTaskManager().FindSupportEntity(SCR_CP_TaskSupportEntity));
+		return m_pSupportEntity != null;	
+	}
+		
+		protected bool SetTaskPrefab()
+	{
+		if (!m_pSupportEntity.GetTaskPrefab())
+		{
+			if (m_sTaskPrefab.IsEmpty())
+			{
+				Print("CP: Task prefab not set, task won't be created!");
+				return false;
+			}
+			m_pSupportEntity.SetTaskPrefab(m_sTaskPrefab);
+		}
+		return true;
+	}
+		
+		
+		*/
 	}
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -5106,18 +5187,4 @@ class WST_WalletPredicate: InventorySearchPredicate
 };
 
 
-class MyPredicate: InventorySearchPredicate
-	{
-	void MyPredicatePredicate()
-	{
-		QueryComponentTypes.Insert(MySearchComponent);
-	}
 
-	override protected bool IsMatch(BaseInventoryStorageComponent storage, IEntity item, array<GenericComponent> queriedComponents, array<BaseItemAttributeData> queriedAttributes)
-	{		
-		MySearchComponent mc = MySearchComponent.Cast(item.FindComponent(MySearchComponent));
-		if(mc)
-			return true;	
-		return false;
-	}
-};
