@@ -1,3 +1,6 @@
+ScriptedChatEntity : "{536D80EB494DDC43}Prefabs/MP/Campaign/CampaignMPChatEntity.et" {
+ coords 9699.37 12.67 1544.854
+}
 $grp SCR_Position {
  SP_AI_StPhillipe {
   coords 4511.316 14.272 10773.853

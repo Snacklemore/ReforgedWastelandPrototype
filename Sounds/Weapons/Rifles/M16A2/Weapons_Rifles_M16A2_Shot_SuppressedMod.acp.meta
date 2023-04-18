@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{CE3FDF156A828C8E}Sounds/Weapons/Rifles/M16A2/Weapons_Rifles_M16A2_Shot_SuppressedMod.acp"
+ Configurations {
+  AudioProjectResourceClass PC {
+  }
+  AudioProjectResourceClass XBOX_ONE : PC {
+  }
+  AudioProjectResourceClass XBOX_SERIES : PC {
+  }
+  AudioProjectResourceClass PS4 : PC {
+  }
+  AudioProjectResourceClass HEADLESS : PC {
+  }
+ }
+}

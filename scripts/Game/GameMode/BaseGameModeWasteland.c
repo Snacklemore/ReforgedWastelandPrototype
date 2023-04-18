@@ -4227,7 +4227,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 				}
 				MoneyComponent mc = MoneyComponent.Cast(wallet.FindComponent(MoneyComponent));
 				int savedValue = o.walletValue;
-				Print("GameModeWasteland::setting wallet value  "+savedValue );
+				Print("GameModeWasteland::setting wallet value  " + savedValue );
 				
 				mc.SetValue(savedValue);
 			}
@@ -5104,4 +5104,20 @@ class WST_WalletPredicate: InventorySearchPredicate
 		return false;
 	}
 };
-		
+
+
+class MyPredicate: InventorySearchPredicate
+	{
+	void MyPredicatePredicate()
+	{
+		QueryComponentTypes.Insert(MySearchComponent);
+	}
+
+	override protected bool IsMatch(BaseInventoryStorageComponent storage, IEntity item, array<GenericComponent> queriedComponents, array<BaseItemAttributeData> queriedAttributes)
+	{		
+		MySearchComponent mc = MySearchComponent.Cast(item.FindComponent(MySearchComponent));
+		if(mc)
+			return true;	
+		return false;
+	}
+};
