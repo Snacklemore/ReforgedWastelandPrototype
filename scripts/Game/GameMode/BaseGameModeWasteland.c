@@ -4839,6 +4839,73 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 
 	}
 	
+	ref array<vector> m_MoveTaskDestinations = new array<vector>();
+	void CreateMoveTaskDestinations()
+	{
+		if(IsProxy())
+			return;
+		if(!IsMaster())
+			return;
+		
+		SCR_EditableEntityCore core = SCR_EditableEntityCore.Cast(SCR_EditableEntityCore.GetInstance(SCR_EditableEntityCore));
+	       if (!core)
+	           return;
+		set<SCR_EditableEntityComponent> entities = new set<SCR_EditableEntityComponent>();
+		array<SCR_EditableEntityComponent> commentEntities = new array<SCR_EditableEntityComponent>();
+		
+		core.GetAllEntities(entities,true,true);
+		//Print("SCRWST_AISpawnManager::EOnInit::AllSCR_EditableEntityComponent"+ entities);
+		
+		//filter out EEditableEntityType.COMMENT
+		foreach (SCR_EditableEntityComponent ent : entities)
+		{
+			if (ent.GetEntityType() == 6)
+				commentEntities.Insert(ent);
+			//Print("SCRWST_AISpawnManagerClass::EOnInit()::EntityType = " +ent.GetEntityType() );
+			
+			
+		}
+		
+		
+		foreach (SCR_EditableEntityComponent ent : commentEntities)
+		{
+		
+			GenericEntity parent =ent.GetOwner();
+			SCR_MapDescriptorComponent mapDescr = SCR_MapDescriptorComponent.Cast(parent.FindComponent(SCR_MapDescriptorComponent));
+			string LocationName;
+			if (!mapDescr)
+				return;
+			MapItem item = mapDescr.Item();
+			LocationName = item.GetDisplayName();
+			string EntityName = parent.GetName();
+			
+			//filter out name with a capital "C" at the beginning. Those are Citys.
+			//format city:
+			//-> C_LocationChotain
+			//format Hills 
+			//-> H_HumboldtHill
+			if(EntityName.Contains("C_"))
+			{	
+				//City 
+				Print("BaseGameModeWasteland::CreateMoveTaskDestinations::Adding city, " + EntityName);
+				vector v = parent.GetOrigin();
+				m_MoveTaskDestinations.Insert(v);
+
+				
+			
+			}else if (EntityName.Contains("H_"))
+			{
+				
+				
+			
+			}
+			
+			Print("BaseGameModeWasteland::CreateMoveTaskDestinations::LocationName" + LocationName);
+	
+		}
+	}
+	
+	
 	void setTask()
 	{
 	
@@ -4847,6 +4914,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			return;
 		if(!IsMaster())
 			return;
+		CreateMoveTaskDestinations();
+		vector v = m_MoveTaskDestinations.GetRandomElement();
 		SCR_MoveTaskSupportEntity m_pSupportEntity;
 		SCR_BaseTaskManager tmanager;
 		tmanager = GetTaskManager();
@@ -4875,7 +4944,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		SCR_MoveTask m_pTask;
 	
 		
-		m_pSupportEntity.CreateMoveTask(Vector(0,0,0));		
+		m_pSupportEntity.CreateMoveTask(v);		
 		//m_pTask.SetTargetFaction(GetGame().GetFactionManager().GetFactionByKey("A"));	
 		if (!m_pTask)
 		{
@@ -4889,6 +4958,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			
 		
 		}
+		
+		
 		//Create simple test task 
 		/*
 		protected bool SetSupportEntity()
