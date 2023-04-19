@@ -396,23 +396,5 @@ class ManagedDataObject : Managed
 
 };
 
-enum WST_Type
-{
-	WST_WEAPON,
-	WST_ATTACHMENT,
-	WST_OPTIC,
-	WST_EQUIPMENT,
-	WST_VEST,
-	WST_JACKET,
-	WST_PANTS,
-	WST_HELMET,
-	WST_BACKPACK,
-	WST_AMMO,
-	WST_GRENADES,
-	WST_EXPLOSIVES,
-	WST_VEHICLES,
-	WST_CONSUMABLE,
-	WST_MEDIC,
-	WST_VEHICLE
-};
+
 ///////////////////////////////////////////////////////////////////////------------------PreviewSetup

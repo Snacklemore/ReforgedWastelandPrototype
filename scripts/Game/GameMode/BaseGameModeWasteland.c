@@ -4910,21 +4910,22 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	{
 	
 	//get support
+		
 		if(IsProxy())
 			return;
 		if(!IsMaster())
 			return;
 		CreateMoveTaskDestinations();
 		vector v = m_MoveTaskDestinations.GetRandomElement();
-		SCR_MoveTaskSupportEntity m_pSupportEntity;
+		WST_DeliverTaskSupportEntity m_pSupportEntity;
 		SCR_BaseTaskManager tmanager;
 		tmanager = GetTaskManager();
-		if (!GetTaskManager().FindSupportEntity(SCR_MoveTaskSupportEntity))
+		if (!GetTaskManager().FindSupportEntity(WST_DeliverTaskSupportEntity))
 		{
 			Print("CP: Default Task support entity not found in the world, task won't be created!");
 			
 		}
-		m_pSupportEntity = SCR_MoveTaskSupportEntity.Cast(GetTaskManager().FindSupportEntity(SCR_MoveTaskSupportEntity));
+		m_pSupportEntity = WST_DeliverTaskSupportEntity.Cast(GetTaskManager().FindSupportEntity(WST_DeliverTaskSupportEntity));
 		
 		//get prefab
 		if (!m_pSupportEntity.GetTaskPrefab())
@@ -4940,15 +4941,23 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 
 			
 		}
-		
-		SCR_MoveTask m_pTask;
+		//create object to deliver first, then create task 
+		//OR 
+		//define a item type to deliver and create task here
+		WST_DeliverTask m_pTask;
 	
+		Faction faction = GetGame().GetFactionManager().GetFactionByKey("A");	
+		m_pTask = m_pSupportEntity.CreateNewDeliverTask(faction,m_MoveTaskDestinations.GetRandomElement(),null,WST_Type.WST_WEAPON);
 		
-		m_pSupportEntity.CreateMoveTask(v);		
+		
+		
+		
+		
+			
 		//m_pTask.SetTargetFaction(GetGame().GetFactionManager().GetFactionByKey("A"));	
 		if (!m_pTask)
 		{
-			//PrintFormat("CP: Creating of task failed! Task manager refused to create it.");
+			PrintFormat("CP: Creating of task failed! Task manager refused to create it.");
 			
 		}
 		if(m_pTask)
@@ -5258,4 +5267,22 @@ class WST_WalletPredicate: InventorySearchPredicate
 };
 
 
-
+enum WST_Type
+{
+	WST_WEAPON,
+	WST_ATTACHMENT,
+	WST_OPTIC,
+	WST_EQUIPMENT,
+	WST_VEST,
+	WST_JACKET,
+	WST_PANTS,
+	WST_HELMET,
+	WST_BACKPACK,
+	WST_AMMO,
+	WST_GRENADES,
+	WST_EXPLOSIVES,
+	WST_VEHICLES,
+	WST_CONSUMABLE,
+	WST_MEDIC,
+	WST_VEHICLE
+};
