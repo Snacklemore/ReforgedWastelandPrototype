@@ -4202,7 +4202,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		//create and insert money comp here
 		if (o.walletValue > 0)
 		{
-			ResourceName walletPrefab = "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et";
+			ResourceName walletPrefab = "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et";
 			bool success = mmc.TrySpawnPrefabToStorage(walletPrefab);
 			
 			if (success)
@@ -4969,35 +4969,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		}
 		
 		
-		//Create simple test task 
-		/*
-		protected bool SetSupportEntity()
-	{
-		if (!GetTaskManager().FindSupportEntity(SCR_CP_TaskSupportEntity))
-		{
-			Print("CP: Default Task support entity not found in the world, task won't be created!");
-			return false;
-		}
-		m_pSupportEntity = SCR_CP_TaskSupportEntity.Cast(GetTaskManager().FindSupportEntity(SCR_CP_TaskSupportEntity));
-		return m_pSupportEntity != null;	
-	}
 		
-		protected bool SetTaskPrefab()
-	{
-		if (!m_pSupportEntity.GetTaskPrefab())
-		{
-			if (m_sTaskPrefab.IsEmpty())
-			{
-				Print("CP: Task prefab not set, task won't be created!");
-				return false;
-			}
-			m_pSupportEntity.SetTaskPrefab(m_sTaskPrefab);
-		}
-		return true;
-	}
-		
-		
-		*/
 	}
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

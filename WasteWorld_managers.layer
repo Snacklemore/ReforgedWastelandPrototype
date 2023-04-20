@@ -57,13 +57,6 @@ SCR_MoneyManager {
  }
  coords 6337.206 2.164 1934.892
 }
-WST_DeliverTask {
- components {
-  SCR_MapDescriptorComponent "{5D2738F0253FB7B2}" {
-  }
- }
- coords 9777.792 10.139 1571.31
-}
 BasePreloadManager PreloadManager2 : "{104F8505FD1871EF}Prefabs/World/Game/PreloadManager.et" {
  coords -6.924 -10.636 -8.645
  PrefabsToPreload {
@@ -91,6 +84,24 @@ SCR_BaseTaskManager : "{17E3EF2CF455460F}Prefabs/MP/Campaign/CampaignTaskManager
    coords -20.557 0.467 6.264
    m_sTaskPrefab "{A42DAE0F5B2B5E9F}DeliverTask.et"
   }
+ }
+}
+$grp GenericEntity : "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et" {
+ {
+  components {
+   MoneyComponent "{5D275DE1E24BE149}" {
+    initalValue 50000
+   }
+  }
+  coords 4881.238 29.492 11860.813
+ }
+ {
+  components {
+   MoneyComponent "{5D275DE1E24BE149}" {
+    initalValue 50000
+   }
+  }
+  coords 4881.072 29.488 11860.885
  }
 }
 SCR_GarbageManager : "{9B883A7D8EBB282A}Prefabs/MP/Managers/GarbageManager.et" {

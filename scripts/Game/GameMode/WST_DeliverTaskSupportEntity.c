@@ -9,7 +9,10 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 {
 	protected bool m_bInitialTasksGenerated = false;
 	protected ref array<IEntity> m_aDeliveryItems = {};
+	ScriptInvoker s_TaskManagerOnTaskAssigned;
 	
+	ref array<int> m_playerIdSetItemAddedCallback = new array<int>();
+	ScriptInvoker s_TaskManagerOnTaskunassigned;
 	//------------------------------------------------------------------------------------------------
 	//! Returns the found task if it exists.
 	//TODO: Remove this method after no longer needed.
@@ -33,6 +36,7 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 		}
 		return null;
 	}
+	
 	
 	//------------------------------------------------------------------------------------------------
 	//! Server side
@@ -135,14 +139,71 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 		
 		SCR_BaseTaskManager.s_OnTaskUpdate.Insert(OnTaskUpdate);
 	}
+	void OnAssignedHook(SCR_BaseTask task = null)
+	{
+		Print("WST_DeliverTaskSupportEntity::OnAssignedHook");
+		if(!task)
+			return;
+		//attach onItemAddedInvoker to StorageManagerComponent
+		array<SCR_BaseTaskExecutor> assignees = {};
+		task.GetAssignees(assignees);
+		if(assignees.IsEmpty())
+			return;
+		
+		
+		
+		int assignees_count = assignees.Count();
+		Print("WST_DeliverTaskSupportEntity::Assignees Count: " + assignees_count);
+
+		int playerID = SCR_BaseTaskExecutor.GetTaskExecutorID(assignees[0]); 
+		//check for playerID in m_playerIdSetItemAddedCallback
+		
+		int index = m_playerIdSetItemAddedCallback.Find(playerID);
+		if (index > 0 )
+		{
+			Print("WST_DeliverTaskSupportEntity::Invoker already set!");
+
+		
+		}else if (index < 0)
+		{
+		
+			Print("WST_DeliverTaskSupportEntity::Invoker not set add now then add to this array >>> m_playerIdSetItemAddedCallback !");
+			PlayerManager pm = GetGame().GetPlayerManager();
+			PlayerController pc = pm.GetPlayerController(playerID);
+		
+			IEntity controlled = pc.GetControlledEntity();
+			if (controlled)
+				Print("WST_DeliverTaskSupportEntity::OnAssignedHook controlled");
+
+			SCR_InventoryStorageManagerComponent imc = SCR_InventoryStorageManagerComponent.Cast(controlled.FindComponent(SCR_InventoryStorageManagerComponent));
+			if (imc)
+				Print("WST_DeliverTaskSupportEntity::OnAssignedHook IMC found");
+			WST_DeliverTask castTask = WST_DeliverTask.Cast(task);
+			castTask.SetInvokerCallBack(imc);
+			m_playerIdSetItemAddedCallback.Insert(playerID);
+		
+		}
+		
+	
+	}
+	
+	void OnUnassignedHook(SCR_BaseTask task = null)
+	{
+		
+		int count = task.GetAssigneeCount();
+		Print("WST_DeliverTaskSupportEntity:OnUnassignedHook:Assignees Count: ");
+
+	
+	}
 	//------------------------------------------------------------------------------------------------
 	//! Creates a new campaign task.
 	WST_DeliverTask CreateNewDeliverTask(Faction faction, vector deliveryDestination,IEntity itemToDeliver ,WST_Type type  )
 	{
 		if (!GetTaskManager())
 			return null;
-		
-		
+		s_TaskManagerOnTaskAssigned.Insert(OnAssignedHook);
+		s_TaskManagerOnTaskunassigned.Insert(OnUnassignedHook);
+
 		
 		
 		
@@ -160,7 +221,8 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 			return null;
 		Print("WST_DeliverTaskSupportEntity::New DeliverTask created!");
 
-		SetTargetFaction(task, faction); // Replicated internally
+		SetTargetFaction(task, faction);
+		 // Replicated internally
 		//SetTaskType(task, type); // Replicated internally
 		
 		if (itemToDeliver)
@@ -172,10 +234,12 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 		{
 			//task to deliver any item of specified type
 			//move task marker to deliveryDestination 
-			SetTargetDestination(task, deliveryDestination); // Replicated internally
-			//task.SetInvokerCallBack();
+			SetTargetDestination(task, deliveryDestination);
+			task.SetIndividual(true); // Replicated internally
 			Print("WST_DeliverTaskSupportEntity::CreateNewTask:: Origin set!!");
-			//(no item needed to be spawned, OnItemAddedInvoker() when player assigns for task!)
+			//SCR_BaseTaskManager.s_OnTaskAssigned called when task is assigned 
+			//use to add to onItemAdded in IMC 
+		
 		
 		}
 	
@@ -212,7 +276,8 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 	//------------------------------------------------------------------------------------------------
 	override void Initialize()
 	{
-		
+		s_TaskManagerOnTaskAssigned = GetTaskManager().s_OnTaskAssigned;
+		s_TaskManagerOnTaskunassigned = GetTaskManager().s_OnTaskUnassigned;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -228,6 +293,7 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 	void ~WST_DeliverTaskSupportEntity()
 	{
 		//Unregister from script invokers
+		SCR_BaseTaskManager.s_OnTaskAssigned.Remove(OnAssignedHook);
 		//SCR_GameModeCampaignMP.s_OnBaseCaptured.Remove(OnBaseCaptured);
 		//SCR_CampaignBaseManager.s_OnAllBasesInitialized.Remove(OnAllBasesInitialized);
 		//SCR_GameModeCampaignMP.s_OnSignalChanged.Remove(OnBaseCaptured);

@@ -145,8 +145,33 @@ class WST_DeliverTask : SCR_EditorTask
 	void OnDeliveryItemPickup(IEntity ie, BaseInventoryStorageComponent storage)
 	{
 		Print("DeliveryMission::ItemPickUp");
+		
 	}
-	
+	protected override void OnAssigneeRemoved(SCR_BaseTaskExecutor oldAssignee)
+	{
+		if (oldAssignee)
+			oldAssignee.AssignNewTask(null);
+		
+		//remove on item added invoke (used to detect items for delivery mission)
+		IEntity controlled = oldAssignee.GetControlledEntity();
+		if (controlled)
+					Print("DeliveryMission::Found controlled, proceeding to remove Invoke");
+
+		SCR_InventoryStorageManagerComponent imc = SCR_InventoryStorageManagerComponent.Cast(controlled.FindComponent(SCR_InventoryStorageManagerComponent));
+		if(imc)
+					Print("DeliveryMission::Found IMC, proceeding to remove Invoke");
+
+		imc.m_OnItemAddedInvoker.Remove(OnDeliveryItemPickup);
+		Print("DeliveryMission::Probably removed Invoke...huh");
+
+		
+		if (m_aAssignees.Count() <= 0)
+			SetState(SCR_TaskState.OPENED);
+		
+		UpdateMapTaskIcon();
+		UpdateTaskListAssignee();
+		Print("DeliveryMission::Removed Assignee");
+	}
 	void SetInvokerCallBack(SCR_InventoryStorageManagerComponent mc)
 	{
 		mc.m_OnItemAddedInvoker.Insert(OnDeliveryItemPickup);
@@ -340,6 +365,7 @@ class WST_DeliverTask : SCR_EditorTask
 		
 	}
 	
+	/*
 	//------------------------------------------------------------------------------------------------
 	override void Deserialize(ScriptBitReader reader)
 	{
@@ -354,10 +380,10 @@ class WST_DeliverTask : SCR_EditorTask
 	override void Serialize(ScriptBitWriter writer)
 	{
 		super.Serialize(writer);
-		
 		writer.WriteIntRange(GetType(), 0, SCR_CampaignTaskType.LAST-1);
+		//serialize faction!!
 	}
-	
+	*/
 	
 	
 	//------------------------------------------------------------------------------------------------
@@ -383,22 +409,6 @@ class WST_DeliverTask : SCR_EditorTask
 		}
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	protected override bool RplLoad(ScriptBitReader reader)
-	{
-		Print("DeliveryMission::Deserialize");
-
-		Deserialize(reader);
-		return true;
-	}
 	
-	//------------------------------------------------------------------------------------------------
-	protected override bool RplSave(ScriptBitWriter writer)
-	{
-		Print("DeliveryMission::Serialize");
-
-		Serialize(writer);
-		return true;
-	}
 
 }

@@ -115,7 +115,7 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
      TargetStorage "Prefabs/Characters/Uniforms/Jacket_M88_Flora.et"
      TargetPurpose 1
      PrefabsToSpawn + {
-      "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et"
+      "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et"
      }
     }
     ItemsInitConfigurationItem "{54A68D64D7F9124F}" {

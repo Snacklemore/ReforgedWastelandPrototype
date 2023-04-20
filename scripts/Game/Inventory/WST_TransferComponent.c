@@ -99,7 +99,7 @@ class WST_TransferComponent : ScriptComponent
 			return;
 		IEntity ie = pc.GetControlledEntity();
 		InventoryStorageManagerComponent storage = InventoryStorageManagerComponent.Cast(ie.FindComponent(InventoryStorageManagerComponent));
-		ResourceName r = "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et";
+		ResourceName r = "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et";
 		
 		GenericEntity walletEnt =  GetGame().SpawnEntityPrefab(Resource.Load(r), GetGame().GetWorld());
 		MoneyComponent mc = MoneyComponent.Cast(walletEnt.FindComponent(MoneyComponent));
