@@ -158,34 +158,35 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 		int playerID = SCR_BaseTaskExecutor.GetTaskExecutorID(assignees[0]); 
 		//check for playerID in m_playerIdSetItemAddedCallback
 		
-		int index = m_playerIdSetItemAddedCallback.Find(playerID);
-		if (index > 0 )
-		{
-			Print("WST_DeliverTaskSupportEntity::Invoker already set!");
+		
+		
+		Print("WST_DeliverTaskSupportEntity::Invoker already set!");
 
 		
-		}else if (index < 0)
-		{
 		
-			Print("WST_DeliverTaskSupportEntity::Invoker not set add now then add to this array >>> m_playerIdSetItemAddedCallback !");
-			PlayerManager pm = GetGame().GetPlayerManager();
-			PlayerController pc = pm.GetPlayerController(playerID);
 		
-			IEntity controlled = pc.GetControlledEntity();
-			if (controlled)
-				Print("WST_DeliverTaskSupportEntity::OnAssignedHook controlled");
+		Print("WST_DeliverTaskSupportEntity::Invoker not set add now then add to this array >>> m_playerIdSetItemAddedCallback !");
+		PlayerManager pm = GetGame().GetPlayerManager();
+		PlayerController pc = pm.GetPlayerController(playerID);
+		
+		IEntity controlled = pc.GetControlledEntity();
+		if (controlled)
+			Print("WST_DeliverTaskSupportEntity::OnAssignedHook controlled");
 
-			SCR_InventoryStorageManagerComponent imc = SCR_InventoryStorageManagerComponent.Cast(controlled.FindComponent(SCR_InventoryStorageManagerComponent));
-			if (imc)
-				Print("WST_DeliverTaskSupportEntity::OnAssignedHook IMC found");
-			WST_DeliverTask castTask = WST_DeliverTask.Cast(task);
-			castTask.SetInvokerCallBack(imc);
-			m_playerIdSetItemAddedCallback.Insert(playerID);
+		SCR_InventoryStorageManagerComponent imc = SCR_InventoryStorageManagerComponent.Cast(controlled.FindComponent(SCR_InventoryStorageManagerComponent));
+		if (imc)
+			Print("WST_DeliverTaskSupportEntity::OnAssignedHook IMC found");
+		WST_DeliverTask castTask = WST_DeliverTask.Cast(task);
+		castTask.SetInvokerCallBack(imc);
 		
-		}
+		
+	
 		
 	
 	}
+	
+	
+	
 	
 	void OnUnassignedHook(SCR_BaseTask task = null)
 	{

@@ -1,6 +1,3 @@
-ScriptedChatEntity : "{536D80EB494DDC43}Prefabs/MP/Campaign/CampaignMPChatEntity.et" {
- coords 9699.37 12.67 1544.854
-}
 $grp SCR_Position {
  SP_AI_StPhillipe {
   coords 4511.316 14.272 10773.853
@@ -203,14 +200,6 @@ $grp SCR_Position {
  SP_AI_Lamentin5 {
   coords 1275.302 38.202 5918.849
  }
-}
-WST_GearPersistenceManager {
- components {
-  RplComponent "{5D1B38A48B84327D}" {
-   Streamable Disabled
-  }
- }
- coords 9631.132 19.925 1512.042
 }
 $grp WST_VehicleSpawnPoint {
  {

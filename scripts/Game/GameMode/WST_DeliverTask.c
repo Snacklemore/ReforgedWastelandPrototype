@@ -143,26 +143,79 @@ class WST_DeliverTask : SCR_EditorTask
 	}
 	//put this into the onItemAdded Invoker of invmanager
 	void OnDeliveryItemPickup(IEntity ie, BaseInventoryStorageComponent storage)
-	{
+	{	//get the storage owner 
+		SCR_UniversalInventoryStorageComponent castStorage = SCR_UniversalInventoryStorageComponent.Cast(storage);
+		IEntity iStorage = castStorage.GetOwner();
+		RplComponent rpl = RplComponent.Cast(iStorage.FindComponent(RplComponent));
+		RplId r_id = rpl.Id();
 		Print("DeliveryMission::ItemPickUp");
+		//SCR_ChimeraCharacter parent = storageOwner.GetParent();
+		int p_id = GetGame().GetPlayerManager().GetPlayerIdFromEntityRplId(r_id);
 		
+		
+		
+		
+		Print("DeliveryMission::PlayerID: " + p_id);
+
+		int taskID = GetTaskID();
+		
+		Print("DeliveryMission::TaskID: " + taskID);
+
+		
+	}
+	
+	
+	override void RemoveAssignee(SCR_BaseTaskExecutor assignee, SCR_EUnassignReason reason)
+	{
+		if (!m_aAssignees || !assignee)
+			return;
+		
+		int index = m_aAssignees.Find(assignee);
+		
+		if (index == -1)
+			return;
+		
+		m_aAssignees.Remove(index);
+		if (assignee == SCR_BaseTaskExecutor.GetLocalExecutor())
+			ShowPopUpNotification("#AR-Tasks_UnassignPopup");
+
+		OnAssigneeRemoved(assignee);
+		
+		if (m_bIndividualTask)
+		{
+			switch (reason)
+			{
+				case SCR_EUnassignReason.ASSIGNEE_TIMEOUT:
+					// We set timeout for the assignee, since we don't want them to be immediately able to assign the task to themselves again
+					m_fAssigneeTimeoutTimestamp = GetTaskManager().GetTimestamp() + DEFAULT_ASSIGNEE_TIMEOUT_TIME;
+					m_TimedOutAssignee = assignee;
+					break;
+				case SCR_EUnassignReason.ASSIGNEE_DISCONNECT:
+				{
+					GetTaskManager().AddAssigneeAbandoned(assignee);
+					break;
+				}
+					
+				case SCR_EUnassignReason.ASSIGNEE_ABANDON:
+					break;
+				case SCR_EUnassignReason.GM_REASSIGN:
+					break;
+			}
+			
+			ShowAvailableTask(true);
+		}
+		
+		SCR_BaseTaskManager.s_OnTaskUnassigned.Invoke(this);
+		
+		RegisterTaskUpdate(SCR_ETaskEventMask.TASK_ASSIGNEE_CHANGED);
 	}
 	protected override void OnAssigneeRemoved(SCR_BaseTaskExecutor oldAssignee)
 	{
+		
 		if (oldAssignee)
 			oldAssignee.AssignNewTask(null);
 		
-		//remove on item added invoke (used to detect items for delivery mission)
-		IEntity controlled = oldAssignee.GetControlledEntity();
-		if (controlled)
-					Print("DeliveryMission::Found controlled, proceeding to remove Invoke");
-
-		SCR_InventoryStorageManagerComponent imc = SCR_InventoryStorageManagerComponent.Cast(controlled.FindComponent(SCR_InventoryStorageManagerComponent));
-		if(imc)
-					Print("DeliveryMission::Found IMC, proceeding to remove Invoke");
-
-		imc.m_OnItemAddedInvoker.Remove(OnDeliveryItemPickup);
-		Print("DeliveryMission::Probably removed Invoke...huh");
+		
 
 		
 		if (m_aAssignees.Count() <= 0)
@@ -170,7 +223,30 @@ class WST_DeliverTask : SCR_EditorTask
 		
 		UpdateMapTaskIcon();
 		UpdateTaskListAssignee();
+		
 		Print("DeliveryMission::Removed Assignee");
+		
+		
+		if(!Replication.IsServer())
+			return;
+		//remove on item added invoke (used to detect items for delivery mission)
+		IEntity controlled = oldAssignee.GetControlledEntity();
+		
+		if (controlled)
+					Print("DeliveryMission::Found controlled, proceeding to remove Invoke");
+		else
+			return;
+
+		SCR_InventoryStorageManagerComponent imc = SCR_InventoryStorageManagerComponent.Cast(controlled.FindComponent(SCR_InventoryStorageManagerComponent));
+		if(imc)
+					Print("DeliveryMission::Found IMC, proceeding to remove Invoke");
+
+		imc.m_OnItemAddedInvoker.Remove(OnDeliveryItemPickup);
+		
+		
+		
+		
+		Print("DeliveryMission::Probably removed Invoke...huh");
 	}
 	void SetInvokerCallBack(SCR_InventoryStorageManagerComponent mc)
 	{

@@ -14,6 +14,9 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 4883.491 28.595 11739.479
 }
+ScriptedChatEntity : "{536D80EB494DDC43}Prefabs/MP/Campaign/CampaignMPChatEntity.et" {
+ coords 9699.37 12.67 1544.854
+}
 SCR_FactionManager FactionManager_Base1 : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
  coords 4882.086 28.595 11750.615
  Factions {
@@ -56,6 +59,14 @@ SCR_MoneyManager {
   }
  }
  coords 6337.206 2.164 1934.892
+}
+WST_GearPersistenceManager {
+ components {
+  RplComponent "{5D1B38A48B84327D}" {
+   Streamable Disabled
+  }
+ }
+ coords 9631.132 19.925 1512.042
 }
 BasePreloadManager PreloadManager2 : "{104F8505FD1871EF}Prefabs/World/Game/PreloadManager.et" {
  coords -6.924 -10.636 -8.645
