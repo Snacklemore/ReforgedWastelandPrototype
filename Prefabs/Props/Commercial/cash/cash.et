@@ -1,0 +1,65 @@
+GenericEntity {
+ ID "5D275DE1A25D615F"
+ components {
+  SoundComponent "{5D275DE1A25D6156}" {
+   Filenames {
+    "{12A94705DF2BFD25}Sounds/Items/_SharedData/PickUp/Items_PickUp_Generic.acp" "{CC0E5A1324E761C1}Sounds/Items/_SharedData/Drop/Items_Drop_Generic.acp"
+   }
+   DistanceManagement 0
+  }
+  InventoryItemComponent "{5D275DE1A25D616B}" {
+   Attributes SCR_ItemAttributeCollection "{5D275DE1A25D616E}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5D275DE1A25D616C}" {
+     Name "Dollar Stack"
+     Description "printed paper"
+     Icon "{C743DF3160527594}Assets/Props/cash/textures/dollar2.edds"
+     m_bShowIconInInventory 1
+     m_IconColor 1 1 1 1
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{5D275DE1A25D6162}" {
+     Weight 0.1
+     SizeSetupStrategy Manual
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{5D275DE1A25D6161}" {
+      CameraPreset Top
+     }
+    }
+    m_Size SLOT_1x1
+    m_SlotType SLOT_ANY
+   }
+  }
+  MeshObject "{5D275DE1A25D6167}" {
+   Object "{756678DBFB2285D5}Assets/cash.xob"
+  }
+  Hierarchy "{5D275DE1A25D6165}" {
+  }
+  MoneyComponent "{5D275DE1E24BE149}" {
+  }
+  RigidBody "{5D275DE1A25D617A}" {
+   ModelGeometry 1
+  }
+  ActionsManagerComponent "{5D275DE1A25D6178}" {
+   ActionContexts {
+    UserActionContext "{5D275DE1A25D6179}" {
+     ContextName "default"
+     Position PointInfo "{5D275DE1A25D617F}" {
+     }
+    }
+   }
+   additionalActions {
+    SCR_PickUpItemAction "{5D275DE1A25D6172}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo SCR_InventoryUIInfo "{5D275DE1A25D6170}" {
+      Name "#AR-Inventory_PickUp"
+     }
+    }
+   }
+  }
+  RplComponent "{5D275DE1A25D6176}" {
+  }
+ }
+ coords 4724.88 162.602 6974.152
+}

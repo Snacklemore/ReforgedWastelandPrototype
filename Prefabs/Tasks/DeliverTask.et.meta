@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{249257B60B6BFDF4}Prefabs/Characters/Core/DefaultPlayerControllerMod.et"
+ Name "{A42DAE0F5B2B5E9F}Prefabs/Tasks/DeliverTask.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

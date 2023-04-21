@@ -1,0 +1,10 @@
+WST_DeliverTask {
+ ID "5D2738F02DEE282E"
+ components {
+  SCR_MapDescriptorComponent "{5D2738F0253FB7B2}" {
+  }
+ }
+ coords 9777.792 10.139 1571.31
+ m_sMapIconName "Icon_Task_Move"
+ m_sTaskListIconName "Icon_Task_Move"
+}

@@ -14,18 +14,25 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 4883.491 28.595 11739.479
 }
+ScriptedChatEntity : "{536D80EB494DDC43}Prefabs/MP/Campaign/CampaignMPChatEntity.et" {
+ coords 9699.37 12.67 1544.854
+}
 SCR_FactionManager FactionManager_Base1 : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
  coords 4882.086 28.595 11750.615
  Factions {
   SCR_Faction "{5CE73973488AC5F3}" : "{279E4B2ECD96D14B}Configs/Factions/B.conf" {
+   FactionColor 0.502 0 0 1
    UIInfo SCR_FactionUIInfo "{5CD0395D6107635F}" {
     Name "B"
    }
+   m_OutlineFactionColor 0.812 0.506 0.506 1
   }
   SCR_Faction "{5CE73972CF9CB7F1}" : "{475723A0D7F58727}Configs/Factions/A.conf" {
+   FactionColor 0 0.125 0.502 1
    UIInfo SCR_FactionUIInfo "{5CD0395D769080FC}" {
     Name "A"
    }
+   m_OutlineFactionColor 0.506 0.584 0.812 1
   }
   SCR_Faction "{5CE726D3F89B8EFC}" : "{8053DB656DD18B15}Configs/Factions/FIA.conf" {
    UIInfo SCR_FactionUIInfo "{5CE726D3C0CB70AA}" {
@@ -57,10 +64,59 @@ SCR_MoneyManager {
  }
  coords 6337.206 2.164 1934.892
 }
+WST_GearPersistenceManager {
+ components {
+  RplComponent "{5D1B38A48B84327D}" {
+   Streamable Disabled
+  }
+ }
+ coords 9631.132 19.925 1512.042
+}
 BasePreloadManager PreloadManager2 : "{104F8505FD1871EF}Prefabs/World/Game/PreloadManager.et" {
  coords -6.924 -10.636 -8.645
  PrefabsToPreload {
   "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.et" "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et" "{3343A055A83CB30D}Prefabs/Weapons/Grenades/M18/Smoke_M18_Red.et" "{14C1A0F061D9DDEE}Prefabs/Weapons/Grenades/M18/Smoke_M18_Violet.et" "{9BBDEE253A16CC66}Prefabs/Weapons/Grenades/M18/Smoke_M18_Yellow.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{1353C6EAD1DCFE43}Prefabs/Weapons/Handguns/M9/Handgun_M9.et" "{C0F7DD85A86B2900}Prefabs/Weapons/Handguns/PM/Handgun_PM.et" "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et" "{7A82FE978603F137}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7.et" "{A89BC9D55FFB4CD8}Prefabs/Weapons/MachineGuns/PKM/MG_PKM.et" "{D182DCDD72BF7E34}Prefabs/Weapons/MachineGuns/M60/MG_M60.et" "{FA5C25BF66A53DCF}Prefabs/Weapons/Rifles/AK74/Rifle_AK74.et" "{3E413771E1834D2F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{61D4F80E49BF9B12}Prefabs/Items/Equipment/Compass/Compass_SY183.et" "{3A421547BC29F679}Prefabs/Items/Equipment/Flashlights/Flashlight_MX991.et" "{575EA58E67448C2A}Prefabs/Items/Equipment/Flashlights/Flashlight_Soviet_01.et" "{E1A5D4B878AA8980}Prefabs/Items/Equipment/Radios/Radio_R148.et" "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et" "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et" "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et" "{A46F7A3C178EBBAC}Prefabs/Characters/Preview/BasebodyPreviewCharacter.et" "{9D23639EA3055572}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_MediumMoneyLoot.et" "{DD8F91EF241595A0}Prefabs/Groups/BLUFOR/Group_FireTeamWaste_BigMoneyLoot.et" "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et"
+ }
+}
+SCR_BaseTaskManager : "{17E3EF2CF455460F}Prefabs/MP/Campaign/CampaignTaskManager.et" {
+ components {
+  SCR_UITaskManagerComponent "{50F6E6982BA1CE0F}" {
+   Enabled 0
+   m_AssignedTaskColor 0.318 0.561 0.071 1
+  }
+ }
+ coords 9786.161 9.912 1566.894
+ {
+  SCR_BaseTaskSupportEntity {
+   ID "5A0AA0B3012992C7"
+   m_sTaskPrefab "{8B73FFC80AC98B1C}Prefabs/Tasks/NeutralizeTask.et"
+  }
+  SCR_MoveTaskSupportEntity {
+   coords -26.771 0.524 5.143
+   m_sTaskPrefab "{8B73FFC80AC98B1C}Prefabs/Tasks/NeutralizeTask.et"
+  }
+  WST_DeliverTaskSupportEntity {
+   coords -20.557 0.467 6.264
+   m_sTaskPrefab "{A42DAE0F5B2B5E9F}Prefabs/Tasks/DeliverTask.et"
+  }
+ }
+}
+$grp GenericEntity : "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et" {
+ {
+  components {
+   MoneyComponent "{5D275DE1E24BE149}" {
+    initalValue 50000
+   }
+  }
+  coords 4881.238 29.492 11860.813
+ }
+ {
+  components {
+   MoneyComponent "{5D275DE1E24BE149}" {
+    initalValue 50000
+   }
+  }
+  coords 4881.072 29.488 11860.885
  }
 }
 SCR_GarbageManager : "{9B883A7D8EBB282A}Prefabs/MP/Managers/GarbageManager.et" {

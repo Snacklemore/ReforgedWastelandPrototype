@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et"
+ Name "{1D0F815858EE24AD}Prefabs/Tasks/BaseTask.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

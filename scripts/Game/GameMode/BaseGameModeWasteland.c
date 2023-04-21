@@ -4034,7 +4034,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 #endif
 		super.OnPlayerDisconnected(playerId, cause, timeout);
 		
-		//GetTaskManager().OnPlayerDisconnected(playerId);
+		GetTaskManager().OnPlayerDisconnected(playerId);
 		WriteClientData(playerId, true);
 		
 		// Disconnecting player is currently capturing a base; handle it
@@ -4202,7 +4202,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		//create and insert money comp here
 		if (o.walletValue > 0)
 		{
-			ResourceName walletPrefab = "{E63CDF1BD7C8CFF6}Prefabs/Items/Equipment/Compass/Money.et";
+			ResourceName walletPrefab = "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et";
 			bool success = mmc.TrySpawnPrefabToStorage(walletPrefab);
 			
 			if (success)
@@ -4768,7 +4768,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			}
 		}
 		
-		SCR_UITaskManagerComponent.s_OnTaskListVisible.Insert(ShowXP);
+		//SCR_UITaskManagerComponent.s_OnTaskListVisible.Insert(ShowXP);
 		
 		if (RplSession.Mode() != RplMode.Dedicated)
 		{
@@ -4833,10 +4833,233 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		
 		m_MapEntity = SCR_MapEntity.Cast(GetGame().GetMapManager());
 		
-		//GetGame().GetCallqueue().CallLater(UpdateMapDescriptors,2000,true);
-		
+		GetGame().GetCallqueue().CallLater(CreateDeliverTask_Individual,50000,true);
+		GetGame().GetCallqueue().CallLater(TaskMonitorPrompt,10000,true);
 	
 
+	}
+	
+	void TaskMonitorPrompt()
+	{
+		if(IsProxy())
+			return;
+		if(!IsMaster())
+			return;
+		
+		
+		SCR_BaseTaskManager tm = GetTaskManager();
+		
+		int activeTaskCount;
+		int tasksWithAssigneesCount = 0;
+		array<SCR_BaseTask> outtask = {};
+		tm.GetTasks(outtask);
+		activeTaskCount = outtask.Count();
+		
+		foreach(SCR_BaseTask b : outtask)
+		{
+			array<SCR_BaseTaskExecutor> assignees = {};
+
+			int count = b.GetAssignees(assignees);
+			Print("TaskMonitorPrompt||TaskAssignees:: "+ count);
+			if(count > 0 )
+			{
+				tasksWithAssigneesCount++;
+			}
+
+			
+		
+		}
+		
+		
+		
+		Print("TaskMonitorPrompt||activeTaskCount:: "+ activeTaskCount);
+		Print("TaskMonitorPrompt||tasksWithAssigneesCount: "+ tasksWithAssigneesCount);
+		
+		
+
+		
+	
+	}
+	
+	ref array<vector> m_MoveTaskDestinations = new array<vector>();
+	void CreateMoveTaskDestinations()
+	{
+		if(IsProxy())
+			return;
+		if(!IsMaster())
+			return;
+		
+		SCR_EditableEntityCore core = SCR_EditableEntityCore.Cast(SCR_EditableEntityCore.GetInstance(SCR_EditableEntityCore));
+	       if (!core)
+	           return;
+		set<SCR_EditableEntityComponent> entities = new set<SCR_EditableEntityComponent>();
+		array<SCR_EditableEntityComponent> commentEntities = new array<SCR_EditableEntityComponent>();
+		
+		core.GetAllEntities(entities,true,true);
+		//Print("SCRWST_AISpawnManager::EOnInit::AllSCR_EditableEntityComponent"+ entities);
+		
+		//filter out EEditableEntityType.COMMENT
+		foreach (SCR_EditableEntityComponent ent : entities)
+		{
+			if (ent.GetEntityType() == 6)
+				commentEntities.Insert(ent);
+			//Print("SCRWST_AISpawnManagerClass::EOnInit()::EntityType = " +ent.GetEntityType() );
+			
+			
+		}
+		
+		
+		foreach (SCR_EditableEntityComponent ent : commentEntities)
+		{
+		
+			GenericEntity parent =ent.GetOwner();
+			SCR_MapDescriptorComponent mapDescr = SCR_MapDescriptorComponent.Cast(parent.FindComponent(SCR_MapDescriptorComponent));
+			string LocationName;
+			if (!mapDescr)
+				return;
+			MapItem item = mapDescr.Item();
+			LocationName = item.GetDisplayName();
+			string EntityName = parent.GetName();
+			
+			//filter out name with a capital "C" at the beginning. Those are Citys.
+			//format city:
+			//-> C_LocationChotain
+			//format Hills 
+			//-> H_HumboldtHill
+			if(EntityName.Contains("C_"))
+			{	
+				//City 
+				Print("BaseGameModeWasteland::CreateMoveTaskDestinations::Adding city, " + EntityName);
+				vector v = parent.GetOrigin();
+				m_MoveTaskDestinations.Insert(v);
+
+				
+			
+			}else if (EntityName.Contains("H_"))
+			{
+				
+				
+			
+			}
+			
+			Print("BaseGameModeWasteland::CreateMoveTaskDestinations::LocationName" + LocationName);
+	
+		}
+		TaskDestinationsInitialised = true;
+	}
+	
+	string TaskTitleString ="Item Delivery: Weapon";
+	string TaskDescriptionString = "Deliver any weapon to designated destination(1. Equipped weapon will be taken!)";
+	bool TaskDestinationsInitialised= false;
+	void CreateDeliverTask_Individual()
+	{
+	
+	//get support
+		
+		if(IsProxy())
+			return;
+		if(!IsMaster())
+			return;
+		if(!TaskDestinationsInitialised)
+			CreateMoveTaskDestinations();
+		
+		
+		
+		Faction factionA = GetGame().GetFactionManager().GetFactionByKey("A");	
+		Faction factionB = GetGame().GetFactionManager().GetFactionByKey("B");	
+		vector v = m_MoveTaskDestinations.GetRandomElement();
+		WST_DeliverTaskSupportEntity m_pSupportEntity;
+		SCR_BaseTaskManager tmanager;
+		tmanager = GetTaskManager();
+		
+		
+		//get active task count 
+		int activeTaskCount;
+		int activeTaskCountA;
+		int activeTaskCountB;
+
+		array<SCR_BaseTask> outtask = {};
+		array<SCR_BaseTask> outtaskA = {};
+		array<SCR_BaseTask> outtaskB = {};
+
+		tmanager.GetTasks(outtask);
+		tmanager.GetFilteredTasks(outtaskA,factionA);
+		tmanager.GetFilteredTasks(outtaskB,factionB);
+		
+		
+		activeTaskCount = outtask.Count();
+		activeTaskCountA = outtaskA.Count();
+		activeTaskCountB = outtaskB.Count();
+		Print("Active Tasks for A Faction ||[ "+activeTaskCountA +" ]||");
+		Print("Active Tasks for B Faction ||[ "+activeTaskCountB +" ]||");
+			
+
+		//only spawn new task if task count lower than 4 
+		if (activeTaskCount > 4)
+			return;
+		
+		
+		if (!GetTaskManager().FindSupportEntity(WST_DeliverTaskSupportEntity))
+		{
+			Print("CP: Default Task support entity not found in the world, task won't be created!");
+			
+		}
+		m_pSupportEntity = WST_DeliverTaskSupportEntity.Cast(GetTaskManager().FindSupportEntity(WST_DeliverTaskSupportEntity));
+		
+		//get prefab
+		if (!m_pSupportEntity.GetTaskPrefab())
+		{
+			
+			Print("CP: Task prefab not set, task won't be created!");
+			
+			
+			
+			
+			//m_pSupportEntity.SetTaskPrefab(m_sTaskPrefab);
+
+
+			
+		}
+		//create object to deliver first, then create task 
+		//OR 
+		//define a item type to deliver and create task here
+		
+
+		
+		WST_DeliverTask m_pTaskA;
+		WST_DeliverTask m_pTaskB;
+		//Vector(4876.6,28.73,11932.97)
+		if(activeTaskCountA < 3)
+			 m_pTaskA = m_pSupportEntity.CreateNewDeliverTask(factionA,v,null,WST_Type.WST_WEAPON);
+		//set title via support entity to replicate to all machines
+		m_pSupportEntity.SetTaskTitle(m_pTaskA,"Item Delivery: Weapon");
+		
+		m_pSupportEntity.SetTaskDescription(m_pTaskA,"Deliver any rifle to designated destination(Last Equipped weapon slot will be taken!)");
+		if(activeTaskCountB < 3)
+			 m_pTaskB = m_pSupportEntity.CreateNewDeliverTask(factionB,v,null,WST_Type.WST_WEAPON);
+		
+		m_pSupportEntity.SetTaskTitle(m_pTaskB,"Item Delivery: Weapon");
+		
+		m_pSupportEntity.SetTaskDescription(m_pTaskB,"Deliver any rifle to designated destination(Last Equipped weapon slot will be taken!)");
+	
+		
+		
+		
+			
+		//m_pTask.SetTargetFaction(GetGame().GetFactionManager().GetFactionByKey("A"));	
+		if (!m_pTaskA)
+		{
+			PrintFormat("CP: Creating of m_pTaskA failed! Task manager refused to create it.");
+			
+		}
+		
+		if (!m_pTaskB)
+		{
+			PrintFormat("CP: Creating of m_pTaskB failed! Task manager refused to create it.");
+			
+		}
+		
+		
 	}
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -5105,19 +5328,39 @@ class WST_WalletPredicate: InventorySearchPredicate
 	}
 };
 
-
-class MyPredicate: InventorySearchPredicate
+class WST_WeaponPredicate: InventorySearchPredicate
 	{
-	void MyPredicatePredicate()
+	void WST_WeaponPredicate()
 	{
-		QueryComponentTypes.Insert(MySearchComponent);
+		QueryComponentTypes.Insert(WeaponComponent);
 	}
 
 	override protected bool IsMatch(BaseInventoryStorageComponent storage, IEntity item, array<GenericComponent> queriedComponents, array<BaseItemAttributeData> queriedAttributes)
 	{		
-		MySearchComponent mc = MySearchComponent.Cast(item.FindComponent(MySearchComponent));
-		if(mc)
+		WeaponComponent wc = WeaponComponent.Cast(item.FindComponent(WeaponComponent));
+		if(wc)
 			return true;	
 		return false;
 	}
+};
+
+
+enum WST_Type
+{
+	WST_WEAPON,
+	WST_ATTACHMENT,
+	WST_OPTIC,
+	WST_EQUIPMENT,
+	WST_VEST,
+	WST_JACKET,
+	WST_PANTS,
+	WST_HELMET,
+	WST_BACKPACK,
+	WST_AMMO,
+	WST_GRENADES,
+	WST_EXPLOSIVES,
+	WST_VEHICLES,
+	WST_CONSUMABLE,
+	WST_MEDIC,
+	WST_VEHICLE
 };
