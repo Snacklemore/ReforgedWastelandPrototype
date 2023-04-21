@@ -188,13 +188,6 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 		//check for playerID in m_playerIdSetItemAddedCallback
 		
 		
-		
-		Print("WST_DeliverTaskSupportEntity::Invoker already set!");
-
-		
-		
-		
-		Print("WST_DeliverTaskSupportEntity::Invoker not set add now then add to this array >>> m_playerIdSetItemAddedCallback !");
 		PlayerManager pm = GetGame().GetPlayerManager();
 		PlayerController pc = pm.GetPlayerController(playerID);
 		
@@ -208,6 +201,13 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 		WST_DeliverTask castTask = WST_DeliverTask.Cast(task);
 		castTask.SetInvokerCallBack(imc);
 		
+		//check if item already picked up 
+		WST_WeaponPredicate predicate = new WST_WeaponPredicate();
+		IEntity weaponEntity = imc.FindItem(predicate);
+		WST_DeliverTask cTask = WST_DeliverTask.Cast(task);
+		if (weaponEntity)
+			cTask.isItemTypePickedUp = true;
+			
 		
 	
 		

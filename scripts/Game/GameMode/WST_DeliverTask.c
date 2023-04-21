@@ -216,6 +216,24 @@ class WST_DeliverTask : SCR_EditorTask
 		
 		RegisterTaskUpdate(SCR_ETaskEventMask.TASK_ASSIGNEE_CHANGED);
 	}
+	
+	
+	
+	protected override void OnAssigneeAdded(SCR_BaseTaskExecutor newAssignee)
+	{
+		if (newAssignee)
+			newAssignee.AssignNewTask(this);
+		
+		UpdateMapTaskIcon();
+		UpdateTaskListAssignee();		
+		
+		
+		Print("DeliveryMission::Added Assignee");
+
+		
+		if(!Replication.IsServer())
+			return;
+	}
 	protected override void OnAssigneeRemoved(SCR_BaseTaskExecutor oldAssignee)
 	{
 		

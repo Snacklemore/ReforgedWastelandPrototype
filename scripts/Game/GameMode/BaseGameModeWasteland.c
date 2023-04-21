@@ -5003,7 +5003,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		WST_DeliverTask m_pTask;
 	
 		Faction faction = GetGame().GetFactionManager().GetFactionByKey("A");	
-		m_pTask = m_pSupportEntity.CreateNewDeliverTask(faction,v,null,WST_Type.WST_WEAPON);
+		//Vector(4876.6,28.73,11932.97)
+		m_pTask = m_pSupportEntity.CreateNewDeliverTask(faction,Vector(4876.6,28.73,11932.97),null,WST_Type.WST_WEAPON);
 		
 		
 		
@@ -5289,6 +5290,22 @@ class WST_WalletPredicate: InventorySearchPredicate
 	{		
 		MoneyComponent mc = MoneyComponent.Cast(item.FindComponent(MoneyComponent));
 		if(mc)
+			return true;	
+		return false;
+	}
+};
+
+class WST_WeaponPredicate: InventorySearchPredicate
+	{
+	void WST_WeaponPredicate()
+	{
+		QueryComponentTypes.Insert(WeaponComponent);
+	}
+
+	override protected bool IsMatch(BaseInventoryStorageComponent storage, IEntity item, array<GenericComponent> queriedComponents, array<BaseItemAttributeData> queriedAttributes)
+	{		
+		WeaponComponent wc = WeaponComponent.Cast(item.FindComponent(WeaponComponent));
+		if(wc)
 			return true;	
 		return false;
 	}
