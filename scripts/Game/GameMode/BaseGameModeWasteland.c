@@ -4768,7 +4768,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			}
 		}
 		
-		SCR_UITaskManagerComponent.s_OnTaskListVisible.Insert(ShowXP);
+		//SCR_UITaskManagerComponent.s_OnTaskListVisible.Insert(ShowXP);
 		
 		if (RplSession.Mode() != RplMode.Dedicated)
 		{
@@ -4833,10 +4833,52 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		
 		m_MapEntity = SCR_MapEntity.Cast(GetGame().GetMapManager());
 		
-		GetGame().GetCallqueue().CallLater(setTask,5000,false);
-		
+		GetGame().GetCallqueue().CallLater(CreateDeliverTask_Individual,15000,true);
+		GetGame().GetCallqueue().CallLater(TaskMonitorPrompt,10000,true);
 	
 
+	}
+	
+	void TaskMonitorPrompt()
+	{
+		if(IsProxy())
+			return;
+		if(!IsMaster())
+			return;
+		
+		
+		SCR_BaseTaskManager tm = GetTaskManager();
+		
+		int activeTaskCount;
+		int tasksWithAssigneesCount = 0;
+		array<SCR_BaseTask> outtask = {};
+		tm.GetTasks(outtask);
+		activeTaskCount = outtask.Count();
+		
+		foreach(SCR_BaseTask b : outtask)
+		{
+			array<SCR_BaseTaskExecutor> assignees = {};
+
+			int count = b.GetAssignees(assignees);
+			Print("TaskMonitorPrompt||TaskAssignees:: "+ count);
+			if(count > 0 )
+			{
+				tasksWithAssigneesCount++;
+			}
+
+			
+		
+		}
+		
+		
+		
+		Print("TaskMonitorPrompt||activeTaskCount:: "+ activeTaskCount);
+		Print("TaskMonitorPrompt||tasksWithAssigneesCount: "+ tasksWithAssigneesCount);
+		
+		
+
+		
+	
 	}
 	
 	ref array<vector> m_MoveTaskDestinations = new array<vector>();
@@ -4903,10 +4945,11 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			Print("BaseGameModeWasteland::CreateMoveTaskDestinations::LocationName" + LocationName);
 	
 		}
+		TaskDestinationsInitialised = true;
 	}
 	
-	
-	void setTask()
+	bool TaskDestinationsInitialised= false;
+	void CreateDeliverTask_Individual()
 	{
 	
 	//get support
@@ -4915,11 +4958,24 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			return;
 		if(!IsMaster())
 			return;
-		CreateMoveTaskDestinations();
+		if(!TaskDestinationsInitialised)
+			CreateMoveTaskDestinations();
 		vector v = m_MoveTaskDestinations.GetRandomElement();
 		WST_DeliverTaskSupportEntity m_pSupportEntity;
 		SCR_BaseTaskManager tmanager;
 		tmanager = GetTaskManager();
+		
+		
+		//get active task count 
+		int activeTaskCount;
+		array<SCR_BaseTask> outtask = {};
+		tmanager.GetTasks(outtask);
+		activeTaskCount = outtask.Count();
+		//only spawn new task if task count lower than 2 
+		if (activeTaskCount > 2)
+			return;
+		
+		
 		if (!GetTaskManager().FindSupportEntity(WST_DeliverTaskSupportEntity))
 		{
 			Print("CP: Default Task support entity not found in the world, task won't be created!");
@@ -4947,7 +5003,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		WST_DeliverTask m_pTask;
 	
 		Faction faction = GetGame().GetFactionManager().GetFactionByKey("A");	
-		m_pTask = m_pSupportEntity.CreateNewDeliverTask(faction,m_MoveTaskDestinations.GetRandomElement(),null,WST_Type.WST_WEAPON);
+		m_pTask = m_pSupportEntity.CreateNewDeliverTask(faction,v,null,WST_Type.WST_WEAPON);
 		
 		
 		

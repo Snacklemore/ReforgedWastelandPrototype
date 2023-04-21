@@ -114,6 +114,35 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 	{
 	}
 	
+	
+	void SetIndividual(notnull WST_DeliverTask task, bool value)
+	{
+		if(!GetTaskManager())
+			return;
+		
+		int taskID;
+		taskID = task.GetTaskID();
+		
+		Rpc(RPC_SetIndividual,taskID,value);
+		RPC_SetIndividual(taskID,value);
+	}
+	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RPC_SetIndividual(int taskid, bool value)
+	{
+		if (!GetTaskManager())
+			return;
+		
+		WST_DeliverTask task = WST_DeliverTask.Cast(GetTaskManager().GetTask(taskid));
+		if (!task)
+			return;
+		
+		
+		Print("WST_DeliverTaskSupportEntity::Broadcast:SetIndividual");
+
+		task.SetIndividual(value);
+	}
 	//------------------------------------------------------------------------------------------------
 	void SetTargetDestination(notnull WST_DeliverTask task,  vector destination)
 	{
@@ -236,16 +265,16 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 			//task to deliver any item of specified type
 			//move task marker to deliveryDestination 
 			SetTargetDestination(task, deliveryDestination);
-			task.SetIndividual(true); // Replicated internally
+			SetIndividual(task,true);
 			Print("WST_DeliverTaskSupportEntity::CreateNewTask:: Origin set!!");
 			//SCR_BaseTaskManager.s_OnTaskAssigned called when task is assigned 
 			//use to add to onItemAdded in IMC 
-		
+			return task;
 		
 		}
 	
+		return null;
 		
-		return task;
 	}
 	
 	//------------------------------------------------------------------------------------------------

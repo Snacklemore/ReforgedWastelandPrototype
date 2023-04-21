@@ -21,6 +21,7 @@ class WST_DeliverTask : SCR_EditorTask
 	protected string m_sNameReconfigure;
 	[Attribute(defvalue: "Task description.", desc: "The task description visible to the player.")]
 	protected string m_sDescriptionReconfigure;
+	bool isItemTypePickedUp = false;
 	
 	//**************************//
 	//PROTECTED MEMBER VARIABLES//
@@ -144,14 +145,20 @@ class WST_DeliverTask : SCR_EditorTask
 	//put this into the onItemAdded Invoker of invmanager
 	void OnDeliveryItemPickup(IEntity ie, BaseInventoryStorageComponent storage)
 	{	//get the storage owner 
-		SCR_UniversalInventoryStorageComponent castStorage = SCR_UniversalInventoryStorageComponent.Cast(storage);
+		BaseInventoryStorageComponent castStorage = BaseInventoryStorageComponent.Cast(storage);
 		IEntity iStorage = castStorage.GetOwner();
 		RplComponent rpl = RplComponent.Cast(iStorage.FindComponent(RplComponent));
 		RplId r_id = rpl.Id();
 		Print("DeliveryMission::ItemPickUp");
 		//SCR_ChimeraCharacter parent = storageOwner.GetParent();
 		int p_id = GetGame().GetPlayerManager().GetPlayerIdFromEntityRplId(r_id);
-		
+		WeaponComponent wpc = WeaponComponent.Cast(ie.FindComponent(WeaponComponent));
+		if (wpc)
+		{
+			isItemTypePickedUp = true;
+			Print("DeliveryMission::DeliveryItemTypePickedUp");
+
+		}
 		
 		
 		
@@ -251,12 +258,86 @@ class WST_DeliverTask : SCR_EditorTask
 	void SetInvokerCallBack(SCR_InventoryStorageManagerComponent mc)
 	{
 		mc.m_OnItemAddedInvoker.Insert(OnDeliveryItemPickup);
+		//mc.m_OnItemRemovedInvoker.Insert(OnDeliveryItemRemove);
+	}
+	//server
+	void CheckPeriodic()
+	{
+		
+		SCR_BaseTaskSupportEntity supportEntity = SCR_BaseTaskSupportEntity.Cast(GetTaskManager().FindSupportEntity(SCR_BaseTaskSupportEntity));
+		if (!supportEntity)
+			return;
+		
+		array<SCR_BaseTaskExecutor> assignees = new array<SCR_BaseTaskExecutor>();
+		GetAssignees(assignees);
+		vector playerPos;
+		IEntity controlledEntity;
+		for (int x = assignees.Count() - 1; x >= 0; x--)
+		{
+
+			int id = SCR_BaseTaskExecutor.GetTaskExecutorID(assignees[x]);
+			
+			
+			
+			controlledEntity = SCR_PossessingManagerComponent.GetPlayerMainEntity(id);
+			if (!controlledEntity)
+				continue;
+			playerPos = controlledEntity.GetOrigin();
+			
+		}
+		
+		
+		
+		float dist = vector.DistanceSq(m_destination,playerPos);
+		if (dist < 256.0)
+		{
+			//check if item is present 
+			//this value is set once and then cached on item pickup to save performance
+			if(isItemTypePickedUp)
+			{
+				
+				//get wallet and add cash
+				SCR_InventoryStorageManagerComponent imc = SCR_InventoryStorageManagerComponent.Cast(controlledEntity.FindComponent(SCR_InventoryStorageManagerComponent));
+				WST_WalletPredicate predicate = new WST_WalletPredicate();
+				IEntity wallet = imc.FindItem(predicate);
+				if (wallet)
+				{
+					MoneyComponent mc = MoneyComponent.Cast(wallet.FindComponent(MoneyComponent));
+					if (mc)
+					{
+						int newValue;
+						newValue = 5000 + mc.GetValue();
+						mc.SetValue(newValue);
+						supportEntity.FinishTask(this);
+						SCR_BaseTaskManager.s_OnPeriodicalCheck2Second.Remove(CheckPeriodic);
+
+						return;
+					}
+
+				}
+				//OR if no wallet in inventory spawn wallet with 5000 at m_destination
+				EntitySpawnParams param = new EntitySpawnParams();
+				param.Transform[3] = m_destination;
+				ResourceName n = "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et";
+				wallet = GetGame().SpawnEntityPrefab(Resource.Load(n),GetGame().GetWorld(),param);
+				MoneyComponent mc = MoneyComponent.Cast(wallet.FindComponent(MoneyComponent));
+				mc.SetValue(5000);
+				SCR_BaseTaskManager.s_OnPeriodicalCheck2Second.Remove(CheckPeriodic);
+
+				supportEntity.FinishTask(this);
+
+			}
+		
+		}
+			
 	}
 	//------------------------------------------------------------------------------------------------
 	override void Finish(bool showMsg = true)
 	{
 		showMsg = SCR_RespawnSystemComponent.GetLocalPlayerFaction() == m_TargetFaction;
 		super.Finish(showMsg);
+		
+		
 		
 		/*
 		SCR_GameModeCampaignMP campaign = SCR_GameModeCampaignMP.GetInstance();
@@ -468,10 +549,8 @@ class WST_DeliverTask : SCR_EditorTask
 		if (SCR_Global.IsEditMode(this))
 			return;
 		
-		if (!GetTaskManager().IsProxy())
-		{
-			
-		}
+		if (!GetTaskManager().IsProxy() )
+			SCR_BaseTaskManager.s_OnPeriodicalCheck2Second.Insert(CheckPeriodic);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -481,8 +560,9 @@ class WST_DeliverTask : SCR_EditorTask
 			return;
 		
 		if (!GetTaskManager().IsProxy())
-		{
-		}
+			SCR_BaseTaskManager.s_OnPeriodicalCheck2Second.Remove(CheckPeriodic);
+
+		
 	}
 	
 	

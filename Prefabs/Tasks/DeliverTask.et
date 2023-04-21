@@ -5,4 +5,6 @@ WST_DeliverTask {
   }
  }
  coords 9777.792 10.139 1571.31
+ m_sMapIconName "Icon_Task_Move"
+ m_sTaskListIconName "Icon_Task_Move"
 }

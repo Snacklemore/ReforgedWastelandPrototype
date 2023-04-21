@@ -22,11 +22,13 @@ modded class SCR_BaseTaskManager
 			return;
 		if(!task)
 			return;
+		//Failing task with assignees on disconnect creates "ghost task"?
+		supportEntity.UnassignTask(task, executor, SCR_EUnassignReason.ASSIGNEE_ABANDON);
 		supportEntity.FailTask(task);
 		//if (task)
-			//supportEntity.UnassignTask(task, executor, SCR_EUnassignReason.ASSIGNEE_ABANDON);
+			
 		
-		
+		//this creates ghost task?
 		//task = FindRequestedTask(executor);
 		
 		//if (!task)

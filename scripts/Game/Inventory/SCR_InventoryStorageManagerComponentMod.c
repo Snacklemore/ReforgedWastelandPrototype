@@ -51,6 +51,7 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 			m_MoneyComponent = moneyComp;
 			
 			
+			
 		}
 	}
 	
