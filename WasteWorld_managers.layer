@@ -97,7 +97,7 @@ SCR_BaseTaskManager : "{17E3EF2CF455460F}Prefabs/MP/Campaign/CampaignTaskManager
   }
   WST_DeliverTaskSupportEntity {
    coords -20.557 0.467 6.264
-   m_sTaskPrefab "{A42DAE0F5B2B5E9F}DeliverTask.et"
+   m_sTaskPrefab "{A42DAE0F5B2B5E9F}Prefabs/Tasks/DeliverTask.et"
   }
  }
 }

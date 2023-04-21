@@ -226,7 +226,7 @@ class WST_GearPersistenceManager: GenericEntity
 			MoneyComponent mc = MoneyComponent.Cast(item.FindComponent(MoneyComponent));
 			if (mc)
 			{
-				Print("WST_GearPersistenceManager::Wallet was Found!");
+				//Print("WST_GearPersistenceManager::Wallet was Found!");
 				//set wallet value in gear object 
 				int value = mc.GetValue();
 				gearObject_l.walletValue = value;
@@ -234,7 +234,7 @@ class WST_GearPersistenceManager: GenericEntity
 			
 			}
 			gearObject_l.add(data);
-			Print("WST_GearPersistenceManager::Saved item. ResourceName: "+ data.GetPrefabName());
+			//Print("WST_GearPersistenceManager::Saved item. ResourceName: "+ data.GetPrefabName());
 
 		}
 		
@@ -270,10 +270,10 @@ class WST_GearPersistenceManager: GenericEntity
 	 	//only on Server 
 		if (!mRpl.IsMaster())
 			return;
-		Print("WST_GearPersistenceManager::UpdateConnectedPlayersList");
+		//Print("WST_GearPersistenceManager::UpdateConnectedPlayersList");
 		BackendApi api = GetGame().GetBackendApi();
-		Print("WST_GearPersistenceManager::UpdateConnectedPlayersList auth: "+api.IsAuthenticated());
-		Print("WST_GearPersistenceManager::UpdateConnectedPlayersList auth: "+api.GetPlayerUID(1));
+		///Print("WST_GearPersistenceManager::UpdateConnectedPlayersList auth: "+api.IsAuthenticated());
+		//Print("WST_GearPersistenceManager::UpdateConnectedPlayersList auth: "+api.GetPlayerUID(1));
 		
 		PlayerManager pm = GetGame().GetPlayerManager();
 		int connectedPlayerCount = pm.GetPlayerCount();
@@ -282,7 +282,7 @@ class WST_GearPersistenceManager: GenericEntity
 		pm.GetPlayers(playerIds);
 		
 		int count = playerIds.Count();
-		Print("WST_GearPersistenceManager::UpdateConnectedPlayersList playerCount: "+count);
+		//Print("WST_GearPersistenceManager::UpdateConnectedPlayersList playerCount: "+count);
 
 		foreach (int id : playerIds)
 		{
@@ -302,7 +302,7 @@ class WST_GearPersistenceManager: GenericEntity
 			
 			//PlayerGearObjects.Insert(gearObject_l);
 			InsertToPlayerGearObjects(gearObject_l);
-			Print("WST_GearPersistenceManager::UpdateConnectedPlayersList::added id : "+ identity);
+			//Print("WST_GearPersistenceManager::UpdateConnectedPlayersList::added id : "+ identity);
 
 		}
 		

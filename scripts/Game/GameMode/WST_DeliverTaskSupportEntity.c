@@ -64,29 +64,6 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 		if (GetTaskManager().IsProxy())
 			return;
 		
-		/*
-		//Get bases manager
-		SCR_CampaignBaseManager manager = SCR_CampaignBaseManager.GetInstance();
-		
-		//Get all bases
-		array<SCR_CampaignBase> bases = manager.GetBases();
-		
-		//Create start tasks for each base
-		for (int i = bases.Count() - 1; i >= 0; i--)
-		{
-			if (!bases[i].GetIsEnabled())
-				continue;
-			
-			// Create tasks for this base
-			if (bases[i].GetOwningFaction())
-				GenerateNewTask(bases[i]);
-		}
-		
-		//Let the game mode know, the tasks are ready
-		SCR_BaseGameMode gamemode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-		if (gamemode)
-			gamemode.HandleOnTasksInitialized();
-		*/
 	}
 	
 		
@@ -107,6 +84,21 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 		Print("WST_DeliverTaskSupportEntity::Set Target Broadcast:Setting Target");
 
 		task.SetTargetDestination(destination);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetTargetDestination(notnull WST_DeliverTask task,  vector destination)
+	{
+		if (!GetTaskManager())
+			return;
+		
+		int taskID;
+		
+		taskID = task.GetTaskID();
+		
+		
+		Rpc(RPC_SetTargetDestination, taskID, destination);
+		RPC_SetTargetDestination(taskID, destination);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -143,21 +135,28 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 
 		task.SetIndividual(value);
 	}
-	//------------------------------------------------------------------------------------------------
-	void SetTargetDestination(notnull WST_DeliverTask task,  vector destination)
+	
+	
+	void PopUpNotification(WST_DeliverTask task,string msg)
+	{
+		int taskID = task.GetTaskID();
+		SCR_BaseTaskExecutor assignee =  task.GetAssignee();		
+		int assignedID = SCR_BaseTaskExecutor.GetTaskExecutorID(assignee);
+		
+		Rpc(RPC_PopUpNotification,taskID,msg,assignedID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RPC_PopUpNotification(int taskID ,string msg, int taskExecutorId)
 	{
 		if (!GetTaskManager())
 			return;
+		WST_DeliverTask task = WST_DeliverTask.Cast(GetTaskManager().GetTask(taskID));
+		if (!task)
+			return;
+		task.PopUpNotification(msg,taskExecutorId);
 		
-		int taskID;
-		
-		taskID = task.GetTaskID();
-		
-		
-		Rpc(RPC_SetTargetDestination, taskID, destination);
-		RPC_SetTargetDestination(taskID, destination);
 	}
-	
 	//------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
@@ -170,6 +169,7 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 	}
 	void OnAssignedHook(SCR_BaseTask task = null)
 	{
+		/*
 		Print("WST_DeliverTaskSupportEntity::OnAssignedHook");
 		if(!task)
 			return;
@@ -207,32 +207,20 @@ class WST_DeliverTaskSupportEntity : SCR_EditorTaskSupportEntity
 		WST_DeliverTask cTask = WST_DeliverTask.Cast(task);
 		if (weaponEntity)
 			cTask.isItemTypePickedUp = true;
-			
+			*/
 		
 	
 		
 	
 	}
 	
-	
-	
-	
-	void OnUnassignedHook(SCR_BaseTask task = null)
-	{
-		
-		int count = task.GetAssigneeCount();
-		Print("WST_DeliverTaskSupportEntity:OnUnassignedHook:Assignees Count: ");
-
-	
-	}
 	//------------------------------------------------------------------------------------------------
 	//! Creates a new campaign task.
 	WST_DeliverTask CreateNewDeliverTask(Faction faction, vector deliveryDestination,IEntity itemToDeliver ,WST_Type type  )
 	{
 		if (!GetTaskManager())
 			return null;
-		s_TaskManagerOnTaskAssigned.Insert(OnAssignedHook);
-		s_TaskManagerOnTaskunassigned.Insert(OnUnassignedHook);
+		
 
 		
 		

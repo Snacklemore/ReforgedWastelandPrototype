@@ -218,7 +218,7 @@ class WST_DeliverTask : SCR_EditorTask
 	}
 	
 	
-	
+	//called on server and clients(broadcast)
 	protected override void OnAssigneeAdded(SCR_BaseTaskExecutor newAssignee)
 	{
 		if (newAssignee)
@@ -228,11 +228,57 @@ class WST_DeliverTask : SCR_EditorTask
 		UpdateTaskListAssignee();		
 		
 		
-		Print("DeliveryMission::Added Assignee");
+		Print("WST_DeliverTask::Added Assignee");
 
 		
+		///////////////////////////////////////////////////////////////////////////////////////////////////
+		//'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''//
 		if(!Replication.IsServer())
 			return;
+		
+		Print("WST_DeliverTask::OnAssigneeAdded");
+		
+		//attach onItemAddedInvoker to StorageManagerComponent
+		array<SCR_BaseTaskExecutor> assignees = {};
+		GetAssignees(assignees);
+		if(assignees.IsEmpty())
+			return;
+		
+		
+		
+		int assignees_count = assignees.Count();
+		Print("WST_DeliverTask::Assignees Count: " + assignees_count);
+
+		int playerID = SCR_BaseTaskExecutor.GetTaskExecutorID(assignees[0]); 
+		//check for playerID in m_playerIdSetItemAddedCallback
+		
+		
+		PlayerManager pm = GetGame().GetPlayerManager();
+		PlayerController pc = pm.GetPlayerController(playerID);
+		
+		IEntity controlled = pc.GetControlledEntity();
+		if (controlled)
+			Print("WST_DeliverTask::OnAssignedHook controlled");
+
+		SCR_InventoryStorageManagerComponent imc = SCR_InventoryStorageManagerComponent.Cast(controlled.FindComponent(SCR_InventoryStorageManagerComponent));
+		if (imc)
+			Print("WST_DeliverTask::OnAssignedHook IMC found");
+		SCR_CharacterInventoryStorageComponent cis = SCR_CharacterInventoryStorageComponent.Cast(controlled.FindComponent(SCR_CharacterInventoryStorageComponent));
+		if (cis)
+			Print("WST_DeliverTask::OnAssignedHook CIS found");
+
+		SetInvokerCallBack(imc);
+		
+		
+		BaseInventoryStorageComponent weaponStorage = cis.GetWeaponStorage();
+		array<IEntity> outarray = {};
+		weaponStorage.GetAll(outarray);
+		Print("WST_DeliverTask::WeaponStorageCount"+ outarray.Count());
+
+		if (!outarray.IsEmpty())
+			isItemTypePickedUp = true;
+
+		
 	}
 	protected override void OnAssigneeRemoved(SCR_BaseTaskExecutor oldAssignee)
 	{
@@ -251,7 +297,8 @@ class WST_DeliverTask : SCR_EditorTask
 		
 		Print("DeliveryMission::Removed Assignee");
 		
-		
+		///////////////////////////////////////////////////////////////////////////////////////////////////
+		//'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''//
 		if(!Replication.IsServer())
 			return;
 		//remove on item added invoke (used to detect items for delivery mission)
@@ -315,14 +362,90 @@ class WST_DeliverTask : SCR_EditorTask
 			{
 				
 				//get wallet and add cash
+				
+				//crashing as soon as there is an attachment on the weapon on dedicated server
+				SCR_BaseTaskManager tm = GetTaskManager();
+				WST_DeliverTaskSupportEntity support = tm.FindSupportEntity(WST_DeliverTaskSupportEntity);
+				if (support)
+						Print("DeliverTask::Support Entity Found");
+
 				SCR_InventoryStorageManagerComponent imc = SCR_InventoryStorageManagerComponent.Cast(controlledEntity.FindComponent(SCR_InventoryStorageManagerComponent));
+				SCR_CharacterInventoryStorageComponent cis = SCR_CharacterInventoryStorageComponent.Cast(controlledEntity.FindComponent(SCR_CharacterInventoryStorageComponent));
+				BaseInventoryStorageComponent weaponStorage = cis.GetWeaponStorage();
+				array<IEntity> outarray = {};
+				weaponStorage.GetAll(outarray);
+				IEntity weaponEquiped;
+
+				if (!outarray.IsEmpty())
+				{
+					Print("DeliverTask::weaponsArrayCount: "+ outarray.Count());
+					//Deleting weapon that is currently held is a CTD!!
+					array<Managed> slots = {};
+					foreach(IEntity e: outarray)
+					{
+						if (cis.GetItemType(e) == EWeaponType.WT_RIFLE)
+						{
+							weaponEquiped = e;
+							Print("DeliverTask::weapon Found!");
+
+							
+							
+						}
+					
+					}
+					
+					
+					IEntity currentItem = cis.GetCurrentItem();
+					if(currentItem)
+					{
+						//something held in hands, check if weapon 
+						WeaponComponent wc = WeaponComponent.Cast(currentItem.FindComponent(WeaponComponent));
+						if (wc)
+						{
+							//we are holding a weapon 
+						//check if weapon is currently held 
+							if(weaponEquiped)
+							{
+								if(currentItem == weaponEquiped)
+								{
+									support.PopUpNotification(this,"Cant turn in weapon when held in hands!");
+									//ShowPopUpNotification();
+									Print("DeliverTask::Cant delete if held!");
+									return;
+
+									
+								}
+							}
+							
+									
+						}
+					}
+
+				}
 				WST_WalletPredicate predicate = new WST_WalletPredicate();
 				IEntity wallet = imc.FindItem(predicate);
+				
 				if (wallet)
 				{
 					MoneyComponent mc = MoneyComponent.Cast(wallet.FindComponent(MoneyComponent));
 					if (mc)
 					{
+						
+									
+						if(weaponEquiped)
+						{
+							//dark magic so it doesnt crash, dont ask plz
+							while(cis.IsLocked())
+							{
+								int i;
+							}
+							RplComponent.DeleteRplEntity(weaponEquiped,false);						
+
+						}else
+						{
+							//no delivery item return without finish
+							return;
+						}
 						int newValue;
 						newValue = 5000 + mc.GetValue();
 						mc.SetValue(newValue);
@@ -333,6 +456,7 @@ class WST_DeliverTask : SCR_EditorTask
 					}
 
 				}
+				
 				//OR if no wallet in inventory spawn wallet with 5000 at m_destination
 				EntitySpawnParams param = new EntitySpawnParams();
 				param.Transform[3] = m_destination;
@@ -350,11 +474,37 @@ class WST_DeliverTask : SCR_EditorTask
 			
 	}
 	//------------------------------------------------------------------------------------------------
+	//server and client per broadcast
 	override void Finish(bool showMsg = true)
 	{
 		showMsg = SCR_RespawnSystemComponent.GetLocalPlayerFaction() == m_TargetFaction;
 		super.Finish(showMsg);
 		
+		
+		
+		
+		///////////////////////////////////////////////////////////////////////////////////////////////////
+		//'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''//
+		if(!Replication.IsServer())
+			return;
+		//get assignee (IsIndividual task so first assignee is the only assignee)
+		SCR_BaseTaskExecutor assignee = GetAssignee();
+		int id = SCR_BaseTaskExecutor.GetTaskExecutorID(assignee);
+		PlayerManager pm = GetGame().GetPlayerManager();
+		
+		
+		IEntity controlled = pm.GetPlayerControlledEntity(id);
+		
+		if (controlled)
+				Print("DeliveryMission::Found controlled on Finish!");
+		else
+			return;
+
+		SCR_InventoryStorageManagerComponent imc = SCR_InventoryStorageManagerComponent.Cast(controlled.FindComponent(SCR_InventoryStorageManagerComponent));
+		if(imc)
+				Print("DeliveryMission::Found IMC, on Finish!");
+
+		imc.m_OnItemAddedInvoker.Remove(OnDeliveryItemPickup);
 		
 		
 		/*
@@ -429,7 +579,23 @@ class WST_DeliverTask : SCR_EditorTask
 			SCR_PopUpNotification.GetInstance().PopupMsg(TASK_FAILED_TEXT + " " + GetTitle(), prio: SCR_ECampaignPopupPriority.TASK_DONE, param1: baseName, sound: SCR_SoundEvent.TASK_FAILED);
 		}*/
 	}
-	
+	 void PopUpNotification(string subtitle,int taskExecutorId)
+	{
+		
+		SCR_PlayerController pc = GetGame().GetPlayerController();
+		int playerID = -1;
+		if (pc)
+			playerID = pc.GetPlayerId();
+		
+		
+		
+		if (playerID == taskExecutorId)
+		{
+			SCR_PopUpNotification.GetInstance().PopupMsg(GetTitleText(), text2: subtitle);
+
+		}
+		
+	}
 	//------------------------------------------------------------------------------------------------
 	//! Returns a text informing about the task being finished
 	override string GetFinishText()
@@ -495,23 +661,9 @@ class WST_DeliverTask : SCR_EditorTask
 	//*********************//
 	
 	//------------------------------------------------------------------------------------------------
-	override void SetTitleWidgetText(notnull TextWidget textWidget, string taskText)
-	{
-		//string baseName;
-		
-		
-		//textWidget.SetTextFormat(taskText, baseName);
-	}
+	
 
 	//------------------------------------------------------------------------------------------------
-	override string GetTitleText()
-	{
-		//string baseName;
-
-		
-
-		//return string.Format("%1 %2", m_sName, baseName);
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void SetDescriptionWidgetText(notnull TextWidget textWidget, string taskText)

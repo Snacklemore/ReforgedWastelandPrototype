@@ -4833,7 +4833,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		
 		m_MapEntity = SCR_MapEntity.Cast(GetGame().GetMapManager());
 		
-		GetGame().GetCallqueue().CallLater(CreateDeliverTask_Individual,15000,true);
+		GetGame().GetCallqueue().CallLater(CreateDeliverTask_Individual,50000,true);
 		GetGame().GetCallqueue().CallLater(TaskMonitorPrompt,10000,true);
 	
 
@@ -4948,6 +4948,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		TaskDestinationsInitialised = true;
 	}
 	
+	string TaskTitleString ="Item Delivery: Weapon";
+	string TaskDescriptionString = "Deliver any weapon to designated destination(1. Equipped weapon will be taken!)";
 	bool TaskDestinationsInitialised= false;
 	void CreateDeliverTask_Individual()
 	{
@@ -4960,6 +4962,11 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			return;
 		if(!TaskDestinationsInitialised)
 			CreateMoveTaskDestinations();
+		
+		
+		
+		Faction factionA = GetGame().GetFactionManager().GetFactionByKey("A");	
+		Faction factionB = GetGame().GetFactionManager().GetFactionByKey("B");	
 		vector v = m_MoveTaskDestinations.GetRandomElement();
 		WST_DeliverTaskSupportEntity m_pSupportEntity;
 		SCR_BaseTaskManager tmanager;
@@ -4968,11 +4975,27 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		
 		//get active task count 
 		int activeTaskCount;
+		int activeTaskCountA;
+		int activeTaskCountB;
+
 		array<SCR_BaseTask> outtask = {};
+		array<SCR_BaseTask> outtaskA = {};
+		array<SCR_BaseTask> outtaskB = {};
+
 		tmanager.GetTasks(outtask);
+		tmanager.GetFilteredTasks(outtaskA,factionA);
+		tmanager.GetFilteredTasks(outtaskB,factionB);
+		
+		
 		activeTaskCount = outtask.Count();
-		//only spawn new task if task count lower than 2 
-		if (activeTaskCount > 2)
+		activeTaskCountA = outtaskA.Count();
+		activeTaskCountB = outtaskB.Count();
+		Print("Active Tasks for A Faction ||[ "+activeTaskCountA +" ]||");
+		Print("Active Tasks for B Faction ||[ "+activeTaskCountB +" ]||");
+			
+
+		//only spawn new task if task count lower than 4 
+		if (activeTaskCount > 4)
 			return;
 		
 		
@@ -5000,31 +5023,41 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		//create object to deliver first, then create task 
 		//OR 
 		//define a item type to deliver and create task here
-		WST_DeliverTask m_pTask;
-	
-		Faction faction = GetGame().GetFactionManager().GetFactionByKey("A");	
+		
+
+		
+		WST_DeliverTask m_pTaskA;
+		WST_DeliverTask m_pTaskB;
 		//Vector(4876.6,28.73,11932.97)
-		m_pTask = m_pSupportEntity.CreateNewDeliverTask(faction,Vector(4876.6,28.73,11932.97),null,WST_Type.WST_WEAPON);
+		if(activeTaskCountA < 3)
+			 m_pTaskA = m_pSupportEntity.CreateNewDeliverTask(factionA,v,null,WST_Type.WST_WEAPON);
+		//set title via support entity to replicate to all machines
+		m_pSupportEntity.SetTaskTitle(m_pTaskA,"Item Delivery: Weapon");
 		
+		m_pSupportEntity.SetTaskDescription(m_pTaskA,"Deliver any rifle to designated destination(Last Equipped weapon slot will be taken!)");
+		if(activeTaskCountB < 3)
+			 m_pTaskB = m_pSupportEntity.CreateNewDeliverTask(factionB,v,null,WST_Type.WST_WEAPON);
 		
+		m_pSupportEntity.SetTaskTitle(m_pTaskB,"Item Delivery: Weapon");
+		
+		m_pSupportEntity.SetTaskDescription(m_pTaskB,"Deliver any rifle to designated destination(Last Equipped weapon slot will be taken!)");
+	
 		
 		
 		
 			
 		//m_pTask.SetTargetFaction(GetGame().GetFactionManager().GetFactionByKey("A"));	
-		if (!m_pTask)
+		if (!m_pTaskA)
 		{
-			PrintFormat("CP: Creating of task failed! Task manager refused to create it.");
+			PrintFormat("CP: Creating of m_pTaskA failed! Task manager refused to create it.");
 			
 		}
-		if(m_pTask)
+		
+		if (!m_pTaskB)
 		{
+			PrintFormat("CP: Creating of m_pTaskB failed! Task manager refused to create it.");
 			
-			//GetTaskManager().RegisterTask(m_pTask);
-			
-		
 		}
-		
 		
 		
 	}
