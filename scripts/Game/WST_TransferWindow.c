@@ -386,32 +386,6 @@ class WST_TransferWindowUI : MenuBase
 	}
 	
 	
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void Rpc_OnBroadcastValueUpdatedOwner(int value,int playerId)//value is current balance
-	{
-		// this method will only run on proxies if authority's RpcConditionMethod returns true
-		Print("MoneyComponent::OnBroadcastValueUpdated::: " );
-		PlayerController pc = GetGame().GetPlayerController();
-		if (!pc)
-			return;
-		int playeridlocal = pc.GetPlayerId();
-		
-		if(playerId != playeridlocal)
-			return;
-		IEntity controlled = pc.GetControlledEntity();
-		if(!controlled)
-			return;
-		RplComponent rpl = RplComponent.Cast(controlled.FindComponent(RplComponent));
-		
-		if(!rpl)
-			return;
-		Print("MoneyComponent::OnBroadcastValueUpdated::: " );
-		SCR_HintManagerComponent.ShowCustomHint("Wallet update. New Balance: "+ value ,"Wallet Info",5.0,false,EFieldManualEntryId.NONE,false);
-		
-		
-
-
-	}
 	
 	
 	

@@ -1,7 +1,78 @@
-class WST_Equipment
+
+class WST_ShopLoadOutBase
+{
+	ref array<ShopObject> shopItems = new ref array<ShopObject>();
+	
+	//internal structures
+	ref map<string,ResourceName> buildArray = new map<string,ResourceName>();
+	ref array<string> iterationArray = new array<string>();
+	ref map<string,string> DisplayNameArray = new map<string,string>();
+	ref map<string,int> TypeArray = new map<string,int>();
+	ref map<string,int> PriceArray = new map<string,int>();
+
+	int GetPriceByKey(string identifier)
+	{
+		return PriceArray.Get(identifier);
+	}
+	
+	//tjoins two LoadOutObjects, returns one WST_ShopLoadOutBase object with all objects of the two objecst
+	static WST_ShopLoadOutBase AddLoadOuts(WST_ShopLoadOutBase i_loadout, WST_ShopLoadOutBase k_loadout)
+	{
+		WST_ShopLoadOutBase newLoadOutReturn = new WST_ShopLoadOutBase();
+		//get shop items from i 
+		ref array<ShopObject> i_objects = new ref array<ShopObject>();
+		//ref array<ShopObject> i_objects = new ref array<ShopObject>();
+
+		i_objects = i_loadout.shopItems;
+		foreach(ShopObject o:i_objects)
+		{
+			ShopObject copy = o;
+			
+		}
+		//get shop items from k 
+		ref array<ShopObject> k_objects = new ref array<ShopObject>();
+		k_objects = k_loadout.shopItems;
+		
+		//new array with all objects
+		ref array< ShopObject> newObjectArray = new ref array<ShopObject>();
+		newObjectArray.InsertAll(k_objects);
+		newObjectArray.InsertAll(i_objects);
+		
+		foreach(ShopObject o:newObjectArray)
+		{
+			newLoadOutReturn.buildArray.Insert(o.m_Identifier,o.m_prefabPath);
+			newLoadOutReturn.iterationArray.Insert(o.m_Identifier);
+			newLoadOutReturn.DisplayNameArray.Insert(o.m_Identifier,o.m_Display);
+			newLoadOutReturn.TypeArray.Insert(o.m_Identifier,o.m_Type);
+			newLoadOutReturn.PriceArray.Insert(o.m_Identifier,o.m_price);
+		
+		}
+		newLoadOutReturn.shopItems = newObjectArray;
+		return newLoadOutReturn;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class WST_Equipment : WST_ShopLoadOutBase
 {
 	
-	ref array<ShopObject> shopItems = new array<ShopObject>();
 	
 	ref ShopObject LSzH = new ShopObject("{AC1C630517753E2B}Prefabs/Characters/HeadGear/Helmet_LShZ/Helmet_LShZ_6m2_black.et","LSzH","LSzH Black",WST_Type.WST_HELMET,10);
 	ref ShopObject LSzH3M = new ShopObject("{D585D22578362515}Prefabs/Characters/HeadGear/Helmet_LShZ/Helmet_LShZ_HC_3M_black.et","LSzH3M","LSzH Black HC 3M",WST_Type.WST_HELMET,10);
@@ -44,12 +115,7 @@ class WST_Equipment
 	
 
 	
-	ref map<string,ResourceName> buildArray = new map<string,ResourceName>();
-	ref array<string> iterationArray = new array<string>();
-	ref map<string,string> DisplayNameArray = new map<string,string>();
-	ref map<string,int> TypeArray = new map<string,int>();
-	ref map<string,int> PriceArray = new map<string,int>();
-
+	
 	private WST_Equipment instance;
 	WST_Equipment GetInstance()
 	{
@@ -59,24 +125,12 @@ class WST_Equipment
 			return new WST_Equipment();
 	}
 	
-	int GetPriceByKey(string identifier)
-	{
-		return PriceArray.Get(identifier);
-	}
+	
 	void WST_Equipment()
 	{
 		if (instance)
 			return;
-		instance = this;
-		//
-		
-		
-		
-		
-		
-		
-		
-		
+		instance = this;	
 		
 		
 		//shopItems.Insert(AK74O);
@@ -118,7 +172,7 @@ class WST_Equipment
 	
 };
 
-class WST_WeaponV2
+class WST_WeaponV2 : WST_ShopLoadOutBase
 {
 	//"suppressed" variants are capable of fitting a suppressor and not actually suppressed
 	
@@ -126,7 +180,6 @@ class WST_WeaponV2
 	//prefab item paths
 	
 	//weapon
-	ref array<ShopObject> shopItems = new array<ShopObject>();
 	
 	ref ShopObject Rifle_VZ58P = new ShopObject("{66D32F932F7E8C1F}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58PMod.et","Rifle_VZ58P_PSO","Rifle VZ58P",WST_Type.WST_WEAPON,300);
 	ref ShopObject M16_optic = new ShopObject("{FFD418F9A77519D2}Prefabs/Weapons/Attachments/Optics/Optic_4x20/Optic_4x20Mod.et","M16_optic","M16 Optic",WST_Type.WST_ATTACHMENT,300);
@@ -176,12 +229,7 @@ class WST_WeaponV2
 	ref ShopObject PSO1 = new ShopObject("{C850A33226B8F9C1}Prefabs/Weapons/Attachments/Optics/Optic_PSO1.et","PSO1","PSO1",WST_Type.WST_ATTACHMENT,100);
 
 	
-	ref map<string,ResourceName> buildArray = new map<string,ResourceName>();
-	ref array<string> iterationArray = new array<string>();
-	ref map<string,string> DisplayNameArray = new map<string,string>();
-	ref map<string,int> TypeArray = new map<string,int>();
-	ref map<string,int> PriceArray = new map<string,int>();
-
+	
 	private WST_WeaponV2 instance;
 	WST_WeaponV2 GetInstance()
 	{
@@ -191,10 +239,7 @@ class WST_WeaponV2
 			return new WST_WeaponV2();
 	}
 	
-	int GetPriceByKey(string identifier)
-	{
-		return PriceArray.Get(identifier);
-	}
+	
 	void WST_WeaponV2()
 	{
 		if (instance)
@@ -248,7 +293,7 @@ class WST_WeaponV2
 };
 
 
-class WST_Weapon
+class WST_Weapon : WST_ShopLoadOutBase
 {
 	//"suppressed" variants are capable of fitting a suppressor and not actually suppressed
 	
@@ -256,7 +301,6 @@ class WST_Weapon
 	//prefab item paths
 	
 	//weapon
-	ref array<ShopObject> shopItems = new array<ShopObject>();
 	
 	ref ShopObject UBGL203 = new ShopObject("{4E1032FAA257BEC5}Prefabs/Weapons/Attachments/Underbarrel/UGL_M203Mod.et","UBGL203","UBGL203",WST_Type.WST_ATTACHMENT,300);
 
@@ -295,11 +339,7 @@ class WST_Weapon
 	ref ShopObject PSO1 = new ShopObject("{C850A33226B8F9C1}Prefabs/Weapons/Attachments/Optics/Optic_PSO1.et","PSO1","PSO1",WST_Type.WST_ATTACHMENT,100);
 
 	
-	ref map<string,ResourceName> buildArray = new map<string,ResourceName>();
-	ref array<string> iterationArray = new array<string>();
-	ref map<string,string> DisplayNameArray = new map<string,string>();
-	ref map<string,int> TypeArray = new map<string,int>();
-	ref map<string,int> PriceArray = new map<string,int>();
+
 
 	private WST_Weapon instance;
 	WST_Weapon GetInstance()
@@ -310,10 +350,7 @@ class WST_Weapon
 			return new WST_Weapon();
 	}
 	
-	int GetPriceByKey(string identifier)
-	{
-		return PriceArray.Get(identifier);
-	}
+	
 	void WST_Weapon()
 	{
 		if (instance)
@@ -359,6 +396,69 @@ class WST_Weapon
 	
 };
 
+
+class WST_Vehicle : WST_ShopLoadOutBase
+{
+	//TODO: Rework shops (too much manual typing)
+	
+	//create one object per shop item, feed them parameters, loop through objects
+	/////////////////////////////////////////////////////////////////////////
+	
+	
+	ref ShopObject US_JeepO = new ShopObject("{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et","US_Jeep","Jeep",WST_Type.WST_VEHICLE,100);
+	
+	ref ShopObject T14TankO = new ShopObject("{48BB423641D40E77}Prefabs/Vehicles/Tracked/T14/Tank_T14.et","T14Tank","T14 Tank",WST_Type.WST_VEHICLE,100);
+
+	ref ShopObject K17BerezokO = new ShopObject("{31F0866273C46D76}Prefabs/Vehicles/Wheeled/K17/APC_K17_Berezok.et","K17Berezok","K17 Berezok",WST_Type.WST_VEHICLE,100);
+
+	
+	ref ShopObject M923A1 = new ShopObject("{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et","M923A1","M923 A1",WST_Type.WST_VEHICLE,100);
+	ref ShopObject M1025 = new ShopObject("{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et","M1025","M1025",WST_Type.WST_VEHICLE,100);
+	ref ShopObject Ural4320 = new ShopObject("{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et","Ural4320","Ural 4320",WST_Type.WST_VEHICLE,100);
+
+	
+	
+	private WST_Vehicle instance;
+	WST_Vehicle GetInstance()
+	{
+		if(instance)
+			return instance;
+		else
+			return new WST_Vehicle();
+	}
+	
+	
+	void WST_Vehicle()
+	{
+		if (instance)
+			return;
+		instance = this;
+		
+		shopItems.Insert(US_JeepO);
+		shopItems.Insert(T14TankO);
+		shopItems.Insert(K17BerezokO);
+		shopItems.Insert(M923A1);
+		shopItems.Insert(M1025);
+		shopItems.Insert(Ural4320);
+		
+		
+		foreach(ShopObject o : shopItems)
+		{
+			buildArray.Insert(o.m_Identifier,o.m_prefabPath);
+			iterationArray.Insert(o.m_Identifier);
+			DisplayNameArray.Insert(o.m_Identifier,o.m_Display);
+			TypeArray.Insert(o.m_Identifier,o.m_Type);
+			PriceArray.Insert(o.m_Identifier,o.m_price);
+		}
+
+		
+
+		
+	
+	}
+	
+};
+
 class ManagedDataObject : Managed
 {
 	string TestStringData;
@@ -395,6 +495,28 @@ class ManagedDataObject : Managed
 	}
 
 };
+
+
+class ShopObject
+{
+	ResourceName m_prefabPath;
+	string m_Identifier;
+	string m_Display;
+	int m_Type;
+	int m_price;
+
+
+	void ShopObject(ResourceName path,string Identifier,string Display,int type,int price)
+	{
+		m_prefabPath = path;
+		m_Identifier = Identifier;
+		m_Display = Display;
+		m_price = price;
+		m_Type = type;
+	}
+};
+
+
 
 
 ///////////////////////////////////////////////////////////////////////------------------PreviewSetup

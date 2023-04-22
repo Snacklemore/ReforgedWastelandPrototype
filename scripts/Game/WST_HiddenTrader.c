@@ -9,8 +9,9 @@ class WST_HiddenTrader : MenuBase
 	SCR_TabViewComponent m_TabView;
 	BlurWidget wBlur ;
 	bool firstSelection = true;
-	ref WST_Equipment e;
-	ref WST_WeaponV2 w;
+	ref WST_Equipment d;
+	ref WST_WeaponV2 c;
+	ref WST_ShopLoadOutBase e;
 	ResourceName spawnEntity;
 	WST_TraderComponent TrdComp;
 	int balance;
@@ -79,24 +80,6 @@ class WST_HiddenTrader : MenuBase
 		}
 	}
 	
-	private ref array<ref ManagedDataObject> dataObjectsW = new array<ref ManagedDataObject>();
-	void setupDataObjectsWeapons()
-	{
-		
-		
-		//iterate through iterationArray for keys for data map
-		
-		for (int i = 0;i < w.iterationArray.Count();i++)
-		{
-		
-			string key = w.iterationArray.Get(i);
-			ManagedDataObject o = new ManagedDataObject();
-			o.SetData(key);
-			o.SetType(w.TypeArray.Get(key));
-			o.SetDisplayText(w.DisplayNameArray.Get(key));
-			dataObjectsW.Insert(o);
-		}
-	}
 
 	void OnSelected(SCR_ListBoxComponent list , int itemIndex, bool isTheNewSelection)
 	{
@@ -129,22 +112,7 @@ class WST_HiddenTrader : MenuBase
 			}
 		}
 		
-		foreach (ManagedDataObject dataObject : dataObjectsW)
-		{
-			if (dataObject.GetData() == weapon)
-			{
-				
-				
-				//"weapon" is the key for the hashmap
-				
-				ResourceName WeaponEntityPrefab = w.buildArray.Get(weapon);
-				
-				//ResourceName needed here!!
-				GetGame().GetItemPreviewManager().SetPreviewItemFromPrefab(preview,WeaponEntityPrefab,null,false);
-
-
-			}
-		}
+		
 
 
 
@@ -189,7 +157,7 @@ class WST_HiddenTrader : MenuBase
 						
 	        		}
 					balance = wallet.GetValue();
-				    balance = balance - e.GetPriceByKey(key);//w.GetWeaponPriceByKey(key);
+				    balance = balance - e.GetPriceByKey(key);
 					itemPrice = e.GetPriceByKey(key);
 				    if (balance < 0) 
 					{
@@ -205,36 +173,7 @@ class WST_HiddenTrader : MenuBase
 			}
 			
 			
-			foreach (string key : w.iterationArray)
-			{
-				if (key == weapon)
-				{
-					if (!wallet) 
-					{
-						spawnEntity ="";
-						balance = -1;
-
-		            	Print("WST_HiddenTrader::OnSelected::noWallet");
-		            	return;
-						
-						
-	        		}
-					balance = wallet.GetValue();
-				    balance = balance - w.GetPriceByKey(key);//w.GetWeaponPriceByKey(key);
-					itemPrice = w.GetPriceByKey(key);
-				
-				    if (balance < 0) 
-					{
-						spawnEntity = "";
 			
-				         Print("WST_HiddenTrader::OnSelected::noBalance");
-				         return;
-				     }
-					ResourceName n = w.buildArray.Get(key);
-				    spawnEntity = n;
-					break;
-				}
-			}
 		
 		
 		}
@@ -260,10 +199,7 @@ class WST_HiddenTrader : MenuBase
 	protected override void OnMenuOpen()
 	{
 		Print("OnMenuOpen: menu/dialog opened!", LogLevel.NORMAL);
-		e = new WST_Equipment();
-		w = new WST_WeaponV2();
-		setupDataObjects();
-		setupDataObjectsWeapons();
+		
 
 		Widget rootWidget = GetRootWidget();
 		if (!rootWidget)
@@ -297,7 +233,6 @@ class WST_HiddenTrader : MenuBase
 		SCR_ListBoxComponent m_ListBoxComponent4;
 		OverlayWidget m_ListBoxOverlay4;
 		
-		//TabWidgets
 		
 		
 		
@@ -313,7 +248,6 @@ class WST_HiddenTrader : MenuBase
 		Widget tabRoot2 = content2.m_wTab;
 		
 		
-		//rebuild data every tab selection (content appears to be rebuild)
 		//tab 2 listbox
 		m_ListBoxOverlayTab2 =  OverlayWidget.Cast(tabRoot2.FindAnyWidget("ListBox0"));
 		m_ListBoxComponentTab2= SCR_ListBoxComponent.Cast(m_ListBoxOverlayTab2.FindHandler(SCR_ListBoxComponent));
@@ -321,12 +255,12 @@ class WST_HiddenTrader : MenuBase
 		if (m_ListBoxComponentTab2)
         {
 			
-			foreach (ManagedDataObject o : dataObjectsW)
+			foreach (ManagedDataObject o : dataObjects)
 			{
 				if (o.GetType() == WST_Type.WST_AMMO || o.GetType() == WST_Type.WST_ATTACHMENT)
 				{
 					string price = o.GetData();
-					int i_price = w.GetPriceByKey(price);
+					int i_price = e.GetPriceByKey(price);
 					price = i_price.ToString();
 					m_ListBoxComponentTab2.AddItem(o.GetDisplayText() +"  $$: "+price ,o);
 				}
@@ -348,12 +282,12 @@ class WST_HiddenTrader : MenuBase
 		 if (m_ListBoxComponentTab)
         {
 			
-			foreach (ManagedDataObject o : dataObjectsW)
+			foreach (ManagedDataObject o : dataObjects)
 			{
 				if (o.GetType() == WST_Type.WST_WEAPON)
 				{
 					string price = o.GetData();
-					int i_price = w.GetPriceByKey(price);
+					int i_price = e.GetPriceByKey(price);
 					price = i_price.ToString();
 					m_ListBoxComponentTab.AddItem(o.GetDisplayText() +"  $$: "+price ,o);
 				}
@@ -522,7 +456,13 @@ class WST_HiddenTrader : MenuBase
 			return;
 		}
 	}
-
+	protected override void OnMenuInit()
+	{
+		d = new WST_Equipment();
+		c = new WST_WeaponV2();
+		e = WST_ShopLoadOutBase.AddLoadOuts(d,c);
+		setupDataObjects();
+	}
 	//------------------------------------------------------------------------------------------------
 	protected override void OnMenuClose()
 	{

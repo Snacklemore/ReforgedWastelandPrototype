@@ -32,15 +32,10 @@ class WST_TransferComponent : ScriptComponent
 		if(mcc.alreadySet)
 			return;
 		
-		PlayerManager pm = GetGame().GetPlayerManager();
-		RplId rpl_id = rpl.Id();
+		//PlayerManager pm = GetGame().GetPlayerManager();
+		//RplId rpl_id = rpl.Id();
 		
-		playerId = pm.GetPlayerIdFromEntityRplId(rpl_id);
-		if (playerId < 0)
-		{
-			Print("WST_TransferComponent::noplayerid::configsetdelayed" );
 		
-		}
 		
 		
 		InventoryStorageManagerComponent storage = InventoryStorageManagerComponent.Cast(ie.FindComponent(InventoryStorageManagerComponent));
@@ -57,7 +52,7 @@ class WST_TransferComponent : ScriptComponent
 		}
 		if(!wallet)
 			return;
-		Rpc(Rpc_OnBroadcastValueUpdatedOwner,mcc.GetValue(),playerId);
+		Rpc(Rpc_OnBroadcastValueUpdatedOwner,mcc.GetValue());
 		wallet.SetValue(mcc.GetValue());
 	}
 	override event void OnPostInit(IEntity owner)
@@ -92,11 +87,11 @@ class WST_TransferComponent : ScriptComponent
 	}
 	
 	
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void Rpc_OnBroadcastValueUpdatedOwner(int value,int playerId)//value is current balance
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void Rpc_OnBroadcastValueUpdatedOwner(int value)//value is current balance
 	{
 		// this method will only run on proxies if authority's RpcConditionMethod returns true
-		Print("MoneyComponent::OnBroadcastValueUpdated::: " );
+		/*Print("TransferBroadcastOwner::OnBroadcastValueUpdated::: " );
 		PlayerController pc = GetGame().GetPlayerController();
 		if (!pc)
 			return;
@@ -110,8 +105,7 @@ class WST_TransferComponent : ScriptComponent
 		RplComponent rpl = RplComponent.Cast(controlled.FindComponent(RplComponent));
 		
 		if(!rpl)
-			return;
-		Print("MoneyComponent::OnBroadcastValueUpdated::: " );
+			return;*/
 		SCR_HintManagerComponent.ShowCustomHint("Wallet update. New Balance: "+ value ,"Wallet Info",5.0,false,EFieldManualEntryId.NONE,false);
 		
 		
@@ -138,7 +132,7 @@ class WST_TransferComponent : ScriptComponent
 		MoneyComponent comp = MoneyComponent.Cast(ie.FindComponent(MoneyComponent));
 		
 		Print("WST_TransferComponent::RpcDoHandleCurrencyTransfer wallet RplID: " + walletId + " has value:  " + value );
-		Rpc(Rpc_OnBroadcastValueUpdatedOwner,value,playerId);
+		Rpc(Rpc_OnBroadcastValueUpdatedOwner,value);
 		comp.SetValue(value);
 		
 		
@@ -178,7 +172,7 @@ class WST_TransferComponent : ScriptComponent
 		
 		GenericEntity walletEnt =  GetGame().SpawnEntityPrefab(Resource.Load(r), GetGame().GetWorld());
 		MoneyComponent mc = MoneyComponent.Cast(walletEnt.FindComponent(MoneyComponent));
-		Rpc(Rpc_OnBroadcastValueUpdatedOwner,value, iplayerId);
+		Rpc(Rpc_OnBroadcastValueUpdatedOwner,value);
 		mc.SetValue(value);
 		bool success = storage.TryInsertItem(walletEnt, EStoragePurpose.PURPOSE_ANY,null);
 	}

@@ -4,14 +4,14 @@ FrameWidgetClass {
   ButtonWidgetClass "{5D0F2E0BC452549C}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
    Name "BuyButton"
    Slot FrameWidgetSlot "{5D0F2E0BC45254BB}" {
-    PositionX 88
-    OffsetLeft 88
-    PositionY 1024
-    OffsetTop 1024
+    PositionX 48
+    OffsetLeft 48
+    PositionY 1000
+    OffsetTop 1000
     SizeX 192
-    OffsetRight -280
+    OffsetRight -240
     SizeY 32
-    OffsetBottom -1056
+    OffsetBottom -1032
    }
    components {
     SCR_ButtonTextComponent "{5548F0143AE99095}" {
@@ -22,14 +22,14 @@ FrameWidgetClass {
   ButtonWidgetClass "{5D0F2E0BC559EF4E}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
    Name "QuitButton"
    Slot FrameWidgetSlot "{5D0F2E0BC559EF57}" {
-    PositionX 1648
-    OffsetLeft 1648
-    PositionY 1008
-    OffsetTop 1008
+    PositionX 1712
+    OffsetLeft 1712
+    PositionY 1000
+    OffsetTop 1000
     SizeX 161.78
-    OffsetRight -1809.78
+    OffsetRight -1873.78
     SizeY 32
-    OffsetBottom -1040
+    OffsetBottom -1032
    }
    components {
     SCR_ButtonTextComponent "{5548F0143AE99095}" {
@@ -40,41 +40,67 @@ FrameWidgetClass {
   PanelWidgetClass "{5D0F1D1181BAB6B6}" {
    Name "Panel0"
    Slot FrameWidgetSlot "{5D0F1D1181BAB6D0}" {
-    PositionX 112
-    OffsetLeft 112
+    PositionX 24
+    OffsetLeft 24
     PositionY 80
     OffsetTop 80
-    SizeX 1712
-    OffsetRight -1824
-    SizeY 880
-    OffsetBottom -960
+    SizeX 1872
+    OffsetRight -1896
+    SizeY 976
+    OffsetBottom -1056
    }
    {
+    OverlayWidgetClass "{5D2D1DB9D45CEC26}" {
+     Name "Overlay1"
+     Slot FrameWidgetSlot "{5D2D1DB9D45CEC4C}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight -0
+      SizeY 0
+      OffsetBottom 0
+     }
+     {
+      ImageWidgetClass "{5D2D1DB9A522E651}" {
+       Name "Image0"
+       Slot OverlayWidgetSlot {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       Opacity 0.144
+       Color 0.376 0.471 0.749 1
+      }
+     }
+    }
     RichTextWidgetClass "{5D0F1D11D7799B16}" {
      Name "RichText0"
      Slot FrameWidgetSlot "{5D0F1D11D7799B3E}" {
-      PositionX 48
-      OffsetLeft 48
-      PositionY 8
-      OffsetTop 8
+      PositionX 24
+      OffsetLeft 24
+      PositionY 24
+      OffsetTop 24
       SizeX 232
-      OffsetRight -280
+      OffsetRight -256
       SizeY 30
-      OffsetBottom -38
+      OffsetBottom -54
      }
      Text "Vehicles"
     }
     OverlayWidgetClass "{5D0F1D11B2C9E6AB}" {
      Name "Overlay0"
      Slot FrameWidgetSlot "{5D0F1D11B2C9E6B3}" {
-      PositionX 40
-      OffsetLeft 40
-      PositionY 56
-      OffsetTop 56
+      Anchor 20 20 20 20
+      PositionX -37416
+      OffsetLeft -37416
+      PositionY -19456
+      OffsetTop -19456
       SizeX 624
-      OffsetRight -664
+      OffsetRight 36792
       SizeY 560
-      OffsetBottom -616
+      OffsetBottom 18896
      }
      {
       OverlayWidgetClass "{5D0F1D11BA7FB8D5}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
@@ -82,6 +108,14 @@ FrameWidgetClass {
        Slot OverlayWidgetSlot "{5D0F1D11BA7FB8FC}" {
         HorizontalAlign 3
         VerticalAlign 3
+        Padding 20 20 20 20
+       }
+       Color 0.157 0.624 0.275 1
+       {
+        ScrollLayoutWidgetClass "{56691148E692435A}" {
+         Prefab "{56691148E692435A}"
+         Color 0.259 0.686 0.365 1
+        }
        }
       }
      }
@@ -89,14 +123,14 @@ FrameWidgetClass {
     ItemPreviewWidgetClass "{5D0F1D1195E22431}" {
      Name "VehiclePreview"
      Slot FrameWidgetSlot "{5D0F1D1195E2245F}" {
-      PositionX 1040
-      OffsetLeft 1040
-      PositionY 24
-      OffsetTop 24
+      PositionX 984
+      OffsetLeft 984
+      PositionY 64
+      OffsetTop 64
       SizeX 648
-      OffsetRight -1688
+      OffsetRight -1632
       SizeY 408
-      OffsetBottom -432
+      OffsetBottom -472
      }
     }
    }
