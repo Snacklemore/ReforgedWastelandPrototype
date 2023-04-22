@@ -1,0 +1,349 @@
+FrameWidgetClass "{5D2D1DB8D9DF287D}" {
+ Name "rootFrame"
+ {
+  PanelWidgetClass "{5D2D1DB8D9DF2870}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{5D1764F6AA81D83E}" {
+    PositionX 16
+    OffsetLeft 16
+    PositionY 48
+    OffsetTop 48
+    SizeX 1888
+    OffsetRight -1904
+    SizeY 1008
+    OffsetBottom -1056
+   }
+   Color 0.561 0.749 0.376 1
+   style outline_4px
+   {
+    ImageWidgetClass "{5D2D1DB8D9DF2876}" {
+     Name "Image0"
+     Slot FrameWidgetSlot "{5D212BAAFC65F4C5}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+      SizeToContent 1
+     }
+     "Z Order" -10
+     Opacity 0.307
+     Color 0 0 0 1
+    }
+    VerticalLayoutWidgetClass "{5D2D1DB8D9DF2875}" {
+     Name "VerticalLayout0"
+     Slot FrameWidgetSlot "{5D1778CB6512E3C6}" {
+      PositionX 552
+      OffsetLeft 552
+      PositionY 536
+      OffsetTop 536
+      SizeX 1016
+      OffsetRight -1568
+      SizeY 440
+      OffsetBottom -976
+      Alignment 0 0
+     }
+     Color 0.475 0.686 0.259 1
+     {
+      VerticalLayoutWidgetClass "{5D2D1DB8D9DF288B}" : "{A971263DAE3AD8BC}UI/layouts/WidgetLibrary/TabView/WLib_TabViewHorizontal.layout" {
+       Name "TabView"
+       Slot LayoutSlot "{5D1778F00785F4C4}" {
+        SizeMode Fill
+        FillWeight 16.5
+       }
+       Color 0.475 0.686 0.259 1
+       components {
+        SCR_TabViewComponent "{546B27D01CA8A38D}" {
+         m_aElements {
+          SCR_TabViewContent "{5D1778C614E5A70E}" {
+           m_ElementLayout "{D2AB4961C867FCCB}UI/layouts/WidgetLibrary/TabElement.layout"
+           m_sTabButtonContent "Weapon"
+           m_sTabIdentifier "w"
+          }
+          SCR_TabViewContent "{5D1778F060F13C37}" {
+           m_ElementLayout "{D2AB4961C867FCCB}UI/layouts/WidgetLibrary/TabElement.layout"
+           m_sTabButtonContent "Ammo"
+           m_sTabIdentifier "a"
+          }
+         }
+         m_bKeepHiddenTabs 1
+         m_bCreateAllTabsAtStart 1
+         m_bCycleMode 1
+         m_fTabWidth 150
+        }
+       }
+       {
+        SizeLayoutWidgetClass "{0000000041B59A6F}" {
+         Prefab "{0000000041B59A6F}"
+         Slot LayoutSlot "{54872533ECCEDDB0}" {
+         }
+        }
+       }
+      }
+     }
+    }
+    ItemPreviewWidgetClass "{5D2D1DB8D9DF2883}" {
+     Name "WeaponPreview"
+     Slot FrameWidgetSlot "{5D1764F32B016D90}" {
+      PositionX 1400
+      OffsetLeft 1400
+      PositionY 72
+      OffsetTop 72
+      SizeX 456
+      OffsetRight -1856
+      SizeY 432
+      OffsetBottom -504
+     }
+    }
+    OverlayWidgetClass "{5D2D1DB8D9DF2881}" {
+     Name "Overlay4"
+     Slot FrameWidgetSlot "{5D1764F2ECB3EEB8}" {
+      PositionX 592
+      OffsetLeft 592
+      PositionY 72
+      OffsetTop 72
+      SizeX 744
+      OffsetRight -1336
+      SizeY 168
+      OffsetBottom -240
+     }
+     {
+      OverlayWidgetClass "{5D2D1DB8D9DF2886}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxJackets"
+       Slot OverlayWidgetSlot "{5D1764F2EA993753}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 20 20 20 20
+       }
+      }
+     }
+    }
+    OverlayWidgetClass "{5D2D1DB8D9DF2884}" {
+     Name "Overlay3"
+     Slot FrameWidgetSlot "{5D1764F2EFB6EF79}" {
+      PositionX 592
+      OffsetLeft 592
+      PositionY 336
+      OffsetTop 336
+      SizeX 744
+      OffsetRight -1336
+      SizeY 168
+      OffsetBottom -504
+     }
+     {
+      OverlayWidgetClass "{5D2D1DB8D9DF289A}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxPants"
+       Slot OverlayWidgetSlot "{5D1764F2EBA23CAC}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 20 20 20 20
+       }
+      }
+     }
+    }
+    RichTextWidgetClass "{5D2D1DB8D9DF289B}" {
+     Name "RichText4"
+     Slot FrameWidgetSlot "{5D1764F2E70A20EC}" {
+      PositionX 848
+      OffsetLeft 848
+      PositionY 288
+      OffsetTop 288
+      SizeX 100
+      OffsetRight -948
+      SizeY 30
+      OffsetBottom -318
+     }
+     Text "Pants"
+    }
+    RichTextWidgetClass "{5D2D1DB8D9DF2899}" {
+     Name "RichText3"
+     Slot FrameWidgetSlot "{5D1764F2E6F9CFE9}" {
+      PositionX 848
+      OffsetLeft 848
+      PositionY 16
+      OffsetTop 16
+      SizeX 100
+      OffsetRight -948
+      SizeY 30
+      OffsetBottom -46
+     }
+     Text "Jackets"
+    }
+    RichTextWidgetClass "{5D2D1DB8D9DF289E}" {
+     Name "RichText2"
+     Slot FrameWidgetSlot "{5D1764F757F9A40F}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 16
+      OffsetTop 16
+      SizeX 100
+      OffsetRight -140
+      SizeY 30
+      OffsetBottom -46
+     }
+     Text "Helmets"
+    }
+    RichTextWidgetClass "{5D2D1DB8D9DF289F}" {
+     Name "RichText1"
+     Slot FrameWidgetSlot "{5D1764F7D1A1AECB}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 288
+      OffsetTop 288
+      SizeX 100
+      OffsetRight -140
+      SizeY 30
+      OffsetBottom -318
+     }
+     Text "Vests"
+    }
+    RichTextWidgetClass "{5D2D1DB8D9DF289C}" {
+     Name "RichText0"
+     Slot FrameWidgetSlot "{5D1764F7D24075D8}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 560
+      OffsetTop 560
+      SizeX 100
+      OffsetRight -140
+      SizeY 30
+      OffsetBottom -590
+     }
+     Text "Backpacks"
+    }
+    OverlayWidgetClass "{5D2D1DB8D9DF289D}" {
+     Name "Overlay2"
+     Slot FrameWidgetSlot "{5D1764F78030C042}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 608
+      OffsetTop 608
+      SizeX 496
+      OffsetRight -536
+      SizeY 168
+      OffsetBottom -776
+     }
+     {
+      OverlayWidgetClass "{5D2D1DB8D9DF2892}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxBackpacks"
+       Slot OverlayWidgetSlot "{5D1764F7CDB602BC}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 20 20 20 20
+       }
+      }
+     }
+    }
+    OverlayWidgetClass "{5D2D1DB8D9DF2890}" {
+     Name "Overlay1"
+     Slot FrameWidgetSlot "{5D1764F64ED9A5EA}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 336
+      OffsetTop 336
+      SizeX 496
+      OffsetRight -536
+      SizeY 192
+      OffsetBottom -528
+     }
+     {
+      OverlayWidgetClass "{5D2D1DB8D9DF2891}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxVests"
+       Slot OverlayWidgetSlot "{5D1764F7B0AC5B85}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 20 20 20 20
+       }
+      }
+     }
+    }
+    OverlayWidgetClass "{5D2D1DB8D9DF2897}" {
+     Name "Overlay0"
+     Slot FrameWidgetSlot "{5D1764F63560C6ED}" {
+      PositionX 40
+      OffsetLeft 40
+      PositionY 64
+      OffsetTop 64
+      SizeX 496
+      OffsetRight -536
+      SizeY 192.525
+      OffsetBottom -256.525
+     }
+     {
+      OverlayWidgetClass "{5D2D1DB8D9DF2894}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "ListBoxHelmets"
+       Slot OverlayWidgetSlot "{5D1764F7A49ADEDD}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 20 20 20 20
+       }
+      }
+     }
+    }
+    ButtonWidgetClass "{5D2D1DB8D9DF28AA}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+     Name "BuyButton"
+     Slot FrameWidgetSlot "{5D1764F6DDA53E69}" {
+      PositionX 1656
+      OffsetLeft 1656
+      PositionY 952
+      OffsetTop 952
+      SizeX 224
+      OffsetRight -1880
+      SizeY 47.995
+      OffsetBottom -999.995
+     }
+     Color 0.686 0.259 0.259 1
+     components {
+      SCR_ButtonTextComponent "{5548F0143AE99095}" {
+       m_BackgroundDefault 0.812 0.506 0.506 1
+       m_BackgroundSelected 0.392 0.624 0.157 1
+       m_sText "Buy"
+      }
+     }
+     {
+      SizeLayoutWidgetClass "{5548EB41A8E48247}" {
+       Prefab "{5548EB41A8E48247}"
+       {
+        OverlayWidgetClass "{5548EB41A8E48245}" {
+         Prefab "{5548EB41A8E48245}"
+         {
+          ImageWidgetClass "{5548EB41A8E48243}" {
+           Prefab "{5548EB41A8E48243}"
+           Color 0.561 0.071 0.071 1
+          }
+          PanelWidgetClass "{555CBD14A0EABAE3}" {
+           Prefab "{555CBD14A0EABAE3}"
+           Color 0.686 0.259 0.259 1
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    ButtonWidgetClass "{5D2D1DB8D9DF28A9}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+     Name "QuitButton"
+     Slot FrameWidgetSlot "{5D1764F6DF7A1E6B}" {
+      PositionX 8
+      OffsetLeft 8
+      PositionY 952
+      OffsetTop 952
+      SizeX 224.963
+      OffsetRight -232.963
+      SizeY 48
+      OffsetBottom -1000
+     }
+     components {
+      SCR_ButtonTextComponent "{5548F0143AE99095}" {
+       m_sText "Close"
+      }
+     }
+    }
+   }
+  }
+ }
+}

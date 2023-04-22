@@ -499,14 +499,6 @@ $grp SCR_SpawnPoint : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.e
    Name "B Main Spawn"
   }
  }
- MainSpawnA2 {
-  coords 9705.149 11.795 1565.875
-  m_fSpawnRadius 1.2
-  m_sFaction "A"
-  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
-   Name "A Main Spawn"
-  }
- }
 }
 GenericEntity : "{F870683132294E4E}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/FIA/EquipmentBoxStack_FIA_01_V5_covered.et" {
  coords 4874.008 28.595 11849.809
