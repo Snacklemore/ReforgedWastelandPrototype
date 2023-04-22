@@ -72,6 +72,19 @@ WST_GearPersistenceManager {
  }
  coords 9631.132 19.925 1512.042
 }
+$grp R3D_HeliBase : "{0C6491AC961ACAC9}Prefabs/Vehicles/Helis/R3D_UH60/R3D_UH60.et" {
+ R3D_UH1 {
+  components {
+   SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+    m_fVehicleDestroyDamage 6000.5
+   }
+  }
+  coords 7425.995 163.038 4316.654
+ }
+ R3D_UH2 {
+  coords 7442.358 162.974 4352.086
+ }
+}
 BasePreloadManager PreloadManager2 : "{104F8505FD1871EF}Prefabs/World/Game/PreloadManager.et" {
  coords -6.924 -10.636 -8.645
  PrefabsToPreload {
@@ -119,6 +132,29 @@ $grp GenericEntity : "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et" {
   coords 4881.072 29.488 11860.885
  }
 }
+GenericEntity : "{86F5F52A6FABBF7C}Prefabs/save_stash_boxPrefab.et" {
+ components {
+  UniversalInventoryStorageComponent "{5D2D6B6EA1F2FFBB}" {
+   Attributes SCR_ItemAttributeCollection "{5D2D6B6545C8EEBA}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{5D2D6B65435EEEFC}" {
+     SizeSetupStrategy Manual
+     ItemVolume 0
+    }
+   }
+  }
+  InventoryItemComponent "{5D2D6B691E6B7F7C}" {
+   Attributes SCR_ItemAttributeCollection "{5D2D6B69199BA614}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{5D2D6B693EE83D02}" {
+     Weight 1
+     ItemDimensions 2 2 2
+     ItemVolume 2
+     ActivePhysicalSimulation Collision
+    }
+   }
+  }
+ }
+ coords 4878.534 28.686 11855.612
+}
 SCR_GarbageManager : "{9B883A7D8EBB282A}Prefabs/MP/Managers/GarbageManager.et" {
  coords 4872.261 28.595 11867.745
  CollectorIterations 10
@@ -151,6 +187,32 @@ SCR_LoadoutManager : "{CC0F103253FC5D86}Prefabs/MP/Managers/Loadouts/LoadoutMana
   SCR_FactionPlayerLoadout "{56B2B461C7495F41}" {
    m_sAffiliatedFaction "A"
   }
+ }
+}
+$grp R3D_HeliBase : "{CEAFEDDD58794727}Prefabs/Vehicles/Helis/R3D_UH60/R3D_UH60_Rescue.et" {
+ R3D_UH60_Rescue1 {
+  components {
+   SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+    m_fVehicleDestroyDamage 6000.5
+   }
+  }
+  coords 4840.071 28.259 11920.284
+ }
+ R3D_UH60_Rescue2 {
+  components {
+   SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+    m_fVehicleDestroyDamage 6000.5
+   }
+  }
+  coords 4839.933 27.571 11946.938
+ }
+ R3D_UH60_Rescue3 {
+  components {
+   SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+    m_fVehicleDestroyDamage 6000.5
+   }
+  }
+  coords 4841.018 26.89 11971.75
  }
 }
 SCR_SpawnPoint MainSpawnA2 : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.et" {

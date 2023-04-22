@@ -1,0 +1,65 @@
+GenericEntity {
+ ID "5D2D6B69B81B2D58"
+ components {
+  MeshObject "{5D2D6B6E9FD05880}" {
+   Object "{EB0A22FF818604FF}Assets/Props/Military/MilitaryCrates/CrateStack_01/Dst/CrateStack_01_dst_3.xob"
+  }
+  RigidBody "{5D2D6B6EBCE97775}" {
+   Active Active
+   SimState Collision
+   ResponseIndex "HugeDestructible"
+   ModelGeometry 1
+  }
+  UniversalInventoryStorageComponent "{5D2D6B6EA1F2FFBB}" {
+  }
+  ActionsManagerComponent "{5D2D6B6EA7D50144}" {
+   ActionContexts {
+    UserActionContext "{5D2D6B68862E204B}" {
+     UIInfo UIInfo "{5D2D6B68858D32BC}" {
+      Name "Pickup"
+     }
+     ContextName "default"
+     Position PointInfo "{5D2D6B685BDE457B}" {
+      Offset 0 0.7298 -0.0254
+     }
+    }
+   }
+   additionalActions {
+    SCR_PickUpItemAction "{5D2D6B6813EFE38F}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5D2D6B685E80690F}" {
+      Name "Pickup"
+     }
+    }
+    SCR_OpenStorageAction "{5D2D6B6A232AEEA0}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5D2D6B6A29CA651F}" {
+      Name "Open Storage"
+     }
+    }
+   }
+  }
+  RplComponent "{5D2D6B6E9A18A883}" {
+  }
+  InventoryItemComponent "{5D2D6B691E6B7F7C}" {
+   Attributes SCR_ItemAttributeCollection "{5D2D6B69199BA614}" {
+    ItemDisplayName UIInfo "{5D2D6B6931BC83A9}" {
+     Name "Stash Box"
+     Description "A box to stash your stuff."
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{5D2D6B693EE83D02}" {
+     Weight 20
+     SizeSetupStrategy Manual
+     ItemVolume 0
+    }
+    m_Size SLOT_2x2
+    m_SlotType SLOT_BACKPACK
+   }
+  }
+ }
+ coords 4898.568 28.595 11847.606
+}
