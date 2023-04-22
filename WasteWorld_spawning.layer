@@ -446,10 +446,20 @@ $grp SCR_DestructibleBuildingEntity : "{CA7778B914D3A9FC}Prefabs/Structures/Mili
 }
 $grp SCR_ChimeraCharacter : "{CD3A78C25640F588}Prefabs/Characters/Campaign/Final/Campaign_US_AITRader.et" {
  {
+  components {
+   RHS_RpcManager "{5CD806057DAF99C5}" {
+    Enabled 0
+   }
+  }
   coords 4882.17 28.595 11861.955
   angleY -103.656
  }
  {
+  components {
+   RHS_RpcManager "{5CD806057DAF99C5}" {
+    Enabled 0
+   }
+  }
   coords 4882.105 28.595 11865.941
   angleY -99.598
  }

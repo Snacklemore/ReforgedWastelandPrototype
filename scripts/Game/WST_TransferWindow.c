@@ -341,6 +341,7 @@ class WST_TransferWindowUI : MenuBase
 			// and its Action Name field set to MenuBack - this would activate the button on ESC press
 			inputManager.AddActionListener("MenuOpen", EActionTrigger.DOWN, Close);
 			inputManager.AddActionListener("MenuBack", EActionTrigger.DOWN, Close);
+			inputManager.AddActionListener("MenuChange", EActionTrigger.DOWN, Close);
 #ifdef WORKBENCH // in Workbench, F10 is used because ESC closes the preview
 			inputManager.AddActionListener("MenuOpenWB", EActionTrigger.DOWN, Close);
 			inputManager.AddActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
@@ -363,6 +364,8 @@ class WST_TransferWindowUI : MenuBase
 		{
 			inputManager.RemoveActionListener("MenuOpen", EActionTrigger.DOWN, Close);
 			inputManager.RemoveActionListener("MenuBack", EActionTrigger.DOWN, Close);
+			inputManager.RemoveActionListener("MenuChange", EActionTrigger.DOWN, Close);
+
 #ifdef WORKBENCH
 			inputManager.RemoveActionListener("MenuOpenWB", EActionTrigger.DOWN, Close);
 			inputManager.RemoveActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
