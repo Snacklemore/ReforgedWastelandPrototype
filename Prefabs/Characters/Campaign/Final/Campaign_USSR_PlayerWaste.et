@@ -63,6 +63,7 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
   }
   SCR_MapDescriptorComponent "{5CB0060FA1726466}" {
    DisplayName "Me!"
+   VisibleOnMap 0
    MainType "Name Local"
    Scale 1
   }

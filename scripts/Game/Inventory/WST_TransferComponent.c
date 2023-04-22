@@ -15,6 +15,7 @@ class WST_TransferComponent : ScriptComponent
 		Rpc(RpcDo_HandleCurrencyTransfer,value,walletId);
 			
 	}
+	//hijacked for wallet value set on spawn
 	void MoneyConfigSetDelayed()
 	{
 		Print("WST_TransferComponent::OnInit" );
@@ -43,6 +44,29 @@ class WST_TransferComponent : ScriptComponent
 	override event void OnPostInit(IEntity owner)
 	{
 		GetGame().GetCallqueue().CallLater(MoneyConfigSetDelayed,50,false);
+		hideMapDescriptorComponentOnProxy();
+		
+	}
+	
+	//hijacked to hide map descriptor if entity is ProximityTriggerComponent
+	
+	void hideMapDescriptorComponentOnProxy()
+	{
+		
+		PlayerController controller = GetGame().GetPlayerController();
+		IEntity controlled
+		if(controller)
+			controlled =  controller.GetControlledEntity();
+		SCR_MapDescriptorComponent d
+		if(controlled)
+			d = SCR_MapDescriptorComponent.Cast(controlled.FindComponent(SCR_MapDescriptorComponent));
+		Print("Hiding Descriptor in hijacked function on proxy");
+		MapItem item =  d.Item();
+		if(item)
+			item.SetVisible(true);	
+	
+			
+			
 		
 	}
 	
