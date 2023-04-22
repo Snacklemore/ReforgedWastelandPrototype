@@ -96,7 +96,8 @@ class WST_VehicleShop : MenuBase
 	ref WST_Vehicle v;
 	WST_TraderComponent TrdComp;
 	int balance;
-	
+	int itemPrice;
+	int pSelectedIndex = 0;
 	void OnSelected(SCR_ListBoxComponent list , int itemIndex, bool isTheNewSelection)
 	{
 		Print("WST_VehicleShop::OnSelectedInvoker");
@@ -155,16 +156,16 @@ class WST_VehicleShop : MenuBase
 			{
 				if (!wallet) 
 				{
-				spawnEntity ="";
-
+					spawnEntity ="";
+					balance = -1;
 		          	Print("WST_VehicleShop::OnSelected::noWallet");
 		           	return;
 						
 						
 	        	}
-					balance = wallet.GetValue();
-				    balance = balance - v.GetPriceByKey(key);
-				
+				balance = wallet.GetValue();
+				balance = balance - v.GetPriceByKey(key);
+				itemPrice = v.GetPriceByKey(key);
 				if (balance < 0) 
 				{
 					spawnEntity = "";
@@ -218,7 +219,18 @@ class WST_VehicleShop : MenuBase
 		//-register to GameMode on init 
 		//-RplComponent
 		//-distance check nearest vehicle spawn point
+		
+		if(balance < 0)
+		{
+			SCR_HintManagerComponent.ShowCustomHint("You broke bro... " ,"Not your priceclass.",5.0,false,EFieldManualEntryId.NONE,false);
+			return;
+
+		}
+		SCR_HintManagerComponent.ShowCustomHint("Payed: "+ itemPrice ,"Item bought!",5.0,false,EFieldManualEntryId.NONE,false);
+
 		traderComp.HandleVehicleBuyAction(spawnEntity,balance);
+		
+		balance = balance - itemPrice;
 	
 	}
 	///////////////////////////////////////////////////////////////////////------------------PreviewSetup
@@ -297,6 +309,8 @@ class WST_VehicleShop : MenuBase
 			// and its Action Name field set to MenuBack - this would activate the button on ESC press
 			inputManager.AddActionListener("MenuOpen", EActionTrigger.DOWN, Close);
 			inputManager.AddActionListener("MenuBack", EActionTrigger.DOWN, Close);
+									inputManager.AddActionListener("MenuChange", EActionTrigger.DOWN, Close);
+
 #ifdef WORKBENCH // in Workbench, F10 is used because ESC closes the preview
 			inputManager.AddActionListener("MenuOpenWB", EActionTrigger.DOWN, Close);
 			inputManager.AddActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
@@ -331,6 +345,8 @@ class WST_VehicleShop : MenuBase
 		{
 			inputManager.RemoveActionListener("MenuOpen", EActionTrigger.DOWN, Close);
 			inputManager.RemoveActionListener("MenuBack", EActionTrigger.DOWN, Close);
+						inputManager.RemoveActionListener("MenuChange", EActionTrigger.DOWN, Close);
+
 #ifdef WORKBENCH
 			inputManager.RemoveActionListener("MenuOpenWB", EActionTrigger.DOWN, Close);
 			inputManager.RemoveActionListener("MenuBackWB", EActionTrigger.DOWN, Close);

@@ -50,14 +50,7 @@ class WST_TransferCurrencyWindow : MenuBase
 		
 		
 		
-			//get the local player
-			//local player is the User 
-			//Transfer from local player to other player 
-			//Rpc to server with the amount to transfer to other player + RplId of other players wallet to add money to via MoneyManager 
-			//Rpc need to be called from a component attached to character since inside menu base we have no Rpc functions.
-			//1.TODO: Create new WST_TransferComponent 
-			//2.TODO: Attach WST_TransferComponent to ChimeraCharacter Prefab 
-						
+			
 
 			
 			
@@ -65,45 +58,70 @@ class WST_TransferCurrencyWindow : MenuBase
 
 			MoneyComponent walletUser;
 			RplComponent rpl;
+			RplComponent rplWalletUser;
+
 			if(walletEnityUser)
 			{
 				walletUser = MoneyComponent.Cast(walletEnityUser.FindComponent(MoneyComponent));
 				rpl = RplComponent.Cast(walletEnityUser.FindComponent(RplComponent));
+				IEntity wallet_e = walletUser.GetOwner();
+			
+				rplWalletUser = RplComponent.Cast(wallet_e.FindComponent(RplComponent));
+
 			}
 			
 			if (rpl)
 			{
 				
 			
-			
+				PlayerManager pm = GetGame().GetPlayerManager();
+				int playerid = pm.GetPlayerIdFromEntityRplId(rpl.Id());
 				//try getting rpl id of wallet via FindComponenent
-				RplId walletID = rpl.Id();
+				RplId walletID = rplWalletUser.Id();
 				int newValue = walletUser.GetValue() - value;
 				if(newValue < 0 )
 					return;
 				//kick off rpc to server (subtract currency from transferring player)
-				transferComp.HandleCurrencyTransfer(newValue,walletID);
+				//hint with the amount transferred!
+				//string name = 
+				SCR_HintManagerComponent.ShowCustomHint("You just transferred "+ value + " to ","Wallet Info",3.0,false,EFieldManualEntryId.NONE,false);
+
+				transferComp.HandleCurrencyTransfer(newValue,walletID,playerid);
 				
 	
 			}
 		
 			//add to proxy inventory
 			MoneyComponent wallet;
+			int playerid = -1;
 			if(walletEnity)
 			{
 				wallet = MoneyComponent.Cast(walletEnity.FindComponent(MoneyComponent));
 				rplWallet = RplComponent.Cast(walletEnity.FindComponent(RplComponent));
+				if(rplProxy)
+				{
+					RplId r_idProxy = rplProxy.Id();
+					PlayerManager pm = GetGame().GetPlayerManager();
+					playerid = pm.GetPlayerIdFromEntityRplId(r_idProxy);
+					if (playerid < 0)
+						{
+							Print("OnMenuOpen::TransferCurrencyWindow::no playerid");
+							return;
+						}
+				}
 			}
 			
 			if (rplWallet)
 			{
+				
+				
 				Print("OnMenuOpen::TransferCurrencyWindow::Confirmed:: Wallet Found on Owner!", LogLevel.NORMAL);
 				RplId walletID = rplWallet.Id();
 				
 				//kick off rpc to server(probably not firing cause the local player is not the owner of this component) 
 				//workaround: fire from local player 
 				int newValue = value + wallet.GetValue();
-				transferComp.HandleCurrencyTransfer(newValue,walletID);
+				transferComp.HandleCurrencyTransfer(newValue,walletID,playerid);
 	
 			}
 			else
@@ -164,6 +182,8 @@ class WST_TransferCurrencyWindow : MenuBase
 			// and its Action Name field set to MenuBack - this would activate the button on ESC press
 			inputManager.AddActionListener("MenuOpen", EActionTrigger.DOWN, Close);
 			inputManager.AddActionListener("MenuBack", EActionTrigger.DOWN, Close);
+			inputManager.AddActionListener("MenuChange", EActionTrigger.DOWN, Close);
+
 #ifdef WORKBENCH // in Workbench, F10 is used because ESC closes the preview
 			inputManager.AddActionListener("MenuOpenWB", EActionTrigger.DOWN, Close);
 			inputManager.AddActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
@@ -180,6 +200,8 @@ class WST_TransferCurrencyWindow : MenuBase
 		if (inputManager)
 		{
 			inputManager.RemoveActionListener("MenuOpen", EActionTrigger.DOWN, Close);
+			inputManager.RemoveActionListener("MenuChange", EActionTrigger.DOWN, Close);
+
 			inputManager.RemoveActionListener("MenuBack", EActionTrigger.DOWN, Close);
 #ifdef WORKBENCH
 			inputManager.RemoveActionListener("MenuOpenWB", EActionTrigger.DOWN, Close);

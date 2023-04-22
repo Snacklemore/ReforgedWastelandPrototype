@@ -38,9 +38,27 @@ class MoneyComponent : ScriptComponent
 	void OnBroadcastValueUpdated()
 	{
 		// this method will only run on proxies if authority's RpcConditionMethod returns true
+		/*PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+			return;
+		IEntity controlled = pc.GetControlledEntity();
+		if(!controlled)
+			return;
+		RplComponent rpl = RplComponent.Cast(controlled.FindComponent(RplComponent));
+		
+		if(!rpl)
+			return;
 		Print("MoneyComponent::OnBroadcastValueUpdated::: " );
+		SCR_HintManagerComponent.ShowCustomHint("Wallet update. New Balance: "+ GetValue() ,"Wallet Info",5.0,false,EFieldManualEntryId.NONE,false);*/
+		
+				//Print("MoneyComponent::OnBroadcastValueUpdated::: " );
+
+
 
 	}
+	
+	
+	
 	
 	void Unregister(bool shouldDelete)
 	{
@@ -136,6 +154,8 @@ class MoneyComponent : ScriptComponent
 	bool SetValue(int val)
 	{
 		m_iValue = val;
+		
+
 		Replication.BumpMe();
 		
 		if(m_iValue <= 0)

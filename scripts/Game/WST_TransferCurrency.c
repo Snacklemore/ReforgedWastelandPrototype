@@ -52,7 +52,7 @@ class WST_TransferCurrency : ScriptedUserAction
 		
 		if (wallet)
 		{
-			SCR_HintManagerComponent.ShowCustomHint("TestDescription","TestHint",3.0,false,EFieldManualEntryId.NONE,false);
+			SCR_HintManagerComponent.ShowCustomHint("Your current balance: "+ wallet.GetValue(),"Wallet Info",3.0,false,EFieldManualEntryId.NONE,false);
 			WST_TransferCurrencyWindow base = WST_TransferCurrencyWindow.Cast(GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.WST_TransferCurrencyWindow));
 			base.SetActionEntities(pOwnerEntity,pUserEntity);
 		}

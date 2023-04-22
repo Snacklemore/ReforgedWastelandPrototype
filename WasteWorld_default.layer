@@ -6,6 +6,9 @@ SCR_BaseGameModeWasteland SCR_BaseGameModeWasteland2 : "{805A3F581EA80E37}SCR_Ba
   SCR_GroupsManagerComponent "{5CAB50F1BC5AF4A2}" {
    m_sDefaultGroupPrefab "{8B4D49A9F324E7D5}Prefabs/Groups/PlayableGroup.et"
   }
+  SCR_HintManagerComponent "{5CAB50F1C679006A}" {
+   m_bIgnoreHintSettings 1
+  }
   SCR_PossessingManagerComponent "{5CAB50F1EC33DA6E}" {
    Enabled 0
   }

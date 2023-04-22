@@ -14,6 +14,7 @@ class WST_HiddenTrader : MenuBase
 	ResourceName spawnEntity;
 	WST_TraderComponent TrdComp;
 	int balance;
+	int itemPrice;
 	
 	protected void Buy()
 	{
@@ -41,9 +42,18 @@ class WST_HiddenTrader : MenuBase
 			return;
 		
 		}
-		
+		if(balance < 0)
+		{
+			
+			SCR_HintManagerComponent.ShowCustomHint("You broke bro... " ,"Not your priceclass.",5.0,false,EFieldManualEntryId.NONE,false);
+			return;
+		}
+			
+		SCR_HintManagerComponent.ShowCustomHint("Payed: "+ itemPrice ,"Item bought!",5.0,false,EFieldManualEntryId.NONE,false);
+
 		traderComp.HandleBuyAction(spawnEntity,balance);
 		
+		balance = balance - itemPrice;
 		
 		
 
@@ -172,7 +182,7 @@ class WST_HiddenTrader : MenuBase
 					if (!wallet) 
 					{
 						spawnEntity ="";
-
+						balance = -1;
 		            	Print("WST_HiddenTrader::OnSelected::noWallet");
 		            	return;
 						
@@ -180,7 +190,7 @@ class WST_HiddenTrader : MenuBase
 	        		}
 					balance = wallet.GetValue();
 				    balance = balance - e.GetPriceByKey(key);//w.GetWeaponPriceByKey(key);
-				
+					itemPrice = e.GetPriceByKey(key);
 				    if (balance < 0) 
 					{
 						spawnEntity = "";
@@ -202,6 +212,7 @@ class WST_HiddenTrader : MenuBase
 					if (!wallet) 
 					{
 						spawnEntity ="";
+						balance = -1;
 
 		            	Print("WST_HiddenTrader::OnSelected::noWallet");
 		            	return;
@@ -210,6 +221,7 @@ class WST_HiddenTrader : MenuBase
 	        		}
 					balance = wallet.GetValue();
 				    balance = balance - w.GetPriceByKey(key);//w.GetWeaponPriceByKey(key);
+					itemPrice = w.GetPriceByKey(key);
 				
 				    if (balance < 0) 
 					{
@@ -496,6 +508,8 @@ class WST_HiddenTrader : MenuBase
 			// and its Action Name field set to MenuBack - this would activate the button on ESC press
 			inputManager.AddActionListener("MenuOpen", EActionTrigger.DOWN, Close);
 			inputManager.AddActionListener("MenuBack", EActionTrigger.DOWN, Close);
+						inputManager.AddActionListener("MenuChange", EActionTrigger.DOWN, Close);
+
 #ifdef WORKBENCH // in Workbench, F10 is used because ESC closes the preview
 			inputManager.AddActionListener("MenuOpenWB", EActionTrigger.DOWN, Close);
 			inputManager.AddActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
@@ -518,6 +532,8 @@ class WST_HiddenTrader : MenuBase
 		{
 			inputManager.RemoveActionListener("MenuOpen", EActionTrigger.DOWN, Close);
 			inputManager.RemoveActionListener("MenuBack", EActionTrigger.DOWN, Close);
+						inputManager.RemoveActionListener("MenuChange", EActionTrigger.DOWN, Close);
+
 #ifdef WORKBENCH
 			inputManager.RemoveActionListener("MenuOpenWB", EActionTrigger.DOWN, Close);
 			inputManager.RemoveActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
