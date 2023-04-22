@@ -9,22 +9,39 @@ class WST_TransferComponentClass : ScriptComponentClass
 class WST_TransferComponent : ScriptComponent
 {
 
-	void HandleCurrencyTransfer(int value ,RplId walletId)
+	void HandleCurrencyTransfer(int value ,RplId walletId,int playerId)
 	{
 			
-		Rpc(RpcDo_HandleCurrencyTransfer,value,walletId);
+		Rpc(RpcDo_HandleCurrencyTransfer,value,walletId,playerId);
+		
 			
 	}
 	//hijacked for wallet value set on spawn
 	void MoneyConfigSetDelayed()
-	{
+	{	
+		IEntity ie = GetOwner();
+		RplComponent rpl = RplComponent.Cast(ie.FindComponent(RplComponent));
+		
+		
+		int playerId = -1;
 		Print("WST_TransferComponent::OnInit" );
 		WST_MoneyConfigComponent mcc = WST_MoneyConfigComponent.Cast(GetOwner().FindComponent(WST_MoneyConfigComponent));
 		if (!mcc)
 			return;
 		if(mcc.alreadySet)
 			return;
-		IEntity ie = GetOwner();
+		
+		PlayerManager pm = GetGame().GetPlayerManager();
+		RplId rpl_id = rpl.Id();
+		
+		playerId = pm.GetPlayerIdFromEntityRplId(rpl_id);
+		if (playerId < 0)
+		{
+			Print("WST_TransferComponent::noplayerid::configsetdelayed" );
+		
+		}
+		
+		
 		InventoryStorageManagerComponent storage = InventoryStorageManagerComponent.Cast(ie.FindComponent(InventoryStorageManagerComponent));
 
 		array<typename> components = {};
@@ -39,6 +56,7 @@ class WST_TransferComponent : ScriptComponent
 		}
 		if(!wallet)
 			return;
+		Rpc(Rpc_OnBroadcastValueUpdatedOwner,mcc.GetValue(),playerId);
 		wallet.SetValue(mcc.GetValue());
 	}
 	override event void OnPostInit(IEntity owner)
@@ -61,6 +79,8 @@ class WST_TransferComponent : ScriptComponent
 		if(controlled)
 			d = SCR_MapDescriptorComponent.Cast(controlled.FindComponent(SCR_MapDescriptorComponent));
 		Print("Hiding Descriptor in hijacked function on proxy");
+		if(!d)
+			return;
 		MapItem item =  d.Item();
 		if(item)
 			item.SetVisible(true);	
@@ -70,15 +90,43 @@ class WST_TransferComponent : ScriptComponent
 		
 	}
 	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void Rpc_OnBroadcastValueUpdatedOwner(int value,int playerId)//value is current balance
+	{
+		// this method will only run on proxies if authority's RpcConditionMethod returns true
+		Print("MoneyComponent::OnBroadcastValueUpdated::: " );
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+			return;
+		int playeridlocal = pc.GetPlayerId();
+		
+		if(playerId != playeridlocal)
+			return;
+		IEntity controlled = pc.GetControlledEntity();
+		if(!controlled)
+			return;
+		RplComponent rpl = RplComponent.Cast(controlled.FindComponent(RplComponent));
+		
+		if(!rpl)
+			return;
+		Print("MoneyComponent::OnBroadcastValueUpdated::: " );
+		SCR_HintManagerComponent.ShowCustomHint("Wallet update. New Balance: "+ value ,"Wallet Info",5.0,false,EFieldManualEntryId.NONE,false);
+		
+		
+
+
+	}
 	void CreateWallet(int value, RplId playerId)
 	{
+		
 		Rpc(RpcDo_CreateWallet,value,playerId);
 	}
 	
 	
-	
+	//dont call hint here (call where this Rpc is called)!
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcDo_HandleCurrencyTransfer(int value ,RplId walletId)
+	void RpcDo_HandleCurrencyTransfer(int value ,RplId walletId,int playerId)
 	{
 		
 		Print("WST_TransferComponent::RpcDoHandleCurrencyTransfer wallet RplID: " + walletId + "and value to transfer: " + value );
@@ -89,7 +137,7 @@ class WST_TransferComponent : ScriptComponent
 		MoneyComponent comp = MoneyComponent.Cast(ie.FindComponent(MoneyComponent));
 		
 		Print("WST_TransferComponent::RpcDoHandleCurrencyTransfer wallet RplID: " + walletId + " has value:  " + value );
-		
+		Rpc(Rpc_OnBroadcastValueUpdatedOwner,value,playerId);
 		comp.SetValue(value);
 		
 		
@@ -98,7 +146,9 @@ class WST_TransferComponent : ScriptComponent
 	
 	}
 	
-	
+	//call hint when wallet created (on client) and when money WST_TransferCurrencyWindow
+	//dont call hint here (call where this Rpc is called)!
+
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcDo_CreateWallet(int value,RplId playerId)
 	{
@@ -127,6 +177,7 @@ class WST_TransferComponent : ScriptComponent
 		
 		GenericEntity walletEnt =  GetGame().SpawnEntityPrefab(Resource.Load(r), GetGame().GetWorld());
 		MoneyComponent mc = MoneyComponent.Cast(walletEnt.FindComponent(MoneyComponent));
+		Rpc(Rpc_OnBroadcastValueUpdatedOwner,value, iplayerId);
 		mc.SetValue(value);
 		bool success = storage.TryInsertItem(walletEnt, EStoragePurpose.PURPOSE_ANY,null);
 	}
