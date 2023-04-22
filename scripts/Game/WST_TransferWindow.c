@@ -16,7 +16,10 @@ class WST_TransferWindowUI : MenuBase
 	ResourceName spawnEntity;
 	WST_TraderComponent TrdComp;
 	int balance;
-	
+	int itemPrice;
+	int pSelectedIndex = 0;
+	SCR_ListBoxComponent currenListBox ;
+	//rate limit?
 	protected void Buy()
 	{
 		InventorySearchPredicate search;
@@ -43,9 +46,17 @@ class WST_TransferWindowUI : MenuBase
 			return;
 		
 		}
-		
+		if(balance < 0)
+		{
+			SCR_HintManagerComponent.ShowCustomHint("You broke bro... " ,"Not your priceclass.",5.0,false,EFieldManualEntryId.NONE,false);
+			return;
+		}
+			
+		SCR_HintManagerComponent.ShowCustomHint("Payed: "+ itemPrice ,"Item bought!",5.0,false,EFieldManualEntryId.NONE,false);
+
 		traderComp.HandleBuyAction(spawnEntity,balance);
-		
+	
+		balance = balance - itemPrice;
 		
 		
 
@@ -77,7 +88,8 @@ class WST_TransferWindowUI : MenuBase
 
 		Print("WST_TransferWindow::OnSelectedInvoker");
 		Widget rootWidget = GetRootWidget();
-
+		pSelectedIndex = itemIndex;
+		currenListBox = list;
 		ManagedDataObject data =  list.GetItemData(itemIndex);
 		Widget panelRoot = rootWidget.FindWidget("Panel0");
 		ItemPreviewWidget preview = panelRoot.FindWidget("WeaponPreview");
@@ -135,7 +147,7 @@ class WST_TransferWindowUI : MenuBase
 					if (!wallet) 
 					{
 						spawnEntity ="";
-
+						balance = -1;
 		            	Print("WST_TransferWindowUI::OnSelected::noWallet");
 		            	return;
 						
@@ -143,7 +155,7 @@ class WST_TransferWindowUI : MenuBase
 	        		}
 					balance = wallet.GetValue();
 				    balance = balance - w.GetPriceByKey(key);//w.GetWeaponPriceByKey(key);
-				
+					itemPrice = w.GetPriceByKey(key);
 				    if (balance < 0) 
 					{
 						spawnEntity = "";
@@ -372,6 +384,44 @@ class WST_TransferWindowUI : MenuBase
 #endif
 		}
 	}
+	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void Rpc_OnBroadcastValueUpdatedOwner(int value,int playerId)//value is current balance
+	{
+		// this method will only run on proxies if authority's RpcConditionMethod returns true
+		Print("MoneyComponent::OnBroadcastValueUpdated::: " );
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+			return;
+		int playeridlocal = pc.GetPlayerId();
+		
+		if(playerId != playeridlocal)
+			return;
+		IEntity controlled = pc.GetControlledEntity();
+		if(!controlled)
+			return;
+		RplComponent rpl = RplComponent.Cast(controlled.FindComponent(RplComponent));
+		
+		if(!rpl)
+			return;
+		Print("MoneyComponent::OnBroadcastValueUpdated::: " );
+		SCR_HintManagerComponent.ShowCustomHint("Wallet update. New Balance: "+ value ,"Wallet Info",5.0,false,EFieldManualEntryId.NONE,false);
+		
+		
+
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	//------------------------------------------------------------------------------------------------
 

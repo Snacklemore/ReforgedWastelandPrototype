@@ -22,7 +22,8 @@ class WST_TransferComponent : ScriptComponent
 		IEntity ie = GetOwner();
 		RplComponent rpl = RplComponent.Cast(ie.FindComponent(RplComponent));
 		
-		
+		if (rpl.IsProxy())
+			return;
 		int playerId = -1;
 		Print("WST_TransferComponent::OnInit" );
 		WST_MoneyConfigComponent mcc = WST_MoneyConfigComponent.Cast(GetOwner().FindComponent(WST_MoneyConfigComponent));

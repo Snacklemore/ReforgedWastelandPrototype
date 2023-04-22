@@ -96,7 +96,8 @@ class WST_VehicleShop : MenuBase
 	ref WST_Vehicle v;
 	WST_TraderComponent TrdComp;
 	int balance;
-	
+	int itemPrice;
+	int pSelectedIndex = 0;
 	void OnSelected(SCR_ListBoxComponent list , int itemIndex, bool isTheNewSelection)
 	{
 		Print("WST_VehicleShop::OnSelectedInvoker");
@@ -155,16 +156,16 @@ class WST_VehicleShop : MenuBase
 			{
 				if (!wallet) 
 				{
-				spawnEntity ="";
-
+					spawnEntity ="";
+					balance = -1;
 		          	Print("WST_VehicleShop::OnSelected::noWallet");
 		           	return;
 						
 						
 	        	}
-					balance = wallet.GetValue();
-				    balance = balance - v.GetPriceByKey(key);
-				
+				balance = wallet.GetValue();
+				balance = balance - v.GetPriceByKey(key);
+				itemPrice = v.GetPriceByKey(key);
 				if (balance < 0) 
 				{
 					spawnEntity = "";
@@ -218,7 +219,18 @@ class WST_VehicleShop : MenuBase
 		//-register to GameMode on init 
 		//-RplComponent
 		//-distance check nearest vehicle spawn point
+		
+		if(balance < 0)
+		{
+			SCR_HintManagerComponent.ShowCustomHint("You broke bro... " ,"Not your priceclass.",5.0,false,EFieldManualEntryId.NONE,false);
+			return;
+
+		}
+		SCR_HintManagerComponent.ShowCustomHint("Payed: "+ itemPrice ,"Item bought!",5.0,false,EFieldManualEntryId.NONE,false);
+
 		traderComp.HandleVehicleBuyAction(spawnEntity,balance);
+		
+		balance = balance - itemPrice;
 	
 	}
 	///////////////////////////////////////////////////////////////////////------------------PreviewSetup
