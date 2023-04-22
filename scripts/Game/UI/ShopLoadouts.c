@@ -15,7 +15,7 @@ class WST_ShopLoadOutBase
 		return PriceArray.Get(identifier);
 	}
 	
-	//joins two LoadOutObjects, returns one WST_ShopLoadOutBase object with all objects of the two objecst
+	//tjoins two LoadOutObjects, returns one WST_ShopLoadOutBase object with all objects of the two objecst
 	static WST_ShopLoadOutBase AddLoadOuts(WST_ShopLoadOutBase i_loadout, WST_ShopLoadOutBase k_loadout)
 	{
 		WST_ShopLoadOutBase newLoadOutReturn = new WST_ShopLoadOutBase();
