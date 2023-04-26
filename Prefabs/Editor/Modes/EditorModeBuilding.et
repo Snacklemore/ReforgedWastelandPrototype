@@ -1,0 +1,14 @@
+SCR_EditorModeEntity : "{E56F54E533ACE527}Prefabs/Editor/Modes/EditorModeBase.et" {
+ ID "518A34314C7CB324"
+ components {
+  SCR_CampaignBuildingPlacingEditorComponent "{5A0ACCCCDF0C0F65}" {
+   m_Registries {
+    SCR_PlaceableEntitiesRegistry "{5A0ACCCCC2FEE1FC}" {
+     m_Prefabs + {
+      "{D33EE0BA5BB8F50B}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbags_veryHigh.et"
+     }
+    }
+   }
+  }
+ }
+}
