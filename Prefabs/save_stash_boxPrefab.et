@@ -1,0 +1,73 @@
+GenericEntity {
+ ID "5D2D6B69B81B2D58"
+ components {
+  MeshObject "{5D2D6B6E9FD05880}" {
+   Object "{EB0A22FF818604FF}Assets/Props/Military/MilitaryCrates/CrateStack_01/Dst/CrateStack_01_dst_3.xob"
+  }
+  RigidBody "{5D2D6B6EBCE97775}" {
+   Active Active
+   SimState Collision
+   ResponseIndex "HugeDestructible"
+   ModelGeometry 1
+  }
+  SCR_PreviewEntityComponent "{5D2F0848A458A104}" {
+   m_bRuntime 0
+   m_PreviewPrefab "{8A5C1595F9EA27B0}Prefabs/preview_save_stash_boxPrefab.et"
+   m_aEntries {
+    SCR_BasePreviewEntry "{5D2F0849206C8C86}" {
+    }
+   }
+  }
+  UniversalInventoryStorageComponent "{5D2D6B6EA1F2FFBB}" {
+   Attributes SCR_ItemAttributeCollection "{5D2D6B6545C8EEBA}" {
+    ItemDisplayName UIInfo "{5D2EDAE238365323}" {
+     Name "StashBox"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{5D2D6B65435EEEFC}" {
+     Weight 2.5
+     SizeSetupStrategy Manual
+     ItemDimensions 2 2 2
+     ItemVolume 5
+    }
+    m_SlotType SLOT_ANY
+   }
+   CapacityCoefficient 20
+  }
+  WST_SaveStashBoxComponent "{5D329DD864BCC98F}" {
+  }
+  ActionsManagerComponent "{5D2D6B6EA7D50144}" {
+   ActionContexts {
+    UserActionContext "{5D2D6B68862E204B}" {
+     UIInfo UIInfo "{5D2D6B68858D32BC}" {
+      Name "Pickup"
+     }
+     ContextName "default"
+     Position PointInfo "{5D2D6B685BDE457B}" {
+      Offset 0 0.7298 -0.0254
+     }
+    }
+   }
+   additionalActions {
+    SCR_PickUpItemAction "{5D2D6B6813EFE38F}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5D2D6B685E80690F}" {
+      Name "Pickup"
+     }
+    }
+    SCR_OpenStorageAction "{5D2D6B6A232AEEA0}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5D2D6B6A29CA651F}" {
+      Name "Open Storage"
+     }
+    }
+   }
+  }
+  RplComponent "{5D2D6B6E9A18A883}" {
+  }
+ }
+ coords 4898.568 28.595 11847.606
+}

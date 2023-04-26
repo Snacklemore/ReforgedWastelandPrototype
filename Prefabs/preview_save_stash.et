@@ -1,0 +1,35 @@
+SCR_GenericPreviewEntity {
+ ID "5D2F41711896EF6F"
+ components {
+  MeshObject "{5D2F41721AA05D5D}" {
+   Object "{EB0A22FF818604FF}Assets/Props/Military/MilitaryCrates/CrateStack_01/Dst/CrateStack_01_dst_3.xob"
+   Materials {
+    MaterialAssignClass "{5D2F4171FD4E6BF5}" {
+     SourceMaterial "CrateStack_01_Dark"
+     AssignedMaterial "{E0FECF0FE7457A54}Assets/Editor/PlacingPreview/Preview_03.emat"
+    }
+    MaterialAssignClass "{5D2F4171FD4E541B}" {
+     SourceMaterial "CrateStack_01_Decal"
+     AssignedMaterial "{E0FECF0FE7457A54}Assets/Editor/PlacingPreview/Preview_03.emat"
+    }
+    MaterialAssignClass "{5D2F4171FD4E541C}" {
+     SourceMaterial "CrateStack_01_Decal_Broken"
+     AssignedMaterial "{E0FECF0FE7457A54}Assets/Editor/PlacingPreview/Preview_03.emat"
+    }
+    MaterialAssignClass "{5D2F4171FD4E5410}" {
+     SourceMaterial "CrateStack_01_Green"
+     AssignedMaterial "{E0FECF0FE7457A54}Assets/Editor/PlacingPreview/Preview_03.emat"
+    }
+    MaterialAssignClass "{5D2F4171FD4E5414}" {
+     SourceMaterial "CrateStack_01_Grey"
+     AssignedMaterial "{E0FECF0FE7457A54}Assets/Editor/PlacingPreview/Preview_03.emat"
+    }
+    MaterialAssignClass "{5D2F4171FD4E5429}" {
+     SourceMaterial "CrateStack_01_MLOD"
+     AssignedMaterial "{E0FECF0FE7457A54}Assets/Editor/PlacingPreview/Preview_03.emat"
+    }
+   }
+  }
+ }
+ coords 4872.274 28.595 11857.617
+}

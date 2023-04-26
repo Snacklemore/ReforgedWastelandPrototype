@@ -58,8 +58,32 @@ class WST_TransferComponent : ScriptComponent
 	override event void OnPostInit(IEntity owner)
 	{
 		GetGame().GetCallqueue().CallLater(MoneyConfigSetDelayed,50,false);
+		GetGame().GetCallqueue().CallLater(SetOnItemAddedRemovedHandlers,350,false);
+
 		hideMapDescriptorComponentOnProxy();
 		
+		
+			
+			
+			
+		
+		
+		
+	}
+	
+	void SetOnItemAddedRemovedHandlers()
+	{
+		//set onItemAddedInvokeLocal
+			IEntity playerEntity = GetGame().GetPlayerController().GetControlledEntity();
+			if(playerEntity)
+			{
+				SCR_InventoryStorageManagerComponent mmc = SCR_InventoryStorageManagerComponent.Cast(playerEntity.FindComponent(SCR_InventoryStorageManagerComponent));
+				Print("Setting OnItemRemovedHandlerLocal!.");
+
+				mmc.OnItemRemovedLocalHandler();
+				mmc.OnItemAddedLocalHandler();
+			
+			}
 	}
 	
 	//hijacked to hide map descriptor if entity is ProximityTriggerComponent

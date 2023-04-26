@@ -205,4 +205,96 @@ class WST_TraderComponent : ScriptComponent
 	
 	}
 	
+	void LoadBoughtSupplies(RplId suppliesId,int suppliesAmount,int pricePerSupplyPoint)
+	{
+		Rpc(RpcDo_LoadBoughtSupplies,suppliesId,suppliesAmount,pricePerSupplyPoint);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]	
+	void RpcDo_SupplyBuyInfoHint(string msg)
+	{
+		SCR_HintManagerComponent.ShowCustomHint(msg,5.0,false,EFieldManualEntryId.NONE,false);
+
+	}
+
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]	
+	void RpcDo_LoadBoughtSupplies(RplId suppliesId,int suppliesAmount,int pricePerSupplyPoint)
+	{
+	
+		SCR_CampaignSuppliesComponent suppliesComponent = SCR_CampaignSuppliesComponent.Cast(Replication.FindItem(suppliesId));
+		
+		if (!suppliesComponent)
+			return;
+		
+		int overAllCost = suppliesAmount * pricePerSupplyPoint;
+		
+		PlayerManager p = GetGame().GetPlayerManager();
+		//get RplId, this component is child of the player Character 
+		RplComponent Rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
+		
+		if (!Rpl)
+			return;
+		RplId id = Rpl.Id();
+		Print("WST_TraderComponent::RpcDoLoadBoughtValue Player RplID: " + id);
+
+		
+		int playerId = p.GetPlayerIdFromEntityRplId(id);
+		
+		PlayerController pc = p.GetPlayerController(playerId);
+		IEntity ie = pc.GetControlledEntity();
+		InventoryStorageManagerComponent storage = InventoryStorageManagerComponent.Cast(ie.FindComponent(InventoryStorageManagerComponent));
+		
+		
+		array<typename> components = {};
+		components.Insert(MoneyComponent);
+		components.Insert(RplComponent);
+		IEntity walletEnity = storage.FindItemWithComponents(components, EStoragePurpose.PURPOSE_DEPOSIT);
+		int walletBalance = -1;
+		MoneyComponent wallet;
+		if(walletEnity)
+		{
+			wallet = MoneyComponent.Cast(walletEnity.FindComponent(MoneyComponent));
+
+		}else 
+		{
+			Print("no cash");
+			string msg = "No Wallet!";
+			Rpc(RpcDo_SupplyBuyInfoHint,msg);
+			return;
+		}
+		if(wallet)
+		{
+			walletBalance = wallet.GetValue();
+			
+		}
+		if(wallet.GetValue() < 0)
+			return;
+		
+		if (overAllCost > walletBalance)
+		{
+			Print("no cash");
+			string msg = "No Cash!";
+			Rpc(RpcDo_SupplyBuyInfoHint,msg);
+			return;
+		}
+			
+		
+		int newWalletBalance = walletBalance - overAllCost;
+		int maxSupplies = suppliesComponent.GetSuppliesMax();
+		if (suppliesComponent.GetSupplies() == maxSupplies)
+		{
+			Print("already full");
+			string msg = "Nothing bought, full already!";
+			Rpc(RpcDo_SupplyBuyInfoHint,msg);
+			return;
+		}
+		
+		
+		RpcDo_UpdateWalletValue(newWalletBalance);
+		suppliesComponent.AddSupplies(suppliesAmount);
+		string msg = "Bought " +suppliesAmount+ " of supplies for " + overAllCost +"$";
+		Rpc(RpcDo_SupplyBuyInfoHint,msg);
+		
+	}
+	
 };

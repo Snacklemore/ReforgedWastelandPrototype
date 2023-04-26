@@ -1,0 +1,32 @@
+GenericEntity : "{627F955923426D32}Prefabs/Props/Commercial/CashierShop_Waste.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SCR_MapDescriptorComponent "{5D32E99F201B0C1B}" {
+   DisplayName "Supply Shop"
+   MainType "Name Village"
+  }
+  ActionsManagerComponent "{5CF72A24698A8C7E}" {
+   additionalActions {
+    WST_SupplyBuyAction "{5CF72A26A98EDF68}" {
+     UIInfo UIInfo "{5CF72A26C46A059A}" {
+      Name "Buy Supplies"
+     }
+    }
+   }
+  }
+ }
+ coords 4841.888 30.112 11890.62
+ angleY -170.478
+ {
+  SCR_DestructibleBuildingEntity : "{80A5B37A1472B084}Prefabs/Structures/Industrial/Garages/Garage_E_02/Garage_E_02.et" {
+   ID "5D32E990044023F4"
+   coords 3.045 -0.84 -4.496
+   angleY 170.478
+  }
+  StaticModelEntity : "{EA643592427F2BFA}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_TableMilitary_Cluttered_US_04.et" {
+   ID "5D32E990044023EE"
+   coords 0.089 -0.88 -0.109
+   angleY 172.242
+  }
+ }
+}

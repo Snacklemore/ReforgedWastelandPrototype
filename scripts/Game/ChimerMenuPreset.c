@@ -4,5 +4,6 @@ modded enum ChimeraMenuPreset
 	WST_TransferCurrencyWindow,
 	WST_VehicleShop,
 	WST_HiddenShop,
+	WST_SupplysShopWindow,
 };
 

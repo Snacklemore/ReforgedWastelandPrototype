@@ -3,6 +3,11 @@ SCR_BaseGameModeWasteland SCR_BaseGameModeWasteland2 : "{805A3F581EA80E37}SCR_Ba
   SCR_AutomaticRespawnHandlerComponent "{5CAB50F044535F4F}" {
    Enabled 0
   }
+  SCR_CampaignBuildingManagerComponent "{5D329DCD9F210F01}" {
+   m_sFreeRoamBuildingServerTrigger "{8A318497A6062E3E}Prefabs/MP/Campaign/CampaignBuildingServerTriggerEntity.et"
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType CAMPAIGN
+  }
   SCR_GroupsManagerComponent "{5CAB50F1BC5AF4A2}" {
    m_sDefaultGroupPrefab "{8B4D49A9F324E7D5}Prefabs/Groups/PlayableGroup.et"
   }

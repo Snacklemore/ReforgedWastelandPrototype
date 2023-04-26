@@ -17,33 +17,25 @@ PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/Per
 ScriptedChatEntity : "{536D80EB494DDC43}Prefabs/MP/Campaign/CampaignMPChatEntity.et" {
  coords 9699.37 12.67 1544.854
 }
-SCR_FactionManager FactionManager_Base1 : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
- coords 4882.086 28.595 11750.615
+RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
+ coords -3.207 -4.41 -3.544
+}
+SCR_CampaignFactionManager CampaignFactionManager1 : "{F1AC26310BAE3788}Prefabs/MP/Campaign/CampaignFactionManager.et" {
+ coords 4899.465 28.595 11788.702
  Factions {
-  SCR_Faction "{5CE73973488AC5F3}" : "{279E4B2ECD96D14B}Configs/Factions/B.conf" {
-   FactionColor 0.502 0 0 1
-   UIInfo SCR_FactionUIInfo "{5CD0395D6107635F}" {
-    Name "B"
+  SCR_CampaignFaction "{50B30C3AF4BFD934}" {
+   FactionKey "A"
+   UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+    Name "OPFOR"
    }
-   m_OutlineFactionColor 0.812 0.506 0.506 1
   }
-  SCR_Faction "{5CE73972CF9CB7F1}" : "{475723A0D7F58727}Configs/Factions/A.conf" {
-   FactionColor 0 0.125 0.502 1
-   UIInfo SCR_FactionUIInfo "{5CD0395D769080FC}" {
-    Name "A"
-   }
-   m_OutlineFactionColor 0.506 0.584 0.812 1
-  }
-  SCR_Faction "{5CE726D3F89B8EFC}" : "{8053DB656DD18B15}Configs/Factions/FIA.conf" {
-   UIInfo SCR_FactionUIInfo "{5CE726D3C0CB70AA}" {
-    Name "FIA"
+  SCR_CampaignFaction "{50B30C3ADB052C80}" {
+   FactionKey "B"
+   UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+    Name "BLUFOR"
    }
   }
  }
- m_bCanChangeFactionsPlayable 0
-}
-RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
- coords -3.207 -4.41 -3.544
 }
 HitRegistrationManager HitRegistrationManager1 {
  coords 6580.016 10.002 3130.449
@@ -72,11 +64,27 @@ WST_GearPersistenceManager {
  }
  coords 9631.132 19.925 1512.042
 }
+$grp R3D_HeliBase : "{0C6491AC961ACAC9}Prefabs/Vehicles/Helis/R3D_UH60/R3D_UH60.et" {
+ R3D_UH1 {
+  components {
+   SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+    m_fVehicleDestroyDamage 6000.5
+   }
+  }
+  coords 7425.995 163.038 4316.654
+ }
+ R3D_UH2 {
+  coords 7442.358 162.974 4352.086
+ }
+}
 BasePreloadManager PreloadManager2 : "{104F8505FD1871EF}Prefabs/World/Game/PreloadManager.et" {
  coords -6.924 -10.636 -8.645
  PrefabsToPreload {
   "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.et" "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et" "{3343A055A83CB30D}Prefabs/Weapons/Grenades/M18/Smoke_M18_Red.et" "{14C1A0F061D9DDEE}Prefabs/Weapons/Grenades/M18/Smoke_M18_Violet.et" "{9BBDEE253A16CC66}Prefabs/Weapons/Grenades/M18/Smoke_M18_Yellow.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{1353C6EAD1DCFE43}Prefabs/Weapons/Handguns/M9/Handgun_M9.et" "{C0F7DD85A86B2900}Prefabs/Weapons/Handguns/PM/Handgun_PM.et" "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et" "{7A82FE978603F137}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7.et" "{A89BC9D55FFB4CD8}Prefabs/Weapons/MachineGuns/PKM/MG_PKM.et" "{D182DCDD72BF7E34}Prefabs/Weapons/MachineGuns/M60/MG_M60.et" "{FA5C25BF66A53DCF}Prefabs/Weapons/Rifles/AK74/Rifle_AK74.et" "{3E413771E1834D2F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{61D4F80E49BF9B12}Prefabs/Items/Equipment/Compass/Compass_SY183.et" "{3A421547BC29F679}Prefabs/Items/Equipment/Flashlights/Flashlight_MX991.et" "{575EA58E67448C2A}Prefabs/Items/Equipment/Flashlights/Flashlight_Soviet_01.et" "{E1A5D4B878AA8980}Prefabs/Items/Equipment/Radios/Radio_R148.et" "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et" "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et" "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et" "{A46F7A3C178EBBAC}Prefabs/Characters/Preview/BasebodyPreviewCharacter.et" "{9D23639EA3055572}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_MediumMoneyLoot.et" "{DD8F91EF241595A0}Prefabs/Groups/BLUFOR/Group_FireTeamWaste_BigMoneyLoot.et" "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et"
  }
+}
+SCR_CampaignBuildingManagerEntity : "{1722294208A98906}Prefabs/MP/Campaign/CampaignBuildingManager.et" {
+ coords 4894.031 28.595 11776.362
 }
 SCR_BaseTaskManager : "{17E3EF2CF455460F}Prefabs/MP/Campaign/CampaignTaskManager.et" {
  components {
@@ -101,6 +109,32 @@ SCR_BaseTaskManager : "{17E3EF2CF455460F}Prefabs/MP/Campaign/CampaignTaskManager
   }
  }
 }
+GenericEntity : "{303A087C47C1A7B2}Prefabs/MP/Campaign/Assets/CampaignBuildingMap.et" {
+ coords 4894.106 29.731 11779.938
+ angleX 0
+ angleY 0
+ angleZ 0
+}
+$grp GenericEntity : "{4824ACEE76749F3B}SupplyShop.et" {
+ {
+  coords 5287.521 22.304 9077.052
+  angleY 0
+ }
+ {
+  coords 6897.73 110.09 5480.042
+  angleY 158.425
+  angleZ 3.562
+ }
+ {
+  coords 4143.129 105.58 4665.353
+  angleY 0
+  angleZ 14.31
+ }
+ {
+  coords 2861.685 81.468 6479.177
+  angleY 0
+ }
+}
 $grp GenericEntity : "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et" {
  {
   components {
@@ -118,6 +152,9 @@ $grp GenericEntity : "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et" {
   }
   coords 4881.072 29.488 11860.885
  }
+}
+Vehicle CampaignSupplyTruckEast1Mod1 : "{784685DC17DC6C89}Prefabs/MP/Campaign/Assets/CampaignSupplyTruckEast1Mod.et" {
+ coords 4884.04 28.595 11884.238
 }
 SCR_GarbageManager : "{9B883A7D8EBB282A}Prefabs/MP/Managers/GarbageManager.et" {
  coords 4872.261 28.595 11867.745
@@ -154,7 +191,7 @@ SCR_LoadoutManager : "{CC0F103253FC5D86}Prefabs/MP/Managers/Loadouts/LoadoutMana
  }
 }
 SCR_SpawnPoint MainSpawnA2 : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.et" {
- coords 10080.347 2.983 1580.413
+ coords 9704.896 11.815 1565.611
  m_fSpawnRadius 1.2
  m_sFaction "A"
  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {

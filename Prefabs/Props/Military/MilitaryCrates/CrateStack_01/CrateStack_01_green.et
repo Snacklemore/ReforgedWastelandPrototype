@@ -1,0 +1,30 @@
+GenericEntity : "{7F59A8D992FBF5CA}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/CrateStack_01_base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Materials {
+    MaterialAssignClass "{5D2D6B6CE8DC78BE}" {
+     SourceMaterial "CrateStack_01_Dark"
+     AssignedMaterial "{A85ED7863021FA04}Assets/Props/Military/MilitaryCrates/CrateStack_01/Data/CrateStack_01_Green.emat"
+    }
+    MaterialAssignClass "{5D2D6B6CE8DC78B5}" {
+     SourceMaterial "CrateStack_01_Grey"
+     AssignedMaterial "{A85ED7863021FA04}Assets/Props/Military/MilitaryCrates/CrateStack_01/Data/CrateStack_01_Green.emat"
+    }
+    MaterialAssignClass "{5D2D6B6CE8DC78CB}" {
+     SourceMaterial "CrateStack_01_MLOD"
+     AssignedMaterial "{DC90E35BA36B70CB}Assets/Props/Military/MilitaryCrates/CrateStack_01/Data/CrateStack_01_Green_MLOD.emat"
+    }
+   }
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   m_DestroySpawnObjects {
+    SCR_PrefabSpawnable "{5A8C8B22AE085375}" {
+     m_Prefabs {
+      "{3B80684A790E7356}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/Dst/CrateStack_01_Dst_1_green.et"
+     }
+    }
+   }
+  }
+ }
+}

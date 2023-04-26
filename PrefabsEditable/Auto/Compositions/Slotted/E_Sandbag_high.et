@@ -1,0 +1,115 @@
+GenericEntity : "{469DA717B463A1EC}PrefabsEditable/Auto/Compositions/Slotted/E_CompositionBase.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  MeshObject "{5D32E9DA18CF7BF0}" {
+   Object "{D74B64FED52F4479}Assets/Props/Military/Sandbags/Sandbag_01_long_high.xob"
+  }
+  RigidBody "{5D32E9DA07D7D7D7}" {
+  }
+  SCR_PreviewEntityComponent "{5D32E9DA0DF0E6B7}" {
+   m_aEntries {
+    SCR_BasePreviewEntry "{5D32E9DA0BC49311}" {
+     m_Mesh "{D74B64FED52F4479}Assets/Props/Military/Sandbags/Sandbag_01_long_high.xob"
+    }
+   }
+  }
+ }
+ coords 4859.935 28.595 11900.503
+ {
+  GenericEntity {
+   ID "5D32E9DB85D408AC"
+   components {
+    MeshObject "{5D32E9DA6E46BCFA}" {
+     Object "{D74B64FED52F4479}Assets/Props/Military/Sandbags/Sandbag_01_long_high.xob"
+     LODFactors {
+      5 2 1.5 1 1 1
+     }
+     PixelSizeScale 2
+     ClutterOccluder 1
+    }
+    NavmeshCustomLinkComponent "{5D32E9DA6E46B346}" {
+     Enabled 0
+     LinkType NavmeshJumpLink "{5D32E9DA6E46B37E}" {
+      BeginPoint 0 0 1.5
+      EndPoint 0 0 -1.5
+      Radius 0.2
+      QueueDelay 5
+      QueueTimeout 0
+      ProjectPresets {
+       NavmeshCustomLinkPreset "{5D32E9DA6E46BCBE}" {
+        ProjectName "Soldiers"
+        AreaType "Fence"
+       }
+      }
+      GrabPoint 0 1.5 0
+     }
+    }
+    RigidBody "{5D32E9DA6E46B301}" {
+     ResponseIndex "HugeDestructible"
+     ModelGeometry 1
+     Static 1
+    }
+    SCR_CampaignBuildingCompositionComponent "{5D32E9DA6E46B30D}" {
+    }
+    SCR_DestructionMultiPhaseComponent "{5D32E9DA6E46B3A7}" {
+     Enabled 0
+     "Additional hit zones" {
+      ScriptedHitZone Default {
+       HZDefault 1
+       "Melee multiplier" 1
+       "Kinetic multiplier" 1
+       "Explosive multiplier" 90
+       "Incendiary multiplier" 1
+      }
+     }
+     m_fForceToDamageScale 350
+    }
+    SCR_EditableEntityComponent "{5D32E9DA6E46B254}" {
+     m_UIInfo SCR_EditableEntityUIInfo "{5D32E9DA6E46B39F}" {
+      Name "#AR-EditableEntity_Sandbag_01_long_high_plastic_Name"
+      m_Image "{77C7A90EF8056F63}UI/Textures/EditorPreviews/Auto/Props/Military/Sandbags/E_Sandbag_01_long_high_plastic.edds"
+      m_sFaction "US"
+      m_aAuthoredLabels {
+       11
+      }
+      m_aAutoLabels {
+       108 1 121
+      }
+      m_EntityBudgetCost {
+       SCR_EntityBudgetValue "{5D32E9DA6E46B396}" {
+        m_BudgetType CAMPAIGN
+        m_Value 50
+       }
+       SCR_EntityBudgetValue "{5D32E9DA6E46B393}" {
+        m_BudgetType RANK_PRIVATE
+        m_Value 2
+       }
+      }
+     }
+     m_bAutoRegister ALWAYS
+     m_Flags 769
+    }
+    SCR_PreviewEntityComponent "{5D32E9DA6E46B235}" {
+     m_bRuntime 0
+     m_aEntries {
+      SCR_BasePreviewEntry "{5D32E9DA6E46B22F}" {
+       m_iParentID -1
+       m_Mesh "{D74B64FED52F4479}Assets/Props/Military/Sandbags/Sandbag_01_long_high.xob"
+       m_Flags 0
+       m_Shape MESH
+       m_iPivotID ""
+       m_fScale 1
+       m_vPosition 0 0 0
+       m_vAngles 0 0 0
+      }
+     }
+    }
+    RplComponent "{5D32E9DA6E46B201}" {
+     Enabled 1
+    }
+   }
+   coords 0.013 1.137 -0.101
+   Flags 1027
+  }
+ }
+}

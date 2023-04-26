@@ -170,7 +170,6 @@ class WST_VehicleShop : MenuBase
 	{
 		Print("OnMenuOpen::WST_VehicleShop menu/dialog opened!", LogLevel.NORMAL);
 	
-		SetActionContext("VehicleShop");
 		v = new WST_Vehicle();
 		setupDataObjects();
 		
