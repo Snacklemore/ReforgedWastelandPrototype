@@ -109,7 +109,6 @@ SCR_BaseTaskManager : "{17E3EF2CF455460F}Prefabs/MP/Campaign/CampaignTaskManager
   }
  }
 }
-<<<<<<< Updated upstream
 GenericEntity : "{303A087C47C1A7B2}Prefabs/MP/Campaign/Assets/CampaignBuildingMap.et" {
  coords 4894.106 29.731 11779.938
  angleX 0
@@ -135,10 +134,6 @@ $grp GenericEntity : "{4824ACEE76749F3B}SupplyShop.et" {
   coords 2861.685 81.468 6479.177
   angleY 0
  }
-=======
-GenericEntity : "{4ADCE267EC510331}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_plastic.et" {
- coords 4878.975 28.595 11885.77
->>>>>>> Stashed changes
 }
 $grp GenericEntity : "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et" {
  {
@@ -158,36 +153,8 @@ $grp GenericEntity : "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et" {
   coords 4881.072 29.488 11860.885
  }
 }
-<<<<<<< Updated upstream
 Vehicle CampaignSupplyTruckEast1Mod1 : "{784685DC17DC6C89}Prefabs/MP/Campaign/Assets/CampaignSupplyTruckEast1Mod.et" {
  coords 4884.04 28.595 11884.238
-=======
-GenericEntity : "{85CB73047AECF74B}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_CanvasCover_Cluttered_US_04.et" {
- coords 4889.227 28.595 11880.672
-}
-GenericEntity : "{86F5F52A6FABBF7C}Prefabs/save_stash_boxPrefab.et" {
- components {
-  InventoryItemComponent "{5D2D6B691E6B7F7C}" {
-   Attributes SCR_ItemAttributeCollection "{5D2D6B69199BA614}" {
-    ItemPhysAttributes ItemPhysicalAttributes "{5D2D6B693EE83D02}" {
-     Weight 1
-     ItemDimensions 2 2 2
-     ItemVolume 2
-     ActivePhysicalSimulation Collision
-    }
-   }
-  }
-  UniversalInventoryStorageComponent "{5D2D6B6EA1F2FFBB}" {
-   Attributes SCR_ItemAttributeCollection "{5D2D6B6545C8EEBA}" {
-    ItemPhysAttributes ItemPhysicalAttributes "{5D2D6B65435EEEFC}" {
-     SizeSetupStrategy Manual
-     ItemVolume 0
-    }
-   }
-  }
- }
- coords 4878.534 28.686 11855.612
->>>>>>> Stashed changes
 }
 SCR_GarbageManager : "{9B883A7D8EBB282A}Prefabs/MP/Managers/GarbageManager.et" {
  coords 4872.261 28.595 11867.745
@@ -223,12 +190,6 @@ SCR_LoadoutManager : "{CC0F103253FC5D86}Prefabs/MP/Managers/Loadouts/LoadoutMana
   }
  }
 }
-<<<<<<< Updated upstream
-=======
-SCR_EditorModeEntity : "{E8DD27917B43F8BD}Prefabs/Editor/Modes/EditorModeBuilding.et" {
- coords 4874.464 28.595 11879.813
-}
->>>>>>> Stashed changes
 SCR_SpawnPoint MainSpawnA2 : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.et" {
  coords 9704.896 11.815 1565.611
  m_fSpawnRadius 1.2
