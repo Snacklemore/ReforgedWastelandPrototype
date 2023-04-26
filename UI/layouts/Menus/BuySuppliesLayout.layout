@@ -1,0 +1,119 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  PanelWidgetClass "{5D32E9CEE90F424E}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{5D052623BCAF8EA9}" {
+    PositionX 408
+    OffsetLeft 408
+    PositionY 208
+    OffsetTop 208
+    SizeX 424
+    OffsetRight -832
+    SizeY 376
+    OffsetBottom -584
+   }
+   Color 0.502 0 0 1
+   {
+    RichTextWidgetClass "{5D32E9CEE90F4248}" {
+     Name "RichText1"
+     Slot FrameWidgetSlot "{5D32E9CEA78989E0}" {
+      PositionX 8
+      OffsetLeft 8
+      PositionY 56
+      OffsetTop 56
+      SizeX 360
+      OffsetRight -368
+      SizeY 30
+      OffsetBottom -86
+     }
+     Text "Buy supplies! 1 Supply Point = 2 $"
+    }
+    OverlayWidgetClass "{5D32E9CEE90F424A}" {
+     Name "Overlay0"
+     Slot FrameWidgetSlot "{5D32E9C174CDF2A3}" {
+      Anchor 0 0 1 1
+      PositionX 56
+      OffsetLeft 56
+      PositionY 112
+      OffsetTop 112
+      SizeX -109.098
+      OffsetRight 53.098
+      SizeY -150.49
+      OffsetBottom 38.49
+     }
+     {
+      ButtonWidgetClass "{5D32E9CEE90F4257}" : "{0022F0B45ADBC5AC}UI/layouts/WidgetLibrary/EditBox/WLib_EditBox.layout" {
+       Name "EditBoxRoot0"
+       Slot OverlayWidgetSlot "{5D32E9CEE90F4D73}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       components {
+        SCR_EditBoxComponent "{547290FFBD5B33E9}" {
+         m_sLabel "Amount"
+        }
+       }
+       {
+        VerticalLayoutWidgetClass "{5AA4D27F39EB2514}" {
+         Prefab "{5AA4D27F39EB2514}"
+         {
+          SizeLayoutWidgetClass "{5538C205B27B0F5D}" {
+           Prefab "{5538C205B27B0F5D}"
+           {
+            OverlayWidgetClass "{55367D8E531FD623}" {
+             Prefab "{55367D8E531FD623}"
+             {
+              HorizontalLayoutWidgetClass "{55367D8E4592BC6E}" {
+               Prefab "{55367D8E4592BC6E}"
+               {
+                OverlayWidgetClass "{5538C2059A570E94}" {
+                 Prefab "{5538C2059A570E94}"
+                 {
+                  HorizontalLayoutWidgetClass "{58D095EE846E2B93}" {
+                   Prefab "{58D095EE846E2B93}"
+                   {
+                    EditBoxWidgetClass "{5538C2058B18F877}" {
+                     Prefab "{5538C2058B18F877}"
+                     components {
+                      EditBoxFilterComponent "{5538D70DF38310BC}" {
+                       m_bPunctuation 0
+                       m_bASCIIchars 0
+                       m_bUTFMultibyte 0
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    RichTextWidgetClass "{5D32E9CEE90F425E}" {
+     Name "RichText0"
+     Slot FrameWidgetSlot "{5D05262323168E80}" {
+      PositionX 56
+      OffsetLeft 56
+      PositionY 8
+      OffsetTop 8
+      SizeX 162
+      OffsetRight -218
+      SizeY 30
+      OffsetBottom -38
+     }
+     Text "Supplies"
+    }
+   }
+  }
+ }
+}

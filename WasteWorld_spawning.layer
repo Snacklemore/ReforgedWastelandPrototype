@@ -345,20 +345,6 @@ StaticModelEntity : "{7762F50A860DD074}Prefabs/Props/Military/Furniture/TableMil
  coords 7462.097 164.564 4314.689
  angleY -71.729
 }
-$grp GenericEntity : "{7A82FE978603F137}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7.et" {
- {
-  coords 4864.258 28.595 11897.132
- }
- {
-  coords 4862.174 28.595 11901.918
- }
- {
-  coords 4862.494 28.595 11899.346
- }
- {
-  coords 4861.448 28.595 11896.863
- }
-}
 GenericEntity : "{811C18BEC8B8B245}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_green.et" {
  coords 4881.906 28.595 11869.46
  angleY -173.077

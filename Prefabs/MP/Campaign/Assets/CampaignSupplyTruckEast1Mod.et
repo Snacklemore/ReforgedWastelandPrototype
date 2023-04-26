@@ -1,0 +1,19 @@
+Vehicle : "{BB00538859C87DAC}Prefabs/MP/Campaign/Assets/CampaignSupplyTruckEast.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 17524
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "A"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Cargo {
+     Prefab "{7232AAB358A26AA1}Prefabs/MP/Campaign/Assets/CampaignSupplyTruckCargoCanvastEastMod.et"
+    }
+   }
+  }
+ }
+ coords 4877.841 28.981 11887.086
+}

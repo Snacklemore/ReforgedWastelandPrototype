@@ -4835,7 +4835,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		
 		GetGame().GetCallqueue().CallLater(CreateDeliverTask_Individual,50000,true);
 		GetGame().GetCallqueue().CallLater(TaskMonitorPrompt,10000,true);
-	
+		
 
 	}
 	

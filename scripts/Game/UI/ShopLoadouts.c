@@ -15,7 +15,7 @@ class WST_ShopLoadOutBase
 		return PriceArray.Get(identifier);
 	}
 	
-	//tjoins two LoadOutObjects, returns one WST_ShopLoadOutBase object with all objects of the two objecst
+	//joins two LoadOutObjects, returns one WST_ShopLoadOutBase object with all objects of the two objecst
 	static WST_ShopLoadOutBase AddLoadOuts(WST_ShopLoadOutBase i_loadout, WST_ShopLoadOutBase k_loadout)
 	{
 		WST_ShopLoadOutBase newLoadOutReturn = new WST_ShopLoadOutBase();
@@ -415,6 +415,7 @@ class WST_Vehicle : WST_ShopLoadOutBase
 	ref ShopObject M923A1 = new ShopObject("{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et","M923A1","M923 A1",WST_Type.WST_VEHICLE,100);
 	ref ShopObject M1025 = new ShopObject("{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et","M1025","M1025",WST_Type.WST_VEHICLE,100);
 	ref ShopObject Ural4320 = new ShopObject("{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et","Ural4320","Ural 4320",WST_Type.WST_VEHICLE,100);
+	ref ShopObject SupplyTruck = new ShopObject("{784685DC17DC6C89}Prefabs/MP/Campaign/Assets/CampaignSupplyTruckEast1Mod.et","SupplyUral4320","Supply Truck(for building)",WST_Type.WST_VEHICLE,400);
 
 	
 	
@@ -440,7 +441,7 @@ class WST_Vehicle : WST_ShopLoadOutBase
 		shopItems.Insert(M923A1);
 		shopItems.Insert(M1025);
 		shopItems.Insert(Ural4320);
-		
+		shopItems.Insert(SupplyTruck);
 		
 		foreach(ShopObject o : shopItems)
 		{
