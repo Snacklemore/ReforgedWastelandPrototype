@@ -1,0 +1,79 @@
+GenericEntity : "{469DA717B463A1EC}PrefabsEditable/Auto/Compositions/Slotted/E_CompositionBase.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  SCR_EditableEntityComponent "{55D0EC3A22E75CB1}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "Super High Sandbag Wall"
+    m_aAuthoredLabels {
+     10
+    }
+    m_aAutoLabels {
+     108 1 122
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{59EA96B0560C346B}" {
+      m_Value 20
+     }
+     SCR_EntityBudgetValue "{5D34ED418D64F1E2}" {
+      m_BudgetType RANK_PRIVATE
+      m_Value 2
+     }
+    }
+   }
+  }
+  SCR_PreviewEntityComponent "{5D34ED403A88548A}" {
+   m_aEntries {
+    SCR_BasePreviewEntry "{5D34ED4038870CCA}" {
+     m_Mesh "{6404EDF8B63C3B5B}Assets/Props/Military/Sandbags/Sandbag_01_wall_solid.xob"
+    }
+    SCR_BasePreviewEntry "{5D34ED40515FF0A5}" {
+     m_Mesh "{6404EDF8B63C3B5B}Assets/Props/Military/Sandbags/Sandbag_01_wall_solid.xob"
+     m_vPosition 0 2 0
+    }
+   }
+  }
+ }
+ coords 4871.91 28.595 11880.927
+ {
+  GenericEntity : "{AC5172F00941C060}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_burlap.et" {
+   ID "5D34ED410E8B898C"
+   components {
+    Hierarchy "{5D34ED41E1E8441B}" {
+    }
+    SCR_CampaignBuildingCompositionComponent "{5AAAEA3763C2784B}" {
+     Enabled 0
+    }
+    SCR_EditableEntityComponent "{58EEFD4A6A296DD9}" {
+     Enabled 0
+    }
+    SCR_PreviewEntityComponent "{58EEFD4A6A29D574}" {
+     Enabled 0
+    }
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 0
+    }
+   }
+   coords 0 0 0
+  }
+  GenericEntity : "{D2299274C13B1169}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_solid_burlap.et" {
+   ID "5D34ED410E8B8982"
+   components {
+    Hierarchy "{5D34ED41F4A0559E}" {
+    }
+    SCR_CampaignBuildingCompositionComponent "{5AAAEA3763C2784B}" {
+     Enabled 0
+    }
+    SCR_EditableEntityComponent "{58EEFD4A6A2569FA}" {
+     Enabled 0
+    }
+    SCR_PreviewEntityComponent "{58EEFD4A6A25C8B9}" {
+     Enabled 0
+    }
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 0
+    }
+   }
+   coords 0 2.026 0
+  }
+ }
+}

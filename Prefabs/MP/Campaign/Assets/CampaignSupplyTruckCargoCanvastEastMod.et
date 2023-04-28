@@ -151,6 +151,8 @@ GenericEntity : "{159F48EDCF903D1F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ca
      Duration 1
      "Sort Priority" 11
     }
+    SCR_CampaignDisassembleCompositionUserAction "{5D34ED735E859DEC}" {
+    }
    }
   }
  }

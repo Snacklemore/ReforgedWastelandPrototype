@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{D33EE0BA5BB8F50B}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbags_veryHigh.et"
+ Name "{B169762BF587E46F}PrefabsEditable/Auto/Compositions/Slotted/E_Sandbag_SuperHighWall.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

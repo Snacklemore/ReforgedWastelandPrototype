@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{044611F3C3770721}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbags_VeryHigh2.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

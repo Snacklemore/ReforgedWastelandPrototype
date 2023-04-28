@@ -1,0 +1,10 @@
+GenericEntity : "{D33EE0BA5BB8F50B}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbags_veryHigh.et" {
+ ID "5282DCB5DFC8538F"
+ coords 4876.016 28.595 11888.176
+ {
+  GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
+   ID "5D34ED549234EA59"
+   coords 0 0 0
+  }
+ }
+}

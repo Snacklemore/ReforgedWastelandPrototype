@@ -5,7 +5,7 @@ SCR_EditorModeEntity : "{E56F54E533ACE527}Prefabs/Editor/Modes/EditorModeBase.et
    m_Registries {
     SCR_PlaceableEntitiesRegistry "{5A0ACCCCC2FEE1FC}" {
      m_Prefabs + {
-      "{D33EE0BA5BB8F50B}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbags_veryHigh.et"
+      "{044611F3C3770721}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbags_VeryHigh2.et" "{B169762BF587E46F}PrefabsEditable/Auto/Compositions/Slotted/E_Sandbag_SuperHighWall.et"
      }
     }
    }

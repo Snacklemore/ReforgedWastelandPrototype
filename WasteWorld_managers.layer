@@ -153,8 +153,14 @@ $grp GenericEntity : "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et" {
   coords 4881.072 29.488 11860.885
  }
 }
+SCR_ChimeraCharacter : "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et" {
+ coords 4881.157 28.595 11879.285
+}
 Vehicle CampaignSupplyTruckEast1Mod1 : "{784685DC17DC6C89}Prefabs/MP/Campaign/Assets/CampaignSupplyTruckEast1Mod.et" {
  coords 4884.04 28.595 11884.238
+}
+SCR_EditorManagerEntity : "{788933FFDC706A68}Prefabs/Editor/EditorManager.et" {
+ coords 4841.132 26.489 11993.957
 }
 SCR_GarbageManager : "{9B883A7D8EBB282A}Prefabs/MP/Managers/GarbageManager.et" {
  coords 4872.261 28.595 11867.745
