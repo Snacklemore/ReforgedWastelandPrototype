@@ -146,9 +146,16 @@ modded class SCR_RespawnSystemComponent
 			Print("Requested spawn denied! GameMode returned false in CanPlayerRespawn() for playerId=" + playerId, LogLevel.WARNING);
 			return null;
 		}
+		
 		SCR_SpawnPoint spawnPoint = GetPlayerSpawnPoint(playerId);
+		Faction faction_l = GetPlayerFaction(playerId);
+		
+		if(faction_l.GetFactionKey() == "A")
+					m_sCustomRespawnPrefab = "{65BB473E0E099118}Prefabs\Characters\Campaign\Final\Campaign_USSR_PlayerWaste.et";
+		else if(faction_l.GetFactionKey() == "B")
+					m_sCustomRespawnPrefab = "{C220A5239817C518}Prefabs/Characters/Campaign/Final/Campaign_US_PlayerWaste.et";
+
 		m_bCustomRespawn = true;
-		m_sCustomRespawnPrefab = "{65BB473E0E099118}Prefabs\Characters\Campaign\Final\Campaign_USSR_PlayerWaste.et";
 		vector pos ;
 		vector rot ;
 		spawnPoint.GetPositionAndRotation(pos,rot);

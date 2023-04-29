@@ -112,7 +112,8 @@ class MoneyComponent : ScriptComponent
 		if(mode)
 		{
 			m_MoneyManager = mode.GetMoneyManager();
-			m_MoneyManager.register(this);
+			if(m_MoneyManager)
+				m_MoneyManager.register(this);
 		}
 		
 	
