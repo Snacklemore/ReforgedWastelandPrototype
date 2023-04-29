@@ -28,12 +28,14 @@ SCR_CampaignFactionManager CampaignFactionManager1 : "{F1AC26310BAE3788}Prefabs/
    UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
     Name "OPFOR"
    }
+   m_sFactionFlag "{E33A00E2A8686EBC}BriefingAssets/TankFactionFlagOpfor.edds"
   }
   SCR_CampaignFaction "{50B30C3ADB052C80}" {
    FactionKey "B"
    UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
     Name "BLUFOR"
    }
+   m_sFactionFlag "{79FFD58268045C5E}BriefingAssets/TankFactionFlag.edds"
   }
  }
 }
@@ -153,14 +155,8 @@ $grp GenericEntity : "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et" {
   coords 4881.072 29.488 11860.885
  }
 }
-SCR_ChimeraCharacter : "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et" {
- coords 4881.157 28.595 11879.285
-}
 Vehicle CampaignSupplyTruckEast1Mod1 : "{784685DC17DC6C89}Prefabs/MP/Campaign/Assets/CampaignSupplyTruckEast1Mod.et" {
  coords 4884.04 28.595 11884.238
-}
-SCR_EditorManagerEntity : "{788933FFDC706A68}Prefabs/Editor/EditorManager.et" {
- coords 4841.132 26.489 11993.957
 }
 SCR_GarbageManager : "{9B883A7D8EBB282A}Prefabs/MP/Managers/GarbageManager.et" {
  coords 4872.261 28.595 11867.745
@@ -195,6 +191,9 @@ SCR_LoadoutManager : "{CC0F103253FC5D86}Prefabs/MP/Managers/Loadouts/LoadoutMana
    m_sAffiliatedFaction "A"
   }
  }
+}
+SCR_EditorModeEntity : "{E8DD27917B43F8BD}Prefabs/Editor/Modes/EditorModeBuilding.et" {
+ coords 4857.436 28.605 11913.451
 }
 SCR_SpawnPoint MainSpawnA2 : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.et" {
  coords 9704.896 11.815 1565.611

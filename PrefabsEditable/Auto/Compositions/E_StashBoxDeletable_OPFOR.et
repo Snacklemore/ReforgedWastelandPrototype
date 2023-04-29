@@ -1,0 +1,30 @@
+GenericEntity : "{EDE4904148CF02CE}PrefabsEditable/Auto/Compositions/E_StashBox.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  SCR_EditableEntityComponent "{55D0EC3A22E75CB1}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    m_aAuthoredLabels {
+     10
+    }
+    m_aAutoLabels {
+     108 1 122
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5D396C59069BF379}" {
+      m_BudgetType RANK_PRIVATE
+      m_Value 2
+     }
+    }
+   }
+  }
+  SCR_EditorLinkComponent "{5D38A4A7BE574697}" {
+   m_aEntries {
+    SCR_EditorLinkEntry "{5D38A4A83E1FB94E}" {
+     m_Prefab "{8DA7DAC4905759DE}PrefabsEditable/Auto/Props/Crates/E_CrateWooden_01_blue_Storage.et"
+     m_vPosition 0.018 0.174 -0.068
+    }
+   }
+  }
+ }
+ coords 4875.356 28.595 11882.614
+}

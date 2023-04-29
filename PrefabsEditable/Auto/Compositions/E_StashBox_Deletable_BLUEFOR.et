@@ -1,0 +1,13 @@
+GenericEntity : "{E334D15D6E600175}PrefabsEditable/Auto/Compositions/E_StashBoxDeletable_OPFOR.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  SCR_EditableEntityComponent "{55D0EC3A22E75CB1}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    m_aAuthoredLabels {
+     11
+    }
+   }
+  }
+ }
+ coords 4874.702 28.595 11884.422
+}

@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{8DA7DAC4905759DE}PrefabsEditable/Auto/Props/Crates/E_CrateWooden_01_blue_Storage.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -1,0 +1,83 @@
+GenericEntity : "{326E60F7A7358EDA}Prefabs/Props/Crates/CrateWooden_01_blue.et" {
+ ID "5216C470CA548AD1"
+ components {
+  RigidBody "{5872F0EB7DFB5A9D}" {
+  }
+  SCR_EditableEntityComponent "{58AAE805AB9813E0}" : "{996046FE206C699A}Prefabs/Editor/Components/Default_SCR_EditableEntityComponent.ct" {
+   Enabled 0
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#AR-EditableEntity_CrateWooden_01_blue_Name"
+    m_Image "{F0D2FD02C35C6E7A}UI/Textures/EditorPreviews/Auto/Props/Crates/E_CrateWooden_01_blue.edds"
+    m_aAuthoredLabels {
+    }
+    m_aAutoLabels {
+     1 121
+    }
+   }
+  }
+  SCR_PreviewEntityComponent "{58AAE805AB98BC43}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   Enabled 0
+   m_bRuntime 0
+   m_aEntries {
+    SCR_BasePreviewEntry "{5D38A4A419498546}" {
+     m_iParentID -1
+     m_Mesh "{CD1CAAD3EFC0BE21}Assets/Props/Crates/CrateWooden_01/CrateWooden_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_fScale 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5D38A4A452F80B34}" {
+   Attributes SCR_ItemAttributeCollection "{5D38A4A55AE33755}" {
+    ItemDisplayName UIInfo "{5D38A4A2C7AD6FDD}" {
+     Name "Stash Box"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{5D38A4A2C3EAE1D0}" {
+     Weight 100
+     SizeSetupStrategy Manual
+     ItemDimensions 100 100 100
+     ItemVolume 1000
+    }
+    m_Size SLOT_3x3
+    m_SlotType SLOT_ANY
+    m_bDraggable 0
+   }
+   CapacityCoefficient 20
+   m_fMaxWeight 200
+   m_aSlotsToShow {
+    0 1 2 3
+   }
+  }
+  ActionsManagerComponent "{5D38A4A5BEF5FDAD}" {
+   ActionContexts {
+    UserActionContext "{5D38A4A5BCE5EBD0}" {
+     UIInfo UIInfo "{5D38A4A5C72289F3}" {
+      Name "Open"
+     }
+     ContextName "default"
+     Position PointInfo "{5D38A4A5DD0C7220}" {
+      Offset 0.1011 0.8896 0
+     }
+    }
+   }
+   additionalActions {
+    SCR_OpenStorageAction "{5D38A4A5CAC699DD}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{5D38A4A5D59A92F4}" {
+      Name "Open"
+     }
+    }
+   }
+  }
+  RplComponent "{58AAE805AB9816D0}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
+  }
+  Hierarchy "{5D38A4A92EEABA38}" {
+  }
+ }
+}

@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{F8778079A70CD987}UI/layouts/Menus/MainMenu/PreloadScreenMod.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

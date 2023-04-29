@@ -251,7 +251,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	//------------------------------------------------------------------------------------------------
 	static Resource GetFactionManagerResource()
 	{
-		SCR_GameModeCampaignMP campaign = GetCampaign();
+		SCR_BaseGameModeWasteland campaign = GetCampaign();
 		if (!campaign)
 			return null;
 		
@@ -265,9 +265,9 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	static SCR_GameModeCampaignMP GetCampaign()
+	static SCR_BaseGameModeWasteland GetCampaign()
 	{
-		return SCR_GameModeCampaignMP.Cast(GetGame().GetGameMode());
+		return SCR_BaseGameModeWasteland.Cast(GetGame().GetGameMode());
 	}
 	
 	//------------------------------------------------------------------------------------------------
