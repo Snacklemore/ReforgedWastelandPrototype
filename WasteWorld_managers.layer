@@ -192,9 +192,6 @@ SCR_LoadoutManager : "{CC0F103253FC5D86}Prefabs/MP/Managers/Loadouts/LoadoutMana
   }
  }
 }
-SCR_EditorModeEntity : "{E8DD27917B43F8BD}Prefabs/Editor/Modes/EditorModeBuilding.et" {
- coords 4857.436 28.605 11913.451
-}
 SCR_SpawnPoint MainSpawnA2 : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.et" {
  coords 9704.896 11.815 1565.611
  m_fSpawnRadius 1.2

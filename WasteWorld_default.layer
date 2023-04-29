@@ -1,3 +1,6 @@
+TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
+ coords 4860.758 28.595 11907.188
+}
 SCR_BaseGameModeWasteland SCR_BaseGameModeWasteland2 : "{805A3F581EA80E37}SCR_BaseGameModeWasteland.et" {
  components {
   SCR_AutomaticRespawnHandlerComponent "{5CAB50F044535F4F}" {
@@ -13,6 +16,9 @@ SCR_BaseGameModeWasteland SCR_BaseGameModeWasteland2 : "{805A3F581EA80E37}SCR_Ba
   }
   SCR_HintManagerComponent "{5CAB50F1C679006A}" {
    m_bIgnoreHintSettings 1
+  }
+  SCR_NametagConfigComponent "{5CAB50F1C1DBCFCC}" {
+   m_sConfigPath "{B271A673BE4302AE}Configs/NameTags/NametagFriendliesWST.conf"
   }
   SCR_PossessingManagerComponent "{5CAB50F1EC33DA6E}" {
    Enabled 0
