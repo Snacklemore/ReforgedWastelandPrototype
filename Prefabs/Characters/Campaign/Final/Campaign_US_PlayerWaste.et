@@ -74,8 +74,6 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
   WST_MoneyConfigComponent "{5D3AC2F9BB8DD3E6}" {
    initalValue 450
   }
-  WST_SaveStashBoxPlacementComponent "{5D3AC2F9BB8DD3E7}" {
-  }
   WST_TraderComponent "{5D3AC2F9BB8DD3E5}" {
   }
   WST_TransferComponent "{5D3AC2F9BB8DD3FA}" {

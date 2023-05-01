@@ -239,6 +239,10 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	protected int m_iControlPointsHeldWest;
 	[RplProp()]
 	protected int m_iControlPointsHeldEast;
+	[RplProp()]
+	protected int m_iAIKillsWest;
+	[RplProp()]
+	protected int m_iAIKillsEast;
 	
 	//************************//
 	//PROTECTED STATIC METHODS//
@@ -305,6 +309,17 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		return 0;
 	}
 	
+	
+	int GetFactionAIKillCount(FactionKey factionKey)
+	{
+		if (factionKey == FACTION_BLUFOR)
+			return m_iAIKillsWest;
+		
+		if (factionKey == FACTION_OPFOR)
+			return m_iAIKillsEast;
+		
+		return -1;
+	}
 	//------------------------------------------------------------------------------------------------
 	int GetControlPointTreshold()
 	{
@@ -1411,6 +1426,9 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			title.SetTextFormat(GetXPRewardName(rewardID));
 		
 		if (rewardID != CampaignXPRewards.ENEMY_KILL && rewardID != CampaignXPRewards.ENEMY_KILL_VEH)
+		{
+			
+		}else
 		{
 			m_wXPInfo.SetVisible(true);
 			m_fHideXPInfo = GetWorld().GetWorldTime() + XP_INFO_DURATION;
@@ -4187,15 +4205,17 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 				if(!spawnedItem)
 					continue;
 				MoneyComponent mc = MoneyComponent.Cast(spawnedItem.FindComponent(MoneyComponent));
-				if(mc)
-					continue;
 				RplComponent rpl = RplComponent.Cast(spawnedItem.FindComponent(RplComponent));
-				if (rpl)
+				if(mc && rpl)
+				{
+					continue;
 					RplComponent.DeleteRplEntity(spawnedItem,false);
+				}
+					
 				
-						
+				bool success = InsertAutoEquipItem(mmc,spawnedItem);
 				//bool success = mmc.TryInsertItem(spawnedItem,EStoragePurpose.PURPOSE_ANY,null);
-				bool success = mmc.TrySpawnPrefabToStorage(n);
+				//mmc.TrySpawnPrefabToStorage(n);
 
 				Print("GameModeWasteland::Succes:  "+success +"for Item "+data.GetPrefabName());
 			}
@@ -4241,14 +4261,18 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	static bool InsertAutoEquipItem(SCR_InventoryStorageManagerComponent inventory, IEntity item)
+	{
+		EStoragePurpose purpose = EStoragePurpose.PURPOSE_ANY;
+		if (item.FindComponent(WeaponComponent)) purpose = EStoragePurpose.PURPOSE_WEAPON_PROXY;
+		if (item.FindComponent(BaseLoadoutClothComponent)) purpose = EStoragePurpose.PURPOSE_LOADOUT_PROXY;
+		if (item.FindComponent(SCR_GadgetComponent)) purpose = EStoragePurpose.PURPOSE_GADGET_PROXY;
+		
+		bool insertedItem = inventory.TryInsertItem(item, purpose, null);
+		if (!insertedItem) insertedItem = inventory.TryInsertItem(item, EStoragePurpose.PURPOSE_ANY, null);
+		
+		return insertedItem;
+	}
 	
 	
 	
@@ -4321,7 +4345,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			if (campaignNetworkComponent)
 			{
 				campaignNetworkComponent.UpdatePlayerRank(false);
-				campaignNetworkComponent.EnableShowingSpawnPosition(true)
+				//campaignNetworkComponent.EnableShowingSpawnPosition(true)
 			}
 	}
 	
@@ -4665,10 +4689,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			
 			
 			
-			SCR_CampaignNetworkComponent campaignNetworkComponent = SCR_CampaignNetworkComponent.Cast(pc.FindComponent(SCR_CampaignNetworkComponent));
 			
-			if (campaignNetworkComponent)
-				campaignNetworkComponent.EnableShowingSpawnPosition(false)
 		}
 	}
 	
@@ -4880,6 +4901,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		
 	
 	}
+	
+	
 	
 	ref array<vector> m_MoveTaskDestinations = new array<vector>();
 	void CreateMoveTaskDestinations()
