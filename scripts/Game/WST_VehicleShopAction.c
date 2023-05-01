@@ -19,7 +19,13 @@ class WST_VehicleShopAction : ScriptedUserAction
 		//RandomGenerator randomGenerator = new RandomGenerator();
 		//vector teleportPosition = randomGenerator.GenerateRandomPointInRadius(m_iSpawnMinDist, m_iSpawnMaxDist, m_vTeleportDestination);
 		//pUserEntity.SetOrigin(teleportPosition);
-		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.WST_VehicleShop);
+		WST_VehicleShop shop = WST_VehicleShop.Cast(GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.WST_VehicleShop));
+		//owner is the shop, get rpl ID of the owner 
+		RplComponent rplOwner = RplComponent.Cast(pOwnerEntity.FindComponent(RplComponent));
+		if (!rplOwner)
+			return;
+		RplId shopId = rplOwner.Id();
+		shop.SetShopId(shopId);
 
 	}
 

@@ -27,9 +27,9 @@ class WST_TraderComponent : ScriptComponent
 		Rpc(RpcDo_CloseAllMenus);
 	
 	}
-	void HandleVehicleBuyAction(ResourceName n,int balance)
+	void HandleVehicleBuyAction(ResourceName n,int balance,RplId shopId)
 	{
-		Rpc(RpcDo_HandleVehicleBuyAction,n,balance);
+		Rpc(RpcDo_HandleVehicleBuyAction,n,balance,shopId);
 	}
 	void HandleBuyAction(ResourceName n,int balance)
 	{
@@ -143,7 +143,7 @@ class WST_TraderComponent : ScriptComponent
 	
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcDo_HandleVehicleBuyAction(ResourceName n,int balance)
+	void RpcDo_HandleVehicleBuyAction(ResourceName n,int balance,RplId shopId)
 	{
 		
 		
@@ -153,9 +153,20 @@ class WST_TraderComponent : ScriptComponent
 		SCR_BaseGameModeWasteland mode = SCR_BaseGameModeWasteland.Cast( GetGame().GetGameMode());
 		
 		//get vehiclespawnpoint array
-		array<WST_VehicleSpawnPoint> vs_a = mode.m_vehicleSpawnPoints;
+		//array<WST_VehicleSpawnPoint> vs_a = mode.m_vehicleSpawnPoints;
+		//get WST_VehicleShopPointInfoComponent 
+		RplComponent shop = Replication.FindItem(shopId);
+		IEntity owner = shop.GetEntity();
+		WST_VehicleShopPointInfoComponent spawn = WST_VehicleShopPointInfoComponent.Cast(owner.FindComponent(WST_VehicleShopPointInfoComponent));
+		vector mat[4] = {};
+		spawn.m_Position.GetModelTransform(mat);
 		
 		
+		
+		EntitySpawnParams params = new EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		spawn.m_Position.GetWorldTransform(params.Transform);
+		params.Transform[3] = spawn.GetOwner().CoordToParent(params.Transform[3]);
 		PlayerManager p = GetGame().GetPlayerManager();
 		//get RplId, this component is child of the player Character 
 		RplComponent Rpl = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
@@ -171,30 +182,11 @@ class WST_TraderComponent : ScriptComponent
 		PlayerController pc = p.GetPlayerController(playerId);
 		IEntity ie = pc.GetControlledEntity();
 		
-		float mindistSqd= 1000000.0;
-		WST_VehicleSpawnPoint nearest;
-		foreach (WST_VehicleSpawnPoint vs : vs_a)
-		{
-			//distance check each point to player pos
-			vector pos = ie.GetOrigin();
-			float distance ;
-			vector posVS = vs.GetOrigin();
-			//vector.DistanceSqXZ(playerEntity.GetOrigin(), respawn
-			float distanceSqd = vector.DistanceSqXZ(pos,posVS);
-			Print("WST_TraderComponent::RpcDo Distance to VS: " + distanceSqd);
-			if (distanceSqd < mindistSqd)
-			{
-				mindistSqd = distanceSqd;
-				nearest = vs;
-			}
-				
-			
-		}
 		
 		
-		EntitySpawnParams params = new EntitySpawnParams();
-		params.TransformMode = ETransformMode.WORLD;
-		params.Transform[3] = nearest.GetOrigin();
+		
+		
+		
 		
 		Vehicle v = Vehicle.Cast(GetGame().SpawnEntityPrefab(Resource.Load(n), GetGame().GetWorld(), params));
 		bool isInserted = GetGame().GetGarbageManager().Insert(v);
