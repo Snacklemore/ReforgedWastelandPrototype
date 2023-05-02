@@ -1,0 +1,171 @@
+GenericEntity : "{C63227C0E70EA62E}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{B7E2479ACAA5017D}Sounds/Weapons/Rifles/M16A2/RVX_M4_Shot.acp" "{A6F3D0955462D8FE}Sounds/Weapons/Rifles/M16A2/Weapons_Rifles_M16A2_Handling.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{68E023371FDD3B12}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Rifle_WoodMetal.acp" "{07E8D425196745F4}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Rifle_Plastic.acp" "{332983CC95EE1E1E}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Rifle.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp" "{BFD8C39A140E182E}Sounds/Weapons/_SharedData/Weapon_Bullet_Casings_5_56mm.acp"
+   }
+  }
+  AttachmentSlotComponent "{5D454354A410A6DF}" {
+   Enabled 0
+  }
+  BaconSuppressors_WeaponSuppressionComponent "{5D454354A410A6D1}" {
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{82B1F4CDC78C7AF2}Assets/Weapons/Rifles/Rifles/RVX_M4/RVX_M4A1_Base.xob"
+  }
+  SCR_InteractionHandlerComponent "{5D454354A410A6D4}" {
+   Enabled 0
+   Layers 1
+   LayerPreset "Weapon"
+   m_sActionContext "user"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Enabled 1
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "MK-18"
+     Description "MK-18 AR15 carbine chambered in 5.56"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5D454354A410A6ED}" {
+     AttachmentSlot LoadoutSlotInfo peq {
+      PivotID "Scene_Root"
+      Offset -0.0015 0.112 0.2061
+      Angles 0 0 0
+      Enabled 1
+      Prefab ""
+      ActivatePhysicsOnDetaching 1
+     }
+     AttachmentType AttachmentHandGuard "{5D454354A410A6FA}" {
+     }
+    }
+    AttachmentSlotComponent "{5D454354A410A6F5}" {
+     AttachmentSlot LoadoutSlotInfo laser {
+      PivotID "Scene_Root"
+      Offset 0 0.1085 0.2184
+      ChildPivotID "laser"
+      Prefab ""
+      InspectionWidgetOffset 0 0.111 0.2193
+     }
+     AttachmentType AttachmentShortRIS "{5D454354A410A70B}" {
+     }
+    }
+    AttachmentSlotComponent "{5D454354A410A6F6}" {
+     AttachmentSlot LoadoutSlotInfo supressor {
+      PivotID "Scene_Root"
+      Offset 0 0.0793 0.3746
+      Prefab ""
+     }
+     AttachmentType AttachmentMuzzle556 "{5D454354A410A6F4}" {
+     }
+    }
+    AttachmentSlotComponent "{5D454354A410A6F8}" {
+     Enabled 1
+     AttachmentSlot InventoryStorageSlot Handguard {
+      Prefab "{8D10FA6CC71962F4}Prefabs/Weapons/Attachments/Frontguard/MK18_Rail/MK18_Rail.et"
+     }
+     AttachmentType AttachmentHandGuardM16 "{5D454354A410A6FF}" {
+     }
+    }
+    AttachmentSlotComponent "{5D454354A410A6FD}" {
+     AttachmentSlot LoadoutSlotInfo ironsight {
+      PivotID "Scene_Root"
+      Offset -0.0021 0.106 0.0242
+      AutoTransform 1
+      ChildPivotID "snap_weapon"
+      InheritParentSkeleton 0
+      ActivatePhysicsOnDetaching 0
+     }
+     AttachmentType AttachmentOptics "{5D454354A410A6F1}" {
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      CaseEjectingEffectComponent "{5122AAD190FCA21D}" {
+       EffectPosition EntitySlotInfo "{5122BA87B56F471A}" {
+        Offset 0.0244 0.0881 0.0594
+       }
+      }
+      CaseEjectingEffectComponent "{5534745C44D1EF35}" {
+       EffectPosition EntitySlotInfo "{52C89337A55D0B87}" {
+        Offset 0 0.0818 0.0762
+       }
+      }
+      SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
+       ParticleEffect "{D629F2C4D494BE80}Particles/Weapon/Muzzle_M16A2_flashHider.ptc"
+       EffectPosition EntitySlotInfo "{C9B3271BB85B5D32}" {
+        Offset 0.0039 0.0771 0.4081
+       }
+      }
+      SCR_MuzzleEffectComponent "{5D454354A410A704}" {
+       ParticleEffect "{EB2E119AC95CF4BD}Particles/Weapon/Smoke_M60.ptc"
+       EffectOrientUp 1
+       EffectPosition EntitySlotInfo smoke {
+        Offset 0 0.078 0.4106
+       }
+       m_vOffset 0 0 0
+      }
+     }
+     FireModes {
+      BaseFireMode "{5534745C44D1EF22}" {
+       MaxBurst -1
+       UIName "Auto"
+      }
+     }
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      Offset 0 0.0051 0.1003
+     }
+     MagazineTemplate ""
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsPosition PointInfo "{BB23A63796688E69}" {
+      Offset 0 0 0
+     }
+     SightsFOVInfo SCR_FixedFOVInfo "{5D454354A410A713}" {
+      m_fFieldOfView 50
+     }
+     SightsPointFront PointInfo "{5534745C44D1EF08}" {
+      Offset 0 0.1503 0.4649
+     }
+     SightsPointRear PointInfo "{5534745C44D1EF0D}" {
+      PivotID ""
+      Offset 0 0.1723 0
+     }
+     CameraRecoilAmount -1.72
+    }
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{5086F9ADF588DCA4}" {
+     Position PointInfo "{5086F9ADE97650DF}" {
+      PivotID ""
+      Offset 0 0.1066 0.0241
+     }
+    }
+    UserActionContext "{5A1E58F7B04F9BE5}" {
+     Position PointInfo "{5A1E5C473E2F34A7}" {
+      Offset 0 0 0.0707
+     }
+    }
+    UserActionContext "{5A1E58F7AED270D4}" {
+     Position PointInfo "{5A1E5C474348FA82}" {
+      Offset 0 0.0441 -0.0313
+     }
+    }
+    UserActionContext "{5D454354A410A729}" {
+     ContextName "laser"
+     Position PointInfo "{5D454354A410A72E}" {
+      Offset 0 0.1047 0.2262
+     }
+    }
+   }
+  }
+ }
+ coords 45.472 1.019 57.912
+ angleY 4.951
+}

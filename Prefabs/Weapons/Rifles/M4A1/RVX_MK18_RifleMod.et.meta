@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{42DC70AE2E69965F}Prefabs/Weapons/Rifles/M4A1/RVX_MK18_RifleMod.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

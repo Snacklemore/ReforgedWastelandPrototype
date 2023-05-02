@@ -1,0 +1,30 @@
+GenericEntity : "{48855FC8E4E9E4E1}Prefabs/Weapons/Rifles/AKS74UN/Rifle_AKS74UN_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5D45434257C54594}" {
+     AttachmentSlot InventoryStorageSlot MuzzleSlot {
+      PivotID "barrel_muzzle"
+      Offset 0 0 -0.0262
+      Prefab "{BAC59BF0DF432D43}Prefabs/Weapons/Attachments/Muzzle/RHS_PGS64.et"
+     }
+     AttachmentType Attachment545x39Muzzle "{5D45434257C545A9}" {
+     }
+    }
+    AttachmentSlotComponent "{5D45434257C54598}" {
+     AttachmentSlot InventoryStorageSlot AKS74UHandGaurd {
+      PivotID "barrel_chamber"
+      Offset 0 0.0018 0.0409
+      Prefab "{B2D34183DE3E46A5}Prefabs/Weapons/Attachments/Handguards/Handguard_AKS74U/Handguard_AKS74U_base.et"
+     }
+     AttachmentType AttachmentHandGaurdAKS74U "{5D45434257C54597}" {
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazineTemplate ""
+    }
+   }
+  }
+ }
+}

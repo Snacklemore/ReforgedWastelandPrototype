@@ -6,6 +6,11 @@ GenericEntity : "{E334D15D6E600175}PrefabsEditable/Auto/Compositions/E_StashBoxD
     m_aAuthoredLabels {
      11
     }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5D396C59069BF379}" {
+      m_Value 1
+     }
+    }
    }
   }
  }

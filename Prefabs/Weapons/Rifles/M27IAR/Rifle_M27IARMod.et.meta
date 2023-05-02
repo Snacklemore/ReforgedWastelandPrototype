@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{BB8184D1D15EC5EC}Prefabs/Weapons/Rifles/M27IAR/Rifle_M27IARModw.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

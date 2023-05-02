@@ -49,8 +49,8 @@ FrameWidgetClass {
     OffsetTop 416
     SizeX 392
     OffsetRight -928
-    SizeY 208
-    OffsetBottom -624
+    SizeY 160
+    OffsetBottom -576
    }
    {
     ImageWidgetClass "{5D44ABCF8F7F6023}" {
@@ -93,8 +93,8 @@ FrameWidgetClass {
     OffsetTop 416
     SizeX 424
     OffsetRight -472
-    SizeY 208
-    OffsetBottom -624
+    SizeY 160
+    OffsetBottom -576
    }
    {
     ImageWidgetClass "{5D44ABCFB23AE66D}" {

@@ -1,0 +1,27 @@
+GenericEntity : "{7E091BABB4D58984}Prefabs/Weapons/Handguns/APS/Handgun_APS_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB0701437228}" {
+     Description "#RHS-Weapon_APS_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{59772ECD6B3D5884}" {
+     Weight 0.85
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{50F64C45E7271D47}" {
+     MagazineWell MagazineWellAPS "{59772ECD6B3D58EC}" {
+     }
+     MagazineTemplate ""
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Description "#RHS-Weapon_APS_Description"
+   }
+  }
+ }
+}

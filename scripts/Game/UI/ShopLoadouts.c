@@ -97,7 +97,17 @@ class WST_ShopLoadOutBase
 class WST_Equipment : WST_ShopLoadOutBase
 {
 	
+	ref ShopObject Optic_TA31RCO= new ShopObject("{2518CA6044D6BBDD}Prefabs/Weapons/Attachments/Optics/ta31rco/Optic_TA31RCO.et","Optic_TA31RCO","Optic TA31RCO",WST_Type.WST_OPTIC,10);
 	
+	ref ShopObject Optic_SU230= new ShopObject("{DA2AED4A5F958164}Prefabs/Weapons/Attachments/Optics/su230/Optic_SU230.et","Optic_SU230","Optic SU230",WST_Type.WST_OPTIC,10);
+
+	ref ShopObject Optic_M8541= new ShopObject("{333A794F0B55C019}Prefabs/Weapons/Attachments/Optics/m8541/Optic_M8541.et","Optic_M8541","Optic M8541",WST_Type.WST_OPTIC,10);
+
+	ref ShopObject Optic_bravo4= new ShopObject("{969F74903AFFCABE}Prefabs/Weapons/Attachments/Optics/bravo4/Optic_bravo4.et","Optic_bravo4","Optic Bravo4",WST_Type.WST_OPTIC,10);
+
+	ref ShopObject Optic_1P87= new ShopObject("{C4B57488909B3B63}Prefabs/Weapons/Attachments/Optics/1p87/Optic_1P87.et","Optic_1P87","Optic 1P87",WST_Type.WST_OPTIC,10);
+	ref ShopObject LaserANPEQ= new ShopObject("{322DE2A7FE4A7566}Prefabs/Weapons/Attachments/Lasers/Laser_ANPEQ16_base.et","LaserANPEQ","ANPEQ16 Laser",WST_Type.WST_ATTACHMENT,10);
+
 	ref ShopObject LSzH = new ShopObject("{AC1C630517753E2B}Prefabs/Characters/HeadGear/Helmet_LShZ/Helmet_LShZ_6m2_black.et","LSzH","LSzH Black",WST_Type.WST_HELMET,10);
 	ref ShopObject LSzH3M = new ShopObject("{D585D22578362515}Prefabs/Characters/HeadGear/Helmet_LShZ/Helmet_LShZ_HC_3M_black.et","LSzH3M","LSzH Black HC 3M",WST_Type.WST_HELMET,10);
 	
@@ -177,8 +187,12 @@ class WST_Equipment : WST_ShopLoadOutBase
 		shopItems.Insert(JacketsV4);
 		shopItems.Insert(JacketsV5);
 		shopItems.Insert(JacketsV6);
-		
-	
+		shopItems.Insert(LaserANPEQ);
+		shopItems.Insert(Optic_1P87);
+		shopItems.Insert(Optic_bravo4);
+		shopItems.Insert(Optic_M8541);
+		shopItems.Insert(Optic_SU230);
+		shopItems.Insert(Optic_TA31RCO);
 		
 		foreach(ShopObject o:shopItems)
 		{
@@ -249,8 +263,7 @@ class WST_WeaponV2 : WST_ShopLoadOutBase
 	ref ShopObject UBGL203 = new ShopObject("{4E1032FAA257BEC5}Prefabs/Weapons/Attachments/Underbarrel/UGL_M203Mod.et","UBGL203","UBGL203",WST_Type.WST_UBGL,300);
 	
 	ref ShopObject GP25attachment = new ShopObject("{CDC3268678BA8765}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25Mod.et","UBGP25","GP25 UBGL",WST_Type.WST_UBGL,300);
-	ref ShopObject Optic_1P63 = new ShopObject("{CDC3268678BA8765}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25Mod.et","Optic_1P63","Optic 1P63",WST_Type.WST_OPTIC,300);
-	ref ShopObject PSO1 = new ShopObject("{C850A33226B8F9C1}Prefabs/Weapons/Attachments/Optics/Optic_PSO1.et","PSO1","PSO1",WST_Type.WST_OPTIC,100);
+	ref ShopObject PSO1 = new ShopObject("{957E93AD919222C1}Prefabs/Weapons/Attachments/Optics/Optic_PSO1Mod.et","PSO1","Optic PSO1",WST_Type.WST_OPTIC,100);
 
 	
 	
@@ -296,7 +309,7 @@ class WST_WeaponV2 : WST_ShopLoadOutBase
 		shopItems.Insert(UBGL203);
 		shopItems.Insert(GP25attachment);
 		shopItems.Insert(Optic_ARTII);
-		//shopItems.Insert(Optic_1P63);
+		
 		shopItems.Insert(PSO1);	
 		
 		
@@ -326,6 +339,10 @@ class WST_Weapon : WST_ShopLoadOutBase
 	
 	//weapon
 	
+	ref ShopObject M4 = new ShopObject("{CED9AFEB5B9350BB}Prefabs/Weapons/Rifles/M4A1/RVX_M4A1_RifleMod.et","WeaponM4A1","M4A1",WST_Type.WST_RIFLE,200);
+	ref ShopObject M4MK18 = new ShopObject("{42DC70AE2E69965F}Prefabs/Weapons/Rifles/M4A1/RVX_MK18_RifleMod.et","WeaponMK18","M4A1 Mk18",WST_Type.WST_RIFLE,200);
+
+	
 	ref ShopObject UBGL203 = new ShopObject("{4E1032FAA257BEC5}Prefabs/Weapons/Attachments/Underbarrel/UGL_M203Mod.et","UBGL203","UBGL203",WST_Type.WST_LAUNCHER,300);
 
 	ref ShopObject AN94O = new ShopObject("{2D406AEED3CDF362}Prefabs/Weapons/Rifles/AN94/Rifle_AN94_1P63Mod.et","WeaponAN94","AN 74 ",WST_Type.WST_RIFLE,300);
@@ -333,6 +350,7 @@ class WST_Weapon : WST_ShopLoadOutBase
 	ref ShopObject AK74O = new ShopObject("{5B308198855FBCE5}Prefabs/Weapons/Rifles/AK74/Rifle_AK74Suppressed.et","WeaponAK74","AK 74",WST_Type.WST_RIFLE,200);
 	
 	
+
 	ref ShopObject Rifle_M21_ARTIIO = new ShopObject("{0EE4F8425C114813}Prefabs/Weapons/Rifles/M14/Rifle_M21SuppressedNoMag.et","WeaponM21ARTII","M21 ",WST_Type.WST_SNIPERRIFLE,650);
 	
 	ref ShopObject M16O = new ShopObject("{7500FA1B52CC247F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203Suppressed.et","WeaponM16A2M203","M16A2",WST_Type.WST_RIFLE,350);
@@ -360,9 +378,13 @@ class WST_Weapon : WST_ShopLoadOutBase
 	ref ShopObject M14MagO = new ShopObject("{627255315038152A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_SpecialBall.et","M14Mag","M14 Magazine",WST_Type.WST_SNIPERAMMO,100);
 	
 	
-	ref ShopObject PSO1 = new ShopObject("{C850A33226B8F9C1}Prefabs/Weapons/Attachments/Optics/Optic_PSO1.et","PSO1","PSO1",WST_Type.WST_OPTIC,100);
+	
+	ref ShopObject AKSUN = new ShopObject("{693B6256851CE42A}Prefabs/Weapons/Rifles/AKS74UN/Rifle_AKS74UNMod.et","AKSUN","AK47S UN",WST_Type.WST_RIFLE,100);
+	ref ShopObject M27IAR = new ShopObject("{BB8184D1D15EC5EC}Prefabs/Weapons/Rifles/M27IAR/Rifle_M27IARMod.et","M27IAR","M27I AR",WST_Type.WST_RIFLE,400);
+	ref ShopObject APS = new ShopObject("{6EF1D0C87AF5E709}Prefabs/Weapons/Handguns/APS/Handgun_APSMod.et","APS","APS Automatic Pistol",WST_Type.WST_PISTOL,100);
 
 	
+	ref ShopObject APSMag = new ShopObject("{DFC0532A49E17C39}Prefabs/Weapons/Magazines/aps_magazine/Magazine_9x18_APS_20rnd_Ball.et","APSMag","APS Magazine",WST_Type.WST_PISTOLAMMO,100);
 
 
 	private WST_Weapon instance;
@@ -401,8 +423,12 @@ class WST_Weapon : WST_ShopLoadOutBase
 		shopItems.Insert(M14MagO);
 		shopItems.Insert(AN94O);
 		shopItems.Insert(UBGL203);
-
-		
+		shopItems.Insert(M4);
+		shopItems.Insert(M4MK18);
+		shopItems.Insert(AKSUN);
+		//shopItems.Insert(M27IAR);
+		//shopItems.Insert(APS);
+		//shopItems.Insert(APSMag);
 			
 		foreach(ShopObject o:shopItems)
 		{

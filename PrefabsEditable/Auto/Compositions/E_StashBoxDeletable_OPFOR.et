@@ -12,7 +12,7 @@ GenericEntity : "{EDE4904148CF02CE}PrefabsEditable/Auto/Compositions/E_StashBox.
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5D396C59069BF379}" {
       m_BudgetType RANK_PRIVATE
-      m_Value 2
+      m_Value 1
      }
     }
    }
@@ -27,4 +27,15 @@ GenericEntity : "{EDE4904148CF02CE}PrefabsEditable/Auto/Compositions/E_StashBox.
   }
  }
  coords 4875.356 28.595 11882.614
+ {
+  GenericEntity {
+   ID "5D38A4A09F1B2342"
+   components {
+    SCR_UniversalInventoryStorageComponent "{5D38A4A452F80B34}" {
+     m_aSlotsToShow {
+     }
+    }
+   }
+  }
+ }
 }
