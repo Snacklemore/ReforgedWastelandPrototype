@@ -2712,14 +2712,14 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		{	
 			if (m_iShowEast != m_iControlPointsHeldEast || m_iShowWest != m_iControlPointsHeldWest)
 				m_iHideHud = Replication.Time();
-			m_wLeftScore.SetText(m_iControlPointsHeldWest.ToString());
-			m_wRightScore.SetText(m_iControlPointsHeldEast.ToString());
+			m_wLeftScore.SetText(m_iAIKillsWest.ToString());
+			m_wRightScore.SetText(m_iAIKillsEast.ToString());
 			m_wWinScore.SetText(m_iControlPointsThreshold.ToString());
-			m_wLeftScoreMap.SetText(m_iControlPointsHeldWest.ToString());
-			m_wRightScoreMap.SetText(m_iControlPointsHeldEast.ToString());
+			m_wLeftScoreMap.SetText(m_iAIKillsWest.ToString());
+			m_wRightScoreMap.SetText(m_iAIKillsEast.ToString());
 			m_wWinScoreMap.SetText(m_iControlPointsThreshold.ToString());
-			m_iShowEast = m_iControlPointsHeldEast;
-			m_iShowWest = m_iControlPointsHeldWest;
+			m_iShowEast = m_iAIKillsEast;
+			m_iShowWest = m_iAIKillsEast;
 			
 			if (m_iWinningFactionId == -1)
 			{
@@ -4475,6 +4475,11 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			
 			if (agent)
 			{
+				
+				
+				
+				
+				
 				SCR_AIGroup group = SCR_AIGroup.Cast(agent.GetParentGroup());
 				
 				if (group)
@@ -4498,6 +4503,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 						RpcDo_HideDescriptor(identi);
 						Print("BaseGameModeWasteland::HideDescriptor ident: " +identi);
 						Rpc(RpcDo_HideDescriptor,identi);
+						
+						
 						
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -4552,6 +4559,12 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		Faction killerFaction = castedComponent.GetAffiliatedFaction();
 		castedComponent = FactionAffiliationComponent.Cast(foundComponentVictim);
 		Faction victimFaction = castedComponent.GetAffiliatedFaction();
+		if(killerFaction.GetFactionKey() == FACTION_BLUFOR)
+					m_iAIKillsWest++;
+		if(killerFaction.GetFactionKey() == FACTION_OPFOR)
+					m_iAIKillsEast++;
+		
+		Replication.BumpMe();
 		
 		if (killerFaction && victimFaction)
 		{
@@ -5390,7 +5403,6 @@ enum WST_Type
 	WST_SNIPERAMMO,
 	WST_GRENADES,
 	WST_EXPLOSIVES,
-	WST_VEHICLES,
 	WST_CONSUMABLE,
 	WST_MEDIC,
 	WST_VEHICLE
