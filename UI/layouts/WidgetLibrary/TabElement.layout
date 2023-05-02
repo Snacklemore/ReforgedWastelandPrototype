@@ -1,19 +1,143 @@
 FrameWidgetClass {
  Name "rootFrame"
  {
+  RichTextWidgetClass "{5D44ABD29A45C3FF}" {
+   Name "Heading1"
+   Slot FrameWidgetSlot "{5D44ABD29A45C3E2}" {
+    PositionX 48
+    OffsetLeft 48
+    PositionY 8
+    OffsetTop 8
+    SizeX 208
+    OffsetRight -256
+    SizeY 30
+    OffsetBottom -38
+   }
+  }
+  RichTextWidgetClass "{5D44ABD288E1A7EB}" {
+   Name "Heading3"
+   Slot FrameWidgetSlot "{5D44ABD288E1A7D3}" {
+    PositionX 536
+    OffsetLeft 536
+    PositionY 376
+    OffsetTop 376
+    SizeX 200
+    OffsetRight -736
+    SizeY 30
+    OffsetBottom -406
+   }
+  }
+  RichTextWidgetClass "{5D44ABD28A9DD1A5}" {
+   Name "Heading2"
+   Slot FrameWidgetSlot "{5D44ABD28A9DD181}" {
+    PositionX 48
+    OffsetLeft 48
+    PositionY 376
+    OffsetTop 376
+    SizeX 200
+    OffsetRight -248
+    SizeY 30
+    OffsetBottom -406
+   }
+  }
+  OverlayWidgetClass "{5D44ABC842E379CB}" {
+   Name "Overlay2"
+   Slot FrameWidgetSlot "{5D44ABC842E379AB}" {
+    PositionX 536
+    OffsetLeft 536
+    PositionY 416
+    OffsetTop 416
+    SizeX 392
+    OffsetRight -928
+    SizeY 400
+    OffsetBottom -816
+   }
+   {
+    ImageWidgetClass "{5D44ABCF8F7F6023}" {
+     Name "Image0"
+     Slot OverlayWidgetSlot {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Opacity 0.4
+     Color 0.016 0.016 0.016 1
+    }
+    OverlayWidgetClass "{5D44ABC841307BA6}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "ListBox2"
+     Slot OverlayWidgetSlot "{5D44ABC841307B8D}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 20 20 0 0
+     }
+     {
+      ScrollLayoutWidgetClass "{56691148E692435A}" {
+       Prefab "{56691148E692435A}"
+       {
+        VerticalLayoutWidgetClass "{56691148E013D981}" {
+         Prefab "{56691148E013D981}"
+         Color 0.376 0.749 0.471 1
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  OverlayWidgetClass "{5D44ABCA44E80053}" {
+   Name "Overlay1"
+   Slot FrameWidgetSlot "{5D44ABCA44E80030}" {
+    Anchor 0 0 0 0
+    PositionX 48
+    OffsetLeft 48
+    PositionY 416
+    OffsetTop 416
+    SizeX 424
+    OffsetRight -472
+    SizeY 400
+    OffsetBottom -816
+   }
+   {
+    ImageWidgetClass "{5D44ABCFB23AE66D}" {
+     Name "Image0"
+     Slot OverlayWidgetSlot {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Opacity 0.4
+     Color 0.016 0.016 0.016 1
+    }
+    OverlayWidgetClass "{5D44ABCA5D6DF0D8}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "ListBox1"
+     Slot OverlayWidgetSlot "{5D44ABCA5D6DF0CF}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 20 20 0 0
+     }
+    }
+   }
+  }
   OverlayWidgetClass "{5D1778C4ACD3105C}" {
    Name "Overlay0"
    Slot FrameWidgetSlot "{5D1778C4ACD3107E}" {
-    PositionX 0
-    OffsetLeft 0
-    PositionY 0
-    OffsetTop 0
-    SizeX 640
-    OffsetRight -640
-    SizeY 328
-    OffsetBottom -328
+    PositionX 48
+    OffsetLeft 48
+    PositionY 48
+    OffsetTop 48
+    SizeX 424
+    OffsetRight -472
+    SizeY 312
+    OffsetBottom -360
    }
    {
+    ImageWidgetClass "{5D44ABCFB1F1140A}" {
+     Name "Image0"
+     Slot OverlayWidgetSlot {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Opacity 0.4
+     Color 0.016 0.016 0.016 1
+    }
     OverlayWidgetClass "{5D1778C4ABF224B6}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
      Name "ListBox0"
      Slot OverlayWidgetSlot "{5D1778C4ABF224D3}" {

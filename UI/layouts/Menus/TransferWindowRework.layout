@@ -1,0 +1,170 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Clipping False
+ {
+  PanelWidgetClass "{5D44ABF421EE75FD}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{5CF76DB0D12DD6D6}" {
+    Anchor 0.04 0.193 0.96 0.92
+    PositionX -44.8
+    OffsetLeft -44.8
+    PositionY -48.44
+    OffsetTop -48.44
+    SizeX 1.6
+    OffsetRight 43.2
+    SizeY 70.84
+    OffsetBottom -22.4
+   }
+   Clipping False
+   Color 0.318 0.561 0.071 1
+   style outline_4px
+   {
+    VerticalLayoutWidgetClass "{5D44ABF46D2983DB}" {
+     Name "VerticalLayout0"
+     Slot FrameWidgetSlot "{5D44ABF46D2983B2}" {
+      PositionX 64
+      OffsetLeft 64
+      PositionY 16
+      OffsetTop 16
+      SizeX 1704
+      OffsetRight -1768
+      SizeY 640
+      OffsetBottom -656
+     }
+     {
+      VerticalLayoutWidgetClass "{5D44ABFBACD480C4}" : "{A971263DAE3AD8BC}UI/layouts/WidgetLibrary/TabView/WLib_TabViewHorizontal.layout" {
+       Name "TabView"
+       Slot LayoutSlot "{5D44ABFBACD480AD}" {
+        SizeMode Fill
+        FillWeight 16
+       }
+       components {
+        SCR_TabViewComponent "{546B27D01CA8A38D}" {
+         m_aElements {
+          SCR_TabViewContent "{5D44ABFBF3E78B2B}" {
+           m_ElementLayout "{D2AB4961C867FCCB}UI/layouts/WidgetLibrary/TabElement.layout"
+           m_sTabButtonContent "Weapons"
+           m_sTabIdentifier "weapon"
+          }
+          SCR_TabViewContent "{5D44ABFBF0CB9DA9}" {
+           m_ElementLayout "{D2AB4961C867FCCB}UI/layouts/WidgetLibrary/TabElement.layout"
+           m_sTabButtonContent "Ammunition"
+           m_sTabIdentifier "ammo"
+          }
+          SCR_TabViewContent "{5D44ABFBF112162F}" {
+           m_ElementLayout "{D2AB4961C867FCCB}UI/layouts/WidgetLibrary/TabElement.layout"
+           m_sTabButtonContent "Equipment"
+           m_sTabIdentifier "equip"
+          }
+          SCR_TabViewContent "{5D44ABFBFFD0F4B2}" {
+           m_ElementLayout "{D2AB4961C867FCCB}UI/layouts/WidgetLibrary/TabElement.layout"
+           m_sTabButtonContent "Attachments"
+           m_sTabIdentifier "attach"
+          }
+         }
+         m_bKeepHiddenTabs 1
+         m_bCreateAllTabsAtStart 1
+         m_bCycleMode 1
+         m_fTabWidth 443
+         m_fTabWidthTextHidden 31.7
+        }
+       }
+      }
+     }
+    }
+    ImageWidgetClass "{5D44ABF421EE75FF}" {
+     Name "Image0"
+     Slot FrameWidgetSlot "{5D212BA905B779B4}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+      SizeToContent 1
+     }
+     "Z Order" -10
+     Opacity 0.571
+     Color 0.005 0 0 1
+    }
+    ItemPreviewWidgetClass "{5D44ABF421EE75E8}" {
+     Name "WeaponPreview"
+     Slot FrameWidgetSlot "{5CF76DD51F2005B6}" {
+      PositionX 1016
+      OffsetLeft 1016
+      PositionY 664
+      OffsetTop 664
+      SizeX 584
+      OffsetRight -1600
+      SizeY 184
+      OffsetBottom -848
+     }
+    }
+   }
+  }
+  ButtonWidgetClass "{5D44ABF421EE75E2}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+   Name "ButtonClose"
+   Slot FrameWidgetSlot "{5CF72A239558C059}" {
+    Anchor 0 0 1 1
+    PositionX 104
+    OffsetLeft 104
+    PositionY 952
+    OffsetTop 952
+    SizeX -1800.75
+    OffsetRight 1696.75
+    SizeY -1024
+    OffsetBottom 72
+   }
+   components {
+    SCR_ButtonTextComponent "{5548F0143AE99095}" {
+     m_sText "Close"
+    }
+   }
+   {
+    SizeLayoutWidgetClass "{5548EB41A8E48247}" {
+     Prefab "{5548EB41A8E48247}"
+     Slot ButtonWidgetSlot "{5548E6E7E6AEDDC1}" {
+     }
+    }
+   }
+  }
+  ButtonWidgetClass "{5D44ABF421EE75E6}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+   Name "ButtonBuy"
+   Slot FrameWidgetSlot "{5CF72A2395A294C4}" {
+    Anchor 0 0 1 1
+    PositionX 1672
+    OffsetLeft 1672
+    PositionY 952
+    OffsetTop 952
+    SizeX -1800
+    OffsetRight 128
+    SizeY -1024
+    OffsetBottom 72
+   }
+   components {
+    SCR_ButtonTextComponent "{5548F0143AE99095}" {
+     m_BackgroundDefault 0.624 0.157 0.157 1
+     m_BackgroundHovered 0.561 0.749 0.376 1
+     m_sText "Buy"
+    }
+   }
+  }
+  RichTextWidgetClass "{5D44ABF421EE75D8}" : "{5E0F8422A1F05728}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading2.layout" {
+   Name "TextTitle"
+   Slot FrameWidgetSlot "{5CF71796701841B6}" {
+    Anchor 0 0 0.76 0.72
+    PositionX 626
+    OffsetLeft 626
+    PositionY 0
+    OffsetTop 0
+    SizeX -1308.52
+    OffsetRight 682.52
+    SizeY -737.28
+    OffsetBottom 737.28
+   }
+  }
+ }
+}
