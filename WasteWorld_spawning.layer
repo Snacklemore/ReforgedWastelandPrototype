@@ -201,15 +201,6 @@ $grp SCR_Position {
   coords 1275.302 38.202 5918.849
  }
 }
-$grp WST_VehicleSpawnPoint {
- {
-  coords 4871.313 28.595 11850.083
- }
- {
-  coords 7471.111 164.563 4320.43
-  angleY 7.379
- }
-}
 GenericEntity : "{07AA3565B2DDDE08}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/FIA/EquipmentBoxStack_FIA_01_V6_covered.et" {
  coords 4873.905 28.595 11851.29
  {
@@ -236,11 +227,25 @@ GenericEntity : "{322F588A5756DD53}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
 }
 $grp GenericEntity : "{4080F8B646FBEFDF}Prefabs/Props/Commercial/CashierShopVehicle_Waste.et" {
  {
-  coords 4881.273 29.489 11861.98
-  angleY 80.344
+  components {
+   WST_VehicleShopPointInfoComponent "{5D42EA97B41479B2}" {
+    m_Position PointInfo "{5D42EA97B0B4761A}" {
+     Offset -21.5149 0 -9.9288
+     Angles 0 99.48881 0
+    }
+   }
+  }
+  coords 4881.273 29.505 11861.981
+  angleY 80.913
  }
  {
   components {
+   WST_VehicleShopPointInfoComponent "{5D42EA97B41479B2}" {
+    m_Position PointInfo "{5D42EA97B0B4761A}" {
+     Offset -23.1096 -0.3606 -14.5235
+     Angles 0 -90.66239 0
+    }
+   }
    ActionsManagerComponent "{5D0F1D19650B01FF}" {
     ActionContexts {
      UserActionContext "{5D0F2E0EA49107E9}" {
@@ -251,7 +256,7 @@ $grp GenericEntity : "{4080F8B646FBEFDF}Prefabs/Props/Commercial/CashierShopVehi
     }
    }
   }
-  coords 7462.136 165.46 4314.981
+  coords 7462.136 165.399 4314.981
   angleY -86.279
  }
 }
@@ -300,7 +305,7 @@ $grp GenericEntity : "{627F955923426D32}Prefabs/Props/Commercial/CashierShop_Was
     }
    }
   }
-  coords 4881.031 29.544 11865.994
+  coords 4881.031 29.494 11865.994
   angleY 76.476
  }
  {

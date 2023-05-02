@@ -1,0 +1,146 @@
+SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et" {
+ ID "200D264F0EEA1A28"
+ components {
+  SCR_CommunicationSoundComponent "{54FD05D0C92D071F}" {
+   Filenames + {
+    "{FC7A7A9F92D1E225}Sounds/RadioProtocol/RadioProtocol_Campaign_SL_RU.acp" "{7413663A6477A6AE}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_1_RU.acp" "{C6C424D13BD59536}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_2_RU.acp" "{A8891A880EB47BBE}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_3_RU.acp" "{E19A40EC2D7BC495}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_4_RU.acp" "{8FD77EB5181A2A1D}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_5_RU.acp"
+   }
+  }
+  SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
+   components {
+    SCR_EquipmentStorageComponent "{56B49DA9722B635D}" {
+     InitialStorageSlots {
+      SCR_EquipmentStorageSlot BinocularSlot {
+       Prefab "{F2539FA5706E51E4}Prefabs/Items/Equipment/Binoculars/Binoculars_B12.et"
+      }
+     }
+    }
+   }
+  }
+  AIControlComponent "{520EA1D2DB109F34}" {
+   Enabled 0
+   components {
+    AICharacterAimingComponent "{520EA1D2DB109F0C}" {
+     Enabled 0
+    }
+    AICharacterHeadAimingComponent "{520EA1D2DB109F04}" {
+     Enabled 0
+    }
+    AICharacterMovementComponent "{520EA1D2DB109F01}" {
+     Enabled 0
+    }
+    AIPathfindingComponent "{56349A6F9C02E7A1}" {
+     Enabled 0
+    }
+    PerceptionComponent "{54A2CBC75F06064B}" {
+     Enabled 0
+    }
+    SCR_AICombatComponent "{55A2C9BE343B2EA1}" {
+     Enabled 0
+    }
+   }
+  }
+  BaseWeaponManagerComponent "{520EA1D2F659CE5D}" {
+  }
+  EquipedWeaponStorageComponent "{520EA1D2DB118C70}" {
+  }
+  FactionAffiliationComponent "{520EC9618276DF23}" {
+   "faction affiliation" ""
+  }
+  SCR_CampaignBuildingComponent "{5D3AC2F9BB8DD3D5}" {
+   m_fBuildingRadius 300
+   m_fDeletingMultiplier 1.2
+   m_PreviewEntityPrefab "{4FF075A21D258ABE}Prefabs/MP/Campaign/BuildPreview.et"
+   m_PreviewMaterial "{58F07022C12D0CF5}Assets/Editor/PlacingPreview/Preview.emat"
+   m_BuildingEntityPrefab "{15BEE7092B88B67D}Prefabs/MP/Campaign/BuildEntity.et"
+  }
+  SCR_CharacterStaminaComponent "{520EA1D2F659C824}" {
+   StaminaRegainPerS 0.2
+   StaminaDrainRun -0.0001
+   StaminaDrainSprint -0.0002
+  }
+  SCR_GadgetManagerComponent "{520EA1D2DB118DF3}" {
+  }
+  SCR_MapDescriptorComponent "{5D3AC2F9BB8DD3EC}" {
+   DisplayName "Me!"
+   VisibleOnMap 0
+   MainType "Name Local"
+   Scale 1
+  }
+  SCR_UITaskManagerComponent "{5D3AC2F9BB8DD3E3}" {
+  }
+  WST_GearPersistenceComponent "{5D3AC2F9BB8DD3E1}" {
+  }
+  WST_MoneyConfigComponent "{5D3AC2F9BB8DD3E6}" {
+   initalValue 450
+  }
+  WST_TraderComponent "{5D3AC2F9BB8DD3E5}" {
+  }
+  WST_TransferComponent "{5D3AC2F9BB8DD3FA}" {
+  }
+  CharacterGrenadeSlotComponent "{520EA1D2F659CE6E}" {
+   WeaponTemplate ""
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate ""
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Jacket {
+     Prefab "{61F57A44E39A9035}Prefabs/Characters/Uniforms/OTW_shirt_Tiger_Stripe.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{5834183BA8284034}Prefabs/Characters/Uniforms/BDUs_Pants_V1_TigerStripe.et"
+    }
+    LoadoutSlotInfo Back {
+     Prefab "{4805E67E2AE30F8D}Prefabs/Items/Equipment/Backpacks/Backpack_Medical_M5.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab "{DAAFD15478BDE1C3}Prefabs/Characters/Footwear/CombatBoots_US_01.et"
+    }
+    LoadoutSlotInfo Hat {
+     Prefab "{1A100E34CBE74518}Prefabs/Characters/HeadGear/Shemaghs/Shemag_v1_green.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab ""
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5A24CC173897B74F}" {
+     TargetStorage "Prefabs/Characters/Uniforms/OTW_shirt_Tiger_Stripe.et"
+     TargetPurpose 1
+    }
+    ItemsInitConfigurationItem "{54A68D64D7F9124F}" {
+     TargetStorage "Prefabs/Characters/Uniforms/BDUs_Pants_V1_TigerStripe.et"
+     PrefabsToSpawn {
+      "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_US_01.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_US_01.et" "{9C05543A503DB80E}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Ball.et" "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et"
+     }
+    }
+    ItemsInitConfigurationItem "{5A24CC173771408E}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_Medical_M5.et"
+     PrefabsToSpawn {
+      "{E1A5D4B878AA8980}Prefabs/Items/Equipment/Radios/Radio_R148.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et" "{96F23D5A56795036}Prefabs/Weapons/Handguns/M9/Handgun_M9Suppressed.et"
+     }
+    }
+   }
+  }
+  ActionsManagerComponent "{520EA1D2F659CE02}" {
+   additionalActions {
+    WST_TransferCurrency "{5D3AC2F9BB8DD3F4}" {
+     ParentContextList {
+      "Head"
+     }
+     UIInfo UIInfo "{5D3AC2F9BB8DD3F5}" {
+      Name "Transfer Currency"
+     }
+    }
+   }
+  }
+ }
+}

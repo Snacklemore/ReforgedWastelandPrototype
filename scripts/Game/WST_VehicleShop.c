@@ -6,12 +6,19 @@ class WST_VehicleShop : MenuBase
 	protected static const string TEXT_TITLE = "TextTitle";
 	protected static const string BUTTON_CLOSE = "QuitButton";
 	protected static const string BUTTON_BUY = "BuyButton";
+	RplId shopId;
 	ResourceName spawnEntity;
 	ref WST_Vehicle v;
 	WST_TraderComponent TrdComp;
 	int balance;
 	int itemPrice;
 	int pSelectedIndex = 0;
+	
+	
+	void SetShopId(RplId shopid)
+	{
+		shopId = shopid;
+	}
 	void OnSelected(SCR_ListBoxComponent list , int itemIndex, bool isTheNewSelection)
 	{
 		Print("WST_VehicleShop::OnSelectedInvoker");
@@ -142,7 +149,7 @@ class WST_VehicleShop : MenuBase
 		}
 		SCR_HintManagerComponent.ShowCustomHint("Payed: "+ itemPrice ,"Item bought!",5.0,false,EFieldManualEntryId.NONE,false);
 
-		traderComp.HandleVehicleBuyAction(spawnEntity,balance);
+		traderComp.HandleVehicleBuyAction(spawnEntity,balance,shopId);
 		
 		balance = balance - itemPrice;
 	

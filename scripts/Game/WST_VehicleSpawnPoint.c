@@ -1,7 +1,6 @@
-class WST_VehicleSpawnPointClass : SCR_PositionClass
-{
+//deprecated!
+/*class WST_VehicleSpawnPointClass : SCR_PositionClass
 
-};
 
 class WST_VehicleSpawnPoint : SCR_Position
 {
@@ -27,4 +26,4 @@ class WST_VehicleSpawnPoint : SCR_Position
 		return spawnPointName;
 	}
 
-};
+};*/

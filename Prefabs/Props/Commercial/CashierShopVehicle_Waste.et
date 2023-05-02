@@ -19,6 +19,11 @@ GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et
    }
    m_eMaterialSoundType METAL_LIGHT
   }
+  WST_VehicleShopPointInfoComponent "{5D42EA97B41479B2}" {
+   m_Position PointInfo "{5D42EA97B0B4761A}" {
+    Offset -0.0004 0.3911 31.0414
+   }
+  }
   ActionsManagerComponent "{5D0F1D19650B01FF}" {
    ActionContexts {
     UserActionContext "{5D0F2E0EA49107E9}" {

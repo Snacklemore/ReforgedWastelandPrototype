@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{B271A673BE4302AE}Configs/NameTags/NametagFriendliesWST.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

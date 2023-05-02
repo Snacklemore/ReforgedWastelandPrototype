@@ -7,7 +7,6 @@ GenericEntity : "{159F48EDCF903D1F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ca
   SCR_CampaignBuildingProviderComponent "{5D32E20C3DA7CC0C}" {
    m_bUserActionActivationOnly 1
    m_fBuildingRadius 35
-   m_iRank INVALID
   }
   SCR_CampaignSuppliesComponent "{5D32E20C3DA7CC07}" {
    m_iSupplies 1000

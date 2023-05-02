@@ -27,9 +27,35 @@ class WST_TraderComponent : ScriptComponent
 		Rpc(RpcDo_CloseAllMenus);
 	
 	}
-	void HandleVehicleBuyAction(ResourceName n,int balance)
+	void HandleVehicleBuyAction(ResourceName n,int balance,RplId shopId)
 	{
-		Rpc(RpcDo_HandleVehicleBuyAction,n,balance);
+		RplComponent shop = Replication.FindItem(shopId);
+		IEntity owner = shop.GetEntity();
+		WST_VehicleShopPointInfoComponent spawn = WST_VehicleShopPointInfoComponent.Cast(owner.FindComponent(WST_VehicleShopPointInfoComponent));
+		vector mat[4] = {};
+		spawn.m_Position.GetModelTransform(mat);
+		
+		
+		
+		EntitySpawnParams params = new EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		spawn.m_Position.GetWorldTransform(params.Transform);
+		params.Transform[3] = spawn.GetOwner().CoordToParent(params.Transform[3]);
+		
+		vector posToCheck = params.Transform[3];
+		array<IEntity> exclude = {};
+		if (IsSpawnPositionClean(Resource.Load(n),params,exclude))
+		{
+			Rpc(RpcDo_HandleVehicleBuyAction,n,balance,shopId);
+
+		}else 
+		{
+		
+			//hint 
+			SCR_HintManagerComponent.ShowCustomHint("Clear the parking slot first!","Blocked!",5.0,false,EFieldManualEntryId.NONE,false);
+
+		}
+		
 	}
 	void HandleBuyAction(ResourceName n,int balance)
 	{
@@ -52,8 +78,51 @@ class WST_TraderComponent : ScriptComponent
 	}
 	
 	
-	
-	
+	//credits to plato -> https://github.com/platoathens/Reforger-Shop-System/blob/main/Scripts/Game/ShopSystem/ADM_Utils.c
+	static autoptr Shape debugBB, debugIntersect;
+	static bool IsSpawnPositionClean(Resource resource, EntitySpawnParams params, array<IEntity> excludeArray, bool removeWrecks = true, BaseWorld world = null, vector heightOffset = vector.Zero)
+	{
+		if (!world)
+			world = GetGame().GetWorld();
+		
+		if (!resource || !resource.IsValid())
+			return false;
+		
+		//Currently, material is still used for preview, even thought it shouldn't be seen, as function doesn't work correctly without it
+		SCR_PrefabPreviewEntity previewEntity = SCR_PrefabPreviewEntity.Cast(SCR_PrefabPreviewEntity.SpawnPreviewFromPrefab(resource, "SCR_PrefabPreviewEntity", world, params, "{56EBF5038622AC95}Assets/Conflict/CanBuild.emat"));
+		if (!previewEntity)
+			return false;
+		
+		excludeArray.Insert(previewEntity);
+		
+		TraceOBB paramOBB = new TraceOBB();
+		Math3D.MatrixIdentity3(paramOBB.Mat);
+		vector currentMat[4];
+		previewEntity.GetTransform(currentMat);
+		paramOBB.Mat[0] = currentMat[0];
+		paramOBB.Mat[1] = currentMat[1];
+		paramOBB.Mat[2] = currentMat[2];
+		paramOBB.Start = currentMat[3] + heightOffset;
+		paramOBB.Flags = TraceFlags.ENTS;
+		paramOBB.ExcludeArray = excludeArray;
+		paramOBB.LayerMask = EPhysicsLayerPresets.Projectile;
+		previewEntity.GetPreviewBounds(paramOBB.Mins, paramOBB.Maxs);
+		
+		
+			
+		GetGame().GetWorld().TracePosition(paramOBB, null);
+		SCR_EntityHelper.DeleteEntityAndChildren(previewEntity);
+		
+		//If tracePosition found colliding entity, further checks will be done to determine whether can be actually something spawned
+		if (paramOBB.TraceEnt)
+		{
+			
+				
+			return false;
+		}
+			
+		return true;
+	}
 	
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -143,7 +212,7 @@ class WST_TraderComponent : ScriptComponent
 	
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcDo_HandleVehicleBuyAction(ResourceName n,int balance)
+	void RpcDo_HandleVehicleBuyAction(ResourceName n,int balance,RplId shopId)
 	{
 		
 		
@@ -153,7 +222,20 @@ class WST_TraderComponent : ScriptComponent
 		SCR_BaseGameModeWasteland mode = SCR_BaseGameModeWasteland.Cast( GetGame().GetGameMode());
 		
 		//get vehiclespawnpoint array
-		array<WST_VehicleSpawnPoint> vs_a = mode.m_vehicleSpawnPoints;
+		//array<WST_VehicleSpawnPoint> vs_a = mode.m_vehicleSpawnPoints;
+		//get WST_VehicleShopPointInfoComponent 
+		RplComponent shop = Replication.FindItem(shopId);
+		IEntity owner = shop.GetEntity();
+		WST_VehicleShopPointInfoComponent spawn = WST_VehicleShopPointInfoComponent.Cast(owner.FindComponent(WST_VehicleShopPointInfoComponent));
+		vector mat[4] = {};
+		spawn.m_Position.GetModelTransform(mat);
+		
+		
+		
+		EntitySpawnParams params = new EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		spawn.m_Position.GetWorldTransform(params.Transform);
+		params.Transform[3] = spawn.GetOwner().CoordToParent(params.Transform[3]);
 		
 		
 		PlayerManager p = GetGame().GetPlayerManager();
@@ -171,30 +253,11 @@ class WST_TraderComponent : ScriptComponent
 		PlayerController pc = p.GetPlayerController(playerId);
 		IEntity ie = pc.GetControlledEntity();
 		
-		float mindistSqd= 1000000.0;
-		WST_VehicleSpawnPoint nearest;
-		foreach (WST_VehicleSpawnPoint vs : vs_a)
-		{
-			//distance check each point to player pos
-			vector pos = ie.GetOrigin();
-			float distance ;
-			vector posVS = vs.GetOrigin();
-			//vector.DistanceSqXZ(playerEntity.GetOrigin(), respawn
-			float distanceSqd = vector.DistanceSqXZ(pos,posVS);
-			Print("WST_TraderComponent::RpcDo Distance to VS: " + distanceSqd);
-			if (distanceSqd < mindistSqd)
-			{
-				mindistSqd = distanceSqd;
-				nearest = vs;
-			}
-				
-			
-		}
 		
 		
-		EntitySpawnParams params = new EntitySpawnParams();
-		params.TransformMode = ETransformMode.WORLD;
-		params.Transform[3] = nearest.GetOrigin();
+		
+		
+		
 		
 		Vehicle v = Vehicle.Cast(GetGame().SpawnEntityPrefab(Resource.Load(n), GetGame().GetWorld(), params));
 		bool isInserted = GetGame().GetGarbageManager().Insert(v);

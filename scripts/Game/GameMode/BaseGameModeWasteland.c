@@ -239,6 +239,10 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	protected int m_iControlPointsHeldWest;
 	[RplProp()]
 	protected int m_iControlPointsHeldEast;
+	[RplProp()]
+	protected int m_iAIKillsWest;
+	[RplProp()]
+	protected int m_iAIKillsEast;
 	
 	//************************//
 	//PROTECTED STATIC METHODS//
@@ -251,7 +255,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	//------------------------------------------------------------------------------------------------
 	static Resource GetFactionManagerResource()
 	{
-		SCR_GameModeCampaignMP campaign = GetCampaign();
+		SCR_BaseGameModeWasteland campaign = GetCampaign();
 		if (!campaign)
 			return null;
 		
@@ -265,9 +269,9 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	static SCR_GameModeCampaignMP GetCampaign()
+	static SCR_BaseGameModeWasteland GetCampaign()
 	{
-		return SCR_GameModeCampaignMP.Cast(GetGame().GetGameMode());
+		return SCR_BaseGameModeWasteland.Cast(GetGame().GetGameMode());
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -305,6 +309,17 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		return 0;
 	}
 	
+	
+	int GetFactionAIKillCount(FactionKey factionKey)
+	{
+		if (factionKey == FACTION_BLUFOR)
+			return m_iAIKillsWest;
+		
+		if (factionKey == FACTION_OPFOR)
+			return m_iAIKillsEast;
+		
+		return -1;
+	}
 	//------------------------------------------------------------------------------------------------
 	int GetControlPointTreshold()
 	{
@@ -1411,6 +1426,9 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			title.SetTextFormat(GetXPRewardName(rewardID));
 		
 		if (rewardID != CampaignXPRewards.ENEMY_KILL && rewardID != CampaignXPRewards.ENEMY_KILL_VEH)
+		{
+			
+		}else
 		{
 			m_wXPInfo.SetVisible(true);
 			m_fHideXPInfo = GetWorld().GetWorldTime() + XP_INFO_DURATION;
@@ -2694,14 +2712,14 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		{	
 			if (m_iShowEast != m_iControlPointsHeldEast || m_iShowWest != m_iControlPointsHeldWest)
 				m_iHideHud = Replication.Time();
-			m_wLeftScore.SetText(m_iControlPointsHeldWest.ToString());
-			m_wRightScore.SetText(m_iControlPointsHeldEast.ToString());
+			m_wLeftScore.SetText(m_iAIKillsWest.ToString());
+			m_wRightScore.SetText(m_iAIKillsEast.ToString());
 			m_wWinScore.SetText(m_iControlPointsThreshold.ToString());
-			m_wLeftScoreMap.SetText(m_iControlPointsHeldWest.ToString());
-			m_wRightScoreMap.SetText(m_iControlPointsHeldEast.ToString());
+			m_wLeftScoreMap.SetText(m_iAIKillsWest.ToString());
+			m_wRightScoreMap.SetText(m_iAIKillsEast.ToString());
 			m_wWinScoreMap.SetText(m_iControlPointsThreshold.ToString());
-			m_iShowEast = m_iControlPointsHeldEast;
-			m_iShowWest = m_iControlPointsHeldWest;
+			m_iShowEast = m_iAIKillsEast;
+			m_iShowWest = m_iAIKillsEast;
 			
 			if (m_iWinningFactionId == -1)
 			{
@@ -4187,15 +4205,17 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 				if(!spawnedItem)
 					continue;
 				MoneyComponent mc = MoneyComponent.Cast(spawnedItem.FindComponent(MoneyComponent));
-				if(mc)
-					continue;
 				RplComponent rpl = RplComponent.Cast(spawnedItem.FindComponent(RplComponent));
-				if (rpl)
+				if(mc && rpl)
+				{
+					continue;
 					RplComponent.DeleteRplEntity(spawnedItem,false);
+				}
+					
 				
-						
+				bool success = InsertAutoEquipItem(mmc,spawnedItem);
 				//bool success = mmc.TryInsertItem(spawnedItem,EStoragePurpose.PURPOSE_ANY,null);
-				bool success = mmc.TrySpawnPrefabToStorage(n);
+				//mmc.TrySpawnPrefabToStorage(n);
 
 				Print("GameModeWasteland::Succes:  "+success +"for Item "+data.GetPrefabName());
 			}
@@ -4241,14 +4261,18 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	static bool InsertAutoEquipItem(SCR_InventoryStorageManagerComponent inventory, IEntity item)
+	{
+		EStoragePurpose purpose = EStoragePurpose.PURPOSE_ANY;
+		if (item.FindComponent(WeaponComponent)) purpose = EStoragePurpose.PURPOSE_WEAPON_PROXY;
+		if (item.FindComponent(BaseLoadoutClothComponent)) purpose = EStoragePurpose.PURPOSE_LOADOUT_PROXY;
+		if (item.FindComponent(SCR_GadgetComponent)) purpose = EStoragePurpose.PURPOSE_GADGET_PROXY;
+		
+		bool insertedItem = inventory.TryInsertItem(item, purpose, null);
+		if (!insertedItem) insertedItem = inventory.TryInsertItem(item, EStoragePurpose.PURPOSE_ANY, null);
+		
+		return insertedItem;
+	}
 	
 	
 	
@@ -4321,7 +4345,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			if (campaignNetworkComponent)
 			{
 				campaignNetworkComponent.UpdatePlayerRank(false);
-				campaignNetworkComponent.EnableShowingSpawnPosition(true)
+				//campaignNetworkComponent.EnableShowingSpawnPosition(true)
 			}
 	}
 	
@@ -4451,6 +4475,11 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			
 			if (agent)
 			{
+				
+				
+				
+				
+				
 				SCR_AIGroup group = SCR_AIGroup.Cast(agent.GetParentGroup());
 				
 				if (group)
@@ -4474,6 +4503,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 						RpcDo_HideDescriptor(identi);
 						Print("BaseGameModeWasteland::HideDescriptor ident: " +identi);
 						Rpc(RpcDo_HideDescriptor,identi);
+						
+						
 						
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -4528,6 +4559,12 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 		Faction killerFaction = castedComponent.GetAffiliatedFaction();
 		castedComponent = FactionAffiliationComponent.Cast(foundComponentVictim);
 		Faction victimFaction = castedComponent.GetAffiliatedFaction();
+		if(killerFaction.GetFactionKey() == FACTION_BLUFOR)
+					m_iAIKillsWest++;
+		if(killerFaction.GetFactionKey() == FACTION_OPFOR)
+					m_iAIKillsEast++;
+		
+		Replication.BumpMe();
 		
 		if (killerFaction && victimFaction)
 		{
@@ -4665,10 +4702,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			
 			
 			
-			SCR_CampaignNetworkComponent campaignNetworkComponent = SCR_CampaignNetworkComponent.Cast(pc.FindComponent(SCR_CampaignNetworkComponent));
 			
-			if (campaignNetworkComponent)
-				campaignNetworkComponent.EnableShowingSpawnPosition(false)
 		}
 	}
 	
@@ -4881,6 +4915,8 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	
 	}
 	
+	
+	
 	ref array<vector> m_MoveTaskDestinations = new array<vector>();
 	void CreateMoveTaskDestinations()
 	{
@@ -5067,7 +5103,6 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	ref array<WST_VehicleSpawnPoint> m_vehicleSpawnPoints = new array<WST_VehicleSpawnPoint>();
 	WST_GearPersistenceManager m_persistenceManager;
 	SCR_MoneyManager GetMoneyManager()
 	{
@@ -5087,10 +5122,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	{
 		return m_persistenceManager;
 	}
-	void registerVehicleSpawn(WST_VehicleSpawnPoint vs)
-	{
-		m_vehicleSpawnPoints.Insert(vs);
-	}
+	
 	
 	//------------------------------------------------------------------------------------------------
 	override void EOnFrame(IEntity owner, float timeSlice)
@@ -5351,6 +5383,12 @@ class WST_WeaponPredicate: InventorySearchPredicate
 enum WST_Type
 {
 	WST_WEAPON,
+	WST_RIFLE,
+	WST_PISTOL,
+	WST_SNIPERRIFLE,
+	WST_UBGL,
+	WST_LAUNCHER,
+	WST_SUPPRESSOR,
 	WST_ATTACHMENT,
 	WST_OPTIC,
 	WST_EQUIPMENT,
@@ -5360,9 +5398,11 @@ enum WST_Type
 	WST_HELMET,
 	WST_BACKPACK,
 	WST_AMMO,
+	WST_RIFLEAMMO,
+	WST_PISTOLAMMO,
+	WST_SNIPERAMMO,
 	WST_GRENADES,
 	WST_EXPLOSIVES,
-	WST_VEHICLES,
 	WST_CONSUMABLE,
 	WST_MEDIC,
 	WST_VEHICLE

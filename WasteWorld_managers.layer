@@ -28,12 +28,14 @@ SCR_CampaignFactionManager CampaignFactionManager1 : "{F1AC26310BAE3788}Prefabs/
    UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
     Name "OPFOR"
    }
+   m_sFactionFlag "{E33A00E2A8686EBC}BriefingAssets/TankFactionFlagOpfor.edds"
   }
   SCR_CampaignFaction "{50B30C3ADB052C80}" {
    FactionKey "B"
    UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
     Name "BLUFOR"
    }
+   m_sFactionFlag "{79FFD58268045C5E}BriefingAssets/TankFactionFlag.edds"
   }
  }
 }
@@ -80,7 +82,7 @@ $grp R3D_HeliBase : "{0C6491AC961ACAC9}Prefabs/Vehicles/Helis/R3D_UH60/R3D_UH60.
 BasePreloadManager PreloadManager2 : "{104F8505FD1871EF}Prefabs/World/Game/PreloadManager.et" {
  coords -6.924 -10.636 -8.645
  PrefabsToPreload {
-  "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.et" "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et" "{3343A055A83CB30D}Prefabs/Weapons/Grenades/M18/Smoke_M18_Red.et" "{14C1A0F061D9DDEE}Prefabs/Weapons/Grenades/M18/Smoke_M18_Violet.et" "{9BBDEE253A16CC66}Prefabs/Weapons/Grenades/M18/Smoke_M18_Yellow.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{1353C6EAD1DCFE43}Prefabs/Weapons/Handguns/M9/Handgun_M9.et" "{C0F7DD85A86B2900}Prefabs/Weapons/Handguns/PM/Handgun_PM.et" "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et" "{7A82FE978603F137}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7.et" "{A89BC9D55FFB4CD8}Prefabs/Weapons/MachineGuns/PKM/MG_PKM.et" "{D182DCDD72BF7E34}Prefabs/Weapons/MachineGuns/M60/MG_M60.et" "{FA5C25BF66A53DCF}Prefabs/Weapons/Rifles/AK74/Rifle_AK74.et" "{3E413771E1834D2F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{61D4F80E49BF9B12}Prefabs/Items/Equipment/Compass/Compass_SY183.et" "{3A421547BC29F679}Prefabs/Items/Equipment/Flashlights/Flashlight_MX991.et" "{575EA58E67448C2A}Prefabs/Items/Equipment/Flashlights/Flashlight_Soviet_01.et" "{E1A5D4B878AA8980}Prefabs/Items/Equipment/Radios/Radio_R148.et" "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et" "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et" "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et" "{A46F7A3C178EBBAC}Prefabs/Characters/Preview/BasebodyPreviewCharacter.et" "{9D23639EA3055572}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_MediumMoneyLoot.et" "{DD8F91EF241595A0}Prefabs/Groups/BLUFOR/Group_FireTeamWaste_BigMoneyLoot.et" "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et"
+  "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{AD2709F5F6F0D871}Prefabs/Weapons/Grenades/M18/Smoke_M18_Base.et" "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et" "{3343A055A83CB30D}Prefabs/Weapons/Grenades/M18/Smoke_M18_Red.et" "{14C1A0F061D9DDEE}Prefabs/Weapons/Grenades/M18/Smoke_M18_Violet.et" "{9BBDEE253A16CC66}Prefabs/Weapons/Grenades/M18/Smoke_M18_Yellow.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{1353C6EAD1DCFE43}Prefabs/Weapons/Handguns/M9/Handgun_M9.et" "{C0F7DD85A86B2900}Prefabs/Weapons/Handguns/PM/Handgun_PM.et" "{E6ABF84D52589026}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74MDuplicateTest.et" "{5B308198855FBCE5}Prefabs/Weapons/Rifles/AK74/Rifle_AK74Suppressed.et" "{CDC3268678BA8765}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25Mod.et" "{FFD418F9A77519D2}Prefabs/Weapons/Attachments/Optics/Optic_4x20/Optic_4x20Mod.et" "{4E1032FAA257BEC5}Prefabs/Weapons/Attachments/Underbarrel/UGL_M203Mod.et" "{F7104825C77AB12F}Prefabs/Weapons/Core/Suppressor_556_SC.et" "{64F4EE82C4865D72}Prefabs/Weapons/Core/Suppressor_556_SC_tan.et" "{7CB432CC4ED704E1}Prefabs/Weapons/Core/Suppressor_Generic_556.et" "{33C686F10D37ABA1}Prefabs/Weapons/Core/Suppressor_Generic_9mm.et" "{904AF79F5926399A}Prefabs/Weapons/Core/Suppressor_Punky_NT4.et" "{784685DC17DC6C89}Prefabs/MP/Campaign/Assets/CampaignSupplyTruckEast1Mod.et" "{957E93AD919222C1}Prefabs/Weapons/Attachments/Optics/Optic_PSO1Mod.et" "{2D406AEED3CDF362}Prefabs/Weapons/Rifles/AN94/Rifle_AN94_1P63Mod.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{61D4F80E49BF9B12}Prefabs/Items/Equipment/Compass/Compass_SY183.et" "{3A421547BC29F679}Prefabs/Items/Equipment/Flashlights/Flashlight_MX991.et" "{575EA58E67448C2A}Prefabs/Items/Equipment/Flashlights/Flashlight_Soviet_01.et" "{E1A5D4B878AA8980}Prefabs/Items/Equipment/Radios/Radio_R148.et" "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et" "{CD3A78C25640F588}Prefabs/Characters/Campaign/Final/Campaign_US_AITRader.et" "{0EE4F8425C114813}Prefabs/Weapons/Rifles/M14/Rifle_M21SuppressedNoMag.et" "{7500FA1B52CC247F}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203Suppressed.et" "{7A6C44293D9554E5}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_SmallMoneyLoot.et" "{60429A9E3173F51F}Prefabs/Weapons/Rifles/SVD/Rifle_SVD_PSOSuppressed.et" "{66D32F932F7E8C1F}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58PMod.et" "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et" "{4080F8B646FBEFDF}Prefabs/Props/Commercial/CashierShopVehicle_Waste.et" "{58353A3B8102A8E6}Prefabs/Props/Commercial/CashierShopHidden_Waste.et" "{627F955923426D32}Prefabs/Props/Commercial/CashierShop_Waste.et" "{1B7FA1AA8D7DB1E5}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_Money500_AKGP.et" "{5B5A16A75957FFC4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_Money2k.et" "{CC2C00C06214958E}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_Money200_M16Scope.et" "{878DBF0C68BAB919}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_Money1k_Variant_AK.et" "{8A2F6AC778F9B900}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_Money150_M14.et" "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et" "{A46F7A3C178EBBAC}Prefabs/Characters/Preview/BasebodyPreviewCharacter.et" "{9D23639EA3055572}Prefabs/Groups/BLUFOR/Group_US_FireTeamWaste_MediumMoneyLoot.et" "{DD8F91EF241595A0}Prefabs/Groups/BLUFOR/Group_FireTeamWaste_BigMoneyLoot.et" "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et" "{CA7778B914D3A9FC}Prefabs/Structures/Military/Bunkers/AircraftShelter_E_01/AircraftShelter_E_01_base.et" "{764414C0E2EF983E}Prefabs/Props/Military/Furniture/TableMilitary_USSR_02.et" "{C99D1B2E817E12D9}Prefabs/Props/Military/Furniture/TableMilitary_USSR_02_cabinet.et" "{5019513019F0885A}Prefabs/Props/Military/Furniture/TableMilitary_US_02.et" "{C354C09327DB987A}Prefabs/Compositions/Misc/SubCompositions/TableMilitary_Cluttered_US_04.et" "{4824ACEE76749F3B}SupplyShop.et"
  }
 }
 SCR_CampaignBuildingManagerEntity : "{1722294208A98906}Prefabs/MP/Campaign/CampaignBuildingManager.et" {
@@ -108,6 +110,10 @@ SCR_BaseTaskManager : "{17E3EF2CF455460F}Prefabs/MP/Campaign/CampaignTaskManager
    m_sTaskPrefab "{A42DAE0F5B2B5E9F}Prefabs/Tasks/DeliverTask.et"
   }
  }
+}
+StaticModelEntity : "{1F6AAF0E415A96E7}Prefabs/Props/HedghogParkingSlot.et" {
+ coords 4858.958 0.011 11889.951
+ angleY 179.018
 }
 GenericEntity : "{303A087C47C1A7B2}Prefabs/MP/Campaign/Assets/CampaignBuildingMap.et" {
  coords 4894.106 29.731 11779.938
@@ -153,14 +159,13 @@ $grp GenericEntity : "{50E496D7030957C1}Prefabs/Props/Commercial/cash/cash.et" {
   coords 4881.072 29.488 11860.885
  }
 }
-SCR_ChimeraCharacter : "{65BB473E0E099118}Prefabs/Characters/Campaign/Final/Campaign_USSR_PlayerWaste.et" {
- coords 4881.157 28.595 11879.285
-}
 Vehicle CampaignSupplyTruckEast1Mod1 : "{784685DC17DC6C89}Prefabs/MP/Campaign/Assets/CampaignSupplyTruckEast1Mod.et" {
- coords 4884.04 28.595 11884.238
-}
-SCR_EditorManagerEntity : "{788933FFDC706A68}Prefabs/Editor/EditorManager.et" {
- coords 4841.132 26.489 11993.957
+ components {
+  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 17524
+  }
+ }
+ coords 4892.117 28.595 11884.238
 }
 SCR_GarbageManager : "{9B883A7D8EBB282A}Prefabs/MP/Managers/GarbageManager.et" {
  coords 4872.261 28.595 11867.745
@@ -175,6 +180,37 @@ SCR_MPDestructionManager : "{9BB369F2803C6F71}Prefabs/MP/MPDestructionManager.et
 }
 ItemPreviewManagerEntity ItemPreviewManager1 : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
  coords 4886.809 28.595 11860.336
+}
+StaticModelEntity : "{AE28D47CF26E91EA}Prefabs/Props/Military/Fortification/CzechHedgehog_01_rusty.et" {
+ coords 7480.984 0.011 4285.951
+ {
+  $grp StaticModelEntity : "{7F8D6A0D827EA34B}Prefabs/Props/Military/Fortification/CzechHedgehog_01_base.et" {
+   {
+    coords 0.173 -0.057 7.581
+   }
+   {
+    coords 0.067 -0.027 4.939
+   }
+   {
+    coords -0.158 -0.026 2.388
+   }
+   {
+    coords -1.817 -0.016 0.298
+   }
+   {
+    coords -3.999 -0.024 0.338
+   }
+   {
+    coords -6.387 -0.047 0.386
+   }
+   {
+    coords -10.84 -0.084 0.795
+   }
+  }
+  StaticModelEntity : "{AE28D47CF26E91EA}Prefabs/Props/Military/Fortification/CzechHedgehog_01_rusty.et" {
+   coords -8.638 -0.047 0.671
+  }
+ }
 }
 SCR_LoadoutManager : "{CC0F103253FC5D86}Prefabs/MP/Managers/Loadouts/LoadoutManager_FFAMod.et" {
  coords 4773.693 28.761 11693.646
@@ -195,6 +231,14 @@ SCR_LoadoutManager : "{CC0F103253FC5D86}Prefabs/MP/Managers/Loadouts/LoadoutMana
    m_sAffiliatedFaction "A"
   }
  }
+}
+R3D_HeliBase R3D_AH_1 : "{DBBEA0184A82B2CB}Prefabs/Vehicles/Helicopters/R3D_AH6/R3D_AH-6.et" {
+ components {
+  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 4286.43
+  }
+ }
+ coords 4875.058 39.141 11862.794
 }
 SCR_SpawnPoint MainSpawnA2 : "{F8531119106DDBE9}Prefabs/MP/Spawning/SpawnPoint_FFAMod.et" {
  coords 9704.896 11.815 1565.611

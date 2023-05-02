@@ -1,0 +1,22 @@
+FrameWidgetClass : "{C925ADF957A9670A}UI/layouts/Menus/MainMenu/PreloadScreen.layout" {
+ {
+  OverlayWidgetClass "{58EEA7CA5B654E58}" {
+   Prefab "{58EEA7CA5B654E58}"
+   Color 0 0 0 0
+   {
+    ScaleWidgetClass "{552C9A0CDA9BDCA0}" {
+     Prefab "{552C9A0CDA9BDCA0}"
+     {
+      ImageWidgetClass "{552C8E22202CDD06}" {
+       Prefab "{552C8E22202CDD06}"
+       Slot AlignableSlot "{552C8E22202CDAE6}" {
+       }
+       Texture "{A75643BB61176162}BriefingAssets/TankLoadingScreen.edds"
+       Size 1980 1440
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{1686AC25BB01B0E8}UI/layouts/Menus/TransferWindowRework.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

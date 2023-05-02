@@ -1,0 +1,40 @@
+StaticModelEntity : "{AE28D47CF26E91EA}Prefabs/Props/Military/Fortification/CzechHedgehog_01_rusty.et" {
+ ID "51E2F0F0E96F07CE"
+ coords 7480.984 0.011 4285.951
+ {
+  $grp StaticModelEntity : "{7F8D6A0D827EA34B}Prefabs/Props/Military/Fortification/CzechHedgehog_01_base.et" {
+   {
+    ID "5D44ABE98AB0213A"
+    coords 0.173 -0.057 7.581
+   }
+   {
+    ID "5D44ABE98AB0B019"
+    coords -1.817 -0.016 0.298
+   }
+   {
+    ID "5D44ABE98AB0F51C"
+    coords 0.067 -0.027 4.939
+   }
+   {
+    ID "5D44ABE98AB0F51D"
+    coords -0.158 -0.026 2.388
+   }
+   {
+    ID "5D44ABE98AB10E79"
+    coords -6.387 -0.047 0.386
+   }
+   {
+    ID "5D44ABE98AB10E7B"
+    coords -3.999 -0.024 0.338
+   }
+   {
+    ID "5D44ABE98AB19BCA"
+    coords -10.84 -0.084 0.795
+   }
+  }
+  StaticModelEntity : "{AE28D47CF26E91EA}Prefabs/Props/Military/Fortification/CzechHedgehog_01_rusty.et" {
+   ID "5D44ABE98AB19BB4"
+   coords -8.638 -0.047 0.671
+  }
+ }
+}

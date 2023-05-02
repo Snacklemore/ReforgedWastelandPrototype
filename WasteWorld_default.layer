@@ -1,3 +1,6 @@
+TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
+ coords 4860.758 28.595 11907.188
+}
 SCR_BaseGameModeWasteland SCR_BaseGameModeWasteland2 : "{805A3F581EA80E37}SCR_BaseGameModeWasteland.et" {
  components {
   SCR_AutomaticRespawnHandlerComponent "{5CAB50F044535F4F}" {
@@ -14,13 +17,56 @@ SCR_BaseGameModeWasteland SCR_BaseGameModeWasteland2 : "{805A3F581EA80E37}SCR_Ba
   SCR_HintManagerComponent "{5CAB50F1C679006A}" {
    m_bIgnoreHintSettings 1
   }
+  SCR_NametagConfigComponent "{5CAB50F1C1DBCFCC}" {
+   m_sConfigPath "{B271A673BE4302AE}Configs/NameTags/NametagFriendliesWST.conf"
+  }
   SCR_PossessingManagerComponent "{5CAB50F1EC33DA6E}" {
    Enabled 0
   }
   SCR_RespawnBriefingComponent "{5CD343494C13DDE2}" {
+   m_Info SCR_UIInfo "{5D38A4B4BAA8752A}" {
+    Name "Welcome to the Wasteland!"
+    Description "Welcome to Wasteland! A new take on Wasteland for Arma Reforger! "\
+    "You got the classic two factions OPFOR and BLUEFOR( and FIA to come)."\
+    "-Trader System "\
+    "-Money System"\
+    "-Simple AI spawn system, (present AI groups have a red marker on the map)"\
+    "-Tasks System with custom delivery mission"\
+    "-Freeroam building with a supply truck, buyable supplys at shops around the map."\
+    "--> Custom objects to build, such as a stashbox for storage(persistent until server restart)."\
+    "-Gear Save function, just hit \"ESC\" click \"Save\" to save current loadout(test feature, pls report bugs to https://discord.gg/fADx94kvrV)"\
+    ""\
+    ""
+    Icon "{1C03886C7F7EE1E2}BriefingAssets/GameGradient.edds"
+   }
+   m_aGameModeHints {
+    SCR_HintUIInfo "{5D38A4B427D20B4B}" {
+     Name "Buy weapons and gear!"
+     Description "There are weapon and vehicle trader inside your Main Base! Lookout for the Black Market!"
+     Icon "{1C03886C7F7EE1E2}BriefingAssets/GameGradient.edds"
+    }
+    SCR_HintUIInfo "{5D38A4B2B89ABDBC}" {
+     Name "Go on custom made missions!"
+     Icon "{1C03886C7F7EE1E2}BriefingAssets/GameGradient.edds"
+     m_aDescriptionBlocks {
+      SCR_BulletPointBlockUIName "{5D38A48ED240BB17}" {
+       Name "Press \"J\" to open the Task Manager and accept a Mission!"\
+       ""
+       m_bInline 1
+      }
+     }
+    }
+    SCR_HintUIInfo "{5D38A4B2C5770458}" {
+     Name "Continue to play later!"
+     Description "Just press \"ESC\" and click \"Save\" to save your current loadout until server restart."
+     Icon "{1C03886C7F7EE1E2}BriefingAssets/GameGradient.edds"
+    }
+   }
   }
   SCR_RespawnMenuHandlerComponent "{5CD3434952CB5AA3}" {
    m_bAllowLoadoutSelection 0
+   m_sRespawnUnavailable ""
+   m_sPreloadPath "{F8778079A70CD987}UI/layouts/Menus/MainMenu/PreloadScreenMod.layout"
   }
   SCR_RespawnSystemComponent "{5CD343493A9C7BF2}" {
   }
