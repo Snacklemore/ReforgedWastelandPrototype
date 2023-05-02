@@ -230,8 +230,8 @@ $grp GenericEntity : "{4080F8B646FBEFDF}Prefabs/Props/Commercial/CashierShopVehi
   components {
    WST_VehicleShopPointInfoComponent "{5D42EA97B41479B2}" {
     m_Position PointInfo "{5D42EA97B0B4761A}" {
-     Offset -35.668 0 -16.421
-     Angles 0 11.2318 0
+     Offset -21.5149 0 -9.9288
+     Angles 0 99.48881 0
     }
    }
   }
@@ -242,8 +242,8 @@ $grp GenericEntity : "{4080F8B646FBEFDF}Prefabs/Props/Commercial/CashierShopVehi
   components {
    WST_VehicleShopPointInfoComponent "{5D42EA97B41479B2}" {
     m_Position PointInfo "{5D42EA97B0B4761A}" {
-     Offset -49.9452 0.3911 4.8984
-     Angles 0 6.9996 0
+     Offset -23.1096 -0.3606 -14.5235
+     Angles 0 -90.66239 0
     }
    }
    ActionsManagerComponent "{5D0F1D19650B01FF}" {
@@ -256,7 +256,7 @@ $grp GenericEntity : "{4080F8B646FBEFDF}Prefabs/Props/Commercial/CashierShopVehi
     }
    }
   }
-  coords 7462.136 164.562 4314.981
+  coords 7462.136 165.399 4314.981
   angleY -86.279
  }
 }
