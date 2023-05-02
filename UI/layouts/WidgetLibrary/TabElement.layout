@@ -49,13 +49,13 @@ FrameWidgetClass {
     OffsetTop 416
     SizeX 392
     OffsetRight -928
-    SizeY 400
-    OffsetBottom -816
+    SizeY 208
+    OffsetBottom -624
    }
    {
     ImageWidgetClass "{5D44ABCF8F7F6023}" {
      Name "Image0"
-     Slot OverlayWidgetSlot {
+     Slot OverlayWidgetSlot "{5D44ABA3ACC3D60F}" {
       HorizontalAlign 3
       VerticalAlign 3
      }
@@ -93,13 +93,13 @@ FrameWidgetClass {
     OffsetTop 416
     SizeX 424
     OffsetRight -472
-    SizeY 400
-    OffsetBottom -816
+    SizeY 208
+    OffsetBottom -624
    }
    {
     ImageWidgetClass "{5D44ABCFB23AE66D}" {
      Name "Image0"
-     Slot OverlayWidgetSlot {
+     Slot OverlayWidgetSlot "{5D44ABA3ACC3D742}" {
       HorizontalAlign 3
       VerticalAlign 3
      }
@@ -131,7 +131,7 @@ FrameWidgetClass {
    {
     ImageWidgetClass "{5D44ABCFB1F1140A}" {
      Name "Image0"
-     Slot OverlayWidgetSlot {
+     Slot OverlayWidgetSlot "{5D44ABA3ACC3D4FB}" {
       HorizontalAlign 3
       VerticalAlign 3
      }

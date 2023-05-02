@@ -11,8 +11,10 @@ class WST_TransferWindowUI : MenuBase
 	SCR_TabViewComponent m_TabView;
 	BlurWidget wBlur ;
 	bool firstSelection = true;
-	ref WST_Weapon w;
-
+	ref WST_Weapon w1;
+	ref WST_WeaponV2 w2;
+	ref WST_Equipment e;	
+	ref WST_ShopLoadOutBase w;
 	ResourceName spawnEntity;
 	WST_TraderComponent TrdComp;
 	int balance;
@@ -231,8 +233,7 @@ class WST_TransferWindowUI : MenuBase
 	protected override void OnMenuOpen()
 	{
 		Print("OnMenuOpen: menu/dialog opened!", LogLevel.NORMAL);
-		w = new WST_Weapon();
-		setupDataObjects();
+		
 		Widget rootWidget = GetRootWidget();
 		if (!rootWidget)
 		{
@@ -315,7 +316,7 @@ class WST_TransferWindowUI : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_ATTACHMENT )
+				if (o.GetType() == WST_Type.WST_UBGL )
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -340,7 +341,7 @@ class WST_TransferWindowUI : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_ATTACHMENT )
+				if (o.GetType() == WST_Type.WST_OPTIC )
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -365,7 +366,7 @@ class WST_TransferWindowUI : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_ATTACHMENT )
+				if (o.GetType() == WST_Type.WST_SUPPRESSOR )
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -392,7 +393,7 @@ class WST_TransferWindowUI : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_AMMO )
+				if (o.GetType() == WST_Type.WST_PANTS )
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -417,7 +418,7 @@ class WST_TransferWindowUI : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_AMMO )
+				if (o.GetType() == WST_Type.WST_JACKET )
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -442,7 +443,7 @@ class WST_TransferWindowUI : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_AMMO )
+				if (o.GetType() == WST_Type.WST_HELMET )
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -467,7 +468,7 @@ class WST_TransferWindowUI : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_AMMO )
+				if (o.GetType() == WST_Type.WST_RIFLEAMMO )
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -492,7 +493,7 @@ class WST_TransferWindowUI : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_AMMO )
+				if (o.GetType() == WST_Type.WST_PISTOLAMMO )
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -516,7 +517,7 @@ class WST_TransferWindowUI : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_AMMO )
+				if (o.GetType() == WST_Type.WST_SNIPERAMMO )
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -539,7 +540,7 @@ class WST_TransferWindowUI : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_WEAPON )
+				if (o.GetType() == WST_Type.WST_RIFLE)
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -564,7 +565,7 @@ class WST_TransferWindowUI : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_WEAPON )
+				if (o.GetType() == WST_Type.WST_PISTOL )
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -590,7 +591,7 @@ class WST_TransferWindowUI : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_WEAPON )
+				if (o.GetType() == WST_Type.WST_SNIPERRIFLE )
 				{
 					string price = o.GetData();
 					int i_price = w.GetPriceByKey(price);
@@ -676,7 +677,15 @@ class WST_TransferWindowUI : MenuBase
 	
 	
 	
-	
+	protected override void OnMenuInit()
+	{
+		w1 = new WST_Weapon();
+		w2 = new WST_WeaponV2();
+		e = new WST_Equipment();
+		ref WST_ShopLoadOutBase w_h = WST_ShopLoadOutBase.AddLoadOuts(w1,w2);
+		w = WST_ShopLoadOutBase.AddLoadOuts(w_h,e);
+		setupDataObjects();
+	}
 	
 	
 	

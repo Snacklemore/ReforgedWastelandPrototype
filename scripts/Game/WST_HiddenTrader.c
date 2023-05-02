@@ -257,7 +257,7 @@ class WST_HiddenTrader : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_AMMO || o.GetType() == WST_Type.WST_ATTACHMENT)
+				if (o.GetType() == WST_Type.WST_RIFLEAMMO || o.GetType() == WST_Type.WST_ATTACHMENT || o.GetType() == WST_Type.WST_PISTOLAMMO || o.GetType() == WST_Type.WST_SNIPERAMMO)
 				{
 					string price = o.GetData();
 					int i_price = e.GetPriceByKey(price);
@@ -284,7 +284,7 @@ class WST_HiddenTrader : MenuBase
 			
 			foreach (ManagedDataObject o : dataObjects)
 			{
-				if (o.GetType() == WST_Type.WST_WEAPON)
+				if (o.GetType() == WST_Type.WST_RIFLE || o.GetType() == WST_Type.WST_PISTOL || o.GetType() == WST_Type.WST_SNIPERRIFLE )
 				{
 					string price = o.GetData();
 					int i_price = e.GetPriceByKey(price);
