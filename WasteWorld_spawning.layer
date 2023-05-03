@@ -230,19 +230,19 @@ $grp GenericEntity : "{4080F8B646FBEFDF}Prefabs/Props/Commercial/CashierShopVehi
   components {
    WST_VehicleShopPointInfoComponent "{5D42EA97B41479B2}" {
     m_Position PointInfo "{5D42EA97B0B4761A}" {
-     Offset -21.5149 0 -9.9288
+     Offset -22.9235 -0.3461 -8.9662
      Angles 0 99.48881 0
     }
    }
   }
-  coords 4881.273 29.505 11861.981
+  coords 4881.273 29.461 11861.981
   angleY 80.913
  }
  {
   components {
    WST_VehicleShopPointInfoComponent "{5D42EA97B41479B2}" {
     m_Position PointInfo "{5D42EA97B0B4761A}" {
-     Offset -23.1096 -0.3606 -14.5235
+     Offset -25.5475 -0.3606 -14.5519
      Angles 0 -90.66239 0
     }
    }

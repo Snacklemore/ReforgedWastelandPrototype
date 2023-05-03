@@ -112,7 +112,7 @@ SCR_BaseTaskManager : "{17E3EF2CF455460F}Prefabs/MP/Campaign/CampaignTaskManager
  }
 }
 StaticModelEntity : "{1F6AAF0E415A96E7}Prefabs/Props/HedghogParkingSlot.et" {
- coords 4858.958 0.011 11889.951
+ coords 4858.916 0.011 11892.4
  angleY 179.018
 }
 GenericEntity : "{303A087C47C1A7B2}Prefabs/MP/Campaign/Assets/CampaignBuildingMap.et" {
@@ -182,7 +182,7 @@ ItemPreviewManagerEntity ItemPreviewManager1 : "{9F18C476AB860F3B}Prefabs/World/
  coords 4886.809 28.595 11860.336
 }
 StaticModelEntity : "{AE28D47CF26E91EA}Prefabs/Props/Military/Fortification/CzechHedgehog_01_rusty.et" {
- coords 7480.984 0.011 4285.951
+ coords 7480.984 -0.019 4281.322
  {
   $grp StaticModelEntity : "{7F8D6A0D827EA34B}Prefabs/Props/Military/Fortification/CzechHedgehog_01_base.et" {
    {

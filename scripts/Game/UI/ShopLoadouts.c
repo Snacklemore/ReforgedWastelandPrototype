@@ -454,7 +454,8 @@ class WST_Vehicle : WST_ShopLoadOutBase
 	//create one object per shop item, feed them parameters, loop through objects
 	/////////////////////////////////////////////////////////////////////////
 	
-	
+	ref ShopObject HelicopterMD500 = new ShopObject("{CE2BCACA842B6D78}Prefabs/Vehicles/Helicopters/R3D_MD500/R3D_MD500_Black_Benches.et","HeliMD500","MD500 Helicopter",WST_Type.WST_VEHICLE,450);
+
 	ref ShopObject US_JeepO = new ShopObject("{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et","US_Jeep","Jeep",WST_Type.WST_VEHICLE,100);
 	
 	ref ShopObject T14TankO = new ShopObject("{48BB423641D40E77}Prefabs/Vehicles/Tracked/T14/Tank_T14.et","T14Tank","T14 Tank",WST_Type.WST_VEHICLE,100);
@@ -492,6 +493,8 @@ class WST_Vehicle : WST_ShopLoadOutBase
 		shopItems.Insert(M1025);
 		shopItems.Insert(Ural4320);
 		shopItems.Insert(SupplyTruck);
+		shopItems.Insert(HelicopterMD500);
+		
 		
 		foreach(ShopObject o : shopItems)
 		{
