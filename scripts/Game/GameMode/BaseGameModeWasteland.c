@@ -4181,8 +4181,9 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			Print("GameModeWasteland::Deleting:  "+item.GetPrefabData().GetPrefabName());
 			RplComponent rpl = RplComponent.Cast(item.FindComponent(RplComponent));
 			
-				success = mmc.TryDeleteItem(item);
-				RplComponent.DeleteRplEntity(item,false);
+				//success = mmc.TryDeleteItem(item);
+				SCR_EntityHelper.DeleteEntityAndChildren(item);
+				//RplComponent.DeleteRplEntity(item,false);
 			
 			
 				
@@ -4195,6 +4196,101 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 	
 	void AddAllItems(SCR_InventoryStorageManagerComponent mmc,WST_GearObject o)
 	{
+		
+		//get the WST_CharacterWeaponObject first 
+		ref array<ref WST_CharacterWeaponObject> weapons = o.weapons;
+		foreach(WST_CharacterWeaponObject weapon: weapons)
+		{
+			//get weapon resource 
+			ResourceName n = weapon.weapon.GetPrefabName();
+			IEntity spawnedWeapon = GetGame().SpawnEntityPrefab(Resource.Load(n),GetGame().GetWorld());
+			if (!spawnedWeapon)
+				continue;
+			//insert weapon
+			bool success = InsertAutoEquipItem(mmc,spawnedWeapon);
+			Print("GameModeWasteland::Succes:  "+success +"for Item "+n);
+			array<Managed> slots_m = {};
+			array<AttachmentSlotComponent> slots = {};
+			spawnedWeapon.FindComponents(AttachmentSlotComponent,slots_m);
+			foreach(Managed slot_m :slots_m)
+			{
+				AttachmentSlotComponent slot = AttachmentSlotComponent.Cast(slot_m);
+				if(slot)	
+					slots.Insert(slot);
+			}
+			
+			
+			//get attachments resource and try to attach 
+			foreach(EntityPrefabData attachment : weapon.attachments)
+			{
+				//attachment resource 
+				ResourceName a = attachment.GetPrefabName();
+				//spawn attachment 
+				IEntity spawnedAttachment = GetGame().SpawnEntityPrefab(Resource.Load(a),GetGame().GetWorld());
+				//attach to weapon 
+				
+				foreach(AttachmentSlotComponent slot_comp : slots)
+				{
+					//slot type of the weapon
+					BaseAttachmentType a_type = slot_comp.GetAttachmentSlotType();
+					//get slot type of the spawned attachment
+					InventoryItemComponent iic = InventoryItemComponent.Cast(spawnedAttachment.FindComponent(InventoryItemComponent));
+					
+					SCR_ItemAttributeCollection attributes =  iic.GetAttributes();
+					WeaponAttachmentAttributes attachmentAttribute =  WeaponAttachmentAttributes.Cast(attributes.FindAttribute(WeaponAttachmentAttributes));
+					
+					//slot type of spawned attachment 
+					BaseAttachmentType b_type = attachmentAttribute.GetAttachmentType();
+					
+					//determine exact class of current slot 
+					AttachmentMuzzle muzzle_a = AttachmentMuzzle.Cast(a_type);
+					AttachmentOptics optic_a = AttachmentOptics.Cast(a_type);
+					AttachmentUnderBarrel ubgl_a = AttachmentUnderBarrel.Cast(a_type);
+					
+					//determine exact attachment class of spawned item
+					AttachmentMuzzle muzzle_b = AttachmentMuzzle.Cast(b_type);
+					AttachmentOptics optic_b = AttachmentOptics.Cast(b_type);
+					AttachmentUnderBarrel ubgl_b = AttachmentUnderBarrel.Cast(b_type);
+					
+					if (muzzle_a)
+					{
+						//muzzle type 
+						//check if spawned attachment is muzzle attachment
+						if (muzzle_b)
+						{
+							//match, add attachment to slot 
+							slot_comp.SetAttachment(spawnedAttachment);
+							continue;
+						} 
+					
+					}else if (optic_a)
+					{
+						//optic Type
+						if(optic_b)
+						{
+							//match, add attachment to slot 
+							slot_comp.SetAttachment(spawnedAttachment);
+							continue;
+						}
+					
+					}else if (ubgl_a)
+					{
+						if(ubgl_b)
+						{
+							//match, add attachment to slot 
+							slot_comp.SetAttachment(spawnedAttachment);
+							continue;
+						}
+					}
+					
+					
+					
+				}
+			
+			}
+
+		}
+		
 		foreach(EntityPrefabData data : o.itemsOnPlayer)
 			{
 						
@@ -4208,16 +4304,16 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 				RplComponent rpl = RplComponent.Cast(spawnedItem.FindComponent(RplComponent));
 				if(mc && rpl)
 				{
-					continue;
 					RplComponent.DeleteRplEntity(spawnedItem,false);
+					continue;
+					
 				}
 					
 				
-				bool success = InsertAutoEquipItem(mmc,spawnedItem);
-				//bool success = mmc.TryInsertItem(spawnedItem,EStoragePurpose.PURPOSE_ANY,null);
-				//mmc.TrySpawnPrefabToStorage(n);
+				
+				mmc.TrySpawnPrefabToStorage(n);
 
-				Print("GameModeWasteland::Succes:  "+success +"for Item "+data.GetPrefabName());
+				Print("GameModeWasteland::Succes:  for Item "+data.GetPrefabName());
 			}
 		//create and insert money comp here
 		if (o.walletValue > 0)
@@ -4301,6 +4397,11 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 			}
 
 		}
+		
+		//CopyPastaNote from WST_GearPersistenceManager
+		//CharacterWeaponObjects are setup here, when loading in GameMode retrieve weapon and attachments first 
+		//-->Insert weapon to EquipedWeaponStorageComponent, then add attachments to weapons AttachmentSlotComponents 
+		//---> This way inventoryStorage capacity is equal to the moment it was saved, not smaller, eg. no items lost, eg.profit!
 		
 		//kick of gear persistence loading from here
 		if (pc)

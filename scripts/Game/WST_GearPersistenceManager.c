@@ -1,13 +1,8 @@
 class WST_GearPersistenceManagerClass: GenericEntityClass
 {
 };
-///////TODO:
-//-DeleteAllItems not deleting all items 
+///////TODO:-fix adding (ghost items)
 
-//-only scan first storage for items (contains all items already probably)
-
-//-clear the itemsOnPlayer array before saving new items!
-//-save currency value on player
 
 class WST_GearPersistenceManager: GenericEntity
 {
@@ -101,12 +96,73 @@ class WST_GearPersistenceManager: GenericEntity
 		PlayerManager pm = GetGame().GetPlayerManager();
 		
 		IEntity controller = pm.GetPlayerControlledEntity(id);
+		array<BaseInventoryStorageComponent> availableStorages = new array<BaseInventoryStorageComponent>();
 		
 		SCR_InventoryStorageManagerComponent inv_mm = SCR_InventoryStorageManagerComponent.Cast(controller.FindComponent(SCR_InventoryStorageManagerComponent));
-		
-		array<BaseInventoryStorageComponent> availableStorages = new array<BaseInventoryStorageComponent>();
-		//amount of storages dependant on character equipment 
 		int storageCount = inv_mm.GetStorages(availableStorages);
+		
+		gearObject_l.weapons.Clear();
+		ref array<IEntity> w_items = {};
+		//find weapon storage 
+		foreach(BaseInventoryStorageComponent b : availableStorages)
+		{
+			//cast to EquipedWeaponStorageComponent 
+			EquipedWeaponStorageComponent weaponStorage = EquipedWeaponStorageComponent.Cast(b);
+			if (weaponStorage)
+			{
+				//found weapon storage, iterate over weapon 
+				
+				weaponStorage.GetAll(w_items);
+				foreach(IEntity e : w_items)
+				{
+					//check weapon for attachments 
+					ref array<Managed> slots = {};
+					EntityPrefabData weaponData = e.GetPrefabData();
+					//create one weaponObject for each weapon
+					WST_CharacterWeaponObject w =  gearObject_l.NewCharacterWeapon(weaponData);
+					e.FindComponents(AttachmentSlotComponent,slots);
+					Print("Found slots : " + slots.Count());
+					//iterate over weaponattachment slots 
+					//slots are mostly handguards and suppressors/AttachmentOptics 
+					//since handguards are somewhat unfinished,dont have InventoryItemComponents, and are kept on the prefab we ignore handguards
+					//magazines are NOT attachments (not on AttachmentSlotComponent obviously)
+					foreach(Managed slot: slots)
+					{
+						AttachmentSlotComponent c_slot = AttachmentSlotComponent.Cast(slot);
+						
+						
+						IEntity attachment_prefab = c_slot.GetAttachedEntity();
+						//noting attached?
+						if(!attachment_prefab)
+							continue;
+						//get attachment type 
+						BaseAttachmentType slotType = c_slot.GetAttachmentSlotType();
+						AttachmentHandGuard handguard_e = AttachmentHandGuard.Cast(slotType);
+						//attachment is handguard ignore it.
+						if (handguard_e)
+							continue;
+						EntityPrefabData data = attachment_prefab.GetPrefabData();
+						ResourceName n = data.GetPrefabName();
+						//add attachment data to weapon Object
+						w.addAttachments(data);
+						
+						Print("Found Attachment : " + n);
+
+					
+					}
+				}				
+			
+			
+			}
+		}
+		
+		//CharacterWeaponObjects are setup here, when loading in GameMode retrieve weapon and attachments first 
+		//-->Insert weapon to EquipedWeaponStorageComponent, then add attachments to weapons AttachmentSlotComponents 
+		//---> This way inventoryStorage capacity is equal to the moment it was saved, not smaller, eg. no items lost, eg.profit!
+		
+		
+		//amount of storages dependant on character equipment 
+		
 		Print("WST_GearPersistenceManager::Save:: storage count: "+ storageCount);
 		SCR_InventoryStorageManagerComponent mmc = inv_mm;
 		BaseInventoryStorageComponent b_characterStorage;
@@ -201,7 +257,8 @@ class WST_GearPersistenceManager: GenericEntity
 		
 		
 		//weaponsattachmentsstorage
-		itemCount = inv_mm.GetAllItems(items,b_EquipedWeaponStorageStorage);
+		//ignore weapons storage
+		//itemCount = inv_mm.GetAllItems(items,b_EquipedWeaponStorageStorage);
 			
 			
 		
@@ -212,6 +269,7 @@ class WST_GearPersistenceManager: GenericEntity
 		
 		//clear prefab data 
 		gearObject_l.itemsOnPlayer.Clear();
+		
 		
 		foreach(IEntity item :items)
 		{
@@ -359,12 +417,35 @@ class WST_GearPersistenceManager: GenericEntity
 
 }
 
+class WST_CharacterWeaponObject
+{
+	
+	ref EntityPrefabData weapon;
+	ref array<ref EntityPrefabData> attachments;
+	void WST_CharacterWeaponObject(EntityPrefabData w)
+	{
+		
+		attachments = new ref array<ref EntityPrefabData>();
+		weapon = w;
+	}
+	
+	void addAttachments(EntityPrefabData e)
+	{
+		attachments.Insert(e);
+	}
+
+}
+
+
+
 class WST_GearObject 
 {
 	//array of EntityPrefabData 
 	ref array<ref EntityPrefabData> itemsOnPlayer;
 	string PlayerIdentity;
 	int walletValue;
+	//contains weapons and its attachments as EntityPrefabData
+	ref array<ref WST_CharacterWeaponObject> weapons;
 	//with this PlayerIdentity associated RplID 
 	
 	void add(EntityPrefabData e)
@@ -372,11 +453,23 @@ class WST_GearObject
 		itemsOnPlayer.Insert(e);
 	}
 	
+	WST_CharacterWeaponObject NewCharacterWeapon(EntityPrefabData weaponData)
+	{
+		ref WST_CharacterWeaponObject weapon = new ref WST_CharacterWeaponObject(weaponData);
+		weapons.Insert(weapon);
+		return weapon;
+	}
 	
+	void addAttachmentToCharachterWeapon(EntityPrefabData attachmentData,WST_CharacterWeaponObject weapon)
+	{
+		weapon.addAttachments(attachmentData);
+	
+	}
 	
 	void WST_GearObject()
 	{
 		itemsOnPlayer = new ref array<ref EntityPrefabData>();
+		weapons= new ref array<ref WST_CharacterWeaponObject>();
 		walletValue = -1;
 		
 	}
