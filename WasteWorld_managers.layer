@@ -42,14 +42,6 @@ SCR_CampaignFactionManager CampaignFactionManager1 : "{F1AC26310BAE3788}Prefabs/
 HitRegistrationManager HitRegistrationManager1 {
  coords 6580.016 10.002 3130.449
 }
-SCRWST_AISpawnManager {
- components {
-  RplComponent "{5D10D9AB15B8DFCB}" {
-   Streamable Disabled
-  }
- }
- coords 4883 30.715 11752.553
-}
 SCR_MoneyManager {
  components {
   RplComponent "{5CF4AA9086ACA96B}" {

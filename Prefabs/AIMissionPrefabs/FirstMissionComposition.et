@@ -1,0 +1,266 @@
+StaticModelEntity : "{54AF9F7C4603B71B}Prefabs/Structures/Military/Camps/TentFIA_01/TentFIA_01_foundation.et" {
+ ID "5A532DCCA3D221CE"
+ coords 4828.75 27.999 11928.622
+ angleY 90.228
+ {
+  StaticModelEntity : "{019FFBD85C046071}Prefabs/Structures/Military/Camps/TentFIA_01/TentFIA_01_medical_foundation.et" {
+   ID "5D48CE468C0678AC"
+   coords -8.455 0.195 8.813
+   angleY 89.703
+  }
+  $grp GenericEntity : "{124DC29CA359557C}Prefabs/Props/Military/CargoContainers/CargoContainer_01_10ft_USSR_ammo.et" {
+   {
+    ID "5D48CE468C0714F9"
+    components {
+     Hierarchy "{5D48CE5950A8D8BB}" {
+     }
+    }
+    coords 6.397 -0.243 2.746
+    angleY -90.228
+   }
+   {
+    ID "5D48CE468C0714FE"
+    components {
+     Hierarchy "{5D48CE594434E730}" {
+     }
+    }
+    coords 6.379 -0.273 0.05
+    angleY -90.228
+   }
+  }
+  $grp StaticModelEntity : "{1A1020205E2B1710}Prefabs/Props/Military/Furniture/TableMilitary_USSR_01.et" {
+   {
+    ID "5D48CE468C0678A3"
+    components {
+     Hierarchy "{5D48CE592E852D9C}" {
+     }
+    }
+    coords -2.674 -0.111 7.662
+    angleY -90.228
+   }
+   {
+    ID "5D48CE468C06EB7E"
+    components {
+     Hierarchy "{5D48CE59321E6C73}" {
+     }
+    }
+    coords -0.805 0.166 13.489
+    angleY -90.228
+   }
+   {
+    ID "5D48CE468C06EB7F"
+    components {
+     Hierarchy "{5D48CE592828523F}" {
+     }
+    }
+    coords 0.033 0.154 12.623
+    angleY -90.228
+   }
+   {
+    ID "5D48CE468C06EE88"
+    components {
+     Hierarchy "{5D48CE593059D3BD}" {
+     }
+    }
+    coords -0.018 0.218 14.192
+    angleY -90.228
+   }
+  }
+  $grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_US_ammo.et" {
+   {
+    ID "5D48CE468C0706FB"
+    components {
+     Hierarchy "{5D48CE59495EC36E}" {
+     }
+    }
+    coords -6.678 0.474 25.163
+    angleY -90.228
+   }
+   {
+    ID "5D48CE468C0714F8"
+    components {
+     Hierarchy "{5D48CE5955D849C2}" {
+     }
+    }
+    coords -6.68 0.505 27.88
+    angleY -90.228
+   }
+  }
+  $grp StaticModelEntity : "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et" {
+   {
+    ID "5D48CE468C0678A0"
+    components {
+     Hierarchy "{5D48CE592DBCAD18}" {
+     }
+    }
+    coords -1.914 -0.052 8.035
+    angleY -90.228
+   }
+   {
+    ID "5D48CE468C0678A5"
+    components {
+     Hierarchy "{5D48CE59220244B9}" {
+     }
+    }
+    coords -3.521 0.328 19.92
+    angleY 62.679
+   }
+   {
+    ID "5D48CE468C06EEB7"
+    components {
+     Hierarchy "{5D48CE594E60A3C0}" {
+     }
+    }
+    coords 1.07 0.245 12.526
+    angleY -90.228
+   }
+   {
+    ID "5D48CE468C0706F9"
+    components {
+     Hierarchy "{5D48CE594D218E27}" {
+     }
+    }
+    coords 1.395 0.254 13.829
+    angleY -90.228
+   }
+  }
+  StaticModelEntity : "{55973C5B0950D4AB}Prefabs/Props/Military/Furniture/ChairMilitary_US_01.et" {
+   ID "5D48CE468C0678A4"
+   components {
+    Hierarchy "{5D48CE59274D9705}" {
+    }
+   }
+   coords -2.82 0.386 20.107
+   angleY -90.228
+  }
+  $grp StaticModelEntity : "{5C74B39756C5CDF6}Prefabs/Structures/Military/Camps/TentFIA_01/TentFIA_01_camonet_foundation.et" {
+   {
+    ID "5D48CE468C0678AD"
+    coords -8.998 0.503 18.316
+    angleY 82.67
+   }
+   {
+    ID "5D48CE468C0678B1"
+    coords 7.48 0.787 9.693
+    angleY -90.228
+   }
+   {
+    ID "5D48CE468C0678B3"
+    coords 5.158 0.805 19.458
+    angleY -106.086
+   }
+  }
+  $grp SCR_DestructibleEntity : "{BE7B5BAFE1A16A50}Prefabs/Props/Military/Fortification/BarbedTape_Coil.et" {
+   {
+    ID "5D48CE468C0714FC"
+    components {
+     Hierarchy "{5D48CE595B33A13D}" {
+     }
+    }
+    coords 8.726 -0.122 1.663
+    angleY -90.228
+   }
+   {
+    ID "5D48CE468C0714FF"
+    components {
+     Hierarchy "{5D48CE595D9B8254}" {
+     }
+    }
+    coords 9.458 -0.019 2.761
+    angleY -90.228
+   }
+  }
+  $grp SCR_DestructibleEntity : "{DDF59362051B28BC}Prefabs/Props/Military/Fortification/BarbedTape_KnifeRest.et" {
+   {
+    ID "5D48CE468C040D84"
+    components {
+     Hierarchy "{5D48CE596944D8D9}" {
+     }
+    }
+    coords -10.76 -0.755 0.535
+    angleY -21.054
+   }
+   {
+    ID "5D48CE468C040D85"
+    components {
+     Hierarchy "{5D48CE596BA5F856}" {
+     }
+    }
+    coords -8.599 -0.779 -1.915
+    angleY -58.664
+   }
+   {
+    ID "5D48CE468C044B40"
+    components {
+     Hierarchy "{5D48CE5974A18510}" {
+     }
+    }
+    coords -11.913 -0.646 3.595
+    angleY -14.176
+   }
+   {
+    ID "5D48CE468C04855C"
+    components {
+     Hierarchy "{5D48CE597EC6579B}" {
+     }
+    }
+    coords -5.737 -0.744 -3.649
+    angleY -60.938
+   }
+   {
+    ID "5D48CE468C04855F"
+    components {
+     Hierarchy "{5D48CE5972120BBA}" {
+     }
+    }
+    coords -2.933 -0.729 -4.585
+    angleY -90.228
+   }
+   {
+    ID "5D48CE468C072740"
+    components {
+     Hierarchy "{5D48CE59651704CC}" {
+     }
+    }
+    coords 9.826 -0.273 -2.238
+    angleY -133.376
+   }
+   {
+    ID "5D48CE468C072741"
+    components {
+     Hierarchy "{5D48CE5967B55007}" {
+     }
+    }
+    coords 11.668 -0.068 0.519
+    angleY -169.028
+   }
+   {
+    ID "5D48CE468C073D80"
+    components {
+     Hierarchy "{5D48CE5960D2B411}" {
+     }
+    }
+    coords 7.069 -0.407 -4.081
+    angleY -110.643
+   }
+   {
+    ID "5D48CE468C073D8F"
+    components {
+     Hierarchy "{5D48CE596E34A05C}" {
+     }
+    }
+    coords 3.74 -0.554 -4.614
+    angleY -90.228
+   }
+   {
+    ID "5D48CE468C07BC96"
+    components {
+     Hierarchy "{5D48CE596C7FC8CC}" {
+     }
+    }
+    coords 0.332 -0.618 -4.588
+    angleY -90.228
+   }
+  }
+ }
+}

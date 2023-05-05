@@ -4582,7 +4582,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 				
 				
 				SCR_AIGroup group = SCR_AIGroup.Cast(agent.GetParentGroup());
-				
+				bool isRemnantGroup = false;
 				if (group)
 				{
 					int respawnPeriod;
@@ -4591,7 +4591,7 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 					{
 						if (group != remnantPresence.GetSpawnedGroup())
 							continue;
-						
+						isRemnantGroup = true;
 						// If this was not the last member alive, do nothing
 						if (group.GetAgentsCount() > 1)
 							break;
@@ -4620,6 +4620,21 @@ class SCR_BaseGameModeWasteland : SCR_BaseGameMode
 						}
 						
 						break;
+					}
+					
+					if (!isRemnantGroup)
+					{
+						//AI Group spawned by mission Manager 
+						//check if last member just died, if he died queue base removal
+						//agentscount is never reaching 0, last agent means we are at count 1
+						int countagents = group.GetAgentsCount();
+						if (group.GetAgentsCount() == 1)
+						{
+							//last member died 
+							//trigger clean up(cleans up every mission without any AIAgents)
+							WST_AIMissionManager.GetInstance().CleanUpEmptyMission();
+						}
+					
 					}
 				}
 			}

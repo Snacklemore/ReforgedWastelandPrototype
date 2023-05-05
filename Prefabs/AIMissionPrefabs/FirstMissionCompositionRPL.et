@@ -1,0 +1,189 @@
+StaticModelEntity : "{10D0228588229510}Prefabs/AIMissionPrefabs/FirstMissionComposition.et" {
+ ID "5A532DCCA3D221CE"
+ components {
+  SCR_MapDescriptorComponent "{5D49765D0B1D9EB4}" {
+   DisplayName "Bandit Camp"
+   MainType "Name Town"
+  }
+ }
+ coords 4874.531 28.595 11934.726
+ angleY 0
+ {
+  GenericEntity {
+   ID "5A5344E094E55EDC"
+   components {
+    RplComponent "{58FC7CAC2034C3E2}" {
+     Enabled 1
+    }
+   }
+  }
+  SCR_DestructibleEntity {
+   ID "5D48CE468C040D84"
+   components {
+    RplComponent "{572CA4D629065689}" {
+     Enabled 1
+    }
+   }
+  }
+  SCR_DestructibleEntity {
+   ID "5D48CE468C040D85"
+   components {
+    RplComponent "{572CA4D629065689}" {
+     Enabled 1
+    }
+   }
+  }
+  SCR_DestructibleEntity {
+   ID "5D48CE468C044B40"
+   components {
+    RplComponent "{572CA4D629065689}" {
+     Enabled 1
+    }
+   }
+  }
+  SCR_DestructibleEntity {
+   ID "5D48CE468C04855C"
+   components {
+    RplComponent "{572CA4D629065689}" {
+     Enabled 1
+    }
+   }
+  }
+  SCR_DestructibleEntity {
+   ID "5D48CE468C04855F"
+   components {
+    RplComponent "{572CA4D629065689}" {
+     Enabled 1
+    }
+   }
+  }
+  SCR_DestructibleEntity {
+   ID "5D48CE468C0714FC"
+   components {
+    RplComponent "{5624A893D867D5CB}" {
+     Enabled 1
+    }
+   }
+  }
+  SCR_DestructibleEntity {
+   ID "5D48CE468C0714FF"
+   components {
+    RplComponent "{5624A893D867D5CB}" {
+     Enabled 1
+    }
+   }
+  }
+  SCR_DestructibleEntity {
+   ID "5D48CE468C072740"
+   components {
+    RplComponent "{572CA4D629065689}" {
+     Enabled 1
+    }
+   }
+  }
+  SCR_DestructibleEntity {
+   ID "5D48CE468C072741"
+   components {
+    RplComponent "{572CA4D629065689}" {
+     Enabled 1
+    }
+   }
+  }
+  SCR_DestructibleEntity {
+   ID "5D48CE468C073D80"
+   components {
+    RplComponent "{572CA4D629065689}" {
+     Enabled 1
+    }
+   }
+  }
+  SCR_DestructibleEntity {
+   ID "5D48CE468C073D8F"
+   components {
+    RplComponent "{572CA4D629065689}" {
+     Enabled 1
+    }
+   }
+  }
+  SCR_DestructibleEntity {
+   ID "5D48CE468C07BC96"
+   components {
+    RplComponent "{572CA4D629065689}" {
+     Enabled 1
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D48CE468C0678A0"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D48CE468C0678A3"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D48CE468C0678A4"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D48CE468C0678A5"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D48CE468C06EB7E"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D48CE468C06EB7F"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D48CE468C06EE88"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D48CE468C06EEB7"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D48CE468C0706F9"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+   }
+  }
+ }
+}

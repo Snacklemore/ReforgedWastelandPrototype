@@ -1,0 +1,31 @@
+SCRWST_AISpawnManager {
+ components {
+  RplComponent "{5D10D9AB15B8DFCB}" {
+   Streamable Disabled
+  }
+ }
+ coords 4882.562 28.595 11885.288
+}
+WST_AIMissionManager {
+ components {
+  RplComponent "{5D48A3A3EBF985F4}" {
+  }
+ }
+ coords 4877.854 28.595 11885.354
+ {
+  $grp WST_AIMissionObject {
+   MissionObject2 {
+    coords -66.001 0 55.492
+   }
+   MissionObject3 {
+    coords -25.077 0 57.56
+   }
+   MissionObject1 {
+    coords -114.814 1.264 48.63
+   }
+   MissionObject4 {
+    coords 13.251 0 56.475
+   }
+  }
+ }
+}

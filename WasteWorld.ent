@@ -13,3 +13,6 @@ Layer spawning {
 Layer SpawnPoints {
  Index 3
 }
+Layer AIManager {
+ Index 4
+}
